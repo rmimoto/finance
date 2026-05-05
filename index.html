@@ -68,10 +68,10 @@ tr:hover td { background: rgba(15,23,42,0.5); }
 <h1>&#128202; Fluxo de Caixa &mdash; Renan 2025/2026</h1>
 <p class="subtitle">Realizado: Nov/25 &ndash; Abr/26 &nbsp;|&nbsp; Em andamento: Mai/26 &nbsp;|&nbsp; Provisionado: Jun/26 &ndash; Dez/26 &nbsp;&middot;&nbsp; Atualizado 05/05/2026</p>
 <div class="tabs">
-  <div class="tab active" onclick="showTab(this,'visao')">&#128200; Vis&#227;o Geral</div>
-  <div class="tab" onclick="showTab(this,'mensal')">&#128197; M&#234;s a M&#234;s</div>
-  <div class="tab" onclick="showTab(this,'dre')">&#128203; DRE</div>
-  <div class="tab" onclick="showTab(this,'insights')">&#128161; Insights</div>
+  <div class="tab active" data-panel="visao">&#128200; Vis&#227;o Geral</div>
+  <div class="tab" data-panel="mensal">&#128197; M&#234;s a M&#234;s</div>
+  <div class="tab" data-panel="dre">&#128203; DRE</div>
+  <div class="tab" data-panel="insights">&#128161; Insights</div>
 </div>
 
 <div class="alert-banner">
@@ -403,19 +403,32 @@ tr:hover td { background: rgba(15,23,42,0.5); }
       <div class="insight">
         <div class="insight-title">Déficit m&#233;dio realizado</div>
         <div class="insight-val" style="color:#ef4444">-R$ 964,16/mês</div>
-        <div class="insight-desc">Gastos médios (R$ 18.600,93) superam receitas médias (R$ 17.636,77) em R$ 18.601CT%. Situação insustent&#225;vel sem crescimento de receita.</div>
+        <div class="insight-desc">Gastos médios (R$ 18.600,93) superam receitas médias (R$ 17.636,77) em 5,4%. Situação insustent&#225;vel sem crescimento de receita.</div>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-function showTab(el, id) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  el.classList.add('active');
-  document.getElementById('panel-' + id).classList.add('active');
-}
+(function() {
+  function initTabs() {
+    var tabs = document.querySelectorAll('.tab[data-panel]');
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        tabs.forEach(function(t) { t.classList.remove('active'); });
+        document.querySelectorAll('.panel').forEach(function(p) { p.classList.remove('active'); });
+        tab.classList.add('active');
+        var panel = document.getElementById('panel-' + tab.dataset.panel);
+        if (panel) panel.classList.add('active');
+      });
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTabs);
+  } else {
+    initTabs();
+  }
+})();
 </script>
 </body>
 </html>
