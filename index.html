@@ -62,6 +62,15 @@ tr:hover td { background: rgba(15,23,42,0.5); }
 .panel { display: none; }
 .panel.active { display: block; }
 .alert-banner { background: #450a0a; border: 1px solid #ef4444; border-radius: 8px; padding: 10px 14px; margin-bottom: 14px; font-size: 0.82rem; color: #fca5a5; }
+
+.ct-tbl { width:100%; border-collapse:collapse; font-size:0.73rem; }
+.ct-tbl th { background:#0f172a; color:#64748b; padding:5px 8px; font-weight:500; text-align:left; }
+.ct-dt { width:46px; color:#64748b; }
+.ct-ds { }
+.ct-vl { width:90px; text-align:right; }
+.ct-tbl td { padding:5px 8px; border-bottom:1px solid #0f172a; }
+details > summary::-webkit-details-marker { color:#64748b; }
+
 </style>
 </head>
 <body>
@@ -410,57 +419,267 @@ tr:hover td { background: rgba(15,23,42,0.5); }
   </div>
 </div>
 
+
 <!-- CARTOES -->
 <div id="panel-cartoes" class="panel">
-  <div class="section">
-    <div class="section-title">&#128179; D&#237;vidas em Cart&#245;es &mdash; Saldo em Aberto</div>
-    <div class="cards" style="grid-template-columns:repeat(2,1fr);margin-bottom:0">
-      <div class="card" style="border-color:#f97316">
-        <div class="card-label">Ita&#250;</div>
-        <div class="card-value" style="color:#f97316">R$ 2.613</div>
-        <div class="card-sub">Saldo devedor total</div>
-      </div>
-      <div class="card" style="border-color:#8b5cf6">
-        <div class="card-label">Nubank</div>
-        <div class="card-value" style="color:#8b5cf6">R$ 2.869</div>
-        <div class="card-sub">Saldo devedor total</div>
-      </div>
-      <div class="card" style="border-color:#ef4444">
-        <div class="card-label">Bradesco (Feh)</div>
-        <div class="card-value" style="color:#ef4444">R$ 13.470</div>
-        <div class="card-sub">Maior d&#237;vida &mdash; prioridade</div>
-      </div>
-      <div class="card" style="border-color:#f59e0b">
-        <div class="card-label">Santander</div>
-        <div class="card-value" style="color:#f59e0b">R$ 794</div>
-        <div class="card-sub">Menor valor &mdash; quitar primeiro</div>
-      </div>
+
+  <!-- Resumo topo -->
+  <div class="cards" style="grid-template-columns:repeat(3,1fr)">
+    <div class="card" style="border-color:#ef4444">
+      <div class="card-label">&#128680; Bradesco — vence 10/Mai</div>
+      <div class="card-value" style="color:#ef4444">R$&nbsp;2.030,34</div>
+      <div class="card-sub">5 dias &bull; 30 lan&#231;amentos</div>
+    </div>
+    <div class="card" style="border-color:#f97316">
+      <div class="card-label">Ita&#250; — vence 25/Mai</div>
+      <div class="card-value" style="color:#f97316">R$&nbsp;811,52</div>
+      <div class="card-sub">20 dias &bull; 10 lan&#231;amentos</div>
+    </div>
+    <div class="card" style="border-color:#8b5cf6">
+      <div class="card-label">Nubank Feh — vence 30/Mai</div>
+      <div class="card-value" style="color:#8b5cf6">R$&nbsp;1.555,76</div>
+      <div class="card-sub">25 dias &bull; 8 lan&#231;amentos</div>
     </div>
   </div>
-  <div class="section">
-    <div class="section-title">&#128202; Resumo e Prioridade de Quita&#231;&#227;o</div>
-    <div class="dre-row header"><span>Cart&#227;o</span><span>Saldo</span><span>Ordem</span></div>
-    <div class="dre-row"><span>Santander</span><span class="negative">R$ 794</span><span style="color:#22c55e;font-size:0.75rem">&#9312; Quitar j&#225;</span></div>
-    <div class="dre-row"><span>Ita&#250;</span><span class="negative">R$ 2.613</span><span style="color:#f59e0b;font-size:0.75rem">&#9313; Seguinte</span></div>
-    <div class="dre-row"><span>Nubank</span><span class="negative">R$ 2.869</span><span style="color:#f59e0b;font-size:0.75rem">&#9314; Seguinte</span></div>
-    <div class="dre-row"><span>Bradesco (Feh)</span><span class="negative">R$ 13.470</span><span style="color:#ef4444;font-size:0.75rem">&#9315; Foco longo prazo</span></div>
-    <div class="dre-row total"><span>Total em aberto</span><span class="negative">R$ 19.746</span><span></span></div>
+  <div style="background:#0f172a;border-radius:8px;padding:8px 14px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center">
+    <span style="font-size:0.75rem;color:#64748b">Total fat. Mai/26 (3 cart&#245;es)</span>
+    <span style="font-size:1.05rem;font-weight:700;color:#e2e8f0">R$&nbsp;4.397,62</span>
   </div>
-  <div class="section">
-    <div class="section-title">&#128161; Estrat&#233;gia de Quita&#231;&#227;o</div>
-    <div class="reco" style="border-color:#22c55e">
-      <strong>&#9312; Santander &mdash; R$ 794</strong>
-      <span>Menor valor do grupo. Quitar assim que o saldo de Mai/26 se estabilizar (ap&#243;s sal&#225;rio em 30/Mai). Elimina uma conta e libera carga mental.</span>
+
+
+<div class="section" style="border-left:3px solid #ef4444;padding-left:14px">
+  <div class="section-title" style="color:#ef4444">Bradesco (Feh) <span style="background:#7f1d1d;color:#fca5a5;font-size:0.6rem;padding:2px 7px;border-radius:8px;margin-left:6px;vertical-align:middle">&#128680; VENCE 10/MAI</span></div>
+  <div style="font-size:0.7rem;color:#64748b;margin-top:-10px;margin-bottom:12px">Vencimento todo dia 10</div>
+
+  <!-- Mini cards: Abr / Mai / Jun -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px">
+    <div style="background:#0f172a;border-radius:8px;padding:10px 12px">
+      <div style="font-size:0.62rem;color:#475569;text-transform:uppercase">Abr/26 — Fechada</div>
+      <div style="font-size:0.95rem;font-weight:700;color:#64748b;margin-top:3px">R$&nbsp;870,19</div>
     </div>
-    <div class="reco" style="border-color:#f59e0b">
-      <strong>&#9313;&#9314; Ita&#250; (R$ 2.613) + Nubank (R$ 2.869)</strong>
-      <span>Somam R$ 5.482. Ap&#243;s quitar o Santander, direcionar o valor liberado para estes dois. Estimativa: 3&ndash;4 meses.</span>
+    <div style="background:#0f172a;border-radius:8px;padding:10px 12px;border:1px solid #ef444440">
+      <div style="font-size:0.62rem;color:#64748b;text-transform:uppercase">&#9654; Mai/26 — Atual</div>
+      <div style="font-size:0.95rem;font-weight:700;color:#ef4444;margin-top:3px">R$&nbsp;2.030,34</div>
     </div>
-    <div class="reco" style="border-color:#ef4444">
-      <strong>&#9315; Bradesco (Feh) &mdash; R$ 13.470</strong>
-      <span>68% do total devedor. Amortizar R$ 1.000&ndash;1.500/m&#234;s ap&#243;s estabilizar o caixa. Prazo: 9&ndash;14 meses.</span>
+    <div style="background:#0f172a;border-radius:8px;padding:10px 12px">
+      <div style="font-size:0.62rem;color:#475569;text-transform:uppercase">Jun/26 — Pr&#243;xima</div>
+      <div style="font-size:0.95rem;font-weight:700;color:#475569;margin-top:3px">R$&nbsp;693,93</div>
     </div>
   </div>
+
+  <!-- Tabela Mai/26 -->
+  <div style="font-size:0.7rem;font-weight:600;color:#94a3b8;margin-bottom:5px">&#128197; Lan&#231;amentos Fatura Mai/26</div>
+  <div style="overflow-x:auto">
+  <table class="ct-tbl">
+    <thead><tr><th class="ct-dt">Data</th><th class="ct-ds">Descri&#231;&#227;o</th><th class="ct-vl">Valor</th></tr></thead>
+    <tbody>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">FRISCHMANN ALTO DA XV - 10/10
+ Parcela 10 de </td><td class="ct-vl">R$&nbsp;122,40</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">POLICLINICA XAXIM - 9/10
+ Parcela 9 de 10</td><td class="ct-vl">R$&nbsp;320,00</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">MERCADOLIVRE 3PRODUTOS - 2/10
+ Parcela 2 de 1</td><td class="ct-vl">R$&nbsp;287,99</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">EC MERCADOLIVRE - 2/ 6
+ Parcela 2 de 6</td><td class="ct-vl">R$&nbsp;56,66</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds">Uber UBER TRIP HELP UBER</td><td class="ct-vl">R$&nbsp;25,59</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds">POSTO VALENCIA</td><td class="ct-vl">R$&nbsp;100,00</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds">MP LUSIMAR</td><td class="ct-vl">R$&nbsp;11,50</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds">Uber UBER TRIP HELP UBER</td><td class="ct-vl">R$&nbsp;26,56</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds">Uber UBER TRIP HELP UBER</td><td class="ct-vl">R$&nbsp;18,97</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds">Uber UBER TRIP HELP UBER</td><td class="ct-vl">R$&nbsp;12,95</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds">Uber UBER TRIP HELP UBER</td><td class="ct-vl">R$&nbsp;17,95</td></tr>
+        <tr><td class="ct-dt">12/04</td><td class="ct-ds">Uber UBER TRIP HELP UBER</td><td class="ct-vl">R$&nbsp;17,94</td></tr>
+        <tr><td class="ct-dt">09/04</td><td class="ct-ds">Uber UBER TRIP HELP UBER</td><td class="ct-vl">R$&nbsp;20,76</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds">Uber UBER TRIP HELP UBER</td><td class="ct-vl">R$&nbsp;26,18</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds">TARUMA</td><td class="ct-vl">R$&nbsp;57,75</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds">COMERCIO DE COMBUSTIV</td><td class="ct-vl">R$&nbsp;100,00</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds">POSTOS PELANDA COMBUST</td><td class="ct-vl">R$&nbsp;150,00</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds">VeronaLanchoneteE</td><td class="ct-vl">R$&nbsp;105,50</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds">LOVABLE</td><td class="ct-vl">R$&nbsp;66,13</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds">GUARDIAN PARK</td><td class="ct-vl">R$&nbsp;12,00</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds">POSTO VALENCIA</td><td class="ct-vl">R$&nbsp;24,48</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds">BATTISTI LORENZATTO AL</td><td class="ct-vl">R$&nbsp;57,42</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">EC GT3AUTOPARTS - 1/ 3
+ Parcela 1 de 3</td><td class="ct-vl">R$&nbsp;29,26</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds">FILIAL 523 CTB 24</td><td class="ct-vl">R$&nbsp;53,53</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds">CLAUDE.AI SUBSCRIPTION</td><td class="ct-vl">R$&nbsp;120,76</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds">IFD TIA SU RESTAURANTE</td><td class="ct-vl">R$&nbsp;45,98</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds">LEROY MERLIN</td><td class="ct-vl">R$&nbsp;59,90</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">ANUIDADE 06/12</td><td class="ct-vl">R$&nbsp;16,50</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds">IFD PIZZARIA VISTA ALE</td><td class="ct-vl">R$&nbsp;24,89</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds">IFD 51691458 GABRIEL C</td><td class="ct-vl">R$&nbsp;40,79</td></tr>
+    </tbody>
+    <tfoot><tr>
+      <td></td>
+      <td style="text-align:right;font-weight:700;padding:6px 8px;border-top:1px solid #334155">Total</td>
+      <td class="ct-vl" style="font-weight:700;color:#ef4444;border-top:1px solid #334155">R$&nbsp;2.030,34</td>
+    </tr></tfoot>
+  </table>
+  </div>
+
+  <!-- Tabela Jun/26 -->
+  <details style="margin-top:10px">
+    <summary style="font-size:0.7rem;font-weight:600;color:#64748b;cursor:pointer;padding:4px 0">
+      &#128197; Parcelas em Jun/26 (4 itens &mdash; R$&nbsp;693,93)
+    </summary>
+    <div style="overflow-x:auto;margin-top:6px">
+    <table class="ct-tbl">
+      <thead><tr><th class="ct-dt">Data</th><th class="ct-ds">Descri&#231;&#227;o</th><th class="ct-vl">Valor</th></tr></thead>
+      <tbody>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">clinica 10/10</td><td class="ct-vl">R$&nbsp;320,00</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">Peças carro 4/10</td><td class="ct-vl">R$&nbsp;288,00</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">Peça carro coxim 03/06</td><td class="ct-vl">R$&nbsp;56,67</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">peça carro 02/03</td><td class="ct-vl">R$&nbsp;29,26</td></tr>
+      </tbody>
+      <tfoot><tr>
+        <td></td>
+        <td style="text-align:right;font-weight:700;padding:6px 8px;border-top:1px solid #334155">Total</td>
+        <td class="ct-vl" style="font-weight:700;color:#64748b;border-top:1px solid #334155">R$&nbsp;693,93</td>
+      </tr></tfoot>
+    </table>
+    </div>
+  </details>
+</div>
+
+<div class="section" style="border-left:3px solid #f97316;padding-left:14px">
+  <div class="section-title" style="color:#f97316">Ita&#250;</div>
+  <div style="font-size:0.7rem;color:#64748b;margin-top:-10px;margin-bottom:12px">Vencimento todo dia 25</div>
+
+  <!-- Mini cards: Abr / Mai / Jun -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px">
+    <div style="background:#0f172a;border-radius:8px;padding:10px 12px">
+      <div style="font-size:0.62rem;color:#475569;text-transform:uppercase">Abr/26 — Fechada</div>
+      <div style="font-size:0.95rem;font-weight:700;color:#64748b;margin-top:3px">R$&nbsp;1.023,67</div>
+    </div>
+    <div style="background:#0f172a;border-radius:8px;padding:10px 12px;border:1px solid #f9731640">
+      <div style="font-size:0.62rem;color:#64748b;text-transform:uppercase">&#9654; Mai/26 — Atual</div>
+      <div style="font-size:0.95rem;font-weight:700;color:#f97316;margin-top:3px">R$&nbsp;811,52</div>
+    </div>
+    <div style="background:#0f172a;border-radius:8px;padding:10px 12px">
+      <div style="font-size:0.62rem;color:#475569;text-transform:uppercase">Jun/26 — Pr&#243;xima</div>
+      <div style="font-size:0.95rem;font-weight:700;color:#475569;margin-top:3px">R$&nbsp;492,75</div>
+    </div>
+  </div>
+
+  <!-- Tabela Mai/26 -->
+  <div style="font-size:0.7rem;font-weight:600;color:#94a3b8;margin-bottom:5px">&#128197; Lan&#231;amentos Fatura Mai/26</div>
+  <div style="overflow-x:auto">
+  <table class="ct-tbl">
+    <thead><tr><th class="ct-dt">Data</th><th class="ct-ds">Descri&#231;&#227;o</th><th class="ct-vl">Valor</th></tr></thead>
+    <tbody>
+        <tr><td class="ct-dt">25/07</td><td class="ct-ds" style="color:#93c5fd">Clinica 10/10</td><td class="ct-vl">R$&nbsp;51,00</td></tr>
+        <tr><td class="ct-dt">27/02</td><td class="ct-ds" style="color:#93c5fd">PEÇAS ML 03/12</td><td class="ct-vl">R$&nbsp;185,03</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">Suzucar 03/06</td><td class="ct-vl">R$&nbsp;73,33</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">TÊnis 02/04</td><td class="ct-vl">R$&nbsp;91,25</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">Autozone 02/02</td><td class="ct-vl">R$&nbsp;107,50</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds">GOOGLE</td><td class="ct-vl">R$&nbsp;89,63</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds">IFOOD</td><td class="ct-vl">R$&nbsp;40,79</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">leroy merlin 01/06</td><td class="ct-vl">R$&nbsp;143,14</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds">APple</td><td class="ct-vl">R$&nbsp;19,90</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds">Prime</td><td class="ct-vl">R$&nbsp;9,95</td></tr>
+    </tbody>
+    <tfoot><tr>
+      <td></td>
+      <td style="text-align:right;font-weight:700;padding:6px 8px;border-top:1px solid #334155">Total</td>
+      <td class="ct-vl" style="font-weight:700;color:#f97316;border-top:1px solid #334155">R$&nbsp;811,52</td>
+    </tr></tfoot>
+  </table>
+  </div>
+
+  <!-- Tabela Jun/26 -->
+  <details style="margin-top:10px">
+    <summary style="font-size:0.7rem;font-weight:600;color:#64748b;cursor:pointer;padding:4px 0">
+      &#128197; Parcelas em Jun/26 (4 itens &mdash; R$&nbsp;492,75)
+    </summary>
+    <div style="overflow-x:auto;margin-top:6px">
+    <table class="ct-tbl">
+      <thead><tr><th class="ct-dt">Data</th><th class="ct-ds">Descri&#231;&#227;o</th><th class="ct-vl">Valor</th></tr></thead>
+      <tbody>
+        <tr><td class="ct-dt">27/02</td><td class="ct-ds" style="color:#93c5fd">PEÇAS ML 04/12</td><td class="ct-vl">R$&nbsp;185,03</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">Suzucar 4/06</td><td class="ct-vl">R$&nbsp;73,33</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">TÊnis 03/04</td><td class="ct-vl">R$&nbsp;91,25</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">leroy merlin 02/06</td><td class="ct-vl">R$&nbsp;143,14</td></tr>
+      </tbody>
+      <tfoot><tr>
+        <td></td>
+        <td style="text-align:right;font-weight:700;padding:6px 8px;border-top:1px solid #334155">Total</td>
+        <td class="ct-vl" style="font-weight:700;color:#64748b;border-top:1px solid #334155">R$&nbsp;492,75</td>
+      </tr></tfoot>
+    </table>
+    </div>
+  </details>
+</div>
+
+<div class="section" style="border-left:3px solid #8b5cf6;padding-left:14px">
+  <div class="section-title" style="color:#8b5cf6">Nubank (Feh)</div>
+  <div style="font-size:0.7rem;color:#64748b;margin-top:-10px;margin-bottom:12px">Vencimento todo dia 30</div>
+
+  <!-- Mini cards: Abr / Mai / Jun -->
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px">
+    <div style="background:#0f172a;border-radius:8px;padding:10px 12px">
+      <div style="font-size:0.62rem;color:#475569;text-transform:uppercase">Abr/26 — Fechada</div>
+      <div style="font-size:0.95rem;font-weight:700;color:#64748b;margin-top:3px">R$&nbsp;1.767,91</div>
+    </div>
+    <div style="background:#0f172a;border-radius:8px;padding:10px 12px;border:1px solid #8b5cf640">
+      <div style="font-size:0.62rem;color:#64748b;text-transform:uppercase">&#9654; Mai/26 — Atual</div>
+      <div style="font-size:0.95rem;font-weight:700;color:#8b5cf6;margin-top:3px">R$&nbsp;1.555,76</div>
+    </div>
+    <div style="background:#0f172a;border-radius:8px;padding:10px 12px">
+      <div style="font-size:0.62rem;color:#475569;text-transform:uppercase">Jun/26 — Pr&#243;xima</div>
+      <div style="font-size:0.95rem;font-weight:700;color:#475569;margin-top:3px">R$&nbsp;822,43</div>
+    </div>
+  </div>
+
+  <!-- Tabela Mai/26 -->
+  <div style="font-size:0.7rem;font-weight:600;color:#94a3b8;margin-bottom:5px">&#128197; Lan&#231;amentos Fatura Mai/26</div>
+  <div style="overflow-x:auto">
+  <table class="ct-tbl">
+    <thead><tr><th class="ct-dt">Data</th><th class="ct-ds">Descri&#231;&#227;o</th><th class="ct-vl">Valor</th></tr></thead>
+    <tbody>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">inspirar faculdade 03/04</td><td class="ct-vl">R$&nbsp;137,96</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">Retifica tracker 03/03</td><td class="ct-vl">R$&nbsp;733,33</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">Minoxidil 03/05</td><td class="ct-vl">R$&nbsp;91,20</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">Jóias 03/06</td><td class="ct-vl">R$&nbsp;333,33</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">Multi loja 04/10</td><td class="ct-vl">R$&nbsp;73,41</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">Montagem armario e beliche 01/03</td><td class="ct-vl">R$&nbsp;120,68</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">Peça carro 01/04</td><td class="ct-vl">R$&nbsp;43,10</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">Ratazanas 01/02</td><td class="ct-vl">R$&nbsp;22,75</td></tr>
+    </tbody>
+    <tfoot><tr>
+      <td></td>
+      <td style="text-align:right;font-weight:700;padding:6px 8px;border-top:1px solid #334155">Total</td>
+      <td class="ct-vl" style="font-weight:700;color:#8b5cf6;border-top:1px solid #334155">R$&nbsp;1.555,76</td>
+    </tr></tfoot>
+  </table>
+  </div>
+
+  <!-- Tabela Jun/26 -->
+  <details style="margin-top:10px">
+    <summary style="font-size:0.7rem;font-weight:600;color:#64748b;cursor:pointer;padding:4px 0">
+      &#128197; Parcelas em Jun/26 (7 itens &mdash; R$&nbsp;822,43)
+    </summary>
+    <div style="overflow-x:auto;margin-top:6px">
+    <table class="ct-tbl">
+      <thead><tr><th class="ct-dt">Data</th><th class="ct-ds">Descri&#231;&#227;o</th><th class="ct-vl">Valor</th></tr></thead>
+      <tbody>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">inspirar faculdade 04/04</td><td class="ct-vl">R$&nbsp;137,96</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">Minoxidil 04/05</td><td class="ct-vl">R$&nbsp;91,20</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">Jóias 04/06</td><td class="ct-vl">R$&nbsp;333,33</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">Multi loja 05/10</td><td class="ct-vl">R$&nbsp;73,41</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">Montagem armario e beliche 02/03</td><td class="ct-vl">R$&nbsp;120,68</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">Peça carro 02/04</td><td class="ct-vl">R$&nbsp;43,10</td></tr>
+        <tr><td class="ct-dt"></td><td class="ct-ds" style="color:#93c5fd">Ratazanas 02/02</td><td class="ct-vl">R$&nbsp;22,75</td></tr>
+      </tbody>
+      <tfoot><tr>
+        <td></td>
+        <td style="text-align:right;font-weight:700;padding:6px 8px;border-top:1px solid #334155">Total</td>
+        <td class="ct-vl" style="font-weight:700;color:#64748b;border-top:1px solid #334155">R$&nbsp;822,43</td>
+      </tr></tfoot>
+    </table>
+    </div>
+  </details>
+</div>
+
 </div>
 
 <script>
