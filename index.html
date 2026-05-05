@@ -74,6 +74,7 @@ tr:hover td { background: rgba(15,23,42,0.5); }
   <div class="tab" onclick="showTab(this,'mensal')">&#128197; M&#234;s a M&#234;s</div>
   <div class="tab" onclick="showTab(this,'dre')">&#128203; DRE</div>
   <div class="tab" onclick="showTab(this,'insights')">&#128161; Insights</div>
+  <div class="tab" onclick="showTab(this,'cartoes')">&#128179; Cart&#245;es</div>
 </div>
 <!-- VISAO GERAL -->
 <div id="panel-visao" class="panel active">
@@ -480,13 +481,9 @@ tr:hover td { background: rgba(15,23,42,0.5); }
     </div>
   </div>
 </div>
-<script>
-function showTab(el, id) {
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('panel-' + id).classList.add('active');
-  el.classList.add('active');
-}
-</script>
-</body>
-</html>
+<!-- CARTÕES -->
+<div id="panel-cartoes" class="panel">
+
+  <div class="cards" style="grid-template-columns:repeat(3,1fr)">
+    <div class="card" style="border-color:#f97316">
+      <div class="card-label">&#127968; Ita&#250; &mdash; Fatura
