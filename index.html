@@ -72,6 +72,7 @@ tr:hover td { background: rgba(15,23,42,0.5); }
   <div class="tab" data-panel="mensal">&#128197; M&#234;s a M&#234;s</div>
   <div class="tab" data-panel="dre">&#128203; DRE</div>
   <div class="tab" data-panel="insights">&#128161; Insights</div>
+  <div class="tab" data-panel="cartoes">&#128179; Cart&#245;es</div>
 </div>
 
 <div class="alert-banner">
@@ -405,6 +406,59 @@ tr:hover td { background: rgba(15,23,42,0.5); }
         <div class="insight-val" style="color:#ef4444">-R$ 964,16/mês</div>
         <div class="insight-desc">Gastos médios (R$ 18.600,93) superam receitas médias (R$ 17.636,77) em 5,4%. Situação insustent&#225;vel sem crescimento de receita.</div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- CARTOES -->
+<div id="panel-cartoes" class="panel">
+  <div class="section">
+    <div class="section-title">&#128179; D&#237;vidas em Cart&#245;es &mdash; Saldo em Aberto</div>
+    <div class="cards" style="grid-template-columns:repeat(2,1fr);margin-bottom:0">
+      <div class="card" style="border-color:#f97316">
+        <div class="card-label">Ita&#250;</div>
+        <div class="card-value" style="color:#f97316">R$ 2.613</div>
+        <div class="card-sub">Saldo devedor total</div>
+      </div>
+      <div class="card" style="border-color:#8b5cf6">
+        <div class="card-label">Nubank</div>
+        <div class="card-value" style="color:#8b5cf6">R$ 2.869</div>
+        <div class="card-sub">Saldo devedor total</div>
+      </div>
+      <div class="card" style="border-color:#ef4444">
+        <div class="card-label">Bradesco (Feh)</div>
+        <div class="card-value" style="color:#ef4444">R$ 13.470</div>
+        <div class="card-sub">Maior d&#237;vida &mdash; prioridade</div>
+      </div>
+      <div class="card" style="border-color:#f59e0b">
+        <div class="card-label">Santander</div>
+        <div class="card-value" style="color:#f59e0b">R$ 794</div>
+        <div class="card-sub">Menor valor &mdash; quitar primeiro</div>
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-title">&#128202; Resumo e Prioridade de Quita&#231;&#227;o</div>
+    <div class="dre-row header"><span>Cart&#227;o</span><span>Saldo</span><span>Ordem</span></div>
+    <div class="dre-row"><span>Santander</span><span class="negative">R$ 794</span><span style="color:#22c55e;font-size:0.75rem">&#9312; Quitar j&#225;</span></div>
+    <div class="dre-row"><span>Ita&#250;</span><span class="negative">R$ 2.613</span><span style="color:#f59e0b;font-size:0.75rem">&#9313; Seguinte</span></div>
+    <div class="dre-row"><span>Nubank</span><span class="negative">R$ 2.869</span><span style="color:#f59e0b;font-size:0.75rem">&#9314; Seguinte</span></div>
+    <div class="dre-row"><span>Bradesco (Feh)</span><span class="negative">R$ 13.470</span><span style="color:#ef4444;font-size:0.75rem">&#9315; Foco longo prazo</span></div>
+    <div class="dre-row total"><span>Total em aberto</span><span class="negative">R$ 19.746</span><span></span></div>
+  </div>
+  <div class="section">
+    <div class="section-title">&#128161; Estrat&#233;gia de Quita&#231;&#227;o</div>
+    <div class="reco" style="border-color:#22c55e">
+      <strong>&#9312; Santander &mdash; R$ 794</strong>
+      <span>Menor valor do grupo. Quitar assim que o saldo de Mai/26 se estabilizar (ap&#243;s sal&#225;rio em 30/Mai). Elimina uma conta e libera carga mental.</span>
+    </div>
+    <div class="reco" style="border-color:#f59e0b">
+      <strong>&#9313;&#9314; Ita&#250; (R$ 2.613) + Nubank (R$ 2.869)</strong>
+      <span>Somam R$ 5.482. Ap&#243;s quitar o Santander, direcionar o valor liberado para estes dois. Estimativa: 3&ndash;4 meses.</span>
+    </div>
+    <div class="reco" style="border-color:#ef4444">
+      <strong>&#9315; Bradesco (Feh) &mdash; R$ 13.470</strong>
+      <span>68% do total devedor. Amortizar R$ 1.000&ndash;1.500/m&#234;s ap&#243;s estabilizar o caixa. Prazo: 9&ndash;14 meses.</span>
     </div>
   </div>
 </div>
