@@ -62,11 +62,12 @@ tr:hover td { background: rgba(15,23,42,0.5); }
 .panel { display: none; }
 .panel.active { display: block; }
 .alert-banner { background: #450a0a; border: 1px solid #ef4444; border-radius: 8px; padding: 10px 14px; margin-bottom: 14px; font-size: 0.82rem; color: #fca5a5; }
+.alert-critical { background: #450a0a; border: 2px solid #ef4444; border-radius: 8px; padding: 10px 14px; margin-bottom: 8px; font-size: 0.82rem; color: #fca5a5; }
 </style>
 </head>
 <body>
 <h1>&#128202; Fluxo de Caixa &mdash; Renan 2026</h1>
-<p class="subtitle">Realizado: Jan/26 &ndash; Abr/26 &nbsp;|&nbsp; Em andamento: Mai/26 (at&eacute; 15/05) &nbsp;|&nbsp; Provisionado: Jun/26 &ndash; Dez/26 &nbsp;&middot;&nbsp; Atualizado 16/05/2026</p>
+<p class="subtitle">Realizado: Jan/26 &ndash; Abr/26 &nbsp;|&nbsp; Em andamento: Mai/26 (at&eacute; 22/05) &nbsp;|&nbsp; Provisionado: Jun/26 &ndash; Dez/26 &nbsp;&middot;&nbsp; Atualizado 22/05/2026</p>
 <div class="tabs">
   <div class="tab active" data-panel="visao">&#128200; Vis&#227;o Geral</div>
   <div class="tab" data-panel="mensal">&#128197; M&#234;s a M&#234;s</div>
@@ -75,15 +76,15 @@ tr:hover td { background: rgba(15,23,42,0.5); }
   <div class="tab" data-panel="cartoes">&#128179; Cart&#245;es</div>
 </div>
 <div class="alert-banner">
-  &#9888;&#65039; <strong>Alerta 16/05/2026:</strong> Saldo atual R$&nbsp;2.789 (15/Mai) &mdash; <strong>abaixo do m&#237;nimo de R$&nbsp;3.000</strong>. Ita&#250; R$&nbsp;811,52 vence 25/Mai &bull; Nubank Feh R$&nbsp;2.365,08 vence 30/Mai &bull; Sal&#225;rio entra 30/Mai. &#128680; Set/26 projetado <strong>negativo (&minus;R$&nbsp;866)</strong> &bull; Nov/26 <strong>&minus;R$&nbsp;1.156</strong>. Revis&#227;o urgente de despesas.
+  &#9888;&#65039; <strong>Alerta 22/05/2026:</strong> Saldo atual R$&nbsp;1.268,50 &mdash; <strong>cr&#237;tico, abaixo de R$&nbsp;3.000</strong>. &#128680; Ita&#250; R$&nbsp;811,52 vence 25/Mai &bull; Nubank Feh R$&nbsp;2.365,08 vence 27/Mai &bull; <strong>Saldo ir&aacute; negativo 27&ndash;29/Mai</strong> antes do sal&#225;rio em 30/Mai. &#9888; Novo cen&#225;rio: <strong>Set/26 e Nov/26 com saldo negativo projetado!</strong> Saldo Dez/26 agora projetado em apenas <strong>R$&nbsp;1.019</strong> (antes R$&nbsp;9.443).
 </div>
 <!-- VISAO GERAL -->
 <div id="panel-visao" class="panel active">
   <div class="cards">
     <div class="card green"><div class="card-label">Receita M&#233;dia Realizada</div><div class="card-value">R$&nbsp;19.619</div><div class="card-sub">M&#233;dia Jan/26 a Abr/26 (4 meses)</div></div>
     <div class="card green"><div class="card-label">Gasto M&#233;dio Realizado</div><div class="card-value">R$&nbsp;17.981</div><div class="card-sub">M&#233;dia Jan/26 a Abr/26</div></div>
-    <div class="card red"><div class="card-label">&#9888; Saldo Atual (15/05)</div><div class="card-value">R$&nbsp;2.789</div><div class="card-sub">Abaixo do m&#237;nimo R$&nbsp;3.000 &mdash; monitorar</div></div>
-    <div class="card red"><div class="card-label">&#128680; Saldo Projetado Dez/26</div><div class="card-value">R$&nbsp;547</div><div class="card-sub">Muito abaixo da meta R$&nbsp;10k&ndash;15k</div></div>
+    <div class="card red"><div class="card-label">&#9888; Saldo Atual (22/05)</div><div class="card-value">R$&nbsp;1.268,50</div><div class="card-sub">Cr&#237;tico &mdash; abaixo do m&#237;nimo R$&nbsp;3.000</div></div>
+    <div class="card red"><div class="card-label">&#128680; Saldo Projetado Dez/26</div><div class="card-value">R$&nbsp;1.019</div><div class="card-sub">Muito abaixo da meta R$&nbsp;10k&ndash;15k</div></div>
   </div>
   <div class="section">
     <div class="section-title">&#128202; Entradas vs Pagamentos &mdash; Jan/26 a Dez/26</div>
@@ -93,80 +94,91 @@ tr:hover td { background: rgba(15,23,42,0.5); }
       <div class="legend-item"><div class="legend-dot" style="background:#60a5fa"></div>Saldo Final</div>
     </div>
     <div style="overflow-x:auto">
-    <svg viewBox="0 0 760 205" xmlns="http://www.w3.org/2000/svg" style="min-width:500px;width:100%">
-      <line x1="55" y1="170" x2="750" y2="170" stroke="#334155" stroke-width="1"/>
+    <svg viewBox="0 0 760 215" xmlns="http://www.w3.org/2000/svg" style="min-width:500px;width:100%">
+      <!-- Grid lines -->
+      <line x1="55" y1="180" x2="750" y2="180" stroke="#334155" stroke-width="1"/>
       <line x1="55" y1="20" x2="750" y2="20" stroke="#1e293b" stroke-dasharray="4,4" stroke-width="1"/>
       <line x1="55" y1="57" x2="750" y2="57" stroke="#1e293b" stroke-dasharray="4,4" stroke-width="1"/>
       <line x1="55" y1="95" x2="750" y2="95" stroke="#1e293b" stroke-dasharray="4,4" stroke-width="1"/>
       <line x1="55" y1="132" x2="750" y2="132" stroke="#1e293b" stroke-dasharray="4,4" stroke-width="1"/>
+      <!-- Zero line (for negative saldo) -->
+      <line x1="55" y1="180" x2="750" y2="180" stroke="#64748b" stroke-width="1.5"/>
       <text x="50" y="23" fill="#475569" font-size="8" text-anchor="end">25k</text>
       <text x="50" y="60" fill="#475569" font-size="8" text-anchor="end">20k</text>
       <text x="50" y="98" fill="#475569" font-size="8" text-anchor="end">15k</text>
       <text x="50" y="135" fill="#475569" font-size="8" text-anchor="end">10k</text>
-      <text x="50" y="173" fill="#475569" font-size="8" text-anchor="end">0</text>
-      <!-- Divider: Realizado(Jan-Abr) | Atual(Mai) | Provisionado -->
-      <line x1="292" y1="15" x2="292" y2="175" stroke="#f59e0b" stroke-width="1" stroke-dasharray="3,3"/>
+      <text x="50" y="183" fill="#475569" font-size="8" text-anchor="end">0</text>
+      <!-- Dividers -->
+      <line x1="292" y1="15" x2="292" y2="185" stroke="#f59e0b" stroke-width="1" stroke-dasharray="3,3"/>
       <text x="246" y="13" fill="#f59e0b" font-size="7">&#8592; Realizado</text>
-      <line x1="355" y1="15" x2="355" y2="175" stroke="#475569" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <line x1="355" y1="15" x2="355" y2="185" stroke="#475569" stroke-width="1.5" stroke-dasharray="4,3"/>
       <text x="358" y="13" fill="#64748b" font-size="7">Provisionado &#8594;</text>
-      <!-- Entradas (verde) -->
-      <polyline points="65,69.5 130,47.7 195,36.1 260,55.9 325,61.7 390,90.7 453,90.7 516,92.5 580,92.5 642,83.7 705,92.7 750,83.7" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linejoin="round"/>
+      <!-- Entradas (verde) - Jan=65, Fev=130, Mar=195, Abr=260, Mai=325, Jun=390, Jul=453, Ago=516, Set=580, Out=642, Nov=705, Dez=750 -->
+      <!-- y = 180 - (value/25000)*160 -->
+      <!-- Jan:16753→69.6  Fev:20381→49.6  Mar:22320→37.2  Abr:19020→58.3  Mai:18051→64.5  Jun:13215→92.5  Jul:13215→92.5  Ago:12915→94.4  Set:12915→94.4  Out:14379→86.0  Nov:12879→94.6  Dez:14379→86.0 -->
+      <polyline points="65,69.6 130,49.6 195,37.2 260,58.3 325,64.5 390,92.5 453,92.5 516,94.4 580,94.4 642,86.0 705,94.6 750,86.0" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linejoin="round"/>
       <!-- Pagamentos (vermelho) -->
-      <polyline points="65,83.3 130,30.2 195,65.3 260,69.7 325,32.0 390,85.5 453,89.8 516,83.2 580,85.9 642,86.2 705,88.5 750,93.9" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-linejoin="round"/>
-      <!-- Saldo Final (azul) -->
-      <polyline points="65,149.1 130,166.6 195,137.4 260,123.6 325,153.3 390,158.5 453,159.4 516,168.6 580,175.2 642,172.8 705,176.9 750,166.7" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linejoin="round"/>
-      <!-- Dots Entradas -->
-      <circle cx="65" cy="69.5" r="3.5" fill="#22c55e"/>
-      <circle cx="130" cy="47.7" r="3.5" fill="#22c55e"/>
-      <circle cx="195" cy="36.1" r="3.5" fill="#22c55e"/>
-      <circle cx="260" cy="55.9" r="3.5" fill="#22c55e"/>
-      <circle cx="325" cy="61.7" r="3.5" fill="#f59e0b"/>
-      <circle cx="390" cy="90.7" r="3.5" fill="none" stroke="#22c55e" stroke-width="1.5"/>
-      <circle cx="453" cy="90.7" r="3.5" fill="none" stroke="#22c55e" stroke-width="1.5"/>
-      <circle cx="516" cy="92.5" r="3.5" fill="none" stroke="#22c55e" stroke-width="1.5"/>
-      <circle cx="580" cy="92.5" r="3.5" fill="none" stroke="#22c55e" stroke-width="1.5"/>
-      <circle cx="642" cy="83.7" r="3.5" fill="none" stroke="#22c55e" stroke-width="1.5"/>
-      <circle cx="705" cy="92.7" r="3.5" fill="none" stroke="#22c55e" stroke-width="1.5"/>
-      <circle cx="750" cy="83.7" r="3.5" fill="none" stroke="#22c55e" stroke-width="1.5"/>
+      <!-- Jan:14445→87.6  Fev:23304→30.9  Mar:17458→68.6  Abr:16716→73.4  Mai:22222→37.8  Jun:14385→87.7  Jul:13362→94.5  Ago:14459→87.5  Set:14010→90.3  Out:13973→90.5  Nov:13576→93.0  Dez:12676→98.9 -->
+      <polyline points="65,87.6 130,30.9 195,68.6 260,73.4 325,37.8 390,87.7 453,94.5 516,87.5 580,90.3 642,90.5 705,93.0 750,98.9" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-linejoin="round"/>
+      <!-- Saldo Final (azul) - negatives shown at y=183 (below axis) -->
+      <!-- Jan:3489→157.7  Fev:566→176.4  Mar:5428→145.2  Abr:7732→130.5  Mai:3562→157.2  Jun:2392→164.7  Jul:2245→165.7  Ago:701→175.5  Set:-393→183  Out:13→179.9  Nov:-684→183  Dez:1019→173.5 -->
+      <polyline points="65,157.7 130,176.4 195,145.2 260,130.5 325,157.2 390,164.7 453,165.7 516,175.5 580,184 642,179.9 705,184 750,173.5" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linejoin="round"/>
+      <!-- Dots Entradas (filled=realizados, open=provisionados) -->
+      <circle cx="65" cy="69.6" r="3.5" fill="#22c55e"/>
+      <circle cx="130" cy="49.6" r="3.5" fill="#22c55e"/>
+      <circle cx="195" cy="37.2" r="3.5" fill="#22c55e"/>
+      <circle cx="260" cy="58.3" r="3.5" fill="#22c55e"/>
+      <circle cx="325" cy="64.5" r="3.5" fill="#f59e0b"/>
+      <circle cx="390" cy="92.5" r="3.5" fill="none" stroke="#22c55e" stroke-width="1.5"/>
+      <circle cx="453" cy="92.5" r="3.5" fill="none" stroke="#22c55e" stroke-width="1.5"/>
+      <circle cx="516" cy="94.4" r="3.5" fill="none" stroke="#22c55e" stroke-width="1.5"/>
+      <circle cx="580" cy="94.4" r="3.5" fill="none" stroke="#22c55e" stroke-width="1.5"/>
+      <circle cx="642" cy="86.0" r="3.5" fill="none" stroke="#22c55e" stroke-width="1.5"/>
+      <circle cx="705" cy="94.6" r="3.5" fill="none" stroke="#22c55e" stroke-width="1.5"/>
+      <circle cx="750" cy="86.0" r="3.5" fill="none" stroke="#22c55e" stroke-width="1.5"/>
       <!-- Dots Pagamentos -->
-      <circle cx="65" cy="83.3" r="3.5" fill="#ef4444"/>
-      <circle cx="130" cy="30.2" r="3.5" fill="#ef4444"/>
-      <circle cx="195" cy="65.3" r="3.5" fill="#ef4444"/>
-      <circle cx="260" cy="69.7" r="3.5" fill="#ef4444"/>
-      <circle cx="325" cy="32.0" r="3.5" fill="#f59e0b"/>
-      <circle cx="390" cy="85.5" r="3.5" fill="none" stroke="#ef4444" stroke-width="1.5"/>
-      <circle cx="453" cy="89.8" r="3.5" fill="none" stroke="#ef4444" stroke-width="1.5"/>
-      <circle cx="516" cy="83.2" r="3.5" fill="none" stroke="#ef4444" stroke-width="1.5"/>
-      <circle cx="580" cy="85.9" r="3.5" fill="none" stroke="#ef4444" stroke-width="1.5"/>
-      <circle cx="642" cy="86.2" r="3.5" fill="none" stroke="#ef4444" stroke-width="1.5"/>
-      <circle cx="705" cy="88.5" r="3.5" fill="none" stroke="#ef4444" stroke-width="1.5"/>
-      <circle cx="750" cy="93.9" r="3.5" fill="none" stroke="#ef4444" stroke-width="1.5"/>
-      <!-- Dots Saldo -->
-      <circle cx="65" cy="149.1" r="3" fill="#60a5fa"/>
-      <circle cx="130" cy="166.6" r="3" fill="#ef4444"/>
-      <circle cx="195" cy="137.4" r="3" fill="#60a5fa"/>
-      <circle cx="260" cy="123.6" r="3" fill="#60a5fa"/>
-      <circle cx="325" cy="153.3" r="3" fill="#f59e0b"/>
-      <circle cx="390" cy="158.5" r="3" fill="none" stroke="#60a5fa" stroke-width="1.5"/>
-      <circle cx="453" cy="159.4" r="3" fill="none" stroke="#60a5fa" stroke-width="1.5"/>
-      <circle cx="516" cy="168.6" r="3" fill="none" stroke="#ef4444" stroke-width="1.5"/>
-      <circle cx="580" cy="175.2" r="3" fill="#ef4444"/>
-      <circle cx="642" cy="172.8" r="3" fill="#ef4444"/>
-      <circle cx="705" cy="176.9" r="3" fill="#ef4444"/>
-      <circle cx="750" cy="166.7" r="3" fill="none" stroke="#60a5fa" stroke-width="1.5"/>
+      <circle cx="65" cy="87.6" r="3.5" fill="#ef4444"/>
+      <circle cx="130" cy="30.9" r="3.5" fill="#ef4444"/>
+      <circle cx="195" cy="68.6" r="3.5" fill="#ef4444"/>
+      <circle cx="260" cy="73.4" r="3.5" fill="#ef4444"/>
+      <circle cx="325" cy="37.8" r="3.5" fill="#f59e0b"/>
+      <circle cx="390" cy="87.7" r="3.5" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+      <circle cx="453" cy="94.5" r="3.5" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+      <circle cx="516" cy="87.5" r="3.5" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+      <circle cx="580" cy="90.3" r="3.5" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+      <circle cx="642" cy="90.5" r="3.5" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+      <circle cx="705" cy="93.0" r="3.5" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+      <circle cx="750" cy="98.9" r="3.5" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+      <!-- Dots Saldo (negative months = red X marker) -->
+      <circle cx="65" cy="157.7" r="3" fill="#60a5fa"/>
+      <circle cx="130" cy="176.4" r="3" fill="#ef4444"/>
+      <circle cx="195" cy="145.2" r="3" fill="#60a5fa"/>
+      <circle cx="260" cy="130.5" r="3" fill="#60a5fa"/>
+      <circle cx="325" cy="157.2" r="3" fill="#f59e0b"/>
+      <circle cx="390" cy="164.7" r="3" fill="none" stroke="#60a5fa" stroke-width="1.5"/>
+      <circle cx="453" cy="165.7" r="3" fill="none" stroke="#60a5fa" stroke-width="1.5"/>
+      <circle cx="516" cy="175.5" r="3" fill="none" stroke="#60a5fa" stroke-width="1.5"/>
+      <!-- Set negative: red dot below axis -->
+      <circle cx="580" cy="184" r="4" fill="#ef4444"/>
+      <text x="580" y="196" fill="#ef4444" font-size="6.5" text-anchor="middle">&#8722;393</text>
+      <circle cx="642" cy="179.9" r="3" fill="none" stroke="#60a5fa" stroke-width="1.5"/>
+      <!-- Nov negative: red dot below axis -->
+      <circle cx="705" cy="184" r="4" fill="#ef4444"/>
+      <text x="705" y="196" fill="#ef4444" font-size="6.5" text-anchor="middle">&#8722;684</text>
+      <circle cx="750" cy="173.5" r="3" fill="none" stroke="#60a5fa" stroke-width="1.5"/>
       <!-- Labels -->
-      <text x="65" y="193" fill="#64748b" font-size="7.5" text-anchor="middle">Jan/26</text>
-      <text x="130" y="193" fill="#64748b" font-size="7.5" text-anchor="middle">Fev/26</text>
-      <text x="195" y="193" fill="#64748b" font-size="7.5" text-anchor="middle">Mar/26</text>
-      <text x="260" y="193" fill="#64748b" font-size="7.5" text-anchor="middle">Abr/26</text>
-      <text x="325" y="193" fill="#f59e0b" font-size="7.5" text-anchor="middle">Mai/26</text>
-      <text x="390" y="193" fill="#64748b" font-size="7.5" text-anchor="middle">Jun/26</text>
-      <text x="453" y="193" fill="#64748b" font-size="7.5" text-anchor="middle">Jul/26</text>
-      <text x="516" y="193" fill="#64748b" font-size="7.5" text-anchor="middle">Ago/26</text>
-      <text x="580" y="193" fill="#64748b" font-size="7.5" text-anchor="middle">Set/26</text>
-      <text x="642" y="193" fill="#64748b" font-size="7.5" text-anchor="middle">Out/26</text>
-      <text x="705" y="193" fill="#64748b" font-size="7.5" text-anchor="middle">Nov/26</text>
-      <text x="750" y="193" fill="#64748b" font-size="7.5" text-anchor="middle">Dez/26</text>
+      <text x="65" y="204" fill="#64748b" font-size="7.5" text-anchor="middle">Jan/26</text>
+      <text x="130" y="204" fill="#64748b" font-size="7.5" text-anchor="middle">Fev/26</text>
+      <text x="195" y="204" fill="#64748b" font-size="7.5" text-anchor="middle">Mar/26</text>
+      <text x="260" y="204" fill="#64748b" font-size="7.5" text-anchor="middle">Abr/26</text>
+      <text x="325" y="204" fill="#f59e0b" font-size="7.5" text-anchor="middle">Mai/26</text>
+      <text x="390" y="204" fill="#64748b" font-size="7.5" text-anchor="middle">Jun/26</text>
+      <text x="453" y="204" fill="#64748b" font-size="7.5" text-anchor="middle">Jul/26</text>
+      <text x="516" y="204" fill="#64748b" font-size="7.5" text-anchor="middle">Ago/26</text>
+      <text x="580" y="204" fill="#ef4444" font-size="7.5" text-anchor="middle">Set/26</text>
+      <text x="642" y="204" fill="#64748b" font-size="7.5" text-anchor="middle">Out/26</text>
+      <text x="705" y="204" fill="#ef4444" font-size="7.5" text-anchor="middle">Nov/26</text>
+      <text x="750" y="204" fill="#64748b" font-size="7.5" text-anchor="middle">Dez/26</text>
     </svg>
     </div>
   </div>
@@ -183,14 +195,14 @@ tr:hover td { background: rgba(15,23,42,0.5); }
     <tr><td>Fev/26<span class="badge badge-r">REAL</span></td><td>R$&nbsp;20.380,86</td><td>R$&nbsp;23.304,49</td><td class="negative">&minus;R$&nbsp;2.923,63</td><td class="negative">R$&nbsp;565,53</td><td>&#x26A0;&#xFE0F;</td></tr>
     <tr><td>Mar/26<span class="badge badge-r">REAL</span></td><td>R$&nbsp;22.319,87</td><td>R$&nbsp;17.457,59</td><td class="positive">+R$&nbsp;4.862,28</td><td>R$&nbsp;5.427,81</td><td>&#x2705;</td></tr>
     <tr><td>Abr/26<span class="badge badge-r">REAL</span></td><td>R$&nbsp;19.019,98</td><td>R$&nbsp;16.715,50</td><td class="positive">+R$&nbsp;2.304,48</td><td>R$&nbsp;7.732,29</td><td>&#x2705;</td></tr>
-    <tr style="background:rgba(239,68,68,0.06)"><td>Mai/26<span class="badge badge-a">ATUAL</span></td><td>R$&nbsp;18.051,20</td><td>R$&nbsp;23.001,73</td><td class="negative">&minus;R$&nbsp;4.950,53</td><td>R$&nbsp;2.781,76</td><td>&#128680;</td></tr>
-    <tr class="forecast"><td>Jun/26<span class="badge badge-p">PROV</span></td><td>R$&nbsp;13.215,20</td><td>R$&nbsp;14.077,82</td><td class="negative">&minus;R$&nbsp;862,62</td><td>R$&nbsp;1.919,14</td><td>&#x26A0;&#xFE0F;</td></tr>
-    <tr class="forecast"><td>Jul/26<span class="badge badge-p">PROV</span></td><td>R$&nbsp;13.215,20</td><td>R$&nbsp;13.361,66</td><td class="negative">&minus;R$&nbsp;146,46</td><td>R$&nbsp;1.772,67</td><td>&#x26A0;&#xFE0F;</td></tr>
-    <tr class="forecast"><td>Ago/26<span class="badge badge-p">PROV</span></td><td>R$&nbsp;12.915,20</td><td>R$&nbsp;14.459,27</td><td class="negative">&minus;R$&nbsp;1.544,07</td><td>R$&nbsp;228,60</td><td>&#x26A0;&#xFE0F;</td></tr>
-    <tr class="forecast"><td>Set/26<span class="badge badge-p">PROV</span></td><td>R$&nbsp;12.915,20</td><td>R$&nbsp;14.009,50</td><td class="negative">&minus;R$&nbsp;1.094,30</td><td class="negative">&minus;R$&nbsp;865,70</td><td>&#128680;</td></tr>
-    <tr class="forecast"><td>Out/26<span class="badge badge-p">PROV</span></td><td>R$&nbsp;14.379,00</td><td>R$&nbsp;13.972,84</td><td class="positive">+R$&nbsp;406,16</td><td class="negative">&minus;R$&nbsp;459,54</td><td>&#128680;</td></tr>
-    <tr class="forecast"><td>Nov/26<span class="badge badge-p">PROV</span></td><td>R$&nbsp;12.879,00</td><td>R$&nbsp;13.575,70</td><td class="negative">&minus;R$&nbsp;696,70</td><td class="negative">&minus;R$&nbsp;1.156,24</td><td>&#128680;</td></tr>
-    <tr class="forecast"><td>Dez/26<span class="badge badge-p">PROV</span></td><td>R$&nbsp;14.379,00</td><td>R$&nbsp;12.676,19</td><td class="positive">+R$&nbsp;1.702,81</td><td class="negative">R$&nbsp;546,57</td><td>&#x26A0;&#xFE0F;</td></tr>
+    <tr style="background:rgba(239,68,68,0.06)"><td>Mai/26<span class="badge badge-a">ATUAL</span></td><td>R$&nbsp;18.051,20</td><td>R$&nbsp;22.221,73</td><td class="negative">&minus;R$&nbsp;4.170,53</td><td>R$&nbsp;3.561,76</td><td>&#128680;</td></tr>
+    <tr class="forecast"><td>Jun/26<span class="badge badge-p">PROV</span></td><td>R$&nbsp;13.215,20</td><td>R$&nbsp;14.385,18</td><td class="negative">&minus;R$&nbsp;1.169,98</td><td>R$&nbsp;2.391,78</td><td>&#x26A0;&#xFE0F;</td></tr>
+    <tr class="forecast"><td>Jul/26<span class="badge badge-p">PROV</span></td><td>R$&nbsp;13.215,20</td><td>R$&nbsp;13.361,66</td><td class="negative">&minus;R$&nbsp;146,46</td><td>R$&nbsp;2.245,31</td><td>&#x26A0;&#xFE0F;</td></tr>
+    <tr class="forecast"><td>Ago/26<span class="badge badge-p">PROV</span></td><td>R$&nbsp;12.915,20</td><td>R$&nbsp;14.459,27</td><td class="negative">&minus;R$&nbsp;1.544,07</td><td>R$&nbsp;701,24</td><td>&#128680;</td></tr>
+    <tr class="forecast" style="background:rgba(239,68,68,0.1)"><td>Set/26<span class="badge badge-p">PROV</span></td><td>R$&nbsp;12.915,20</td><td>R$&nbsp;14.009,50</td><td class="negative">&minus;R$&nbsp;1.094,30</td><td class="negative"><strong>&#128680; &minus;R$&nbsp;393,06</strong></td><td>&#128680;</td></tr>
+    <tr class="forecast"><td>Out/26<span class="badge badge-p">PROV</span></td><td>R$&nbsp;14.379,00</td><td>R$&nbsp;13.972,84</td><td class="positive">+R$&nbsp;406,16</td><td>R$&nbsp;13,10</td><td>&#x26A0;&#xFE0F;</td></tr>
+    <tr class="forecast" style="background:rgba(239,68,68,0.1)"><td>Nov/26<span class="badge badge-p">PROV</span></td><td>R$&nbsp;12.879,00</td><td>R$&nbsp;13.575,70</td><td class="negative">&minus;R$&nbsp;696,70</td><td class="negative"><strong>&#128680; &minus;R$&nbsp;683,60</strong></td><td>&#128680;</td></tr>
+    <tr class="forecast"><td>Dez/26<span class="badge badge-p">PROV</span></td><td>R$&nbsp;14.379,00</td><td>R$&nbsp;12.676,19</td><td class="positive">+R$&nbsp;1.702,81</td><td>R$&nbsp;1.019,21</td><td>&#x26A0;&#xFE0F;</td></tr>
       </tbody>
       <tfoot>
         <tr style="border-top:2px solid #334155;font-weight:600;font-size:0.76rem">
@@ -210,18 +222,20 @@ tr:hover td { background: rgba(15,23,42,0.5); }
     <div class="dre-row sub"><span>Sal&#225;rio Renan L&#237;quido</span><span>R$&nbsp;9.847</span><span>&mdash;</span><span>&mdash;</span></div>
     <div class="dre-row sub"><span>Plano de sa&#250;de (benef.)</span><span>R$&nbsp;1.717</span><span>&mdash;</span><span>&mdash;</span></div>
     <div class="dre-row sub"><span>Gerando Automa&#231;&#245;es</span><span>R$&nbsp;1.300</span><span>&mdash;</span><span>&mdash;</span></div>
-    <div class="dre-row sub"><span>Comiss&#245;es / Extras</span><span>&mdash;</span><span>~R$&nbsp;6.755</span><span class="positive">variável</span></div>
-    <div class="dre-row total"><span>Total Receitas</span><span>R$&nbsp;12.864</span><span>R$&nbsp;19.619</span><span class="positive">+R$&nbsp;6.755</span></div>
+    <div class="dre-row sub"><span>Freela / Extras</span><span>R$&nbsp;3.000</span><span>~R$&nbsp;6.755</span><span class="positive">vari&#225;vel</span></div>
+    <div class="dre-row sub"><span>Sal&#225;rio Feh</span><span>R$&nbsp;300</span><span>&mdash;</span><span>&mdash;</span></div>
+    <div class="dre-row total"><span>Total Receitas</span><span>R$&nbsp;16.164</span><span>R$&nbsp;19.619</span><span class="positive">+R$&nbsp;3.455</span></div>
     <div class="dre-row section-head" style="margin-top:12px"><span>&#128683; DESPESAS</span></div>
     <div class="dre-row sub"><span>Escola crian&#231;as</span><span>R$&nbsp;3.347</span><span>~R$&nbsp;3.347</span><span>R$&nbsp;0</span></div>
     <div class="dre-row sub"><span>Habita&#231;&#227;o / Aluguel</span><span>R$&nbsp;2.200</span><span>&mdash;</span><span>&mdash;</span></div>
-    <div class="dre-row sub"><span>Sa&#250;de / Seguros</span><span>R$&nbsp;1.645</span><span>&mdash;</span><span>&mdash;</span></div>
-    <div class="dre-row sub"><span>Combust. + Alimenta&#231;&#227;o</span><span>R$&nbsp;2.200</span><span>&mdash;</span><span>&mdash;</span></div>
-    <div class="dre-row sub"><span>P&#243;s Amor / Faculdade</span><span>R$&nbsp;1.239</span><span>&mdash;</span><span>&mdash;</span></div>
+    <div class="dre-row sub"><span>Sa&#250;de / Seguros</span><span>R$&nbsp;823</span><span>&mdash;</span><span>&mdash;</span></div>
+    <div class="dre-row sub"><span>Combust. + Alimenta&#231;&#227;o</span><span>R$&nbsp;2.000</span><span>&mdash;</span><span>&mdash;</span></div>
+    <div class="dre-row sub"><span>P&#243;s / Faculdades</span><span>R$&nbsp;739</span><span>&mdash;</span><span>&mdash;</span></div>
     <div class="dre-row sub"><span>Autom&#243;vel (anualizado)</span><span>R$&nbsp;393</span><span>&mdash;</span><span>&mdash;</span></div>
-    <div class="dre-row sub"><span>Vari&#225;veis / Extras</span><span>R$&nbsp;169</span><span>&mdash;</span><span>&mdash;</span></div>
+    <div class="dre-row sub"><span>Vari&#225;veis / Extras</span><span>R$&nbsp;590</span><span>&mdash;</span><span>&mdash;</span></div>
+    <div class="dre-row sub"><span>P&#243;s Amor / Outros</span><span>R$&nbsp;500</span><span>&mdash;</span><span>&mdash;</span></div>
     <div class="dre-row total"><span>Total Despesas</span><span>R$&nbsp;13.586</span><span>R$&nbsp;17.981</span><span class="negative">+R$&nbsp;4.395</span></div>
-    <div class="dre-row total" style="margin-top:12px"><span>Saldo Or&#231;ado vs Real</span><span class="negative">&minus;R$&nbsp;722</span><span class="positive">+R$&nbsp;1.638</span><span class="positive">+R$&nbsp;2.360</span></div>
+    <div class="dre-row total" style="margin-top:12px"><span>Saldo Or&#231;ado vs Real</span><span class="positive">+R$&nbsp;2.578</span><span class="positive">+R$&nbsp;1.638</span><span class="negative">&minus;R$&nbsp;940</span></div>
   </div>
   <div class="section">
     <div class="section-title">&#128176; D&#237;vidas em Aberto</div>
@@ -237,28 +251,24 @@ tr:hover td { background: rgba(15,23,42,0.5); }
   <div class="section">
     <div class="section-title">&#128680; Alertas Autom&#225;ticos</div>
     <div class="reco" style="border-color:#ef4444">
-      <strong>&#9888;&#65039; Saldo em 15/Mai = R$&nbsp;2.789 &mdash; abaixo do m&#237;nimo de R$&nbsp;3.000</strong>
-      <span>Saldo subiu de R$&nbsp;560 (14/Mai) para R$&nbsp;2.789 (15/Mai). Pr&#243;ximas faturas: Ita&#250; R$&nbsp;811,52 (25/Mai) e Nubank Feh R$&nbsp;2.365,08 (30/Mai). Sal&#225;rio e comiss&#245;es entram em 30/Mai. Monitorar saldo di&#225;rio.</span>
+      <strong>&#9888;&#65039; Saldo em 22/Mai = R$&nbsp;1.268,50 &mdash; cr&#237;tico, abaixo do m&#237;nimo de R$&nbsp;3.000</strong>
+      <span>Pr&#243;ximos vencimentos: Ita&#250; R$&nbsp;811,52 em 25/Mai &bull; Nubank Feh R$&nbsp;2.365,08 em 27/Mai. <strong>Saldo vai ficair negativo (&minus;R$&nbsp;908) de 27 a 29/Mai</strong> antes do sal&#225;rio entrar em 30/Mai (R$&nbsp;8.646). Monitorar urgente.</span>
     </div>
     <div class="reco" style="border-color:#ef4444">
-      <strong>&#9888;&#65039; Compress&#227;o em Mai/26: pagamentos = 127,4% das entradas</strong>
-      <span>Resultado projetado: <strong>&minus;R$&nbsp;4.950,53</strong>. Despesas de R$&nbsp;23.002 contra entradas de R$&nbsp;18.051. Saldo projetado fim de Mai = R$&nbsp;2.782. Maio mais pressionado que o previsto.</span>
+      <strong>&#128680;&#128680; Cen&#225;rio cr&#237;tico: Set/26 e Nov/26 com saldo NEGATIVO projetado!</strong>
+      <span>Set/26: saldo final projetado <strong>&minus;R$&nbsp;393,06</strong> &bull; Nov/26: saldo final projetado <strong>&minus;R$&nbsp;683,60</strong>. Saldo Dec/26 projetado em apenas <strong>R$&nbsp;1.019</strong> (vs. R$&nbsp;9.443 na vers&#227;o anterior). &#201; necess&#225;rio rever projetos de receita ou cortar despesas urgentemente.</span>
     </div>
     <div class="reco" style="border-color:#ef4444">
-      <strong>&#128680; Set/26, Out/26 e Nov/26 projetados com saldo NEGATIVO</strong>
-      <span>Set/26: <strong>&minus;R$&nbsp;866</strong> &bull; Out/26: <strong>&minus;R$&nbsp;460</strong> &bull; Nov/26: <strong>&minus;R$&nbsp;1.156</strong>. Tr&#234;s meses consecutivos no vermelho a partir de setembro. Revis&#227;o de despesas provisionadas urgente a partir de Ago/26.</span>
+      <strong>&#9888;&#65039; Compress&#227;o em Mai/26: pagamentos = 123% das entradas</strong>
+      <span>Resultado projetado: <strong>&minus;R$&nbsp;4.171</strong>. R$&nbsp;22.222 de pagamentos contra R$&nbsp;18.051 de entradas. Jun&ndash;Nov projetam resultado negativo na maioria dos meses.</span>
     </div>
-    <div class="reco" style="border-color:#ef4444">
-      <strong>&#9888;&#65039; Ago/26 provisionado com resultado &minus;R$&nbsp;1.544 &mdash; aten&#231;&#227;o</strong>
-      <span>Agosto projeta resultado negativo de R$&nbsp;1.544 com entradas de R$&nbsp;12.915 e pagamentos de R$&nbsp;14.459. Saldo final de apenas R$&nbsp;229. Janela Ago&ndash;Nov &#233; a de maior risco do ano.</span>
-    </div>
-    <div class="reco" style="border-color:#ef4444">
-      <strong>&#128680; Saldo Dez/26 projetado: R$&nbsp;547 &mdash; muito abaixo da meta</strong>
-      <span>Proje&#231;&#227;o de fim de ano: apenas R$&nbsp;547. Meta de reserva de emerg&#234;ncia (R$&nbsp;10k&ndash;15k) n&#227;o ser&#225; atingida em 2026 sem mudan&#231;a de rota. Necess&#225;rio aumentar receitas recorrentes ou cortar despesas estruturalmente.</span>
+    <div class="reco" style="border-color:#f59e0b">
+      <strong>&#9888;&#65039; Ago/26 saldo cr&#237;tico: apenas R$&nbsp;701 &mdash; qualquer imprevisto vira negativo</strong>
+      <span>Agosto projeta entradas R$&nbsp;12.915 vs pagamentos R$&nbsp;14.459 (resultado &minus;R$&nbsp;1.544). Saldo de apenas R$&nbsp;701 antes de Setembro negativar.</span>
     </div>
     <div class="reco" style="border-color:#3b82f6">
       <strong>&#128203; D&#237;vidas totais: R$&nbsp;18.264 &mdash; priorizar Bradesco (R$&nbsp;13.470)</strong>
-      <span>Santander R$&nbsp;794 &bull; Ita&#250; R$&nbsp;2.000 &bull; Nubank R$&nbsp;2.000 &bull; Bradesco R$&nbsp;13.470. Quitar Santander primeiro (menor valor), depois direcionar excedentes para as demais.</span>
+      <span>Santander R$&nbsp;794 &bull; Ita&#250; R$&nbsp;2.000 &bull; Nubank R$&nbsp;2.000 &bull; Bradesco R$&nbsp;13.470. Saldo projetado Dez/26 (R$&nbsp;1.019) n&#227;o cobre as d&#237;vidas. &#201; cr&#237;tico aumentar receitas ou reduzir despesas fixas.</span>
     </div>
   </div>
   <div class="section">
@@ -266,17 +276,17 @@ tr:hover td { background: rgba(15,23,42,0.5); }
     <div class="insights">
       <div class="insight"><div class="insight-title">Melhor m&#234;s realizado (Jan&ndash;Abr/26)</div><div class="insight-val" style="color:#22c55e">Mar/26 +R$&nbsp;4.862</div><div class="insight-desc">Receita de R$&nbsp;22.320 &mdash; pico de comiss&#245;es + sal&#225;rio.</div></div>
       <div class="insight"><div class="insight-title">Pior m&#234;s realizado (Jan&ndash;Abr/26)</div><div class="insight-val" style="color:#ef4444">Fev/26 &minus;R$&nbsp;2.924</div><div class="insight-desc">Pagamentos extraordin&#225;rios de R$&nbsp;23.304 em fevereiro.</div></div>
-      <div class="insight"><div class="insight-title">Saldo projetado Dez/26</div><div class="insight-val" style="color:#ef4444">R$&nbsp;547</div><div class="insight-desc">&#128680; Muito abaixo da meta (R$&nbsp;10k&ndash;15k). Set&ndash;Nov/26 projetados negativos.</div></div>
-      <div class="insight"><div class="insight-title">Saldo m&#233;dio realizado (Jan&ndash;Abr/26)</div><div class="insight-val" style="color:#22c55e">+R$&nbsp;1.637,84/m&#234;s</div><div class="insight-desc">Receita m&#233;dia (R$&nbsp;19.619) supera gastos (R$&nbsp;17.981) em 9,1%.</div></div>
+      <div class="insight"><div class="insight-title">Saldo projetado Dez/26</div><div class="insight-val" style="color:#ef4444">R$&nbsp;1.019</div><div class="insight-desc">Cen&#225;rio piorou drasticamente (era R$&nbsp;9.443). Meta (R$&nbsp;10k&ndash;15k) n&#227;o ser&#225; atingida. Requer a&#231;&#227;o urgente.</div></div>
+      <div class="insight"><div class="insight-title">Meses com saldo negativo projetado</div><div class="insight-val" style="color:#ef4444">Set/26 e Nov/26</div><div class="insight-desc">Set: &minus;R$&nbsp;393 &bull; Nov: &minus;R$&nbsp;684. Out recupera levemente (R$&nbsp;13 apenas). Dez fecha positivo com R$&nbsp;1.019.</div></div>
     </div>
   </div>
 </div>
 <!-- CARTOES -->
 <div id="panel-cartoes" class="panel">
   <div class="cards" style="grid-template-columns:repeat(3,1fr)">
-    <div class="card" style="border-color:#f97316"><div class="card-label">Ita&#250; &mdash; vence 25/Mai</div><div class="card-value" style="color:#f97316">R$&nbsp;811,52</div><div class="card-sub">9 dias restantes</div></div>
-    <div class="card" style="border-color:#8b5cf6"><div class="card-label">Nubank Feh &mdash; vence 30/Mai</div><div class="card-value" style="color:#8b5cf6">R$&nbsp;2.365,08</div><div class="card-sub">14 dias restantes</div></div>
-    <div class="card" style="border-color:#22c55e"><div class="card-label">Bradesco &mdash; Mai/26</div><div class="card-value" style="color:#22c55e">R$&nbsp;2.030,34</div><div class="card-sub">Verificar vencimento</div></div>
+    <div class="card" style="border-color:#f97316"><div class="card-label">Ita&#250; &mdash; vence 25/Mai</div><div class="card-value" style="color:#f97316">R$&nbsp;811,52</div><div class="card-sub">3 dias restantes</div></div>
+    <div class="card" style="border-color:#ef4444"><div class="card-label">&#128680; Nubank Feh &mdash; vence 27/Mai</div><div class="card-value" style="color:#ef4444">R$&nbsp;2.365,08</div><div class="card-sub">Aumentou R$&nbsp;809 &mdash; 5 dias</div></div>
+    <div class="card" style="border-color:#ef4444"><div class="card-label">Bradesco &mdash; Mai/26</div><div class="card-value" style="color:#ef4444">R$&nbsp;2.030,34</div><div class="card-sub">Verificar vencimento (dia 10 Jun)</div></div>
   </div>
   <div style="background:#0f172a;border-radius:8px;padding:8px 14px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center">
     <span style="font-size:0.75rem;color:#64748b">Total fat. Mai/26 (3 cart&#245;es)</span>
@@ -292,11 +302,11 @@ tr:hover td { background: rgba(15,23,42,0.5); }
     <tr><td>Fev/26<span class="badge badge-r">REAL</span></td><td class="negative">R$&nbsp;2.769,51</td><td>R$&nbsp;1.643,22</td><td>R$&nbsp;2.147,32</td><td><strong>R$&nbsp;6.560,05</strong></td></tr>
     <tr><td>Mar/26<span class="badge badge-r">REAL</span></td><td>R$&nbsp;1.083,29</td><td>R$&nbsp;1.583,65</td><td>&mdash;</td><td><strong>R$&nbsp;2.666,94</strong></td></tr>
     <tr><td>Abr/26<span class="badge badge-r">REAL</span></td><td>R$&nbsp;1.023,67</td><td>R$&nbsp;1.767,91</td><td>R$&nbsp;900,53</td><td><strong>R$&nbsp;3.692,11</strong></td></tr>
-    <tr style="background:rgba(239,68,68,0.06)"><td>Mai/26<span class="badge badge-a">ATUAL</span></td><td>R$&nbsp;811,52</td><td>R$&nbsp;2.365,08</td><td>R$&nbsp;2.030,34</td><td><strong>R$&nbsp;5.206,94</strong></td></tr>
-    <tr class="forecast"><td>Jun/26<span class="badge badge-p">PROV</span></td><td>R$&nbsp;492,75</td><td>R$&nbsp;862,33</td><td>R$&nbsp;1.015,38</td><td><strong>R$&nbsp;2.370,46</strong></td></tr>
-    <tr class="forecast"><td>Jul/26<span class="badge badge-p">PROV</span></td><td>R$&nbsp;492,75</td><td>R$&nbsp;701,63</td><td>R$&nbsp;373,93</td><td><strong>R$&nbsp;1.568,30</strong></td></tr>
+    <tr style="background:rgba(239,68,68,0.06)"><td>Mai/26<span class="badge badge-a">ATUAL</span></td><td>R$&nbsp;811,52</td><td class="negative">R$&nbsp;2.365,08</td><td>R$&nbsp;2.030,34</td><td><strong>R$&nbsp;5.206,94</strong></td></tr>
+    <tr class="forecast"><td>Jun/26<span class="badge badge-p">PROV</span></td><td>R$&nbsp;492,75</td><td>R$&nbsp;862,33</td><td>R$&nbsp;1.322,74</td><td><strong>R$&nbsp;2.677,82</strong></td></tr>
+    <tr class="forecast"><td>Jul/26<span class="badge badge-p">PROV</span></td><td>R$&nbsp;492,75</td><td>R$&nbsp;701,63</td><td>R$&nbsp;373,93</td><td><strong>R$&nbsp;1.568,31</strong></td></tr>
     <tr class="forecast"><td>Ago/26<span class="badge badge-p">PROV</span></td><td>R$&nbsp;401,50</td><td>R$&nbsp;489,74</td><td>R$&nbsp;344,67</td><td><strong>R$&nbsp;1.235,91</strong></td></tr>
-    <tr class="forecast"><td>Set/26<span class="badge badge-p">PROV</span></td><td>R$&nbsp;328,17</td><td>R$&nbsp;113,31</td><td>R$&nbsp;344,67</td><td><strong>R$&nbsp;786,14</strong></td></tr>
+    <tr class="forecast"><td>Set/26<span class="badge badge-p">PROV</span></td><td>R$&nbsp;328,17</td><td>R$&nbsp;113,31</td><td>R$&nbsp;344,67</td><td><strong>R$&nbsp;786,15</strong></td></tr>
     <tr class="forecast"><td>Out/26<span class="badge badge-p">PROV</span></td><td>R$&nbsp;328,17</td><td>R$&nbsp;113,31</td><td>R$&nbsp;288,00</td><td><strong>R$&nbsp;729,48</strong></td></tr>
     <tr class="forecast"><td>Nov/26<span class="badge badge-p">PROV</span></td><td>R$&nbsp;185,03</td><td>R$&nbsp;113,31</td><td>R$&nbsp;288,00</td><td><strong>R$&nbsp;586,34</strong></td></tr>
     <tr class="forecast"><td>Dez/26<span class="badge badge-p">PROV</span></td><td>R$&nbsp;185,03</td><td>&mdash;</td><td>R$&nbsp;288,00</td><td><strong>R$&nbsp;473,03</strong></td></tr>
@@ -306,9 +316,9 @@ tr:hover td { background: rgba(15,23,42,0.5); }
   </div>
   <div class="section">
     <div class="section-title">&#128680; Alertas Cart&#245;es</div>
-    <div class="reco" style="border-color:#f59e0b"><strong>&#9888;&#65039; Ita&#250; R$&nbsp;811,52 &mdash; vence 25/Mai (9 dias)</strong><span>Com saldo de R$&nbsp;2.789 em 15/Mai, o pagamento do Ita&#250; deve ser coberto. Confirmar que n&#227;o h&#225; sa&#237;das adicionais relevantes antes de 25/Mai.</span></div>
-    <div class="reco" style="border-color:#ef4444"><strong>&#9888;&#65039; Nubank Feh R$&nbsp;2.365,08 &mdash; vence 30/Mai (14 dias)</strong><span>Fatura aumentou de R$&nbsp;1.596 para R$&nbsp;2.365 desde a &#250;ltima atualiza&#231;&#227;o. Junto com Ita&#250; (R$&nbsp;812), total de cartões em Mai = R$&nbsp;5.207. Sal&#225;rio deve cobrir, mas margem pequena.</span></div>
-    <div class="reco" style="border-color:#22c55e"><strong>&#10003; Tend&#234;ncia de queda nas faturas Jun&ndash;Dez/26</strong><span>Fatura total projetada cai de R$&nbsp;5.207 (Mai) para R$&nbsp;473 (Dez/26) &#224; medida que parcelas s&#227;o quitadas. Al&#237;vio progressivo e significativo nos cart&#245;es a partir de Jun/26.</span></div>
+    <div class="reco" style="border-color:#ef4444"><strong>&#128680; Nubank Feh R$&nbsp;2.365,08 &mdash; vence 27/Mai (5 dias) &mdash; SALDO IR&#193; NEGATIVO!</strong><span>A fatura do Nubank subiu R$&nbsp;809 desde a &#250;ltima atualiza&#231;&#227;o (era R$&nbsp;1.556). Com saldo atual de R$&nbsp;1.269, ap&#243;s pagar Ita&#250; (R$&nbsp;812) em 25/Mai, restar&#227;o apenas R$&nbsp;457. O pagamento do Nubank em 27/Mai deixar&#225; o saldo <strong>negativo por 3 dias</strong> at&#233; o sal&#225;rio em 30/Mai.</span></div>
+    <div class="reco" style="border-color:#f59e0b"><strong>&#9888;&#65039; Ita&#250; R$&nbsp;811,52 &mdash; vence 25/Mai (3 dias)</strong><span>Com saldo de R$&nbsp;1.269 em 22/Mai, o pagamento do Ita&#250; (R$&nbsp;812) vai reduzir saldo para ~R$&nbsp;457 no dia 25. Ainda h&#225; cobertura, mas sem margem.</span></div>
+    <div class="reco" style="border-color:#22c55e"><strong>&#10003; Tend&#234;ncia de queda nas faturas Jun&ndash;Dez/26</strong><span>Total cart&#245;es cai de R$&nbsp;5.207 (Mai) para R$&nbsp;473 (Dez/26) &#224; medida que parcelas se encerram. Al&#237;vio progressivo a partir de Jun/26. Nenhum cart&#227;o individual acima de R$&nbsp;2.500 em Mai.</span></div>
   </div>
 </div>
 <script>
