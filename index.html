@@ -68,11 +68,11 @@ tr:hover td { background: rgba(15,23,42,0.5); }
 <h1>&#128202; Fluxo de Caixa &mdash; Renan 2026</h1>
 <p class="subtitle">Realizado: Jan/26 &ndash; Abr/26 &nbsp;|&nbsp; Em andamento: Mai/26 (at&eacute; 25/05) &nbsp;|&nbsp; Provisionado: Jun/26 &ndash; Dez/26 &nbsp;&middot;&nbsp; Atualizado 25/05/2026</p>
 <div class="tabs">
-  <div class="tab active" data-panel="visao">&#128200; Vis&#227;o Geral</div>
-  <div class="tab" data-panel="mensal">&#128197; M&#234;s a M&#234;s</div>
-  <div class="tab" data-panel="dre">&#128203; DRE</div>
-  <div class="tab" data-panel="insights">&#128161; Insights</div>
-  <div class="tab" data-panel="cartoes">&#128179; Cart&#245;es</div>
+  <div class="tab active" data-panel="visao" onclick="showTab('visao',this)">&#128200; Vis&#227;o Geral</div>
+  <div class="tab" data-panel="mensal" onclick="showTab('mensal',this)">&#128197; M&#234;s a M&#234;s</div>
+  <div class="tab" data-panel="dre" onclick="showTab('dre',this)">&#128203; DRE</div>
+  <div class="tab" data-panel="insights" onclick="showTab('insights',this)">&#128161; Insights</div>
+  <div class="tab" data-panel="cartoes" onclick="showTab('cartoes',this)">&#128179; Cart&#245;es</div>
 </div>
 <div class="alert-banner">
   &#9888;&#65039; <strong>Alerta 25/05/2026:</strong> Saldo atual <strong>R$&nbsp;205,78</strong> &mdash; <strong>&#128680; ESTADO CR&#205;TICO</strong>. Ita&#250; R$&nbsp;811,52 vence HOJE 25/Mai &bull; Nubank Feh R$&nbsp;2.365,08 vence 28/Mai &bull; <strong>Sal&#225;rio s&#243; em 30/Mai (R$&nbsp;8.646,20)</strong>. Cen&#225;rio Jun&ndash;Dez/26 <strong>piorou drasticamente</strong>: saldo Dez/26 agora <strong>&minus;R$&nbsp;3.203</strong> (era +R$&nbsp;9.443) &mdash; saldo negativo a partir de Ago/26.
@@ -322,6 +322,4 @@ tr:hover td { background: rgba(15,23,42,0.5); }
       <line x1="55" y1="120" x2="750" y2="120" stroke="#1e293b" stroke-dasharray="4,4" stroke-width="1"/>
       <text x="50" y="43" fill="#475569" font-size="8" text-anchor="end">7k</text>
       <text x="50" y="83" fill="#475569" font-size="8" text-anchor="end">5k</text>
-      <text x="50" y="123" fill="#475569" font-size="8" text-anchor="end">3k</text>
-      <text x="50" y="183" fill="#475569" font-size="8" text-anchor="end">0</text>
- 
+    
