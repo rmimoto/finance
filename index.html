@@ -72,6 +72,7 @@ tr:hover td { background: rgba(15,23,42,0.5); }
   <button type="button" class="tab" id="tab-mensal" onclick="showTab('mensal')">&#128197; M&#234;s a M&#234;s</button>
   <button type="button" class="tab" id="tab-dre" onclick="showTab('dre')">&#128203; DRE</button>
   <button type="button" class="tab" id="tab-insights" onclick="showTab('insights')">&#128161; Insights</button>
+  <button type="button" class="tab" id="tab-implemento" onclick="showTab('implemento')">&#128176; Implemento Receita</button>
   <button type="button" class="tab" id="tab-cartoes" onclick="showTab('cartoes')">&#128179; Cart&#245;es</button>
 </div>
 <div class="alert-banner">
@@ -83,7 +84,7 @@ tr:hover td { background: rgba(15,23,42,0.5); }
     <div class="card green"><div class="card-label">Receita M&#233;dia Realizada</div><div class="card-value">R$&nbsp;19.619</div><div class="card-sub">M&#233;dia Jan/26 a Abr/26 (4 meses)</div></div>
     <div class="card green"><div class="card-label">Gasto M&#233;dio Realizado</div><div class="card-value">R$&nbsp;17.981</div><div class="card-sub">M&#233;dia Jan/26 a Abr/26</div></div>
     <div class="card red"><div class="card-label">&#128680; Saldo Atual (25/05)</div><div class="card-value">R$&nbsp;205,78</div><div class="card-sub">ESTADO CR&#205;TICO &mdash; Ita&#250; vence hoje</div></div>
-    <div class="card red"><div class="card-label">&#128680; Saldo Projetado Dez/26</div><div class="card-value">&minus;R$&nbsp;3.203</div><div class="card-sub">NEGATIVO &mdash; muito abaixo da meta R$&nbsp;10k&ndash;15k</div></div>
+    <div class="card red"><div class="card-label">&#128680; Saldo Projetado Dez/26</div><div class="card-value">&minus;R$&nbsp;3.203</div><div class="card-sub">Implemento sugerido: <strong>+R$&nbsp;780/m&#234;s</strong></div></div>
   </div>
   <div class="section">
     <div class="section-title">&#128202; Entradas vs Pagamentos &mdash; Jan/26 a Dez/26</div>
@@ -256,6 +257,111 @@ tr:hover td { background: rgba(15,23,42,0.5); }
   </div>
 </div>
 
+
+<div id="panel-implemento" class="panel">
+  <div class="alert-banner" style="background:#1e3a8a;border-color:#3b82f6;color:#bfdbfe">
+    &#128161; <strong>Implemento de Receita Necess&#225;rio:</strong> Quanto de receita extra (freelas/comiss&#245;es/contratos novos) precisa entrar por m&#234;s para manter o fluxo positivo. Tr&#234;s cen&#225;rios calculados a partir do DRE e do fluxo projetado Jun&ndash;Dez/26.
+  </div>
+
+  <div class="cards" style="grid-template-columns:repeat(3,1fr)">
+    <div class="card yellow"><div class="card-label">Cen&#225;rio 1 &mdash; M&#205;NIMO</div><div class="card-value">R$&nbsp;7.100</div><div class="card-sub">M&#233;dia <strong>R$&nbsp;1.014/m&#234;s</strong> &middot; Zerar resultado negativo</div></div>
+    <div class="card green"><div class="card-label">&#10003; Cen&#225;rio 2 &mdash; RECOMENDADO</div><div class="card-value">R$&nbsp;5.450</div><div class="card-sub">M&#233;dia <strong>R$&nbsp;779/m&#234;s</strong> &middot; Saldo &ge; R$&nbsp;2.000/m&#234;s</div></div>
+    <div class="card blue"><div class="card-label">&#127919; Cen&#225;rio 3 &mdash; META RESERVA</div><div class="card-value">R$&nbsp;13.300</div><div class="card-sub">M&#233;dia <strong>R$&nbsp;1.900/m&#234;s</strong> &middot; Atingir R$&nbsp;10k em Dez/26</div></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">&#128202; Implemento m&#234;s a m&#234;s por cen&#225;rio</div>
+    <div style="overflow-x:auto">
+    <table>
+      <thead>
+        <tr>
+          <th>M&#234;s</th>
+          <th>Resultado projetado</th>
+          <th>Saldo final atual</th>
+          <th style="color:#f59e0b">Cen&#225;rio 1<br/><span style="font-weight:400;font-size:0.62rem">M&#237;nimo</span></th>
+          <th style="color:#22c55e">Cen&#225;rio 2<br/><span style="font-weight:400;font-size:0.62rem">Recomendado</span></th>
+          <th style="color:#60a5fa">Cen&#225;rio 3<br/><span style="font-weight:400;font-size:0.62rem">Meta R$ 10k</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Jun/26<span class="badge badge-p">PROV</span></td><td class="negative">&minus;R$&nbsp;1.848</td><td>R$&nbsp;1.463</td><td>+R$&nbsp;1.900</td><td>+R$&nbsp;550</td><td>+R$&nbsp;1.900</td></tr>
+        <tr><td>Jul/26<span class="badge badge-p">PROV</span></td><td class="negative">&minus;R$&nbsp;235</td><td>R$&nbsp;1.227</td><td>+R$&nbsp;300</td><td>+R$&nbsp;250</td><td>+R$&nbsp;1.900</td></tr>
+        <tr><td>Ago/26<span class="badge badge-p">PROV</span></td><td class="negative">&minus;R$&nbsp;1.633</td><td class="negative">&minus;R$&nbsp;405</td><td>+R$&nbsp;1.700</td><td>+R$&nbsp;1.650</td><td>+R$&nbsp;1.900</td></tr>
+        <tr><td>Set/26<span class="badge badge-p">PROV</span></td><td class="negative">&minus;R$&nbsp;1.133</td><td class="negative">&minus;R$&nbsp;1.538</td><td>+R$&nbsp;1.200</td><td>+R$&nbsp;1.100</td><td>+R$&nbsp;1.900</td></tr>
+        <tr><td>Out/26<span class="badge badge-p">PROV</span></td><td class="negative">&minus;R$&nbsp;1.132</td><td class="negative">&minus;R$&nbsp;2.671</td><td>+R$&nbsp;1.200</td><td>+R$&nbsp;1.150</td><td>+R$&nbsp;1.900</td></tr>
+        <tr><td>Nov/26<span class="badge badge-p">PROV</span></td><td class="negative">&minus;R$&nbsp;735</td><td class="negative">&minus;R$&nbsp;3.406</td><td>+R$&nbsp;800</td><td>+R$&nbsp;750</td><td>+R$&nbsp;1.900</td></tr>
+        <tr><td>Dez/26<span class="badge badge-p">PROV</span></td><td class="positive">+R$&nbsp;203</td><td class="negative">&minus;R$&nbsp;3.203</td><td>R$&nbsp;0</td><td>R$&nbsp;0</td><td>+R$&nbsp;1.900</td></tr>
+      </tbody>
+      <tfoot>
+        <tr style="border-top:2px solid #334155;font-weight:700;font-size:0.78rem">
+          <td>TOTAL (7 meses)</td>
+          <td class="negative">&minus;R$&nbsp;6.513</td>
+          <td>&mdash;</td>
+          <td style="color:#f59e0b">R$&nbsp;7.100</td>
+          <td style="color:#22c55e">R$&nbsp;5.450</td>
+          <td style="color:#60a5fa">R$&nbsp;13.300</td>
+        </tr>
+        <tr style="font-weight:600;font-size:0.74rem;color:#94a3b8">
+          <td>M&#233;dia mensal</td>
+          <td>&mdash;</td>
+          <td>&mdash;</td>
+          <td>R$&nbsp;1.014/m&#234;s</td>
+          <td>R$&nbsp;779/m&#234;s</td>
+          <td>R$&nbsp;1.900/m&#234;s</td>
+        </tr>
+        <tr style="font-weight:600;font-size:0.74rem">
+          <td>Saldo Dez/26 resultante</td>
+          <td>&mdash;</td>
+          <td class="negative">&minus;R$&nbsp;3.203</td>
+          <td class="positive">R$&nbsp;3.897</td>
+          <td class="positive">R$&nbsp;2.247</td>
+          <td class="positive">R$&nbsp;10.097</td>
+        </tr>
+      </tfoot>
+    </table>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">&#128270; Detalhamento dos cen&#225;rios</div>
+    <div class="reco" style="border-color:#f59e0b">
+      <strong>&#128176; Cen&#225;rio 1 &mdash; M&#237;nimo: R$&nbsp;1.014/m&#234;s</strong>
+      <span>Receita extra apenas para <strong>zerar o resultado mensal negativo</strong>. Mantem opera&#231;&#227;o em equil&#237;brio sem reserva. Saldo Dez/26 chega a R$&nbsp;3.897 (abaixo da meta R$&nbsp;10k). <em>Risco: qualquer imprevisto joga no vermelho.</em></span>
+    </div>
+    <div class="reco" style="border-color:#22c55e">
+      <strong>&#10003; Cen&#225;rio 2 &mdash; Recomendado: R$&nbsp;779/m&#234;s</strong>
+      <span>Mant&#233;m <strong>saldo final &ge; R$&nbsp;2.000 todo m&#234;s</strong>. Sai mais barato que o Cen&#225;rio 1 porque o efeito acumulativo no saldo elimina os meses com resultado j&#225; pr&#243;ximo de zero. Foco em <strong>Ago&ndash;Out/26</strong>, onde o aperto &#233; maior (R$&nbsp;1.100&ndash;R$&nbsp;1.650 extras necess&#225;rios).</span>
+    </div>
+    <div class="reco" style="border-color:#3b82f6">
+      <strong>&#127919; Cen&#225;rio 3 &mdash; Meta de Reserva: R$&nbsp;1.900/m&#234;s</strong>
+      <span>Atinge a meta de <strong>reserva de emerg&#234;ncia R$&nbsp;10k em Dez/26</strong>. Esse &#233; o cen&#225;rio "ouro" &mdash; al&#233;m de equilibrar, constr&#243;i lastro. Equivalente a 1 cliente m&#233;dio extra/m&#234;s na Gerando Automa&#231;&#245;es ou 2 freelas de R$&nbsp;1.000.</span>
+    </div>
+    <div class="reco" style="border-color:#ef4444">
+      <strong>&#9888;&#65039; M&#234;s mais cr&#237;tico: Agosto/26 (precisa de +R$&nbsp;1.650)</strong>
+      <span>Em todos os cen&#225;rios, <strong>Ago/26 &#233; o maior desafio</strong>: &#233; quando o saldo entra em campo negativo pela primeira vez. Sugest&#227;o: <strong>antecipar receita de comiss&#245;es ou freelas de Set/Out para Ago</strong> se houver flexibilidade contratual.</span>
+    </div>
+    <div class="reco" style="border-color:#22c55e">
+      <strong>&#128313; Compara&#231;&#227;o com hist&#243;rico Jan&ndash;Abr/26</strong>
+      <span>M&#233;dia hist&#243;rica de freelas/extras nos &#250;ltimos 4 meses: <strong>R$&nbsp;6.255/m&#234;s</strong>. Isso &#233; <strong>8&times; o necess&#225;rio</strong> do Cen&#225;rio 2 (R$&nbsp;779/m&#234;s). Se mantida a m&#233;dia, n&#227;o s&#243; quita d&#237;vidas (R$&nbsp;8.027) como atinge meta de reserva. <strong>O risco real &#233; perder o pipeline de extras</strong>.</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">&#128203; Plano de a&#231;&#227;o pr&#225;tico (Cen&#225;rio 2 recomendado)</div>
+    <div class="reco" style="border-color:#3b82f6">
+      <strong>1&deg; &mdash; Jun/26: garantir +R$&nbsp;550 extras</strong>
+      <span>Equivalente a 1 freela pequeno ou ades&#227;o de 1 cliente novo Gerando Automa&#231;&#245;es. Fechar at&#233; 15/Jun.</span>
+    </div>
+    <div class="reco" style="border-color:#3b82f6">
+      <strong>2&deg; &mdash; Jul&ndash;Nov/26: bloco "duro" (R$&nbsp;750&ndash;R$&nbsp;1.650/m&#234;s)</strong>
+      <span>Per&#237;odo mais cr&#237;tico. <strong>Mira: R$&nbsp;1.500&ndash;R$&nbsp;2.000/m&#234;s consistentemente em extras</strong>. Listar agora 2&ndash;3 prospects qualificados e priorizar fechamento at&#233; Jun/26.</span>
+    </div>
+    <div class="reco" style="border-color:#3b82f6">
+      <strong>3&deg; &mdash; Dez/26: respiro</strong>
+      <span>M&#234;s naturalmente positivo (+R$&nbsp;203). Bom momento para 13&deg; sal&#225;rio refor&#231;ar a reserva.</span>
+    </div>
+  </div>
+</div>
 <div id="panel-cartoes" class="panel">
   <div class="cards" style="grid-template-columns:repeat(3,1fr)">
     <div class="card" style="border-color:#ef4444"><div class="card-label">&#128680; Ita&#250; &mdash; vence HOJE 25/Mai</div><div class="card-value" style="color:#ef4444">R$&nbsp;811,52</div><div class="card-sub">Saldo R$&nbsp;205,78 &mdash; impag&aacute;vel sem cr&#233;dito</div></div>
@@ -299,7 +405,7 @@ tr:hover td { background: rgba(15,23,42,0.5); }
 
 <script>
 function showTab(name){
-  var ids = ['visao','mensal','dre','insights','cartoes'];
+  var ids = ['visao','mensal','dre','insights','implemento','cartoes'];
   for (var i = 0; i < ids.length; i++) {
     var t = document.getElementById('tab-' + ids[i]);
     var p = document.getElementById('panel-' + ids[i]);
