@@ -74,6 +74,7 @@ tr:hover td { background: rgba(15,23,42,0.5); }
   <button type="button" class="tab" id="tab-mensal" data-tab="mensal">&#128197; M&#234;s a M&#234;s</button>
   <button type="button" class="tab" id="tab-dre" data-tab="dre">&#128203; DRE</button>
   <button type="button" class="tab" id="tab-insights" data-tab="insights">&#128161; Insights</button>
+  <button type="button" class="tab" id="tab-cenarios" data-tab="cenarios">&#127919; Cen&#225;rios A/B/C</button>
   <button type="button" class="tab" id="tab-cartoes" data-tab="cartoes">&#128179; Cart&#245;es</button>
 </div>
 <div class="alert-banner warn">
@@ -303,6 +304,176 @@ tr:hover td { background: rgba(15,23,42,0.5); }
   </div>
 </div>
 
+<div id="panel-cenarios" class="panel">
+  <div class="section">
+    <div class="section-title">&#127919; Projeção de Cenários &mdash; Receitas/Cortes Sugeridos por Mês</div>
+    <p style="font-size:0.78rem;color:#94a3b8;line-height:1.5;margin-bottom:14px">3 cenários de planejamento para virar o resultado positivo Jun&ndash;Dez/26. Cada cenário combina <strong>freelas/receita extra</strong> + <strong>corte de gastos</strong> + <strong>amortização de dívida</strong>. Partindo do saldo Mai/26: <strong>R$&nbsp;7.913,62</strong>.</p>
+    <div class="cards" style="grid-template-columns:repeat(3,1fr)">
+    <div class="card" style="border-color:#3b82f6">
+      <div class="card-label">Cen&aacute;rio A &mdash; Conservador</div>
+      <div class="card-value" style="color:#3b82f6">R$&nbsp;5.921,59</div>
+      <div class="card-sub">Saldo Dez/26 &middot; freela total R$&nbsp;5.300,00</div>
+    </div>
+    <div class="card" style="border-color:#22c55e">
+      <div class="card-label">Cen&aacute;rio B &mdash; Moderado</div>
+      <div class="card-value" style="color:#22c55e">R$&nbsp;6.924,60</div>
+      <div class="card-sub">Saldo Dez/26 &middot; freela total R$&nbsp;9.800,00</div>
+    </div>
+    <div class="card" style="border-color:#f59e0b">
+      <div class="card-label">Cen&aacute;rio C &mdash; Agressivo</div>
+      <div class="card-value" style="color:#f59e0b">R$&nbsp;14.524,60</div>
+      <div class="card-sub">Saldo Dez/26 &middot; freela total R$&nbsp;16.200,00</div>
+    </div>
+    </div>
+  <div class="section">
+    <div class="section-title" style="color:#3b82f6">&#128202; Cen&aacute;rio A &mdash; Conservador</div>
+    <p style="font-size:0.78rem;color:#94a3b8;line-height:1.5;margin-bottom:10px"><strong>Estratégia:</strong> Manter caixa positivo + quitar dívidas menores (Santander + Itaú).<br><strong>Meta:</strong> Reserva mínima R$ 3k preservada, dívida residual R$ 5.997 para 2027.</p>
+    <div style="overflow-x:auto">
+    <table>
+      <thead><tr><th>M&#234;s</th><th>Saldo Inicial</th><th>Entradas <span style="color:#3b82f6">+freela</span></th><th>Pagamentos <span style="color:#94a3b8">&minus;corte +amort</span></th><th>Resultado</th><th>Saldo Final</th></tr></thead>
+      <tbody>
+    <tr><td>Jun/26</td><td>R$&nbsp;7.913,62</td><td>R$&nbsp;18.096,30 <span style="font-size:0.62rem;color:#64748b">(+500)</span></td><td>R$&nbsp;21.640,70 <span style="font-size:0.62rem;color:#64748b">(+800)</span></td><td class="negative">&minus;R$&nbsp;3.544,40</td><td><strong>R$&nbsp;4.369,22</strong></td></tr>
+    <tr><td>Jul/26</td><td>R$&nbsp;4.369,22</td><td>R$&nbsp;14.515,20 <span style="font-size:0.62rem;color:#64748b">(+800)</span></td><td>R$&nbsp;14.768,27 <span style="font-size:0.62rem;color:#64748b">(+1230)</span></td><td class="negative">&minus;R$&nbsp;253,07</td><td><strong>R$&nbsp;4.116,15</strong></td></tr>
+    <tr><td>Ago/26</td><td>R$&nbsp;4.116,15</td><td>R$&nbsp;14.215,20 <span style="font-size:0.62rem;color:#64748b">(+800)</span></td><td>R$&nbsp;14.635,88 </td><td class="negative">&minus;R$&nbsp;420,68</td><td><strong>R$&nbsp;3.695,47</strong></td></tr>
+    <tr><td>Set/26</td><td>R$&nbsp;3.695,47</td><td>R$&nbsp;14.215,20 <span style="font-size:0.62rem;color:#64748b">(+800)</span></td><td>R$&nbsp;14.136,11 </td><td class="positive">+R$&nbsp;79,09</td><td><strong>R$&nbsp;3.774,56</strong></td></tr>
+    <tr><td>Out/26</td><td>R$&nbsp;3.774,56</td><td>R$&nbsp;14.179,00 <span style="font-size:0.62rem;color:#64748b">(+800)</span></td><td>R$&nbsp;14.099,45 </td><td class="positive">+R$&nbsp;79,55</td><td><strong>R$&nbsp;3.854,11</strong></td></tr>
+    <tr><td>Nov/26</td><td>R$&nbsp;3.854,11</td><td>R$&nbsp;14.179,00 <span style="font-size:0.62rem;color:#64748b">(+800)</span></td><td>R$&nbsp;13.614,33 </td><td class="positive">+R$&nbsp;564,67</td><td><strong>R$&nbsp;4.418,78</strong></td></tr>
+    <tr><td>Dez/26</td><td>R$&nbsp;4.418,78</td><td>R$&nbsp;14.179,00 <span style="font-size:0.62rem;color:#64748b">(+800)</span></td><td>R$&nbsp;12.676,19 </td><td class="positive">+R$&nbsp;1.502,81</td><td><strong>R$&nbsp;5.921,59</strong></td></tr>
+      </tbody>
+      <tfoot>
+        <tr style="border-top:2px solid #334155;font-weight:700;font-size:0.76rem"><td>Total 7 meses</td><td>&mdash;</td><td style="color:#3b82f6">+R$&nbsp;5.300,00 freela</td><td>&minus;R$&nbsp;0,00 cortes / +R$&nbsp;2.030,00 amort</td><td class="negative">&minus;R$&nbsp;1.992,03</td><td><strong>R$&nbsp;5.921,59</strong></td></tr>
+      </tfoot>
+    </table>
+    </div>
+    <div class="reco" style="border-color:#3b82f6;margin-top:10px">
+      <strong>&#128205; Plano de ação Cen&aacute;rio A</strong>
+      <span>&bull; Freela m&eacute;dio mensal (Jul&ndash;Dez): <strong>R$&nbsp;800/m&#234;s</strong><br>&bull; Corte de gastos m&eacute;dio mensal: <strong>R$&nbsp;0/m&#234;s</strong><br>&bull; Amortiza&ccedil;&atilde;o total no per&iacute;odo: <strong>R$&nbsp;2.030,00</strong><br>&bull; Saldo final projetado Dez/26: <strong style="color:#3b82f6">R$&nbsp;5.921,59</strong></span>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-title" style="color:#22c55e">&#128202; Cen&aacute;rio B &mdash; Moderado</div>
+    <p style="font-size:0.78rem;color:#94a3b8;line-height:1.5;margin-bottom:10px"><strong>Estratégia:</strong> Quitar 100% das dívidas até Dez/26 + alimentar reserva.<br><strong>Meta:</strong> Dívida ZERADA + saldo Dez/26 ~R$ 6k.</p>
+    <div style="overflow-x:auto">
+    <table>
+      <thead><tr><th>M&#234;s</th><th>Saldo Inicial</th><th>Entradas <span style="color:#22c55e">+freela</span></th><th>Pagamentos <span style="color:#94a3b8">&minus;corte +amort</span></th><th>Resultado</th><th>Saldo Final</th></tr></thead>
+      <tbody>
+    <tr><td>Jun/26</td><td>R$&nbsp;7.913,62</td><td>R$&nbsp;18.396,30 <span style="font-size:0.62rem;color:#64748b">(+800)</span></td><td>R$&nbsp;21.440,70 <span style="font-size:0.62rem;color:#64748b">(&minus;200 +800)</span></td><td class="negative">&minus;R$&nbsp;3.044,40</td><td><strong>R$&nbsp;4.869,22</strong></td></tr>
+    <tr><td>Jul/26</td><td>R$&nbsp;4.869,22</td><td>R$&nbsp;15.215,20 <span style="font-size:0.62rem;color:#64748b">(+1500)</span></td><td>R$&nbsp;14.468,27 <span style="font-size:0.62rem;color:#64748b">(&minus;300 +1230)</span></td><td class="positive">+R$&nbsp;746,93</td><td><strong>R$&nbsp;5.616,15</strong></td></tr>
+    <tr><td>Ago/26</td><td>R$&nbsp;5.616,15</td><td>R$&nbsp;14.915,20 <span style="font-size:0.62rem;color:#64748b">(+1500)</span></td><td>R$&nbsp;15.134,38 <span style="font-size:0.62rem;color:#64748b">(&minus;500 +998)</span></td><td class="negative">&minus;R$&nbsp;219,18</td><td><strong>R$&nbsp;5.396,97</strong></td></tr>
+    <tr><td>Set/26</td><td>R$&nbsp;5.396,97</td><td>R$&nbsp;14.915,20 <span style="font-size:0.62rem;color:#64748b">(+1500)</span></td><td>R$&nbsp;14.634,61 <span style="font-size:0.62rem;color:#64748b">(&minus;500 +998)</span></td><td class="positive">+R$&nbsp;280,59</td><td><strong>R$&nbsp;5.677,56</strong></td></tr>
+    <tr><td>Out/26</td><td>R$&nbsp;5.677,56</td><td>R$&nbsp;14.879,00 <span style="font-size:0.62rem;color:#64748b">(+1500)</span></td><td>R$&nbsp;14.932,78 <span style="font-size:0.62rem;color:#64748b">(&minus;500 +1333)</span></td><td class="negative">&minus;R$&nbsp;53,78</td><td><strong>R$&nbsp;5.623,78</strong></td></tr>
+    <tr><td>Nov/26</td><td>R$&nbsp;5.623,78</td><td>R$&nbsp;14.879,00 <span style="font-size:0.62rem;color:#64748b">(+1500)</span></td><td>R$&nbsp;14.647,66 <span style="font-size:0.62rem;color:#64748b">(&minus;300 +1333)</span></td><td class="positive">+R$&nbsp;231,34</td><td><strong>R$&nbsp;5.855,12</strong></td></tr>
+    <tr><td>Dez/26</td><td>R$&nbsp;5.855,12</td><td>R$&nbsp;14.879,00 <span style="font-size:0.62rem;color:#64748b">(+1500)</span></td><td>R$&nbsp;13.809,52 <span style="font-size:0.62rem;color:#64748b">(&minus;200 +1333)</span></td><td class="positive">+R$&nbsp;1.069,48</td><td><strong>R$&nbsp;6.924,60</strong></td></tr>
+      </tbody>
+      <tfoot>
+        <tr style="border-top:2px solid #334155;font-weight:700;font-size:0.76rem"><td>Total 7 meses</td><td>&mdash;</td><td style="color:#22c55e">+R$&nbsp;9.800,00 freela</td><td>&minus;R$&nbsp;2.500,00 cortes / +R$&nbsp;8.026,99 amort</td><td class="negative">&minus;R$&nbsp;989,02</td><td><strong>R$&nbsp;6.924,60</strong></td></tr>
+      </tfoot>
+    </table>
+    </div>
+    <div class="reco" style="border-color:#22c55e;margin-top:10px">
+      <strong>&#128205; Plano de ação Cen&aacute;rio B</strong>
+      <span>&bull; Freela m&eacute;dio mensal (Jul&ndash;Dez): <strong>R$&nbsp;1500/m&#234;s</strong><br>&bull; Corte de gastos m&eacute;dio mensal: <strong>R$&nbsp;383/m&#234;s</strong><br>&bull; Amortiza&ccedil;&atilde;o total no per&iacute;odo: <strong>R$&nbsp;8.026,99</strong><br>&bull; Saldo final projetado Dez/26: <strong style="color:#22c55e">R$&nbsp;6.924,60</strong></span>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-title" style="color:#f59e0b">&#128202; Cen&aacute;rio C &mdash; Agressivo</div>
+    <p style="font-size:0.78rem;color:#94a3b8;line-height:1.5;margin-bottom:10px"><strong>Estratégia:</strong> Quitar dívidas + atingir meta de reserva R$ 10k até Dez/26.<br><strong>Meta:</strong> Dívida ZERADA + reserva R$ 10k–12k (meta atingida).</p>
+    <div style="overflow-x:auto">
+    <table>
+      <thead><tr><th>M&#234;s</th><th>Saldo Inicial</th><th>Entradas <span style="color:#f59e0b">+freela</span></th><th>Pagamentos <span style="color:#94a3b8">&minus;corte +amort</span></th><th>Resultado</th><th>Saldo Final</th></tr></thead>
+      <tbody>
+    <tr><td>Jun/26</td><td>R$&nbsp;7.913,62</td><td>R$&nbsp;18.796,30 <span style="font-size:0.62rem;color:#64748b">(+1200)</span></td><td>R$&nbsp;21.340,70 <span style="font-size:0.62rem;color:#64748b">(&minus;300 +800)</span></td><td class="negative">&minus;R$&nbsp;2.544,40</td><td><strong>R$&nbsp;5.369,22</strong></td></tr>
+    <tr><td>Jul/26</td><td>R$&nbsp;5.369,22</td><td>R$&nbsp;16.215,20 <span style="font-size:0.62rem;color:#64748b">(+2500)</span></td><td>R$&nbsp;14.268,27 <span style="font-size:0.62rem;color:#64748b">(&minus;500 +1230)</span></td><td class="positive">+R$&nbsp;1.946,93</td><td><strong>R$&nbsp;7.316,15</strong></td></tr>
+    <tr><td>Ago/26</td><td>R$&nbsp;7.316,15</td><td>R$&nbsp;15.915,20 <span style="font-size:0.62rem;color:#64748b">(+2500)</span></td><td>R$&nbsp;14.934,38 <span style="font-size:0.62rem;color:#64748b">(&minus;700 +998)</span></td><td class="positive">+R$&nbsp;980,82</td><td><strong>R$&nbsp;8.296,97</strong></td></tr>
+    <tr><td>Set/26</td><td>R$&nbsp;8.296,97</td><td>R$&nbsp;15.915,20 <span style="font-size:0.62rem;color:#64748b">(+2500)</span></td><td>R$&nbsp;14.434,61 <span style="font-size:0.62rem;color:#64748b">(&minus;700 +998)</span></td><td class="positive">+R$&nbsp;1.480,59</td><td><strong>R$&nbsp;9.777,56</strong></td></tr>
+    <tr><td>Out/26</td><td>R$&nbsp;9.777,56</td><td>R$&nbsp;15.879,00 <span style="font-size:0.62rem;color:#64748b">(+2500)</span></td><td>R$&nbsp;14.732,78 <span style="font-size:0.62rem;color:#64748b">(&minus;700 +1333)</span></td><td class="positive">+R$&nbsp;1.146,22</td><td style="color:#22c55e"><strong>R$&nbsp;10.923,78</strong></td></tr>
+    <tr><td>Nov/26</td><td>R$&nbsp;10.923,78</td><td>R$&nbsp;15.879,00 <span style="font-size:0.62rem;color:#64748b">(+2500)</span></td><td>R$&nbsp;14.447,66 <span style="font-size:0.62rem;color:#64748b">(&minus;500 +1333)</span></td><td class="positive">+R$&nbsp;1.431,34</td><td style="color:#22c55e"><strong>R$&nbsp;12.355,12</strong></td></tr>
+    <tr><td>Dez/26</td><td>R$&nbsp;12.355,12</td><td>R$&nbsp;15.879,00 <span style="font-size:0.62rem;color:#64748b">(+2500)</span></td><td>R$&nbsp;13.709,52 <span style="font-size:0.62rem;color:#64748b">(&minus;300 +1333)</span></td><td class="positive">+R$&nbsp;2.169,48</td><td style="color:#22c55e"><strong>R$&nbsp;14.524,60</strong></td></tr>
+      </tbody>
+      <tfoot>
+        <tr style="border-top:2px solid #334155;font-weight:700;font-size:0.76rem"><td>Total 7 meses</td><td>&mdash;</td><td style="color:#f59e0b">+R$&nbsp;16.200,00 freela</td><td>&minus;R$&nbsp;3.700,00 cortes / +R$&nbsp;8.026,99 amort</td><td class="positive">+R$&nbsp;6.610,98</td><td><strong>R$&nbsp;14.524,60</strong></td></tr>
+      </tfoot>
+    </table>
+    </div>
+    <div class="reco" style="border-color:#f59e0b;margin-top:10px">
+      <strong>&#128205; Plano de ação Cen&aacute;rio C</strong>
+      <span>&bull; Freela m&eacute;dio mensal (Jul&ndash;Dez): <strong>R$&nbsp;2500/m&#234;s</strong><br>&bull; Corte de gastos m&eacute;dio mensal: <strong>R$&nbsp;567/m&#234;s</strong><br>&bull; Amortiza&ccedil;&atilde;o total no per&iacute;odo: <strong>R$&nbsp;8.026,99</strong><br>&bull; Saldo final projetado Dez/26: <strong style="color:#f59e0b">R$&nbsp;14.524,60</strong></span>
+    </div>
+  </div>
+  <div class="section">
+    <div class="section-title">&#128200; Comparativo dos 3 cenários &mdash; Evolução do Saldo</div>
+    <div style="overflow-x:auto">
+    <svg viewBox="0 0 760 240" xmlns="http://www.w3.org/2000/svg" style="min-width:500px;width:100%">
+      <line x1="55" y1="200" x2="750" y2="200" stroke="#64748b" stroke-width="1.5"/>
+      <line x1="55" y1="200.0" x2="750" y2="200.0" stroke="#1e293b" stroke-dasharray="4,4" stroke-width="1"/>
+      <text x="50" y="203.0" fill="#475569" font-size="8" text-anchor="end">0k</text>
+      <line x1="55" y1="164.0" x2="750" y2="164.0" stroke="#1e293b" stroke-dasharray="4,4" stroke-width="1"/>
+      <text x="50" y="167.0" fill="#475569" font-size="8" text-anchor="end">3k</text>
+      <line x1="55" y1="128.0" x2="750" y2="128.0" stroke="#1e293b" stroke-dasharray="4,4" stroke-width="1"/>
+      <text x="50" y="131.0" fill="#475569" font-size="8" text-anchor="end">6k</text>
+      <line x1="55" y1="92.0" x2="750" y2="92.0" stroke="#1e293b" stroke-dasharray="4,4" stroke-width="1"/>
+      <text x="50" y="95.0" fill="#475569" font-size="8" text-anchor="end">9k</text>
+      <line x1="55" y1="56.0" x2="750" y2="56.0" stroke="#1e293b" stroke-dasharray="4,4" stroke-width="1"/>
+      <text x="50" y="59.0" fill="#475569" font-size="8" text-anchor="end">12k</text>
+      <line x1="55" y1="20.0" x2="750" y2="20.0" stroke="#1e293b" stroke-dasharray="4,4" stroke-width="1"/>
+      <text x="50" y="23.0" fill="#475569" font-size="8" text-anchor="end">15k</text>
+      <line x1="55" y1="80.0" x2="750" y2="80.0" stroke="#22c55e" stroke-dasharray="2,2" stroke-width="1" opacity="0.6"/>
+      <text x="58" y="78.0" fill="#22c55e" font-size="7">meta R$ 10k</text>
+      <line x1="55" y1="164.0" x2="750" y2="164.0" stroke="#ef4444" stroke-dasharray="2,2" stroke-width="1" opacity="0.5"/>
+      <text x="58" y="162.0" fill="#ef4444" font-size="7">colchão R$ 3k</text>
+      <polyline points="65,105.0 162,144.0 260,141.8 357,156.5 454,165.1 552,173.8 650,176.6 750,168.2" fill="none" stroke="#64748b" stroke-width="1.8" stroke-dasharray="4,3"/>
+      <polyline points="65,105.0 162,147.6 260,150.6 357,155.7 454,154.7 552,153.8 650,147.0 750,128.9" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linejoin="round"/>
+      <circle cx="65" cy="105.0" r="2.5" fill="#3b82f6"/>
+      <circle cx="162" cy="147.6" r="2.5" fill="#3b82f6"/>
+      <circle cx="260" cy="150.6" r="2.5" fill="#3b82f6"/>
+      <circle cx="357" cy="155.7" r="2.5" fill="#3b82f6"/>
+      <circle cx="454" cy="154.7" r="2.5" fill="#3b82f6"/>
+      <circle cx="552" cy="153.8" r="2.5" fill="#3b82f6"/>
+      <circle cx="650" cy="147.0" r="2.5" fill="#3b82f6"/>
+      <circle cx="750" cy="128.9" r="2.5" fill="#3b82f6"/>
+      <polyline points="65,105.0 162,141.6 260,132.6 357,135.2 454,131.9 552,132.5 650,129.7 750,116.9" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linejoin="round"/>
+      <circle cx="65" cy="105.0" r="2.5" fill="#22c55e"/>
+      <circle cx="162" cy="141.6" r="2.5" fill="#22c55e"/>
+      <circle cx="260" cy="132.6" r="2.5" fill="#22c55e"/>
+      <circle cx="357" cy="135.2" r="2.5" fill="#22c55e"/>
+      <circle cx="454" cy="131.9" r="2.5" fill="#22c55e"/>
+      <circle cx="552" cy="132.5" r="2.5" fill="#22c55e"/>
+      <circle cx="650" cy="129.7" r="2.5" fill="#22c55e"/>
+      <circle cx="750" cy="116.9" r="2.5" fill="#22c55e"/>
+      <polyline points="65,105.0 162,135.6 260,112.2 357,100.4 454,82.7 552,68.9 650,51.7 750,25.7" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-linejoin="round"/>
+      <circle cx="65" cy="105.0" r="2.5" fill="#f59e0b"/>
+      <circle cx="162" cy="135.6" r="2.5" fill="#f59e0b"/>
+      <circle cx="260" cy="112.2" r="2.5" fill="#f59e0b"/>
+      <circle cx="357" cy="100.4" r="2.5" fill="#f59e0b"/>
+      <circle cx="454" cy="82.7" r="2.5" fill="#f59e0b"/>
+      <circle cx="552" cy="68.9" r="2.5" fill="#f59e0b"/>
+      <circle cx="650" cy="51.7" r="2.5" fill="#f59e0b"/>
+      <circle cx="750" cy="25.7" r="2.5" fill="#f59e0b"/>
+      <text x="65" y="220" fill="#22c55e" font-size="7.5" text-anchor="middle">Mai/26</text>
+      <text x="162" y="220" fill="#64748b" font-size="7.5" text-anchor="middle">Jun/26</text>
+      <text x="260" y="220" fill="#64748b" font-size="7.5" text-anchor="middle">Jul/26</text>
+      <text x="357" y="220" fill="#64748b" font-size="7.5" text-anchor="middle">Ago/26</text>
+      <text x="454" y="220" fill="#64748b" font-size="7.5" text-anchor="middle">Set/26</text>
+      <text x="552" y="220" fill="#64748b" font-size="7.5" text-anchor="middle">Out/26</text>
+      <text x="650" y="220" fill="#64748b" font-size="7.5" text-anchor="middle">Nov/26</text>
+      <text x="750" y="220" fill="#64748b" font-size="7.5" text-anchor="middle">Dez/26</text>
+      <g transform="translate(420,12)">
+        <rect x="0" y="0" width="12" height="2" fill="#64748b"/><text x="16" y="3" fill="#94a3b8" font-size="8">Base (sem ação)</text>
+        <rect x="100" y="0" width="12" height="2" fill="#3b82f6"/><text x="116" y="3" fill="#94a3b8" font-size="8">Cen. A</text>
+        <rect x="155" y="0" width="12" height="2" fill="#22c55e"/><text x="171" y="3" fill="#94a3b8" font-size="8">Cen. B</text>
+        <rect x="210" y="0" width="12" height="2" fill="#f59e0b"/><text x="226" y="3" fill="#94a3b8" font-size="8">Cen. C</text>
+      </g>
+    </svg>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">&#129518; Recomendação do Especialista</div>
+    <div class="reco" style="border-color:#22c55e"><strong>&#10003; Adote o Cenário B (Moderado) como meta realista</strong><span>Saldo Dez/26 ~R$ 6.925, dívida 100% quitada, freela médio R$ 1.500/mês. Equilibra esforço de geração de receita com qualidade de vida. Cenário A não quita Bradesco/Nubank — empurra dívida para 2027. Cenário C exige R$ 2.500/mês em freelas — só se houver projeto/contrato confirmado.</span></div>
+    <div class="reco" style="border-color:#3b82f6"><strong>&#128205; Caminho prático Jun&ndash;Set/26</strong><span>1) <strong>Jun:</strong> Iniciar prospecção de 2 freelas (~R$ 500 cada).<br>2) <strong>Jul:</strong> Subir para R$ 1.500/mês &mdash; mês mais leve (resultado base +R$ 177).<br>3) <strong>Ago&ndash;Set:</strong> Manter R$ 1.500/mês + cortar R$ 500 finais de semana (mês mais crítico).<br>4) <strong>Out&ndash;Dez:</strong> Manter freelas + amortização final Bradesco.</span></div>
+    <div class="reco" style="border-color:#f59e0b"><strong>&#9888;&#65039; Risco se nada for feito (Base)</strong><span>Sem ações, saldo Dez/26 fecha em <strong>R$ 2.651,58</strong> (abaixo do colchão R$ 3k), com dívida total intacta de R$ 8.027 entrando 2027. Cenário insustentável.</span></div>
+  </div>
+</div>
 <div id="panel-cartoes" class="panel">
   <div class="cards" style="grid-template-columns:repeat(3,1fr)">
     <div class="card" style="border-color:#22c55e"><div class="card-label">&#10003; Ita&#250; &mdash; Mai/26</div><div class="card-value" style="color:#22c55e">R$&nbsp;811,52</div><div class="card-sub">Quitado (vcto 25/Mai)</div></div>
@@ -393,7 +564,7 @@ tr:hover td { background: rgba(15,23,42,0.5); }
 
 <script>
 (function(){
-  var ids = ['visao','mensal','dre','insights','cartoes'];
+  var ids = ['visao','mensal','dre','insights','cenarios','cartoes'];
   function showTab(name){
     for (var i = 0; i < ids.length; i++) {
       var t = document.getElementById('tab-' + ids[i]);
@@ -422,5 +593,4 @@ tr:hover td { background: rgba(15,23,42,0.5); }
   window.showTab = showTab;
 })();
 </script>
-</body>
-</html>
+</bod
