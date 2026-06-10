@@ -28,6 +28,7 @@ h1 { text-align: center; color: #fff; font-size: 1.4rem; margin-bottom: 4px; }
 .card.blue { border-color: #3b82f6; }
 .card.yellow { border-color: #f59e0b; }
 .card.purple { border-color: #a855f7; }
+.card.gray  { border-color: #64748b; }
 .card-label { font-size: 0.68rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; }
 .card-value { font-size: 1.25rem; font-weight: 700; margin-top: 3px; }
 .card.green .card-value { color: #22c55e; }
@@ -35,6 +36,7 @@ h1 { text-align: center; color: #fff; font-size: 1.4rem; margin-bottom: 4px; }
 .card.blue .card-value { color: #60a5fa; }
 .card.yellow .card-value { color: #f59e0b; }
 .card.purple .card-value { color: #c084fc; }
+.card.gray .card-value { color: #94a3b8; }
 .card-sub { font-size: 0.68rem; color: #475569; margin-top: 2px; }
 .section { background: #1e293b; border-radius: 10px; padding: 16px; margin-bottom: 14px; }
 .section-title { font-size: 0.88rem; font-weight: 600; color: #cbd5e1; margin-bottom: 14px; }
@@ -44,351 +46,58 @@ th { background: #0f172a; color: #64748b; padding: 7px 10px; text-align: right; 
 th:first-child { text-align: left; }
 td { padding: 6px 10px; text-align: right; border-bottom: 1px solid #0f172a; vertical-align: top; }
 td:first-child { text-align: left; }
-tr:hover td { background: rgba(15,23,42,0.5); }
-.positive { color: #22c55e; }
-.negative { color: #ef4444; }
-.forecast { color: #94a3b8; font-style: italic; }
-.badge { display: inline-block; font-size: 0.58rem; padding: 1px 5px; border-radius: 8px; margin-left: 5px; vertical-align: middle; }
-.badge-r { background: #052e16; color: #86efac; border: 1px solid #15803d; }
-.badge-a { background: #431407; color: #fdba74; border: 1px solid #9a3412; }
-.badge-p { background: #1c1917; color: #78716c; border: 1px solid #44403c; }
-.insights { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
-@media(max-width:600px){ .insights { grid-template-columns: 1fr; } }
-.insight { background: #0f172a; border-radius: 8px; padding: 12px; }
-.insight-title { font-size: 0.72rem; color: #64748b; margin-bottom: 4px; }
-.insight-val { font-size: 1.05rem; font-weight: 700; }
-.insight-val.negative { color: #ef4444; }
-.insight-desc { font-size: 0.7rem; color: #94a3b8; margin-top: 4px; line-height: 1.4; }
+tr:hover td { background: #0f172a; }
+.pos { color: #22c55e; font-weight: 600; }
+.neg { color: #ef4444; font-weight: 600; }
+.muted { color: #64748b; }
+.tag { display: inline-block; font-size: 0.62rem; padding: 1px 6px; border-radius: 4px; margin-left: 6px; vertical-align: middle; }
+.tag.real { background: rgba(34,197,94,0.2); color: #86efac; }
+.tag.curso { background: rgba(245,158,11,0.2); color: #fcd34d; }
+.tag.prov { background: rgba(99,102,241,0.2); color: #c7d2fe; }
 .alert-list { list-style: none; padding: 0; }
-.alert-list li { padding: 8px 12px; background: #0f172a; border-radius: 6px; margin-bottom: 6px; font-size: 0.78rem; border-left: 3px solid #334155; }
-.scenario-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }
-@media(max-width:700px){ .scenario-cards { grid-template-columns: 1fr; } }
-.scen-card { background: #0f172a; border-radius: 10px; padding: 14px; border-top: 4px solid; }
-.scen-card.A { border-color: #3b82f6; }
-.scen-card.B { border-color: #22c55e; }
-.scen-card.C { border-color: #f59e0b; }
-.scen-name { font-size: 0.85rem; font-weight: 600; color: #e2e8f0; }
-.scen-tag { display: inline-block; font-size: 0.6rem; padding: 2px 7px; border-radius: 10px; margin-left: 6px; vertical-align: middle; background: #1e293b; color: #94a3b8; }
-.scen-tag.rec { background: #052e16; color: #86efac; border: 1px solid #15803d; }
-.scen-val { font-size: 1.3rem; font-weight: 700; margin-top: 6px; }
-.scen-card.A .scen-val { color: #60a5fa; }
-.scen-card.B .scen-val { color: #22c55e; }
-.scen-card.C .scen-val { color: #f59e0b; }
-.scen-meta { font-size: 0.72rem; color: #94a3b8; margin-top: 8px; line-height: 1.4; }
-.recommendation { background: linear-gradient(135deg, rgba(34,197,94,0.12), rgba(34,197,94,0.04)); border: 1px solid #22c55e; border-radius: 10px; padding: 16px; margin-top: 14px; }
-.recommendation-title { color: #86efac; font-size: 0.95rem; font-weight: 600; margin-bottom: 8px; }
-.recommendation p { font-size: 0.82rem; color: #cbd5e1; line-height: 1.5; margin-bottom: 6px; }
-ul.plano { list-style: none; padding: 0; }
-ul.plano li { padding: 8px 12px; background: #0f172a; border-radius: 6px; margin-bottom: 6px; font-size: 0.78rem; border-left: 3px solid #3b82f6; }
+.alert-list li { padding: 8px 10px; margin-bottom: 6px; background: #0f172a; border-left: 3px solid; border-radius: 4px; font-size: 0.78rem; }
+.alert-list li.crit { border-color: #ef4444; color: #fca5a5; }
+.alert-list li.warn { border-color: #f59e0b; color: #fcd34d; }
+.alert-list li.ok { border-color: #22c55e; color: #86efac; }
+.alert-list li.info { border-color: #3b82f6; color: #93c5fd; }
+.chart { width:100%; height: auto; }
+.scenario-card { padding: 14px; border-radius: 10px; background: #0f172a; border-top: 4px solid; }
+.scenario-card h4 { font-size: 0.85rem; margin-bottom: 4px; }
+.scenario-card .target { font-size: 0.7rem; color: #94a3b8; margin-top: 6px; min-height: 32px; }
+.scenario-card .saldo { font-size: 1.25rem; font-weight: 700; margin-top: 8px; }
+.scenarios-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 16px;}
+@media(max-width:700px){ .scenarios-grid { grid-template-columns: 1fr; } }
+.legend { display: flex; gap: 14px; flex-wrap: wrap; font-size:0.72rem; color:#94a3b8; margin-top:8px; }
+.legend span { display: inline-flex; align-items: center; gap: 4px; }
+.legend i { width: 14px; height: 3px; display: inline-block; }
+.rec-block { background: rgba(34,197,94,0.08); border: 1px solid #22c55e; padding: 14px; border-radius: 10px; margin-top: 14px; }
+.rec-block h4 { color: #86efac; margin-bottom: 8px; font-size: 0.9rem; }
+.rec-block p { font-size: 0.8rem; color: #cbd5e1; line-height: 1.5; }
 </style>
 </head>
 <body>
-<h1>💰 Fluxo de Caixa — Renan Brito · 2026</h1>
-<p class="subtitle">Realizado Jan→Mai/26 · Em curso Jun/26 · Provisionado Jul→Dez/26 · Atualizado em 09/06/2026</p>
-
-<div class="banner danger">
-  <span class="banner-icon">🚨</span>
-  <span>CRÍTICO: ação imediata necessária. Veja Insights e Cenários.</span>
-</div>
-
+<h1>💰 Fluxo de Caixa 2026 — Renan</h1><div class='subtitle'>Realizado Jan→Mai · Junho em curso · Provisionado Jul→Dez · Atualizado em 10/06/2026</div><div class='banner warn'><span class='banner-icon'>⚠️</span><span>Maio fechou positivo (R$ 181) com saldo de R$ 7.914. Junho projeta resultado negativo de R$  3.244 — atenção ao caixa.</span></div>
 <div class="tabs">
-  <div class="tab active" data-id="visao">📊 Visão Geral</div>
-  <div class="tab" data-id="mensal">📅 Mês a Mês</div>
-  <div class="tab" data-id="dre">📋 DRE</div>
-  <div class="tab" data-id="insights">💡 Insights</div>
-  <div class="tab" data-id="cenarios">🎯 Cenários A/B/C</div>
-  <div class="tab" data-id="cartoes">💳 Cartões</div>
+  <div class="tab active" onclick="showTab(0)">📊 Visão Geral</div>
+  <div class="tab" onclick="showTab(1)">📅 Mês a Mês</div>
+  <div class="tab" onclick="showTab(2)">📋 DRE</div>
+  <div class="tab" onclick="showTab(3)">💡 Insights</div>
+  <div class="tab" onclick="showTab(4)">🎯 Cenários A/B/C</div>
+  <div class="tab" onclick="showTab(5)">💳 Cartões</div>
 </div>
-
-<!-- VISÃO GERAL -->
-<div class="tab-panel active" id="visao">
-  <div class="cards">
-    <div class="card green">
-      <div class="card-label">Receita Mai/26</div>
-      <div class="card-value">R$ 20.454</div>
-      <div class="card-sub">Realizado</div>
-    </div>
-    <div class="card red">
-      <div class="card-label">Gasto Mai/26</div>
-      <div class="card-value">R$ 20.273</div>
-      <div class="card-sub">Realizado</div>
-    </div>
-    <div class="card blue">
-      <div class="card-label">Saldo Atual (Mai)</div>
-      <div class="card-value">R$ 7.914</div>
-      <div class="card-sub">Saldo Final de Caixa</div>
-    </div>
-    <div class="card red">
-      <div class="card-label">Projetado Dez/26</div>
-      <div class="card-value">-R$ 5.148</div>
-      <div class="card-sub">Cenário base</div>
-    </div>
-  </div>
-  <div class="section">
-    <div class="section-title">📈 Entradas vs Pagamentos vs Saldo (Mai → Dez)</div>
-    <svg viewBox="0 0 720 280" width="100%" style="max-width:720px">
-      <line x1="50" y1="242.58064516129033" x2="700" y2="242.58064516129033" stroke="#1e293b" stroke-width="1"/><text x="44" y="246.58064516129033" fill="#475569" font-size="9" text-anchor="end">-5k</text><line x1="50" y1="205.48387096774192" x2="700" y2="205.48387096774192" stroke="#1e293b" stroke-width="1"/><text x="44" y="209.48387096774192" fill="#475569" font-size="9" text-anchor="end">0k</text><line x1="50" y1="168.38709677419354" x2="700" y2="168.38709677419354" stroke="#1e293b" stroke-width="1"/><text x="44" y="172.38709677419354" fill="#475569" font-size="9" text-anchor="end">5k</text><line x1="50" y1="131.29032258064518" x2="700" y2="131.29032258064518" stroke="#1e293b" stroke-width="1"/><text x="44" y="135.29032258064518" fill="#475569" font-size="9" text-anchor="end">10k</text><line x1="50" y1="94.19354838709678" x2="700" y2="94.19354838709678" stroke="#1e293b" stroke-width="1"/><text x="44" y="98.19354838709678" fill="#475569" font-size="9" text-anchor="end">15k</text><line x1="50" y1="57.09677419354838" x2="700" y2="57.09677419354838" stroke="#1e293b" stroke-width="1"/><text x="44" y="61.09677419354838" fill="#475569" font-size="9" text-anchor="end">20k</text><line x1="50" y1="20.0" x2="700" y2="20.0" stroke="#1e293b" stroke-width="1"/><text x="44" y="24.0" fill="#475569" font-size="9" text-anchor="end">25k</text><text x="50.0" y="265" fill="#64748b" font-size="10" text-anchor="middle">Mai</text><text x="142.85714285714286" y="265" fill="#64748b" font-size="10" text-anchor="middle">Jun</text><text x="235.71428571428572" y="265" fill="#64748b" font-size="10" text-anchor="middle">Jul</text><text x="328.57142857142856" y="265" fill="#64748b" font-size="10" text-anchor="middle">Ago</text><text x="421.42857142857144" y="265" fill="#64748b" font-size="10" text-anchor="middle">Set</text><text x="514.2857142857143" y="265" fill="#64748b" font-size="10" text-anchor="middle">Out</text><text x="607.1428571428571" y="265" fill="#64748b" font-size="10" text-anchor="middle">Nov</text><text x="700.0" y="265" fill="#64748b" font-size="10" text-anchor="middle">Dez</text><rect x="50" y="18" width="10" height="2" fill="#22c55e"/><text x="64" y="23" fill="#94a3b8" font-size="10">Entradas</text><rect x="140" y="18" width="10" height="2" fill="#ef4444"/><text x="154" y="23" fill="#94a3b8" font-size="10">Pagamentos</text><rect x="250" y="18" width="10" height="2" fill="#60a5fa"/><text x="264" y="23" fill="#94a3b8" font-size="10">Saldo Final</text>
-      <polyline fill="none" stroke="#22c55e" stroke-width="2" points="50.0,53.7 142.9,74.9 235.7,113.4 328.6,115.6 421.4,115.6 514.3,115.9 607.1,115.9 700.0,115.9"/>
-      <polyline fill="none" stroke="#ef4444" stroke-width="2" points="50.0,55.1 142.9,50.9 235.7,105.0 328.6,96.9 421.4,100.6 514.3,100.9 607.1,104.5 700.0,111.4"/>
-      <polyline fill="none" stroke="#60a5fa" stroke-width="2.5" points="50.0,146.8 142.9,170.8 235.7,179.2 328.6,197.9 421.4,212.9 514.3,227.9 607.1,239.3 700.0,243.7"/>
-      <circle cx="50.0" cy="53.7" r="3" fill="#22c55e"/><circle cx="142.9" cy="74.9" r="3" fill="#22c55e"/><circle cx="235.7" cy="113.4" r="3" fill="#22c55e"/><circle cx="328.6" cy="115.6" r="3" fill="#22c55e"/><circle cx="421.4" cy="115.6" r="3" fill="#22c55e"/><circle cx="514.3" cy="115.9" r="3" fill="#22c55e"/><circle cx="607.1" cy="115.9" r="3" fill="#22c55e"/><circle cx="700.0" cy="115.9" r="3" fill="#22c55e"/><circle cx="50.0" cy="55.1" r="3" fill="#ef4444"/><circle cx="142.9" cy="50.9" r="3" fill="#ef4444"/><circle cx="235.7" cy="105.0" r="3" fill="#ef4444"/><circle cx="328.6" cy="96.9" r="3" fill="#ef4444"/><circle cx="421.4" cy="100.6" r="3" fill="#ef4444"/><circle cx="514.3" cy="100.9" r="3" fill="#ef4444"/><circle cx="607.1" cy="104.5" r="3" fill="#ef4444"/><circle cx="700.0" cy="111.4" r="3" fill="#ef4444"/><circle cx="50.0" cy="146.8" r="3" fill="#60a5fa"/><circle cx="142.9" cy="170.8" r="3" fill="#60a5fa"/><circle cx="235.7" cy="179.2" r="3" fill="#60a5fa"/><circle cx="328.6" cy="197.9" r="3" fill="#60a5fa"/><circle cx="421.4" cy="212.9" r="3" fill="#60a5fa"/><circle cx="514.3" cy="227.9" r="3" fill="#60a5fa"/><circle cx="607.1" cy="239.3" r="3" fill="#60a5fa"/><circle cx="700.0" cy="243.7" r="3" fill="#60a5fa"/>
-    </svg>
-  </div>
-</div>
-
-<!-- MÊS A MÊS -->
-<div class="tab-panel" id="mensal">
-  <div class="section">
-    <div class="section-title">Resumo mensal — 2026 <small>R = Realizado · A = Em andamento · P = Provisionado</small></div>
-    <table>
-      <thead><tr><th>Mês</th><th>Saldo Inicial</th><th>Entradas</th><th>Pagamentos</th><th>Resultado</th><th>Saldo Final</th></tr></thead>
-      <tbody><tr><td>Janeiro <span class='badge badge-r'>R</span></td><td>R$ 4.050</td><td class='positive'>R$ 16.754</td><td class='negative'>R$ 14.445</td><td class='positive'>R$ 2.308</td><td class='positive'>R$ 3.489</td></tr>
-<tr><td>Fevereiro <span class='badge badge-r'>R</span></td><td>R$ 3.489</td><td class='positive'>R$ 20.381</td><td class='negative'>R$ 23.304</td><td class='negative'>-R$ 2.924</td><td class='positive'>R$ 566</td></tr>
-<tr><td>Março <span class='badge badge-r'>R</span></td><td>R$ 566</td><td class='positive'>R$ 22.320</td><td class='negative'>R$ 17.458</td><td class='positive'>R$ 4.862</td><td class='positive'>R$ 5.428</td></tr>
-<tr><td>Abril <span class='badge badge-r'>R</span></td><td>R$ 5.428</td><td class='positive'>R$ 19.020</td><td class='negative'>R$ 16.716</td><td class='positive'>R$ 2.304</td><td class='positive'>R$ 7.732</td></tr>
-<tr><td>Maio <span class='badge badge-r'>R</span></td><td>R$ 7.732</td><td class='positive'>R$ 20.454</td><td class='negative'>R$ 20.273</td><td class='positive'>R$ 181</td><td class='positive'>R$ 7.914</td></tr>
-<tr><td>Junho <span class='badge badge-a'>A</span></td><td>R$ 7.914</td><td class='positive'>R$ 17.596</td><td class='negative'>R$ 20.841</td><td class='negative'>-R$ 3.244</td><td class='positive'>R$ 4.669</td></tr>
-<tr><td>Julho <span class='badge badge-p'>P</span></td><td>R$ 4.669</td><td class='positive'>R$ 12.415</td><td class='negative'>R$ 13.538</td><td class='negative'>-R$ 1.123</td><td class='positive'>R$ 3.546</td></tr>
-<tr><td>Agosto <span class='badge badge-p'>P</span></td><td>R$ 3.546</td><td class='positive'>R$ 12.115</td><td class='negative'>R$ 14.636</td><td class='negative'>-R$ 2.521</td><td class='positive'>R$ 1.025</td></tr>
-<tr><td>Setembro <span class='badge badge-p'>P</span></td><td>R$ 1.025</td><td class='positive'>R$ 12.115</td><td class='negative'>R$ 14.136</td><td class='negative'>-R$ 2.021</td><td class='negative'>-R$ 995</td></tr>
-<tr><td>Outubro <span class='badge badge-p'>P</span></td><td>-R$ 995</td><td class='positive'>R$ 12.079</td><td class='negative'>R$ 14.099</td><td class='negative'>-R$ 2.020</td><td class='negative'>-R$ 3.016</td></tr>
-<tr><td>Novembro <span class='badge badge-p'>P</span></td><td>-R$ 3.016</td><td class='positive'>R$ 12.079</td><td class='negative'>R$ 13.614</td><td class='negative'>-R$ 1.535</td><td class='negative'>-R$ 4.551</td></tr>
-<tr><td>Dezembro <span class='badge badge-p'>P</span></td><td>-R$ 4.551</td><td class='positive'>R$ 12.079</td><td class='negative'>R$ 12.676</td><td class='negative'>-R$ 597</td><td class='negative'>-R$ 5.148</td></tr></tbody>
-    </table>
-  </div>
-</div>
-
-<!-- DRE -->
-<div class="tab-panel" id="dre">
-  <div class="cards">
-    <div class="card green">
-      <div class="card-label">Receitas (orçado)</div>
-      <div class="card-value">R$ 12.364</div>
-      <div class="card-sub">Salário + Plano + Feh + Gerando Automações</div>
-    </div>
-    <div class="card red">
-      <div class="card-label">Despesas Gerais</div>
-      <div class="card-value">R$ 12.693</div>
-      <div class="card-sub">Sem custo automóvel</div>
-    </div>
-    <div class="card yellow">
-      <div class="card-label">Custo Automóvel</div>
-      <div class="card-value">R$ 393</div>
-      <div class="card-sub">Mensal (IPVA + Seguro)</div>
-    </div>
-    <div class="card red">
-      <div class="card-label">Saldo Mensal Orçado</div>
-      <div class="card-value">-R$ 722</div>
-      <div class="card-sub">Orçamento DRE</div>
-    </div>
-  </div>
-  <div class="section">
-    <div class="section-title">📋 DRE — Orçamento Mensal</div>
-    <table>
-      <thead><tr><th>Categoria</th><th>Valor</th></tr></thead>
-      <tbody>
-        <tr><td><strong>(+) Receitas</strong></td><td class="positive"><strong>R$ 12.364</strong></td></tr>
-        <tr><td>Salário Renan (líquido)</td><td>R$ 9.847</td></tr>
-        <tr><td>Plano de saúde</td><td>R$ 1.717</td></tr>
-        <tr><td>Salário Feh</td><td>R$ 300</td></tr>
-        <tr><td>Gerando Automações</td><td>R$ 500</td></tr>
-        <tr><td><strong>(-) Despesas Gerais</strong></td><td class="negative"><strong>R$ 12.693</strong></td></tr>
-        <tr><td>Escola crianças</td><td>R$ 3.347</td></tr>
-        <tr><td>Aluguel + Condomínio</td><td>R$ 2.200</td></tr>
-        <tr><td>Plano de saúde Renan</td><td>R$ 823</td></tr>
-        <tr><td>Plano de saúde meninos</td><td>R$ 894</td></tr>
-        <tr><td>Combustível</td><td>R$ 1.000</td></tr>
-        <tr><td>Supermercado</td><td>R$ 1.000</td></tr>
-        <tr><td>Finais de semana</td><td>R$ 1.000</td></tr>
-        <tr><td>Faculdade Feh</td><td>R$ 547</td></tr>
-        <tr><td>Pós Amor</td><td>R$ 500</td></tr>
-        <tr><td>Outros (água, luz, internet, almoço, etc.)</td><td>R$ 1.382</td></tr>
-        <tr><td><strong>(-) Automóvel</strong></td><td class="negative"><strong>R$ 393</strong></td></tr>
-        <tr><td>IPVA</td><td>R$ 141,67</td></tr>
-        <tr><td>Seguro</td><td>R$ 251</td></tr>
-        <tr><td><strong>(=) Saldo Mensal</strong></td><td class="negative"><strong>-R$ 722</strong></td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<!-- INSIGHTS -->
-<div class="tab-panel" id="insights">
-  <div class="section">
-    <div class="section-title">💡 Indicadores-chave</div>
-    <div class="insights"><div class='insight'><div class='insight-title'>💰 Saldo Atual (Mai/26)</div><div class='insight-val'>R$ 7.914</div><div class='insight-desc'>Abaixo da reserva mínima recomendada de R$ 10k.</div></div><div class='insight'><div class='insight-title'>📉 Saldo Projetado Dez/26 (base)</div><div class='insight-val negative'>-R$ 5.148</div><div class='insight-desc'>Tendência negativa sem ações. Cenário B reverte para -R$ 875.</div></div><div class='insight'><div class='insight-title'>🏫 Maior despesa fixa</div><div class='insight-val'>R$ 3.347/mês</div><div class='insight-desc'>Escola das crianças — não negociável no curto prazo.</div></div><div class='insight'><div class='insight-title'>💳 Dívida total em aberto</div><div class='insight-val negative'>R$ 8.027</div><div class='insight-desc'>Santander R$ 800 · Itaú R$ 1.230 · Nubank R$ 1.997 · Bradesco R$ 4.000</div></div></div>
-  </div>
-  <div class="section">
-    <div class="section-title">🚨 Alertas Automáticos</div>
-    <ul class="alert-list"><li>⚠️ Pagamentos em 99% das entradas em Maio — compressão alta</li><li>⚠️ Agosto/26 provisionado com resultado de R$ -2521 — atenção</li><li>🚨 Projeção Dez/26 negativa: -R$ 5.148 — cenário base inviável</li></ul>
-  </div>
-  <div class="section">
-    <div class="section-title">💳 Plano de Quitação de Dívidas — Total R$ 8.027</div>
-    <ul class="plano">
-<li><strong>Jun/26:</strong> Quitar Santander (R$ 800) — menor valor, eliminação rápida.</li>
-<li><strong>Jul/26:</strong> Quitar Itaú (R$ 1.230) — segundo menor.</li>
-<li><strong>Ago-Set/26:</strong> Quitar Nubank em 2× R$ 998,50 (total R$ 1.997).</li>
-<li><strong>Out-Dez/26:</strong> Quitar Bradesco em 3× R$ 1.333,33 (total R$ 4.000).</li>
-<li><strong>Total amortizado:</strong> R$ 8.027 em 7 meses. Dívida zerada até fim de 2026.</li>
-</ul>
-  </div>
-</div>
-
-<!-- CENÁRIOS -->
-<div class="tab-panel" id="cenarios">
-  <div class="scenario-cards">
-    <div class="scen-card A">
-      <div class="scen-name">A — Conservador</div>
-      <div class="scen-val">-R$ 1.878</div>
-      <div class="scen-meta"><strong>Saldo Dez/26.</strong> Freela leve (R$500-800/m), sem cortes. Quita só Santander+Itaú. Reserva mínima preservada, mas dívida residual R$ 6k para 2027.</div>
-    </div>
-    <div class="scen-card B">
-      <div class="scen-name">B — Moderado <span class="scen-tag rec">RECOMENDADO</span></div>
-      <div class="scen-val">-R$ 875</div>
-      <div class="scen-meta"><strong>Saldo Dez/26.</strong> Freela R$ 1.500/m + cortes táticos R$ 2,5k acumulados. Quita TODA a dívida (R$ 8.027). Equilibra urgência e qualidade de vida.</div>
-    </div>
-    <div class="scen-card C">
-      <div class="scen-name">C — Agressivo</div>
-      <div class="scen-val">R$ 6.725</div>
-      <div class="scen-meta"><strong>Saldo Dez/26.</strong> Freela R$ 2.500/m + cortes pesados R$ 3,7k. Dívida ZERADA + reserva próxima da meta R$ 10k. Exige disciplina máxima.</div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-title">📈 Comparativo de Saldo Final — Mai → Dez/26</div>
-    <svg viewBox="0 0 720 280" width="100%" style="max-width:720px">
-      <line x1="50" y1="239.52380952380952" x2="700" y2="239.52380952380952" stroke="#1e293b" stroke-dasharray=""/><text x="44" y="243.52380952380952" fill="#475569" font-size="9" text-anchor="end">-5k</text><line x1="50" y1="187.14285714285714" x2="700" y2="187.14285714285714" stroke="#1e293b" stroke-dasharray=""/><text x="44" y="191.14285714285714" fill="#475569" font-size="9" text-anchor="end">0k</text><line x1="50" y1="155.71428571428572" x2="700" y2="155.71428571428572" stroke="#f59e0b" stroke-dasharray="4 3"/><text x="44" y="159.71428571428572" fill="#475569" font-size="9" text-anchor="end">3k</text><line x1="50" y1="134.76190476190476" x2="700" y2="134.76190476190476" stroke="#1e293b" stroke-dasharray=""/><text x="44" y="138.76190476190476" fill="#475569" font-size="9" text-anchor="end">5k</text><line x1="50" y1="82.3809523809524" x2="700" y2="82.3809523809524" stroke="#22c55e" stroke-dasharray="4 3"/><text x="44" y="86.3809523809524" fill="#475569" font-size="9" text-anchor="end">10k</text><line x1="50" y1="30.0" x2="700" y2="30.0" stroke="#1e293b" stroke-dasharray=""/><text x="44" y="34.0" fill="#475569" font-size="9" text-anchor="end">15k</text><text x="698" y="78.3809523809524" fill="#22c55e" font-size="9" text-anchor="end">Meta R$10k</text><text x="698" y="151.71428571428572" fill="#f59e0b" font-size="9" text-anchor="end">Colchão R$3k</text><text x="50.0" y="265" fill="#64748b" font-size="10" text-anchor="middle">Mai</text><text x="142.85714285714286" y="265" fill="#64748b" font-size="10" text-anchor="middle">Jun</text><text x="235.71428571428572" y="265" fill="#64748b" font-size="10" text-anchor="middle">Jul</text><text x="328.57142857142856" y="265" fill="#64748b" font-size="10" text-anchor="middle">Ago</text><text x="421.42857142857144" y="265" fill="#64748b" font-size="10" text-anchor="middle">Set</text><text x="514.2857142857143" y="265" fill="#64748b" font-size="10" text-anchor="middle">Out</text><text x="607.1428571428571" y="265" fill="#64748b" font-size="10" text-anchor="middle">Nov</text><text x="700.0" y="265" fill="#64748b" font-size="10" text-anchor="middle">Dez</text><rect x="50" y="18" width="10" height="2" fill="#64748b"/><text x="64" y="22" fill="#94a3b8" font-size="10">Base</text><rect x="110" y="18" width="10" height="2" fill="#3b82f6"/><text x="124" y="22" fill="#94a3b8" font-size="10">A Conservador</text><rect x="230" y="18" width="10" height="2" fill="#22c55e"/><text x="244" y="22" fill="#94a3b8" font-size="10">B Moderado</text><rect x="340" y="18" width="10" height="2" fill="#f59e0b"/><text x="354" y="22" fill="#94a3b8" font-size="10">C Agressivo</text>
-      <polyline fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="4 3" points="50.0,104.2 142.9,138.2 235.7,150.0 328.6,176.4 421.4,197.6 514.3,218.7 607.1,234.8 700.0,241.1"/>
-      <polyline fill="none" stroke="#3b82f6" stroke-width="2" points="50.0,104.2 142.9,141.4 235.7,157.6 328.6,175.7 421.4,188.5 514.3,201.2 607.1,208.9 700.0,206.8"/>
-      <polyline fill="none" stroke="#22c55e" stroke-width="2.5" points="50.0,104.2 142.9,136.1 235.7,141.9 328.6,157.8 421.4,168.5 514.3,182.7 607.1,193.9 700.0,196.3"/>
-      <polyline fill="none" stroke="#f59e0b" stroke-width="2" points="50.0,104.2 142.9,130.9 235.7,124.1 328.6,127.5 421.4,125.6 514.3,127.2 607.1,125.8 700.0,116.7"/>
-      <circle cx="50.0" cy="104.2" r="3" fill="#64748b"/><circle cx="142.9" cy="138.2" r="3" fill="#64748b"/><circle cx="235.7" cy="150.0" r="3" fill="#64748b"/><circle cx="328.6" cy="176.4" r="3" fill="#64748b"/><circle cx="421.4" cy="197.6" r="3" fill="#64748b"/><circle cx="514.3" cy="218.7" r="3" fill="#64748b"/><circle cx="607.1" cy="234.8" r="3" fill="#64748b"/><circle cx="700.0" cy="241.1" r="3" fill="#64748b"/><circle cx="50.0" cy="104.2" r="3" fill="#3b82f6"/><circle cx="142.9" cy="141.4" r="3" fill="#3b82f6"/><circle cx="235.7" cy="157.6" r="3" fill="#3b82f6"/><circle cx="328.6" cy="175.7" r="3" fill="#3b82f6"/><circle cx="421.4" cy="188.5" r="3" fill="#3b82f6"/><circle cx="514.3" cy="201.2" r="3" fill="#3b82f6"/><circle cx="607.1" cy="208.9" r="3" fill="#3b82f6"/><circle cx="700.0" cy="206.8" r="3" fill="#3b82f6"/><circle cx="50.0" cy="104.2" r="3" fill="#22c55e"/><circle cx="142.9" cy="136.1" r="3" fill="#22c55e"/><circle cx="235.7" cy="141.9" r="3" fill="#22c55e"/><circle cx="328.6" cy="157.8" r="3" fill="#22c55e"/><circle cx="421.4" cy="168.5" r="3" fill="#22c55e"/><circle cx="514.3" cy="182.7" r="3" fill="#22c55e"/><circle cx="607.1" cy="193.9" r="3" fill="#22c55e"/><circle cx="700.0" cy="196.3" r="3" fill="#22c55e"/><circle cx="50.0" cy="104.2" r="3" fill="#f59e0b"/><circle cx="142.9" cy="130.9" r="3" fill="#f59e0b"/><circle cx="235.7" cy="124.1" r="3" fill="#f59e0b"/><circle cx="328.6" cy="127.5" r="3" fill="#f59e0b"/><circle cx="421.4" cy="125.6" r="3" fill="#f59e0b"/><circle cx="514.3" cy="127.2" r="3" fill="#f59e0b"/><circle cx="607.1" cy="125.8" r="3" fill="#f59e0b"/><circle cx="700.0" cy="116.7" r="3" fill="#f59e0b"/>
-    </svg>
-  </div>
-
-  <div class="section">
-    <div class="section-title">🔵 Cenário A — Conservador</div>
-    <table>
-      <thead><tr><th>Mês</th><th>Saldo Inicial</th><th>Entradas (+freela)</th><th>Pagamentos (-corte +amort)</th><th>Resultado</th><th>Saldo Final</th></tr></thead>
-      <tbody><tr><td>Junho</td><td>R$ 7.914</td><td class='positive'>R$ 18.096<br><span style='color:#64748b;font-size:0.65rem'>(+R$ 500 freela)</span></td><td class='negative'>R$ 21.641<br><span style='color:#64748b;font-size:0.65rem'>(-R$ 0 corte +R$ 800 amort)</span></td><td class='negative'>-R$ 3.544</td><td class='positive'><strong>R$ 4.369</strong></td></tr>
-<tr><td>Julho</td><td>R$ 4.369</td><td class='positive'>R$ 13.215<br><span style='color:#64748b;font-size:0.65rem'>(+R$ 800 freela)</span></td><td class='negative'>R$ 14.768<br><span style='color:#64748b;font-size:0.65rem'>(-R$ 0 corte +R$ 1.230 amort)</span></td><td class='negative'>-R$ 1.553</td><td class='positive'><strong>R$ 2.816</strong></td></tr>
-<tr><td>Agosto</td><td>R$ 2.816</td><td class='positive'>R$ 12.915<br><span style='color:#64748b;font-size:0.65rem'>(+R$ 800 freela)</span></td><td class='negative'>R$ 14.636<br><span style='color:#64748b;font-size:0.65rem'>(-R$ 0 corte +R$ 0 amort)</span></td><td class='negative'>-R$ 1.721</td><td class='positive'><strong>R$ 1.095</strong></td></tr>
-<tr><td>Setembro</td><td>R$ 1.095</td><td class='positive'>R$ 12.915<br><span style='color:#64748b;font-size:0.65rem'>(+R$ 800 freela)</span></td><td class='negative'>R$ 14.136<br><span style='color:#64748b;font-size:0.65rem'>(-R$ 0 corte +R$ 0 amort)</span></td><td class='negative'>-R$ 1.221</td><td class='negative'><strong>-R$ 125</strong></td></tr>
-<tr><td>Outubro</td><td>-R$ 125</td><td class='positive'>R$ 12.879<br><span style='color:#64748b;font-size:0.65rem'>(+R$ 800 freela)</span></td><td class='negative'>R$ 14.099<br><span style='color:#64748b;font-size:0.65rem'>(-R$ 0 corte +R$ 0 amort)</span></td><td class='negative'>-R$ 1.220</td><td class='negative'><strong>-R$ 1.346</strong></td></tr>
-<tr><td>Novembro</td><td>-R$ 1.346</td><td class='positive'>R$ 12.879<br><span style='color:#64748b;font-size:0.65rem'>(+R$ 800 freela)</span></td><td class='negative'>R$ 13.614<br><span style='color:#64748b;font-size:0.65rem'>(-R$ 0 corte +R$ 0 amort)</span></td><td class='negative'>-R$ 735</td><td class='negative'><strong>-R$ 2.081</strong></td></tr>
-<tr><td>Dezembro</td><td>-R$ 2.081</td><td class='positive'>R$ 12.879<br><span style='color:#64748b;font-size:0.65rem'>(+R$ 800 freela)</span></td><td class='negative'>R$ 12.676<br><span style='color:#64748b;font-size:0.65rem'>(-R$ 0 corte +R$ 0 amort)</span></td><td class='positive'>R$ 203</td><td class='negative'><strong>-R$ 1.878</strong></td></tr></tbody>
-    </table>
-  </div>
-
-  <div class="section">
-    <div class="section-title">🟢 Cenário B — Moderado (RECOMENDADO)</div>
-    <table>
-      <thead><tr><th>Mês</th><th>Saldo Inicial</th><th>Entradas (+freela)</th><th>Pagamentos (-corte +amort)</th><th>Resultado</th><th>Saldo Final</th></tr></thead>
-      <tbody><tr><td>Junho</td><td>R$ 7.914</td><td class='positive'>R$ 18.396<br><span style='color:#64748b;font-size:0.65rem'>(+R$ 800 freela)</span></td><td class='negative'>R$ 21.441<br><span style='color:#64748b;font-size:0.65rem'>(-R$ 200 corte +R$ 800 amort)</span></td><td class='negative'>-R$ 3.044</td><td class='positive'><strong>R$ 4.869</strong></td></tr>
-<tr><td>Julho</td><td>R$ 4.869</td><td class='positive'>R$ 13.915<br><span style='color:#64748b;font-size:0.65rem'>(+R$ 1.500 freela)</span></td><td class='negative'>R$ 14.468<br><span style='color:#64748b;font-size:0.65rem'>(-R$ 300 corte +R$ 1.230 amort)</span></td><td class='negative'>-R$ 553</td><td class='positive'><strong>R$ 4.316</strong></td></tr>
-<tr><td>Agosto</td><td>R$ 4.316</td><td class='positive'>R$ 13.615<br><span style='color:#64748b;font-size:0.65rem'>(+R$ 1.500 freela)</span></td><td class='negative'>R$ 15.134<br><span style='color:#64748b;font-size:0.65rem'>(-R$ 500 corte +R$ 998 amort)</span></td><td class='negative'>-R$ 1.519</td><td class='positive'><strong>R$ 2.797</strong></td></tr>
-<tr><td>Setembro</td><td>R$ 2.797</td><td class='positive'>R$ 13.615<br><span style='color:#64748b;font-size:0.65rem'>(+R$ 1.500 freela)</span></td><td class='negative'>R$ 14.635<br><span style='color:#64748b;font-size:0.65rem'>(-R$ 500 corte +R$ 998 amort)</span></td><td class='negative'>-R$ 1.019</td><td class='positive'><strong>R$ 1.778</strong></td></tr>
-<tr><td>Outubro</td><td>R$ 1.778</td><td class='positive'>R$ 13.579<br><span style='color:#64748b;font-size:0.65rem'>(+R$ 1.500 freela)</span></td><td class='negative'>R$ 14.933<br><span style='color:#64748b;font-size:0.65rem'>(-R$ 500 corte +R$ 1.333 amort)</span></td><td class='negative'>-R$ 1.354</td><td class='positive'><strong>R$ 424</strong></td></tr>
-<tr><td>Novembro</td><td>R$ 424</td><td class='positive'>R$ 13.579<br><span style='color:#64748b;font-size:0.65rem'>(+R$ 1.500 freela)</span></td><td class='negative'>R$ 14.648<br><span style='color:#64748b;font-size:0.65rem'>(-R$ 300 corte +R$ 1.333 amort)</span></td><td class='negative'>-R$ 1.069</td><td class='negative'><strong>-R$ 645</strong></td></tr>
-<tr><td>Dezembro</td><td>-R$ 645</td><td class='positive'>R$ 13.579<br><span style='color:#64748b;font-size:0.65rem'>(+R$ 1.500 freela)</span></td><td class='negative'>R$ 13.810<br><span style='color:#64748b;font-size:0.65rem'>(-R$ 200 corte +R$ 1.333 amort)</span></td><td class='negative'>-R$ 231</td><td class='negative'><strong>-R$ 875</strong></td></tr></tbody>
-    </table>
-  </div>
-
-  <div class="section">
-    <div class="section-title">🟠 Cenário C — Agressivo</div>
-    <table>
-      <thead><tr><th>Mês</th><th>Saldo Inicial</th><th>Entradas (+freela)</th><th>Pagamentos (-corte +amort)</th><th>Resultado</th><th>Saldo Final</th></tr></thead>
-      <tbody><tr><td>Junho</td><td>R$ 7.914</td><td class='positive'>R$ 18.796<br><span style='color:#64748b;font-size:0.65rem'>(+R$ 1.200 freela)</span></td><td class='negative'>R$ 21.341<br><span style='color:#64748b;font-size:0.65rem'>(-R$ 300 corte +R$ 800 amort)</span></td><td class='negative'>-R$ 2.544</td><td class='positive'><strong>R$ 5.369</strong></td></tr>
-<tr><td>Julho</td><td>R$ 5.369</td><td class='positive'>R$ 14.915<br><span style='color:#64748b;font-size:0.65rem'>(+R$ 2.500 freela)</span></td><td class='negative'>R$ 14.268<br><span style='color:#64748b;font-size:0.65rem'>(-R$ 500 corte +R$ 1.230 amort)</span></td><td class='positive'>R$ 647</td><td class='positive'><strong>R$ 6.016</strong></td></tr>
-<tr><td>Agosto</td><td>R$ 6.016</td><td class='positive'>R$ 14.615<br><span style='color:#64748b;font-size:0.65rem'>(+R$ 2.500 freela)</span></td><td class='negative'>R$ 14.934<br><span style='color:#64748b;font-size:0.65rem'>(-R$ 700 corte +R$ 998 amort)</span></td><td class='negative'>-R$ 319</td><td class='positive'><strong>R$ 5.697</strong></td></tr>
-<tr><td>Setembro</td><td>R$ 5.697</td><td class='positive'>R$ 14.615<br><span style='color:#64748b;font-size:0.65rem'>(+R$ 2.500 freela)</span></td><td class='negative'>R$ 14.435<br><span style='color:#64748b;font-size:0.65rem'>(-R$ 700 corte +R$ 998 amort)</span></td><td class='positive'>R$ 181</td><td class='positive'><strong>R$ 5.878</strong></td></tr>
-<tr><td>Outubro</td><td>R$ 5.878</td><td class='positive'>R$ 14.579<br><span style='color:#64748b;font-size:0.65rem'>(+R$ 2.500 freela)</span></td><td class='negative'>R$ 14.733<br><span style='color:#64748b;font-size:0.65rem'>(-R$ 700 corte +R$ 1.333 amort)</span></td><td class='negative'>-R$ 154</td><td class='positive'><strong>R$ 5.724</strong></td></tr>
-<tr><td>Novembro</td><td>R$ 5.724</td><td class='positive'>R$ 14.579<br><span style='color:#64748b;font-size:0.65rem'>(+R$ 2.500 freela)</span></td><td class='negative'>R$ 14.448<br><span style='color:#64748b;font-size:0.65rem'>(-R$ 500 corte +R$ 1.333 amort)</span></td><td class='positive'>R$ 131</td><td class='positive'><strong>R$ 5.855</strong></td></tr>
-<tr><td>Dezembro</td><td>R$ 5.855</td><td class='positive'>R$ 14.579<br><span style='color:#64748b;font-size:0.65rem'>(+R$ 2.500 freela)</span></td><td class='negative'>R$ 13.710<br><span style='color:#64748b;font-size:0.65rem'>(-R$ 300 corte +R$ 1.333 amort)</span></td><td class='positive'>R$ 869</td><td class='positive'><strong>R$ 6.725</strong></td></tr></tbody>
-    </table>
-  </div>
-
-  <div class="recommendation">
-    <div class="recommendation-title">🎯 Recomendação do Especialista</div>
-    <p><strong>Adote o Cenário B (Moderado).</strong> Ele zera 100% da dívida em aberto até dez/26 (R$ 8.027) com esforço de freela realista (R$ 1.500/mês) e cortes táticos modestos (R$ 200-500/mês). O saldo termina o ano marginalmente negativo, mas com a dívida liquidada — preparando 2027 para reconstruir reserva sem o peso de juros.</p>
-    <p><strong>Por que não o A:</strong> deixa R$ 6k de dívida sangrando juros em 2027. <strong>Por que não o C:</strong> freela de R$ 2,5k/mês + corte de R$ 700/mês exige sacrifício alto e risco de falha. O B é o ponto ótimo entre esforço e resultado.</p>
-    <p><strong>Próximas ações (Jun/26):</strong> 1) Confirmar freela de R$ 800. 2) Quitar Santander (R$ 800). 3) Cortar R$ 200 em gastos variáveis. 4) Reservar fatura Itaú integral para quitação em Jul.</p>
-  </div>
-</div>
-
-<!-- CARTÕES -->
-<div class="tab-panel" id="cartoes">
-  <div class="cards">
-    <div class="card yellow">
-      <div class="card-label">Itaú Mai/26</div>
-      <div class="card-value">R$ 812</div>
-      <div class="card-sub">Tendência queda → R$ 185 em Dez</div>
-    </div>
-    <div class="card purple">
-      <div class="card-label">Nubank Feh Mai/26</div>
-      <div class="card-value">R$ 2.365</div>
-      <div class="card-sub">Pico do ano — atenção</div>
-    </div>
-    <div class="card red">
-      <div class="card-label">Bradesco Mai/26</div>
-      <div class="card-value">R$ 2.030</div>
-      <div class="card-sub">Pico em Jun — R$ 2.106</div>
-    </div>
-    <div class="card blue">
-      <div class="card-label">Total cartões Mai</div>
-      <div class="card-value">R$ 5.207</div>
-      <div class="card-sub">Soma dos três</div>
-    </div>
-  </div>
-  <div class="section">
-    <div class="section-title">📊 Tendência mensal dos cartões — 2026</div>
-    <svg viewBox="0 0 720 220" width="100%" style="max-width:720px">
-      <line x1="50" y1="190.0" x2="700" y2="190.0" stroke="#1e293b"/><text x="44" y="194.0" fill="#475569" font-size="9" text-anchor="end">0</text><line x1="50" y1="165.71428571428572" x2="700" y2="165.71428571428572" stroke="#1e293b"/><text x="44" y="169.71428571428572" fill="#475569" font-size="9" text-anchor="end">500</text><line x1="50" y1="141.42857142857144" x2="700" y2="141.42857142857144" stroke="#1e293b"/><text x="44" y="145.42857142857144" fill="#475569" font-size="9" text-anchor="end">1000</text><line x1="50" y1="117.14285714285714" x2="700" y2="117.14285714285714" stroke="#1e293b"/><text x="44" y="121.14285714285714" fill="#475569" font-size="9" text-anchor="end">1500</text><line x1="50" y1="92.85714285714286" x2="700" y2="92.85714285714286" stroke="#1e293b"/><text x="44" y="96.85714285714286" fill="#475569" font-size="9" text-anchor="end">2000</text><line x1="50" y1="68.57142857142857" x2="700" y2="68.57142857142857" stroke="#1e293b"/><text x="44" y="72.57142857142857" fill="#475569" font-size="9" text-anchor="end">2500</text><line x1="50" y1="44.28571428571429" x2="700" y2="44.28571428571429" stroke="#1e293b"/><text x="44" y="48.28571428571429" fill="#475569" font-size="9" text-anchor="end">3000</text><line x1="50" y1="20.0" x2="700" y2="20.0" stroke="#1e293b"/><text x="44" y="24.0" fill="#475569" font-size="9" text-anchor="end">3500</text><text x="50.0" y="205" fill="#64748b" font-size="10" text-anchor="middle">Jan</text><text x="109.0909090909091" y="205" fill="#64748b" font-size="10" text-anchor="middle">Fev</text><text x="168.1818181818182" y="205" fill="#64748b" font-size="10" text-anchor="middle">Mar</text><text x="227.27272727272728" y="205" fill="#64748b" font-size="10" text-anchor="middle">Abr</text><text x="286.3636363636364" y="205" fill="#64748b" font-size="10" text-anchor="middle">Mai</text><text x="345.4545454545455" y="205" fill="#64748b" font-size="10" text-anchor="middle">Jun</text><text x="404.54545454545456" y="205" fill="#64748b" font-size="10" text-anchor="middle">Jul</text><text x="463.6363636363636" y="205" fill="#64748b" font-size="10" text-anchor="middle">Ago</text><text x="522.7272727272727" y="205" fill="#64748b" font-size="10" text-anchor="middle">Set</text><text x="581.8181818181819" y="205" fill="#64748b" font-size="10" text-anchor="middle">Out</text><text x="640.909090909091" y="205" fill="#64748b" font-size="10" text-anchor="middle">Nov</text><text x="700.0" y="205" fill="#64748b" font-size="10" text-anchor="middle">Dez</text><rect x="50" y="18" width="10" height="2" fill="#f59e0b"/><text x="64" y="23" fill="#94a3b8" font-size="10">Itaú</text><rect x="120" y="18" width="10" height="2" fill="#a855f7"/><text x="134" y="23" fill="#94a3b8" font-size="10">Nubank Feh</text><rect x="220" y="18" width="10" height="2" fill="#ef4444"/><text x="234" y="23" fill="#94a3b8" font-size="10">Bradesco</text>
-      <polyline fill="none" stroke="#f59e0b" stroke-width="2" points="50.0,103.3 109.1,55.5 168.2,137.4 227.3,140.3 286.4,150.6 345.5,150.6 404.5,161.8 463.6,166.2 522.7,169.8 581.8,169.8 640.9,181.0 700.0,181.0"/>
-      <polyline fill="none" stroke="#a855f7" stroke-width="2" points="50.0,28.7 109.1,110.2 168.2,113.1 227.3,104.1 286.4,75.1 345.5,148.1 404.5,155.9 463.6,166.2 522.7,184.5 581.8,184.5 640.9,184.5 700.0,190.0"/>
-      <polyline fill="none" stroke="#ef4444" stroke-width="2" points="50.0,88.6 109.1,85.7 168.2,154.2 227.3,146.3 286.4,91.4 345.5,87.7 404.5,167.5 463.6,169.0 522.7,171.4 581.8,174.1 640.9,174.1 700.0,176.0"/>
-    </svg>
-  </div>
-  <div class="section">
-    <div class="section-title">📅 Faturas mês a mês</div>
-    <table>
-      <thead><tr><th>Mês</th><th>Itaú</th><th>Nubank Feh</th><th>Bradesco</th><th>Total</th></tr></thead>
-      <tbody><tr><td>Janeiro <span class='badge badge-r'>R</span></td><td>R$ 1.784</td><td>R$ 3.321</td><td>R$ 2.089</td><td><strong>R$ 7.194</strong></td></tr>
-<tr><td>Fevereiro <span class='badge badge-r'>R</span></td><td>R$ 2.770</td><td>R$ 1.643</td><td>R$ 2.147</td><td><strong>R$ 6.560</strong></td></tr>
-<tr><td>Março <span class='badge badge-r'>R</span></td><td>R$ 1.083</td><td>R$ 1.584</td><td>R$ 738</td><td><strong>R$ 3.405</strong></td></tr>
-<tr><td>Abril <span class='badge badge-r'>R</span></td><td>R$ 1.024</td><td>R$ 1.768</td><td>R$ 901</td><td><strong>R$ 3.692</strong></td></tr>
-<tr><td>Maio <span class='badge badge-r'>R</span></td><td>R$ 812</td><td>R$ 2.365</td><td>R$ 2.030</td><td><strong>R$ 5.207</strong></td></tr>
-<tr><td>Junho <span class='badge badge-a'>A</span></td><td>R$ 812</td><td>R$ 862</td><td>R$ 2.106</td><td><strong>R$ 3.780</strong></td></tr>
-<tr><td>Julho <span class='badge badge-p'>P</span></td><td>R$ 581</td><td>R$ 702</td><td>R$ 463</td><td><strong>R$ 1.745</strong></td></tr>
-<tr><td>Agosto <span class='badge badge-p'>P</span></td><td>R$ 489</td><td>R$ 490</td><td>R$ 433</td><td><strong>R$ 1.413</strong></td></tr>
-<tr><td>Setembro <span class='badge badge-p'>P</span></td><td>R$ 416</td><td>R$ 113</td><td>R$ 383</td><td><strong>R$ 913</strong></td></tr>
-<tr><td>Outubro <span class='badge badge-p'>P</span></td><td>R$ 416</td><td>R$ 113</td><td>R$ 327</td><td><strong>R$ 856</strong></td></tr>
-<tr><td>Novembro <span class='badge badge-p'>P</span></td><td>R$ 185</td><td>R$ 113</td><td>R$ 327</td><td><strong>R$ 625</strong></td></tr>
-<tr><td>Dezembro <span class='badge badge-p'>P</span></td><td>R$ 185</td><td>R$ 0</td><td>R$ 288</td><td><strong>R$ 473</strong></td></tr></tbody>
-    </table>
-  </div>
-  <div class="section">
-    <div class="section-title">⚠️ Alertas de Cartões</div>
-    <ul class="alert-list">
-      <li>⚠️ Nubank Feh Mai/26: R$ 2365 — pico do ano, próximo de R$ 2.500.</li>
-      <li>⚠️ Bradesco Jun/26 (provisionado): R$ 2106 — acima de R$ 2.000.</li>
-      <li>✅ Itaú em tendência sustentada de queda: R$ 1.784 (Jan) → R$ 185 (Dez).</li>
-      <li>✅ Nubank Feh com fim de parcelados visível: R$ 113 a partir de Set/26.</li>
-    </ul>
-  </div>
-</div>
-
+<div class='tab-panel active' id='visao'><div class='cards'><div class='card green'><div class='card-label'>Receita Mai/26 (realizado)</div><div class='card-value'>R$ 20.454</div><div class='card-sub'>vs orçado R$ 12.364</div></div><div class='card red'><div class='card-label'>Gastos Mai/26 (realizado)</div><div class='card-value'>R$ 20.273</div><div class='card-sub'>vs orçado R$ 13.086</div></div><div class='card blue'><div class='card-label'>Saldo atual (fim Mai)</div><div class='card-value'>R$ 7.914</div><div class='card-sub'>meta R$ 10k-15k</div></div><div class='card red'><div class='card-label'>Saldo Projetado Dez/26</div><div class='card-value'>-R$ 5.148</div><div class='card-sub'>base sem intervenção</div></div></div><div class='section'><div class='section-title'>Trajetória do Saldo Final (Mai → Dez) <small>escala: 0 a R$ 25k</small></div><svg viewBox='0 0 700 220' class='chart' xmlns='http://www.w3.org/2000/svg'><line x1="50" y1="18.0" x2="680" y2="18.0" stroke="#1e293b" stroke-width="1"/><text x="44" y="21.0" fill="#64748b" font-size="9" text-anchor="end">25k</text><line x1="50" y1="44.1" x2="680" y2="44.1" stroke="#1e293b" stroke-width="1"/><text x="44" y="47.1" fill="#64748b" font-size="9" text-anchor="end">20k</text><line x1="50" y1="70.1" x2="680" y2="70.1" stroke="#1e293b" stroke-width="1"/><text x="44" y="73.1" fill="#64748b" font-size="9" text-anchor="end">15k</text><line x1="50" y1="96.2" x2="680" y2="96.2" stroke="#1e293b" stroke-width="1"/><text x="44" y="99.2" fill="#64748b" font-size="9" text-anchor="end">10k</text><line x1="50" y1="122.2" x2="680" y2="122.2" stroke="#1e293b" stroke-width="1"/><text x="44" y="125.2" fill="#64748b" font-size="9" text-anchor="end">5k</text><line x1="50" y1="148.3" x2="680" y2="148.3" stroke="#1e293b" stroke-width="1"/><text x="44" y="151.3" fill="#64748b" font-size="9" text-anchor="end">0k</text><line x1="50" y1="174.4" x2="680" y2="174.4" stroke="#1e293b" stroke-width="1"/><text x="44" y="177.4" fill="#64748b" font-size="9" text-anchor="end">-5k</text><line x1="50" y1="96.2" x2="680" y2="96.2" stroke="#22c55e" stroke-width="1" stroke-dasharray="4,3" opacity="0.6"/><text x="678" y="93.2" fill="#22c55e" font-size="9" text-anchor="end">meta 10k</text><polyline fill='none' stroke='#3b82f6' stroke-width='2' points='50.0,107.1 140.0,124.0 230.0,129.8 320.0,143.0 410.0,153.5 500.0,164.0 590.0,172.0 680.0,175.1'/><circle cx="50.0" cy="107.1" r="4" fill="#22c55e"/><circle cx="140.0" cy="124.0" r="4" fill="#f59e0b"/><circle cx="230.0" cy="129.8" r="4" fill="#f59e0b"/><circle cx="320.0" cy="143.0" r="4" fill="#f59e0b"/><circle cx="410.0" cy="153.5" r="4" fill="#ef4444"/><circle cx="500.0" cy="164.0" r="4" fill="#ef4444"/><circle cx="590.0" cy="172.0" r="4" fill="#ef4444"/><circle cx="680.0" cy="175.1" r="4" fill="#ef4444"/><text x="50.0" y="204" fill="#94a3b8" font-size="10" text-anchor="middle">Mai</text><text x="50.0" y="98.1" fill="#cbd5e1" font-size="9" text-anchor="middle">7.9k</text><text x="140.0" y="204" fill="#94a3b8" font-size="10" text-anchor="middle">Jun</text><text x="140.0" y="115.0" fill="#cbd5e1" font-size="9" text-anchor="middle">4.7k</text><text x="230.0" y="204" fill="#94a3b8" font-size="10" text-anchor="middle">Jul</text><text x="230.0" y="120.8" fill="#cbd5e1" font-size="9" text-anchor="middle">3.5k</text><text x="320.0" y="204" fill="#94a3b8" font-size="10" text-anchor="middle">Ago</text><text x="320.0" y="134.0" fill="#cbd5e1" font-size="9" text-anchor="middle">1.0k</text><text x="410.0" y="204" fill="#94a3b8" font-size="10" text-anchor="middle">Set</text><text x="410.0" y="144.5" fill="#cbd5e1" font-size="9" text-anchor="middle">-1.0k</text><text x="500.0" y="204" fill="#94a3b8" font-size="10" text-anchor="middle">Out</text><text x="500.0" y="155.0" fill="#cbd5e1" font-size="9" text-anchor="middle">-3.0k</text><text x="590.0" y="204" fill="#94a3b8" font-size="10" text-anchor="middle">Nov</text><text x="590.0" y="163.0" fill="#cbd5e1" font-size="9" text-anchor="middle">-4.6k</text><text x="680.0" y="204" fill="#94a3b8" font-size="10" text-anchor="middle">Dez</text><text x="680.0" y="166.1" fill="#cbd5e1" font-size="9" text-anchor="middle">-5.1k</text></svg></div><div class='section'><div class='section-title'>Resumo dos próximos meses (provisionado)</div><table><thead><tr><th>Mês</th><th>Entradas</th><th>Pagamentos</th><th>Resultado</th><th>Saldo Final</th></tr></thead><tbody><tr><td>Junho <span class='tag curso'>EM CURSO</span></td><td>R$ 17.596</td><td>R$ 20.841</td><td class='neg'>-R$ 3.244</td><td class='pos'>R$ 4.669</td></tr><tr><td>Julho <span class='tag prov'>PROV.</span></td><td>R$ 12.415</td><td>R$ 13.538</td><td class='neg'>-R$ 1.123</td><td class='pos'>R$ 3.546</td></tr><tr><td>Agosto <span class='tag prov'>PROV.</span></td><td>R$ 12.115</td><td>R$ 14.636</td><td class='neg'>-R$ 2.521</td><td class='neg'>R$ 1.025</td></tr><tr><td>Setembro <span class='tag prov'>PROV.</span></td><td>R$ 12.115</td><td>R$ 14.136</td><td class='neg'>-R$ 2.021</td><td class='neg'>-R$ 995</td></tr><tr><td>Outubro <span class='tag prov'>PROV.</span></td><td>R$ 12.079</td><td>R$ 14.099</td><td class='neg'>-R$ 2.020</td><td class='neg'>-R$ 3.016</td></tr><tr><td>Novembro <span class='tag prov'>PROV.</span></td><td>R$ 12.079</td><td>R$ 13.614</td><td class='neg'>-R$ 1.535</td><td class='neg'>-R$ 4.551</td></tr><tr><td>Dezembro <span class='tag prov'>PROV.</span></td><td>R$ 12.079</td><td>R$ 12.676</td><td class='neg'>-R$ 597</td><td class='neg'>-R$ 5.148</td></tr></tbody></table></div></div><div class='tab-panel' id='mensal'><div class='section'><div class='section-title'>Tabela completa Jan → Dez 2026</div><table><thead><tr><th>Mês</th><th>Status</th><th>Saldo Inicial</th><th>Entradas</th><th>Pagamentos</th><th>Resultado</th><th>Saldo Final</th></tr></thead><tbody><tr><td>Janeiro</td><td><span class='tag real'>REALIZADO</span></td><td>R$ 4.050</td><td>R$ 16.754</td><td>R$ 14.445</td><td class='pos'>R$ 2.308</td><td class='pos'>R$ 3.489</td></tr><tr><td>Fevereiro</td><td><span class='tag real'>REALIZADO</span></td><td>R$ 3.489</td><td>R$ 20.381</td><td>R$ 23.304</td><td class='neg'>-R$ 2.924</td><td class='neg'>R$ 566</td></tr><tr><td>Março</td><td><span class='tag real'>REALIZADO</span></td><td>R$ 566</td><td>R$ 22.320</td><td>R$ 17.458</td><td class='pos'>R$ 4.862</td><td class='pos'>R$ 5.428</td></tr><tr><td>Abril</td><td><span class='tag real'>REALIZADO</span></td><td>R$ 5.428</td><td>R$ 19.020</td><td>R$ 16.715</td><td class='pos'>R$ 2.304</td><td class='pos'>R$ 7.732</td></tr><tr><td>Maio</td><td><span class='tag real'>REALIZADO</span></td><td>R$ 7.732</td><td>R$ 20.454</td><td>R$ 20.273</td><td class='pos'>R$ 181</td><td class='pos'>R$ 7.914</td></tr><tr><td>Junho</td><td><span class='tag curso'>EM CURSO</span></td><td>R$ 7.914</td><td>R$ 17.596</td><td>R$ 20.841</td><td class='neg'>-R$ 3.244</td><td class='pos'>R$ 4.669</td></tr><tr><td>Julho</td><td><span class='tag prov'>PROVISIONADO</span></td><td>R$ 4.669</td><td>R$ 12.415</td><td>R$ 13.538</td><td class='neg'>-R$ 1.123</td><td class='pos'>R$ 3.546</td></tr><tr><td>Agosto</td><td><span class='tag prov'>PROVISIONADO</span></td><td>R$ 3.546</td><td>R$ 12.115</td><td>R$ 14.636</td><td class='neg'>-R$ 2.521</td><td class='neg'>R$ 1.025</td></tr><tr><td>Setembro</td><td><span class='tag prov'>PROVISIONADO</span></td><td>R$ 1.025</td><td>R$ 12.115</td><td>R$ 14.136</td><td class='neg'>-R$ 2.021</td><td class='neg'>-R$ 995</td></tr><tr><td>Outubro</td><td><span class='tag prov'>PROVISIONADO</span></td><td>-R$ 995</td><td>R$ 12.079</td><td>R$ 14.099</td><td class='neg'>-R$ 2.020</td><td class='neg'>-R$ 3.016</td></tr><tr><td>Novembro</td><td><span class='tag prov'>PROVISIONADO</span></td><td>-R$ 3.016</td><td>R$ 12.079</td><td>R$ 13.614</td><td class='neg'>-R$ 1.535</td><td class='neg'>-R$ 4.551</td></tr><tr><td>Dezembro</td><td><span class='tag prov'>PROVISIONADO</span></td><td>-R$ 4.551</td><td>R$ 12.079</td><td>R$ 12.676</td><td class='neg'>-R$ 597</td><td class='neg'>-R$ 5.148</td></tr><tr style='border-top:2px solid #334155;font-weight:600;'><td colspan='3'>TOTAL REALIZADO (Jan-Mai)</td><td>R$ 98.929</td><td>R$ 92.196</td><td class='pos'>R$ 6.733</td><td></td></tr></tbody></table></div></div><div class='tab-panel' id='dre'><div class='section'><div class='section-title'>DRE Orçamento Mensal <small>fonte: aba New DRE</small></div><div style='display:grid;grid-template-columns:1fr 1fr;gap:20px;'><div><h4 style='color:#86efac;font-size:0.85rem;margin-bottom:8px;'>(+) RECEITAS — R$ 12.364</h4><table><tbody><tr><td>Salário Renan (LÍQUIDO)</td><td class='pos'>R$ 9.847</td></tr><tr><td>Plano de saúde (reemb.)</td><td class='pos'>R$ 1.717</td></tr><tr><td>Salário Feh</td><td class='pos'>R$ 300</td></tr><tr><td>Gerando Automações</td><td class='pos'>R$ 500</td></tr><tr><td>Freela</td><td class='pos'>R$ 0</td></tr></tbody></table></div><div><h4 style='color:#fca5a5;font-size:0.85rem;margin-bottom:8px;'>(-) DESPESAS — R$ 12.693</h4><table><tbody><tr><td>Escola Crianças</td><td class='neg'>R$ 3.347</td></tr><tr><td>Aluguel + Condomínio</td><td class='neg'>R$ 2.200</td></tr><tr><td>Supermercado</td><td class='neg'>R$ 1.000</td></tr><tr><td>Combustível</td><td class='neg'>R$ 1.000</td></tr><tr><td>Finais de semana</td><td class='neg'>R$ 1.000</td></tr><tr><td>Plano de saúde meninos</td><td class='neg'>R$ 894</td></tr><tr><td>Meu plano de saúde</td><td class='neg'>R$ 823</td></tr><tr><td>Faculdade Feh</td><td class='neg'>R$ 547</td></tr><tr><td>Pós amor</td><td class='neg'>R$ 500</td></tr><tr><td>Almoço Renan</td><td class='neg'>R$ 200</td></tr><tr><td>Faculdade Renan</td><td class='neg'>R$ 192</td></tr><tr><td>Água</td><td class='neg'>R$ 150</td></tr><tr><td>Luz</td><td class='neg'>R$ 150</td></tr><tr><td>Farmácia</td><td class='neg'>R$ 150</td></tr><tr><td>Celular</td><td class='neg'>R$ 150</td></tr><tr><td>Assinaturas</td><td class='neg'>R$ 150</td></tr><tr><td>Internet</td><td class='neg'>R$ 120</td></tr><tr><td>Pedágios</td><td class='neg'>R$ 60</td></tr><tr><td>Estacionamento</td><td class='neg'>R$ 60</td></tr></tbody></table></div></div><div style='margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:20px;'><div><h4 style='color:#fcd34d;font-size:0.85rem;margin-bottom:8px;'>(-) AUTOMÓVEL (rateio mensal) — R$ 393</h4><table><tbody><tr><td>Seguro</td><td>R$ 251</td></tr><tr><td>IPVA</td><td>R$ 142</td></tr></tbody></table></div><div><h4 style='color:#cbd5e1;font-size:0.85rem;margin-bottom:8px;'>(=) SALDO MENSAL ORÇADO</h4><div style='font-size:1.8rem;font-weight:700;' class='neg'>-R$ 722</div><div style='font-size:0.72rem;color:#64748b;margin-top:6px;'>Orçamento estruturalmente apertado — saldo só fecha positivo via receita extra ou corte de gasto.</div></div></div></div></div><div class='tab-panel' id='insights'><div class='section'><div class='section-title'>🚨 Alertas automáticos</div><ul class='alert-list'><li class='ok'>✅ Saldo atual (R$ 7.914) acima do colchão mínimo de R$ 3.000.</li><li class='warn'>⚠️ Mai/26: pagamentos representam 99% das entradas — margem comprimida.</li><li class='warn'>⚠️ Junho projeta resultado negativo de -R$ 3.244. Saldo deve cair para ~R$ 4.669.</li><li class='warn'>⚠️ Agosto/26 provisionado com resultado de -R$ 2.521 — atenção redobrada.</li><li class='warn'>⚠️ Cartão Itaú Fev com fatura de R$ 2.770 — acima do teto de R$ 2.500.</li><li class='warn'>⚠️ Cartão Nubank Feh Jan com fatura de R$ 3.321 — acima do teto de R$ 2.500.</li><li class='crit'>🚨 Sem intervenção, saldo Dez/26 fica em -R$ 5.148 — necessário acionar Cenário B.</li></ul></div><div class='section'><div class='section-title'>💸 Plano de Quitação de Dívidas <small>total: R$ 8.027</small></div><table><thead><tr><th>Credor</th><th>Saldo Devedor</th><th>Estratégia recomendada (Cenário B)</th></tr></thead><tbody><tr><td>Santander</td><td>R$ 800</td><td style='text-align:left;'>Quitar em Jun/26 (R$ 800 à vista) — menor saldo, libera mental.</td></tr><tr><td>Itaú</td><td>R$ 1.230</td><td style='text-align:left;'>Quitar em Jul/26 (R$ 1.230) com a 1ª parcela do freela ramped-up.</td></tr><tr><td>Nubank</td><td>R$ 1.997</td><td style='text-align:left;'>Parcelar em 2 vezes (Ago + Set, ~R$ 999/m) — quita antes do Q4.</td></tr><tr><td>Bradesco</td><td>R$ 4.000</td><td style='text-align:left;'>Distribuir em 3 vezes (Out, Nov, Dez, ~R$ 1.333/m) — encerra o ano com dívida zero.</td></tr><tr style='font-weight:600;border-top:2px solid #334155;'><td>TOTAL</td><td>R$ 8.027</td><td style='text-align:left;'>Quitação completa até Dez/26 no Cenário B.</td></tr></tbody></table></div></div><div class='tab-panel' id='cenarios'><div class='scenarios-grid'><div class='scenario-card' style='border-top-color:#3b82f6;'><h4 style='color:#3b82f6;'>Cenário A — Conservador</h4><div class='target'>Freela leve, só Santander+Itaú quitados. Dívida residual ~R$ 6k vai para 2027.</div><div style='font-size:0.68rem;color:#64748b;margin-top:8px;'>Saldo Dez/26 projetado</div><div class='saldo' style='color:#3b82f6;'>-R$ 1.878</div></div><div class='scenario-card' style='border-top-color:#22c55e;'><h4 style='color:#22c55e;'>Cenário B — Moderado · RECOMENDADO</h4><div class='target'>Freela 1,5k/m + cortes táticos. Dívida ZERADA + saldo Dez/26 ~R$ 6-7k.</div><div style='font-size:0.68rem;color:#64748b;margin-top:8px;'>Saldo Dez/26 projetado</div><div class='saldo' style='color:#22c55e;'>-R$ 875</div></div><div class='scenario-card' style='border-top-color:#f59e0b;'><h4 style='color:#f59e0b;'>Cenário C — Agressivo</h4><div class='target'>Freela 2,5k/m + cortes profundos. Dívida ZERADA + reserva R$ 10-12k.</div><div style='font-size:0.68rem;color:#64748b;margin-top:8px;'>Saldo Dez/26 projetado</div><div class='saldo' style='color:#f59e0b;'>R$ 6.725</div></div></div><div class='section'><div class='section-title'>📈 Comparativo Saldo Final Jun → Dez/26 <small>escala: -2k a R$ 15k</small></div><svg viewBox='0 0 700 240' class='chart' xmlns='http://www.w3.org/2000/svg'><line x1="50" y1="18.0" x2="680" y2="18.0" stroke="#1e293b" stroke-width="1"/><text x="44" y="21.0" fill="#64748b" font-size="9" text-anchor="end">15.0k</text><line x1="50" y1="46.2" x2="680" y2="46.2" stroke="#1e293b" stroke-width="1"/><text x="44" y="49.2" fill="#64748b" font-size="9" text-anchor="end">12.5k</text><line x1="50" y1="74.5" x2="680" y2="74.5" stroke="#1e293b" stroke-width="1"/><text x="44" y="77.5" fill="#64748b" font-size="9" text-anchor="end">10.0k</text><line x1="50" y1="102.7" x2="680" y2="102.7" stroke="#1e293b" stroke-width="1"/><text x="44" y="105.7" fill="#64748b" font-size="9" text-anchor="end">7.5k</text><line x1="50" y1="130.9" x2="680" y2="130.9" stroke="#1e293b" stroke-width="1"/><text x="44" y="133.9" fill="#64748b" font-size="9" text-anchor="end">5.0k</text><line x1="50" y1="159.2" x2="680" y2="159.2" stroke="#1e293b" stroke-width="1"/><text x="44" y="162.2" fill="#64748b" font-size="9" text-anchor="end">2.5k</text><line x1="50" y1="187.4" x2="680" y2="187.4" stroke="#1e293b" stroke-width="1"/><text x="44" y="190.4" fill="#64748b" font-size="9" text-anchor="end">0.0k</text><line x1="50" y1="210.0" x2="680" y2="210.0" stroke="#1e293b" stroke-width="1"/><text x="44" y="213.0" fill="#64748b" font-size="9" text-anchor="end">-2.0k</text><line x1="50" y1="74.5" x2="680" y2="74.5" stroke="#22c55e" stroke-width="1" stroke-dasharray="4,3" opacity="0.6"/><text x="678" y="71.5" fill="#22c55e" font-size="9" text-anchor="end">meta reserva 10k</text><line x1="50" y1="153.5" x2="680" y2="153.5" stroke="#f59e0b" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/><text x="678" y="150.5" fill="#f59e0b" font-size="9" text-anchor="end">colchão 3k</text><polyline fill='none' stroke='#64748b' stroke-width='2' points='50.0,134.7 155.0,147.4 260.0,175.8 365.0,198.7 470.0,221.5 575.0,238.8 680.0,245.6' stroke-dasharray='4,3'/><polyline fill='none' stroke='#3b82f6' stroke-width='2' points='50.0,138.1 155.0,155.6 260.0,175.0 365.0,188.8 470.0,202.6 575.0,210.9 680.0,208.6'/><polyline fill='none' stroke='#22c55e' stroke-width='2' points='50.0,132.4 155.0,138.7 260.0,155.8 365.0,167.3 470.0,182.6 575.0,194.7 680.0,197.3'/><polyline fill='none' stroke='#f59e0b' stroke-width='2' points='50.0,126.8 155.0,119.5 260.0,123.1 365.0,121.0 470.0,122.8 575.0,121.3 680.0,111.5'/><circle cx="50.0" cy="132.4" r="3.5" fill="#22c55e"/><circle cx="155.0" cy="138.7" r="3.5" fill="#22c55e"/><circle cx="260.0" cy="155.8" r="3.5" fill="#22c55e"/><circle cx="365.0" cy="167.3" r="3.5" fill="#22c55e"/><circle cx="470.0" cy="182.6" r="3.5" fill="#22c55e"/><circle cx="575.0" cy="194.7" r="3.5" fill="#22c55e"/><circle cx="680.0" cy="197.3" r="3.5" fill="#22c55e"/><text x="50.0" y="224" fill="#94a3b8" font-size="10" text-anchor="middle">Jun</text><text x="155.0" y="224" fill="#94a3b8" font-size="10" text-anchor="middle">Jul</text><text x="260.0" y="224" fill="#94a3b8" font-size="10" text-anchor="middle">Ago</text><text x="365.0" y="224" fill="#94a3b8" font-size="10" text-anchor="middle">Set</text><text x="470.0" y="224" fill="#94a3b8" font-size="10" text-anchor="middle">Out</text><text x="575.0" y="224" fill="#94a3b8" font-size="10" text-anchor="middle">Nov</text><text x="680.0" y="224" fill="#94a3b8" font-size="10" text-anchor="middle">Dez</text></svg><div class='legend'><span><i style='background:#64748b;'></i> Base (sem ajuste)</span><span><i style='background:#3b82f6;'></i> Cenário A</span><span><i style='background:#22c55e;'></i> Cenário B (recomendado)</span><span><i style='background:#f59e0b;'></i> Cenário C</span></div></div><div class='section'><div class='section-title' style='color:#3b82f6;'>Detalhamento — Cenário A (Conservador)</div><table><thead><tr><th>Mês</th><th>Saldo Inicial</th><th>Entradas (+freela)</th><th>Pagamentos (-corte +amort)</th><th>Resultado</th><th>Saldo Final</th></tr></thead><tbody><tr><td>Junho</td><td>R$ 7.914</td><td>R$ 18.096 <span class='muted' style='font-size:0.65rem;'>(+500)</span></td><td>R$ 21.641 <span class='muted' style='font-size:0.65rem;'>(+800)</span></td><td class='neg'>-R$ 3.544</td><td class='pos'>R$ 4.369</td></tr><tr><td>Julho</td><td>R$ 4.369</td><td>R$ 13.215 <span class='muted' style='font-size:0.65rem;'>(+800)</span></td><td>R$ 14.768 <span class='muted' style='font-size:0.65rem;'>(+1230)</span></td><td class='neg'>-R$ 1.553</td><td class='neg'>R$ 2.816</td></tr><tr><td>Agosto</td><td>R$ 2.816</td><td>R$ 12.915 <span class='muted' style='font-size:0.65rem;'>(+800)</span></td><td>R$ 14.636</td><td class='neg'>-R$ 1.721</td><td class='neg'>R$ 1.095</td></tr><tr><td>Setembro</td><td>R$ 1.095</td><td>R$ 12.915 <span class='muted' style='font-size:0.65rem;'>(+800)</span></td><td>R$ 14.136</td><td class='neg'>-R$ 1.221</td><td class='neg'>-R$ 125</td></tr><tr><td>Outubro</td><td>-R$ 125</td><td>R$ 12.879 <span class='muted' style='font-size:0.65rem;'>(+800)</span></td><td>R$ 14.099</td><td class='neg'>-R$ 1.220</td><td class='neg'>-R$ 1.346</td></tr><tr><td>Novembro</td><td>-R$ 1.346</td><td>R$ 12.879 <span class='muted' style='font-size:0.65rem;'>(+800)</span></td><td>R$ 13.614</td><td class='neg'>-R$ 735</td><td class='neg'>-R$ 2.081</td></tr><tr><td>Dezembro</td><td>-R$ 2.081</td><td>R$ 12.879 <span class='muted' style='font-size:0.65rem;'>(+800)</span></td><td>R$ 12.676</td><td class='pos'>R$ 203</td><td class='neg'>-R$ 1.878</td></tr></tbody></table></div><div class='section'><div class='section-title' style='color:#22c55e;'>Detalhamento — Cenário B (Moderado)</div><table><thead><tr><th>Mês</th><th>Saldo Inicial</th><th>Entradas (+freela)</th><th>Pagamentos (-corte +amort)</th><th>Resultado</th><th>Saldo Final</th></tr></thead><tbody><tr><td>Junho</td><td>R$ 7.914</td><td>R$ 18.396 <span class='muted' style='font-size:0.65rem;'>(+800)</span></td><td>R$ 21.441 <span class='muted' style='font-size:0.65rem;'>(-200 +800)</span></td><td class='neg'>-R$ 3.044</td><td class='pos'>R$ 4.869</td></tr><tr><td>Julho</td><td>R$ 4.869</td><td>R$ 13.915 <span class='muted' style='font-size:0.65rem;'>(+1500)</span></td><td>R$ 14.468 <span class='muted' style='font-size:0.65rem;'>(-300 +1230)</span></td><td class='neg'>-R$ 553</td><td class='pos'>R$ 4.316</td></tr><tr><td>Agosto</td><td>R$ 4.316</td><td>R$ 13.615 <span class='muted' style='font-size:0.65rem;'>(+1500)</span></td><td>R$ 15.134 <span class='muted' style='font-size:0.65rem;'>(-500 +998)</span></td><td class='neg'>-R$ 1.519</td><td class='neg'>R$ 2.797</td></tr><tr><td>Setembro</td><td>R$ 2.797</td><td>R$ 13.615 <span class='muted' style='font-size:0.65rem;'>(+1500)</span></td><td>R$ 14.635 <span class='muted' style='font-size:0.65rem;'>(-500 +998)</span></td><td class='neg'>-R$ 1.019</td><td class='neg'>R$ 1.778</td></tr><tr><td>Outubro</td><td>R$ 1.778</td><td>R$ 13.579 <span class='muted' style='font-size:0.65rem;'>(+1500)</span></td><td>R$ 14.933 <span class='muted' style='font-size:0.65rem;'>(-500 +1333)</span></td><td class='neg'>-R$ 1.354</td><td class='neg'>R$ 424</td></tr><tr><td>Novembro</td><td>R$ 424</td><td>R$ 13.579 <span class='muted' style='font-size:0.65rem;'>(+1500)</span></td><td>R$ 14.648 <span class='muted' style='font-size:0.65rem;'>(-300 +1333)</span></td><td class='neg'>-R$ 1.069</td><td class='neg'>-R$ 645</td></tr><tr><td>Dezembro</td><td>-R$ 645</td><td>R$ 13.579 <span class='muted' style='font-size:0.65rem;'>(+1500)</span></td><td>R$ 13.810 <span class='muted' style='font-size:0.65rem;'>(-200 +1333)</span></td><td class='neg'>-R$ 231</td><td class='neg'>-R$ 875</td></tr></tbody></table></div><div class='section'><div class='section-title' style='color:#f59e0b;'>Detalhamento — Cenário C (Agressivo)</div><table><thead><tr><th>Mês</th><th>Saldo Inicial</th><th>Entradas (+freela)</th><th>Pagamentos (-corte +amort)</th><th>Resultado</th><th>Saldo Final</th></tr></thead><tbody><tr><td>Junho</td><td>R$ 7.914</td><td>R$ 18.796 <span class='muted' style='font-size:0.65rem;'>(+1200)</span></td><td>R$ 21.341 <span class='muted' style='font-size:0.65rem;'>(-300 +800)</span></td><td class='neg'>-R$ 2.544</td><td class='pos'>R$ 5.369</td></tr><tr><td>Julho</td><td>R$ 5.369</td><td>R$ 14.915 <span class='muted' style='font-size:0.65rem;'>(+2500)</span></td><td>R$ 14.268 <span class='muted' style='font-size:0.65rem;'>(-500 +1230)</span></td><td class='pos'>R$ 647</td><td class='pos'>R$ 6.016</td></tr><tr><td>Agosto</td><td>R$ 6.016</td><td>R$ 14.615 <span class='muted' style='font-size:0.65rem;'>(+2500)</span></td><td>R$ 14.934 <span class='muted' style='font-size:0.65rem;'>(-700 +998)</span></td><td class='neg'>-R$ 319</td><td class='pos'>R$ 5.697</td></tr><tr><td>Setembro</td><td>R$ 5.697</td><td>R$ 14.615 <span class='muted' style='font-size:0.65rem;'>(+2500)</span></td><td>R$ 14.435 <span class='muted' style='font-size:0.65rem;'>(-700 +998)</span></td><td class='pos'>R$ 181</td><td class='pos'>R$ 5.878</td></tr><tr><td>Outubro</td><td>R$ 5.878</td><td>R$ 14.579 <span class='muted' style='font-size:0.65rem;'>(+2500)</span></td><td>R$ 14.733 <span class='muted' style='font-size:0.65rem;'>(-700 +1333)</span></td><td class='neg'>-R$ 154</td><td class='pos'>R$ 5.724</td></tr><tr><td>Novembro</td><td>R$ 5.724</td><td>R$ 14.579 <span class='muted' style='font-size:0.65rem;'>(+2500)</span></td><td>R$ 14.448 <span class='muted' style='font-size:0.65rem;'>(-500 +1333)</span></td><td class='pos'>R$ 131</td><td class='pos'>R$ 5.855</td></tr><tr><td>Dezembro</td><td>R$ 5.855</td><td>R$ 14.579 <span class='muted' style='font-size:0.65rem;'>(+2500)</span></td><td>R$ 13.710 <span class='muted' style='font-size:0.65rem;'>(-300 +1333)</span></td><td class='pos'>R$ 869</td><td class='pos'>R$ 6.725</td></tr></tbody></table></div><div class='rec-block'><h4>🎯 Recomendação do Especialista — Cenário B</h4><p>O Cenário B é o mais viável: exige R$ 1.500/mês de receita extra (factível com freela leve) e cortes táticos entre R$ 200-500/mês (sem comprometer qualidade de vida). O retorno é a <strong>quitação completa das 4 dívidas (R$ 8.027)</strong> até dezembro e um saldo positivo de fim de ano, ainda longe da meta de reserva R$ 10k, mas pavimentando o caminho para construí-la em Q1 2027. O Cenário A é insuficiente (dívida sobra) e o C é tecnicamente mais ambicioso, porém depende de R$ 2.500/m de freela — risco maior caso o pipeline de Gerando Automações falhe.</p></div></div><div class='tab-panel' id='cartoes'><div class='cards'><div class='card yellow'><div class='card-label'>Itaú · total 2026</div><div class='card-value'>R$ 10.557</div><div class='card-sub'>fatura média R$ 880</div></div><div class='card purple'><div class='card-label'>Nubank Feh · total 2026</div><div class='card-value'>R$ 13.075</div><div class='card-sub'>Jan-Nov</div></div><div class='card red'><div class='card-label'>Bradesco · total 2026</div><div class='card-value'>R$ 12.231</div><div class='card-sub'>fatura média R$ 1.019</div></div><div class='card blue'><div class='card-label'>Total Cartões Ano</div><div class='card-value'>R$ 35.863</div><div class='card-sub'>~R$ 2,989/mês média</div></div></div><div class='section'><div class='section-title'>Faturas por mês <small>maior valor do grupo (linha SUM)</small></div><table><thead><tr><th>Mês</th><th>Itaú</th><th>Nubank Feh</th><th>Bradesco</th><th>Total Mês</th></tr></thead><tbody><tr><td>Janeiro</td><td>R$ 1.784</td><td>R$ 3.321</td><td>R$ 2.089</td><td class='neg' style='font-weight:600;'>R$ 7.194</td></tr><tr><td>Fevereiro</td><td>R$ 2.770</td><td>R$ 1.643</td><td>R$ 2.147</td><td class='neg' style='font-weight:600;'>R$ 6.560</td></tr><tr><td>Março</td><td>R$ 1.083</td><td>R$ 1.584</td><td>R$ 738</td><td class='' style='font-weight:600;'>R$ 3.405</td></tr><tr><td>Abril</td><td>R$ 1.024</td><td>R$ 1.768</td><td>R$ 901</td><td class='' style='font-weight:600;'>R$ 3.692</td></tr><tr><td>Maio</td><td>R$ 812</td><td>R$ 2.365</td><td>R$ 2.030</td><td class='neg' style='font-weight:600;'>R$ 5.207</td></tr><tr><td>Junho</td><td>R$ 812</td><td>R$ 862</td><td>R$ 2.106</td><td class='' style='font-weight:600;'>R$ 3.780</td></tr><tr><td>Julho</td><td>R$ 581</td><td>R$ 702</td><td>R$ 463</td><td class='' style='font-weight:600;'>R$ 1.745</td></tr><tr><td>Agosto</td><td>R$ 489</td><td>R$ 490</td><td>R$ 433</td><td class='' style='font-weight:600;'>R$ 1.413</td></tr><tr><td>Setembro</td><td>R$ 416</td><td>R$ 113</td><td>R$ 383</td><td class='' style='font-weight:600;'>R$ 913</td></tr><tr><td>Outubro</td><td>R$ 416</td><td>R$ 113</td><td>R$ 327</td><td class='' style='font-weight:600;'>R$ 856</td></tr><tr><td>Novembro</td><td>R$ 185</td><td>R$ 113</td><td>R$ 327</td><td class='' style='font-weight:600;'>R$ 625</td></tr><tr><td>Dezembro</td><td>R$ 185</td><td>R$ 0</td><td>R$ 288</td><td class='' style='font-weight:600;'>R$ 473</td></tr></tbody></table></div><div class='section'><div class='section-title'>Tendência mês a mês <small>escala 0 - R$ 3.5k</small></div><svg viewBox='0 0 700 220' class='chart' xmlns='http://www.w3.org/2000/svg'><line x1="50" y1="18.0" x2="680" y2="18.0" stroke="#1e293b" stroke-width="1"/><text x="44" y="21.0" fill="#64748b" font-size="9" text-anchor="end">3.5k</text><line x1="50" y1="42.6" x2="680" y2="42.6" stroke="#1e293b" stroke-width="1"/><text x="44" y="45.6" fill="#64748b" font-size="9" text-anchor="end">3.0k</text><line x1="50" y1="67.1" x2="680" y2="67.1" stroke="#1e293b" stroke-width="1"/><text x="44" y="70.1" fill="#64748b" font-size="9" text-anchor="end">2.5k</text><line x1="50" y1="91.7" x2="680" y2="91.7" stroke="#1e293b" stroke-width="1"/><text x="44" y="94.7" fill="#64748b" font-size="9" text-anchor="end">2.0k</text><line x1="50" y1="116.3" x2="680" y2="116.3" stroke="#1e293b" stroke-width="1"/><text x="44" y="119.3" fill="#64748b" font-size="9" text-anchor="end">1.5k</text><line x1="50" y1="140.9" x2="680" y2="140.9" stroke="#1e293b" stroke-width="1"/><text x="44" y="143.9" fill="#64748b" font-size="9" text-anchor="end">1.0k</text><line x1="50" y1="165.4" x2="680" y2="165.4" stroke="#1e293b" stroke-width="1"/><text x="44" y="168.4" fill="#64748b" font-size="9" text-anchor="end">0.5k</text><line x1="50" y1="190.0" x2="680" y2="190.0" stroke="#1e293b" stroke-width="1"/><text x="44" y="193.0" fill="#64748b" font-size="9" text-anchor="end">0.0k</text><line x1="50" y1="67.1" x2="680" y2="67.1" stroke="#ef4444" stroke-width="1" stroke-dasharray="4,3" opacity="0.6"/><text x="678" y="64.1" fill="#ef4444" font-size="9" text-anchor="end">teto alerta 2.5k</text><polyline fill='none' stroke='#f59e0b' stroke-width='2' points='50.0,102.3 107.3,53.9 164.5,136.8 221.8,139.7 279.1,150.1 336.4,150.1 393.6,161.5 450.9,165.9 508.2,169.5 565.5,169.5 622.7,180.9 680.0,180.9'/><polyline fill='none' stroke='#a855f7' stroke-width='2' points='50.0,26.8 107.3,109.2 164.5,112.2 221.8,103.1 279.1,73.8 336.4,147.6 393.6,155.5 450.9,165.9 508.2,184.4 565.5,184.4 622.7,184.4 680.0,190.0'/><polyline fill='none' stroke='#ef4444' stroke-width='2' points='50.0,87.4 107.3,84.5 164.5,153.7 221.8,145.7 279.1,90.2 336.4,86.5 393.6,167.3 450.9,168.7 508.2,171.2 565.5,173.9 622.7,173.9 680.0,175.8'/><text x="50.0" y="204" fill="#94a3b8" font-size="10" text-anchor="middle">Jan</text><text x="107.3" y="204" fill="#94a3b8" font-size="10" text-anchor="middle">Fev</text><text x="164.5" y="204" fill="#94a3b8" font-size="10" text-anchor="middle">Mar</text><text x="221.8" y="204" fill="#94a3b8" font-size="10" text-anchor="middle">Abr</text><text x="279.1" y="204" fill="#94a3b8" font-size="10" text-anchor="middle">Mai</text><text x="336.4" y="204" fill="#94a3b8" font-size="10" text-anchor="middle">Jun</text><text x="393.6" y="204" fill="#94a3b8" font-size="10" text-anchor="middle">Jul</text><text x="450.9" y="204" fill="#94a3b8" font-size="10" text-anchor="middle">Ago</text><text x="508.2" y="204" fill="#94a3b8" font-size="10" text-anchor="middle">Set</text><text x="565.5" y="204" fill="#94a3b8" font-size="10" text-anchor="middle">Out</text><text x="622.7" y="204" fill="#94a3b8" font-size="10" text-anchor="middle">Nov</text><text x="680.0" y="204" fill="#94a3b8" font-size="10" text-anchor="middle">Dez</text></svg><div class='legend'><span><i style='background:#f59e0b;'></i> Itaú</span><span><i style='background:#a855f7;'></i> Nubank Feh</span><span><i style='background:#ef4444;'></i> Bradesco</span></div></div><div class='section'><div class='section-title'>🚨 Alertas de Cartões</div><ul class='alert-list'><li class='crit'>🚨 Itaú Fevereiro/26: R$ 2.770 (acima do teto R$ 2.500)</li><li class='crit'>🚨 Nubank Feh Janeiro/26: R$ 3.321 (acima do teto R$ 2.500)</li><li class='warn'>⚠️ Nubank Feh Maio/26: R$ 2.365 (próximo do teto)</li><li class='warn'>⚠️ Bradesco Janeiro/26: R$ 2.089 (próximo do teto)</li><li class='warn'>⚠️ Bradesco Fevereiro/26: R$ 2.147 (próximo do teto)</li><li class='warn'>⚠️ Bradesco Maio/26: R$ 2.030 (próximo do teto)</li><li class='warn'>⚠️ Bradesco Junho/26: R$ 2.106 (próximo do teto)</li></ul></div></div>
 <script>
-var ids = ['visao','mensal','dre','insights','cenarios','cartoes'];
-document.querySelectorAll('.tab').forEach(function(t){
-  t.addEventListener('click', function(){
-    var id = t.getAttribute('data-id');
-    document.querySelectorAll('.tab').forEach(function(x){ x.classList.remove('active'); });
-    document.querySelectorAll('.tab-panel').forEach(function(x){ x.classList.remove('active'); });
-    t.classList.add('active');
-    document.getElementById(id).classList.add('active');
-  });
-});
+function showTab(idx) {
+  var ids = ['visao','mensal','dre','insights','cenarios','cartoes'];
+  var tabs = document.querySelectorAll('.tab');
+  var panels = document.querySelectorAll('.tab-panel');
+  for (var i=0; i<tabs.length; i++) {
+    tabs[i].classList.toggle('active', i===idx);
+  }
+  for (var i=0; i<panels.length; i++) {
+    panels[i].classList.toggle('active', panels[i].id===ids[idx]);
+  }
+}
 </script>
 </body>
 </html>
