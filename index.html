@@ -71,6 +71,8 @@
   .rec-box{background:linear-gradient(135deg,rgba(34,197,94,.14),rgba(59,130,246,.10));border:1px solid rgba(34,197,94,.35);border-radius:12px;padding:16px;margin-top:14px}
   .rec-box h3{color:#86efac;font-size:14px;margin-bottom:8px;font-weight:800}
   .rec-box p{font-size:13px;color:#e2e8f0;line-height:1.5}
+  .brk{display:block;font-size:10px;color:#94a3b8;font-weight:400;margin-top:2px;letter-spacing:.2px}
+  .brk .b-itau{color:#fca5a5}.brk .b-nub{color:#d8b4fe}.brk .b-brad{color:#93c5fd}.brk .b-corte{color:#86efac}
 </style>
 </head>
 <body>
@@ -80,7 +82,7 @@
     <p><strong>Renan Brito</strong> · Realizado Jan→Ago · Em curso Set · Provisionado Out–Dez · Atualizado 18/09/2026</p>
   </div>
   <div class="banner banner-green">
-    ✅ Agosto/26 fechou saudável: resultado <strong>+R$ 4.111,95</strong>, saldo final <strong>R$ 4.903,85</strong>. Setembro em curso projeta reforço da reserva (SF ~R$ 5.516). ⚠️ Atenção a Out/26 (previsto negativo -R$ 2.754). 🎯 Cenário B (moderado) recomendado para zerar dívida até Dez/26.
+    ✅ Agosto/26 fechou saudável: resultado <strong>+R$ 4.111,95</strong>, saldo final <strong>R$ 4.903,85</strong>. Setembro em curso projeta reforço da reserva (SF ~R$ 5.516). ⚠️ Atenção a Out/26 (previsto -R$ 2.754). 🏦 Santander quitado 18/09. 🎯 Cenário B recomendado para zerar Itaú+Nubank+Bradesco (R$ 7.247,84) até Nov/26.
   </div>
   <div class="tabs">
     <button class="tab active" onclick="showTab(event,'visao')">📊 Visão Geral</button>
@@ -168,19 +170,19 @@
       <div class="banner banner-yellow" style="margin-bottom:10px">⚠️ Cartão Bradesco Set/26 = R$ 2.300 (alto, mas dentro do teto de R$ 2.500)</div>
     </div>
     <div class="section">
-      <h2>💳 Dívidas em Aberto · Plano de Quitação</h2>
+      <h2>🏦 Dívidas Bancárias em Aberto · Plano de Quitação</h2>
+      <p class="lead">Escopo: apenas dívidas com bancos (aba Dívidas). Cartões seguem na aba dedicada; empréstimos pessoais e "Pós Amor" não entram neste plano de amortização.</p>
       <table class="tbl-num">
-        <thead><tr><th>Credor</th><th>Valor</th><th>Prioridade</th><th style="text-align:left">Estratégia</th></tr></thead>
+        <thead><tr><th>Credor (banco)</th><th>Valor</th><th>Prioridade</th><th style="text-align:left">Estratégia de Amortização</th></tr></thead>
         <tbody>
-          <tr><td>Santander (pago 18/09)</td><td>R$ 749,58</td><td>✓</td><td style="text-align:left">Quitado — remover do fluxo</td></tr>
-          <tr><td>Itaú</td><td>R$ 1.226,73</td><td>1</td><td style="text-align:left">Quitar no próximo mês (1 parcela)</td></tr>
-          <tr><td>Nubank (parc.)</td><td>R$ 2.021,11</td><td>2</td><td style="text-align:left">Amortizar em 2 meses (Out+Nov)</td></tr>
-          <tr><td>Bradesco (parc.)</td><td>R$ 4.000,00</td><td>3</td><td style="text-align:left">Amortizar em 3 meses (Set→Nov)</td></tr>
-          <tr><td>Pós Amor (Feh)</td><td>R$ 500,00</td><td>4</td><td style="text-align:left">Fluxo mensal fixo</td></tr>
-          <tr><td>Empréstimo Zé Luis</td><td>R$ 2.645,38</td><td>5</td><td style="text-align:left">Renegociar prazo — não urgente</td></tr>
-          <tr><th>Total dívida bruta</th><th>R$ 10.393,22</th><th></th><th></th></tr>
+          <tr><td>Santander <span style="color:#86efac;font-weight:700">✓ quitado 18/09</span></td><td class="pos">R$ 749,58</td><td>—</td><td style="text-align:left">Já pago — fora do plano</td></tr>
+          <tr><td style="color:#fca5a5"><strong>Itaú</strong></td><td>R$ 1.226,73</td><td>1</td><td style="text-align:left">Quitar integral em <strong>Set/26</strong> (1 parcela)</td></tr>
+          <tr><td style="color:#d8b4fe"><strong>Nubank</strong></td><td>R$ 2.021,11</td><td>2</td><td style="text-align:left">Amortizar em <strong>2 meses</strong> (Out + Nov, ~R$ 1.010,55/mês)</td></tr>
+          <tr><td style="color:#93c5fd"><strong>Bradesco</strong></td><td>R$ 4.000,00</td><td>3</td><td style="text-align:left">Amortizar em <strong>3 meses</strong> (Set→Nov, ~R$ 1.333,33/mês)</td></tr>
+          <tr style="background:rgba(148,163,184,.08);font-weight:800"><th style="text-align:left">TOTAL a amortizar (bancos)</th><th>R$ 7.247,84</th><th></th><th></th></tr>
         </tbody>
       </table>
+      <p class="lead" style="margin-top:10px;font-size:12px">📌 Fora deste escopo (não bancos): Pós Amor R$ 500 (fluxo mensal fixo), Empréstimo Zé Luis R$ 2.645,38 (renegociar prazo), pagamentos de faturas dos cartões (vão na aba Cartões).</p>
     </div>
   </div>
   <div id="cenarios" class="tab-content">
@@ -188,11 +190,12 @@
       <h2>🎯 Cenários A/B/C/D · Projeção Set→Dez 2026</h2>
       <p class="lead">Âncora: Saldo Final Ago/26 = <strong>R$ 4.903,85</strong>. B recomendado (zera dívida). D é simulador interativo.</p>
       <div class="scn-grid">
-        <div class="scn-card scn-A"><h4>A · Conservador</h4><div class="amt">R$ 3.957</div><div class="meta">Dez/26 · dívida rola</div></div>
-        <div class="scn-card scn-B"><h4>B · Moderado ⭐</h4><div class="amt">R$ 2.560</div><div class="meta">Dez/26 · ZERA dívida</div></div>
-        <div class="scn-card scn-C"><h4>C · Agressivo</h4><div class="amt">R$ 7.360</div><div class="meta">Dez/26 · ZERA + reserva</div></div>
+        <div class="scn-card scn-A"><h4>A · Conservador</h4><div class="amt">R$ 4.761</div><div class="meta">Dez/26 · só quita Itaú</div></div>
+        <div class="scn-card scn-B"><h4>B · Moderado ⭐</h4><div class="amt">R$ 3.339</div><div class="meta">Dez/26 · ZERA 3 bancos</div></div>
+        <div class="scn-card scn-C"><h4>C · Agressivo</h4><div class="amt">R$ 8.139</div><div class="meta">Dez/26 · ZERA + reserva</div></div>
         <div class="scn-card scn-D"><h4>D · Simulador 🎛️</h4><div class="amt" id="scn-d-amount">R$ 10.587</div><div class="meta">Dez/26 · sem amortizar</div></div>
       </div>
+      <p class="lead" style="margin-top:-6px;margin-bottom:14px;font-size:12px">🏦 Escopo de amortização: apenas <strong>bancos</strong> (Itaú R$ 1.226,73 · Nubank R$ 2.021,11 · Bradesco R$ 4.000 · Santander R$ 749,58 já pago em 18/09) = <strong>R$ 7.247,84 a quitar</strong>. Cartões, Pós Amor e empréstimo Zé Luis fora deste plano.</p>
       <div class="chart-wrap" id="wrap-cen">
         <svg id="svg-cen" viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg">
           <g stroke="rgba(148,163,184,.12)" stroke-dasharray="3,4">
@@ -204,15 +207,15 @@
           <line x1="70" x2="880" y1="145" y2="145" stroke="#f59e0b" stroke-dasharray="4,4" opacity=".4"/>
           <text x="880" y="141" fill="#f59e0b" font-size="10" text-anchor="end">Colchão R$ 3k</text>
           <polyline points="110,125 250,121 400,149 550,158 700,149" fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="5,4"/>
-          <polyline id="poly-a" points="110,125 250,121 400,151 550,152 700,133" fill="none" stroke="#3b82f6" stroke-width="2.5"/>
-          <polyline id="poly-b" points="110,125 250,135 400,178 550,193 700,151" fill="none" stroke="#22c55e" stroke-width="2.5"/>
-          <polyline id="poly-c" points="110,125 250,124 400,143 550,143 700,101" fill="none" stroke="#f59e0b" stroke-width="2.5"/>
-          <polyline id="poly-d" points="110,125 250,101 400,109 550,97 700,66" fill="none" stroke="#a855f7" stroke-width="2.5"/>
+          <polyline id="poly-a" points="110,125 250,123 400,144 550,144 700,127" fill="none" stroke="#3b82f6" stroke-width="2.5"/>
+          <polyline id="poly-b" points="110,125 250,127 400,159 550,172 700,142" fill="none" stroke="#22c55e" stroke-width="2.5"/>
+          <polyline id="poly-c" points="110,125 250,114 400,134 550,134 700,92" fill="none" stroke="#f59e0b" stroke-width="2.5"/>
+          <polyline id="poly-d" points="110,125 250,100 400,108 550,96 700,66" fill="none" stroke="#a855f7" stroke-width="2.5"/>
           <g fill="#64748b"><circle cx="110" cy="125" r="3"/><circle cx="250" cy="121" r="3"/><circle cx="400" cy="149" r="3"/><circle cx="550" cy="158" r="3"/><circle cx="700" cy="149" r="3"/></g>
-          <g fill="#3b82f6"><circle cx="110" cy="125" r="3.5"/><circle cx="250" cy="121" r="3.5"/><circle cx="400" cy="151" r="3.5"/><circle cx="550" cy="152" r="3.5"/><circle cx="700" cy="133" r="3.5"/></g>
-          <g fill="#22c55e"><circle cx="110" cy="125" r="3.5"/><circle cx="250" cy="135" r="3.5"/><circle cx="400" cy="178" r="3.5"/><circle cx="550" cy="193" r="3.5"/><circle cx="700" cy="151" r="3.5"/></g>
-          <g fill="#f59e0b"><circle cx="110" cy="125" r="3.5"/><circle cx="250" cy="124" r="3.5"/><circle cx="400" cy="143" r="3.5"/><circle cx="550" cy="143" r="3.5"/><circle cx="700" cy="101" r="3.5"/></g>
-          <g fill="#a855f7"><circle class="circle-d" data-i="0" cx="110" cy="125" r="3.5"/><circle class="circle-d" data-i="1" cx="250" cy="101" r="3.5"/><circle class="circle-d" data-i="2" cx="400" cy="109" r="3.5"/><circle class="circle-d" data-i="3" cx="550" cy="97" r="3.5"/><circle class="circle-d" data-i="4" cx="700" cy="66" r="3.5"/></g>
+          <g fill="#3b82f6"><circle cx="110" cy="125" r="3.5"/><circle cx="250" cy="123" r="3.5"/><circle cx="400" cy="144" r="3.5"/><circle cx="550" cy="144" r="3.5"/><circle cx="700" cy="127" r="3.5"/></g>
+          <g fill="#22c55e"><circle cx="110" cy="125" r="3.5"/><circle cx="250" cy="127" r="3.5"/><circle cx="400" cy="159" r="3.5"/><circle cx="550" cy="172" r="3.5"/><circle cx="700" cy="142" r="3.5"/></g>
+          <g fill="#f59e0b"><circle cx="110" cy="125" r="3.5"/><circle cx="250" cy="114" r="3.5"/><circle cx="400" cy="134" r="3.5"/><circle cx="550" cy="134" r="3.5"/><circle cx="700" cy="92" r="3.5"/></g>
+          <g fill="#a855f7"><circle class="circle-d" data-i="0" cx="110" cy="125" r="3.5"/><circle class="circle-d" data-i="1" cx="250" cy="100" r="3.5"/><circle class="circle-d" data-i="2" cx="400" cy="108" r="3.5"/><circle class="circle-d" data-i="3" cx="550" cy="96" r="3.5"/><circle class="circle-d" data-i="4" cx="700" cy="66" r="3.5"/></g>
           <g fill="#94a3b8" font-size="11" text-anchor="middle"><text x="110" y="282">Ago (âncora)</text><text x="250" y="282">Set</text><text x="400" y="282">Out</text><text x="550" y="282">Nov</text><text x="700" y="282">Dez</text></g>
           <line id="cross-cen" x1="0" y1="20" x2="0" y2="270" stroke="#e2e8f0" stroke-dasharray="3,3" opacity="0"/>
           <rect id="overlay-cen" x="70" y="20" width="810" height="250" fill="#000" opacity="0" pointer-events="all"/>
@@ -223,50 +226,53 @@
     </div>
 
     <div class="section">
-      <h2>📋 Cenário A · Conservador · Freela R$ 800/mês · Amort Santander+Itaú</h2>
+      <h2>📋 Cenário A · Conservador · Freela R$ 800/mês · Amort Itaú apenas</h2>
+      <p class="lead">Amortização bancária total: <strong>R$ 1.226,73</strong> (só Itaú no Set). Nubank e Bradesco rolam para 2027.</p>
       <table class="tbl-num">
         <thead><tr><th>Mês</th><th>Saldo Inicial</th><th>Entradas (+freela)</th><th>Pagamentos (-corte +amort)</th><th>Resultado</th><th>Saldo Final</th></tr></thead>
         <tbody>
-          <tr><td>Set/26</td><td>R$ 4.903,85</td><td>R$ 20.000,40</td><td>R$ 19.387,41</td><td class="pos">+R$ 612,99</td><td>R$ 5.516,84</td></tr>
-          <tr><td>Out/26</td><td>R$ 5.516,84</td><td>R$ 13.034,26</td><td>R$ 16.218,85</td><td class="neg">-R$ 3.184,59</td><td>R$ 2.332,25</td></tr>
-          <tr><td>Nov/26</td><td>R$ 2.332,25</td><td>R$ 13.034,26</td><td>R$ 13.075,44</td><td class="neg">-R$ 41,18</td><td>R$ 2.291,07</td></tr>
-          <tr><td>Dez/26</td><td>R$ 2.291,07</td><td>R$ 13.034,26</td><td>R$ 11.368,09</td><td class="pos">+R$ 1.666,17</td><td class="pos">R$ 3.957,24</td></tr>
+          <tr><td>Set/26</td><td>R$ 4.903,85</td><td>R$ 20.000,40<span class="brk">18.587,41 base +800 freela</span></td><td>R$ 19.814,14<span class="brk">18.587,41 base <span class="b-itau">+1.226,73 Itaú</span></span></td><td class="pos">+R$ 186,26</td><td>R$ 5.090,11</td></tr>
+          <tr><td>Out/26</td><td>R$ 5.090,11</td><td>R$ 13.034,26<span class="brk">12.234,26 base +800 freela</span></td><td>R$ 14.988,85<span class="brk">base · sem amort</span></td><td class="neg">-R$ 1.954,59</td><td>R$ 3.135,52</td></tr>
+          <tr><td>Nov/26</td><td>R$ 3.135,52</td><td>R$ 13.034,26<span class="brk">12.234,26 base +800 freela</span></td><td>R$ 13.075,44<span class="brk">base · sem amort</span></td><td class="neg">-R$ 41,18</td><td>R$ 3.094,34</td></tr>
+          <tr><td>Dez/26</td><td>R$ 3.094,34</td><td>R$ 13.034,26<span class="brk">12.234,26 base +800 freela</span></td><td>R$ 11.368,09<span class="brk">base · sem amort</span></td><td class="pos">+R$ 1.666,17</td><td class="pos">R$ 4.760,51</td></tr>
         </tbody>
       </table>
-      <p class="lead" style="margin-top:8px">Meta: reserva ~R$ 3k preservada · dívida residual ~R$ 6k rola para 2027.</p>
+      <p class="lead" style="margin-top:8px">Meta: reserva ~R$ 4,7k preservada · Nubank + Bradesco (~R$ 6.021) rolam para 2027.</p>
     </div>
 
     <div class="section" style="border:1px solid rgba(34,197,94,.35)">
-      <h2>📋 Cenário B · Moderado ⭐ RECOMENDADO · Freela R$ 1.500 · Amort R$ 8.027</h2>
+      <h2>📋 Cenário B · Moderado ⭐ RECOMENDADO · Freela R$ 1.500 · Amort R$ 7.247,84 (Itaú+Nubank+Bradesco)</h2>
+      <p class="lead">Amortização bancária: <strong>Itaú R$ 1.226,73 (Set) · Nubank R$ 2.021,11 (Out+Nov ~R$ 1.010,55/mês) · Bradesco R$ 4.000 (Set→Nov ~R$ 1.333,33/mês)</strong>. Total R$ 7.247,84.</p>
       <table class="tbl-num">
         <thead><tr><th>Mês</th><th>Saldo Inicial</th><th>Entradas (+freela)</th><th>Pagamentos (-corte +amort)</th><th>Resultado</th><th>Saldo Final</th></tr></thead>
         <tbody>
-          <tr><td>Set/26</td><td>R$ 4.903,85</td><td>R$ 20.700,40</td><td>R$ 21.650,74</td><td class="neg">-R$ 950,34</td><td>R$ 3.953,51</td></tr>
-          <tr><td>Out/26</td><td>R$ 3.953,51</td><td>R$ 13.734,26</td><td>R$ 16.820,68</td><td class="neg">-R$ 3.086,42</td><td>R$ 867,09</td></tr>
-          <tr><td>Nov/26</td><td>R$ 867,09</td><td>R$ 13.734,26</td><td>R$ 14.907,28</td><td class="neg">-R$ 1.173,02</td><td class="neg">-R$ 305,93</td></tr>
-          <tr><td>Dez/26</td><td>-R$ 305,93</td><td>R$ 13.734,26</td><td>R$ 10.868,09</td><td class="pos">+R$ 2.866,17</td><td class="pos">R$ 2.560,24</td></tr>
+          <tr><td>Set/26</td><td>R$ 4.903,85</td><td>R$ 20.700,40<span class="brk">18.587,41 base +1.500 freela</span></td><td>R$ 20.847,47<span class="brk">18.587,41 base <span class="b-corte">-300 corte</span> <span class="b-itau">+1.226,73 Itaú</span> <span class="b-brad">+1.333,33 Bradesco</span></span></td><td class="neg">-R$ 147,07</td><td>R$ 4.756,78</td></tr>
+          <tr><td>Out/26</td><td>R$ 4.756,78</td><td>R$ 13.734,26<span class="brk">12.234,26 base +1.500 freela</span></td><td>R$ 16.832,73<span class="brk">14.988,85 base <span class="b-corte">-500 corte</span> <span class="b-nub">+1.010,55 Nubank</span> <span class="b-brad">+1.333,33 Bradesco</span></span></td><td class="neg">-R$ 3.098,47</td><td>R$ 1.658,31</td></tr>
+          <tr><td>Nov/26</td><td>R$ 1.658,31</td><td>R$ 13.734,26<span class="brk">12.234,26 base +1.500 freela</span></td><td>R$ 14.919,34<span class="brk">13.075,44 base <span class="b-corte">-500 corte</span> <span class="b-nub">+1.010,56 Nubank</span> <span class="b-brad">+1.333,34 Bradesco</span></span></td><td class="neg">-R$ 1.185,08</td><td>R$ 473,23</td></tr>
+          <tr><td>Dez/26</td><td>R$ 473,23</td><td>R$ 13.734,26<span class="brk">12.234,26 base +1.500 freela</span></td><td>R$ 10.868,09<span class="brk">11.368,09 base <span class="b-corte">-500 corte</span> · sem amort</span></td><td class="pos">+R$ 2.866,17</td><td class="pos">R$ 3.339,40</td></tr>
         </tbody>
       </table>
-      <p class="lead" style="margin-top:8px">🎯 Meta: <strong>Dívida ZERADA até Dez/26</strong>. Atenção Nov (~-R$ 306, déficit pontual).</p>
+      <p class="lead" style="margin-top:8px">🎯 Meta: <strong>3 bancos ZERADOS até Nov/26</strong>. Nov fica magro (~R$ 473), Dez fecha em R$ 3.339 sem nenhuma dívida bancária.</p>
     </div>
 
     <div class="section">
-      <h2>📋 Cenário C · Agressivo · Freela R$ 2.500 · Amort R$ 8.027</h2>
+      <h2>📋 Cenário C · Agressivo · Freela R$ 2.500 · Amort R$ 7.247,84 (mesmos 3 bancos)</h2>
+      <p class="lead">Amortização bancária idêntica ao B (Itaú + Nubank + Bradesco = R$ 7.247,84). Diferença: freela mais alto e corte mais forte geram folga.</p>
       <table class="tbl-num">
         <thead><tr><th>Mês</th><th>Saldo Inicial</th><th>Entradas (+freela)</th><th>Pagamentos (-corte +amort)</th><th>Resultado</th><th>Saldo Final</th></tr></thead>
         <tbody>
-          <tr><td>Set/26</td><td>R$ 4.903,85</td><td>R$ 21.700,40</td><td>R$ 21.450,74</td><td class="pos">+R$ 249,66</td><td>R$ 5.153,51</td></tr>
-          <tr><td>Out/26</td><td>R$ 5.153,51</td><td>R$ 14.734,26</td><td>R$ 16.620,68</td><td class="neg">-R$ 1.886,42</td><td>R$ 3.267,09</td></tr>
-          <tr><td>Nov/26</td><td>R$ 3.267,09</td><td>R$ 14.734,26</td><td>R$ 14.707,28</td><td class="pos">+R$ 26,98</td><td>R$ 3.294,07</td></tr>
-          <tr><td>Dez/26</td><td>R$ 3.294,07</td><td>R$ 14.734,26</td><td>R$ 10.668,09</td><td class="pos">+R$ 4.066,17</td><td class="pos">R$ 7.360,24</td></tr>
+          <tr><td>Set/26</td><td>R$ 4.903,85</td><td>R$ 21.700,40<span class="brk">18.587,41 base +2.500 freela</span></td><td>R$ 20.647,47<span class="brk">18.587,41 base <span class="b-corte">-500 corte</span> <span class="b-itau">+1.226,73 Itaú</span> <span class="b-brad">+1.333,33 Bradesco</span></span></td><td class="pos">+R$ 1.052,93</td><td>R$ 5.956,78</td></tr>
+          <tr><td>Out/26</td><td>R$ 5.956,78</td><td>R$ 14.734,26<span class="brk">12.234,26 base +2.500 freela</span></td><td>R$ 16.632,73<span class="brk">14.988,85 base <span class="b-corte">-700 corte</span> <span class="b-nub">+1.010,55 Nubank</span> <span class="b-brad">+1.333,33 Bradesco</span></span></td><td class="neg">-R$ 1.898,47</td><td>R$ 4.058,31</td></tr>
+          <tr><td>Nov/26</td><td>R$ 4.058,31</td><td>R$ 14.734,26<span class="brk">12.234,26 base +2.500 freela</span></td><td>R$ 14.719,34<span class="brk">13.075,44 base <span class="b-corte">-700 corte</span> <span class="b-nub">+1.010,56 Nubank</span> <span class="b-brad">+1.333,34 Bradesco</span></span></td><td class="pos">+R$ 14,92</td><td>R$ 4.073,23</td></tr>
+          <tr><td>Dez/26</td><td>R$ 4.073,23</td><td>R$ 14.734,26<span class="brk">12.234,26 base +2.500 freela</span></td><td>R$ 10.668,09<span class="brk">11.368,09 base <span class="b-corte">-700 corte</span> · sem amort</span></td><td class="pos">+R$ 4.066,17</td><td class="pos">R$ 8.139,40</td></tr>
         </tbody>
       </table>
-      <p class="lead" style="margin-top:8px">🎯 Meta: dívida ZERADA + reserva rumo à meta R$ 10-12k.</p>
+      <p class="lead" style="margin-top:8px">🎯 Meta: 3 bancos ZERADOS + reserva rumo à meta R$ 10-12k (Dez fecha ~R$ 8,1k).</p>
     </div>
 
     <div class="section" style="border:1px solid rgba(168,85,247,.35)">
-      <h2>🎛️ Cenário D · Simulador Interativo · Sem amortização · Freela e Corte editáveis</h2>
-      <p class="lead">Edite os valores e o gráfico e o card atualizam em tempo real. Amort = 0.</p>
+      <h2>🎛️ Cenário D · Simulador Interativo · Sem amortização bancária · Freela e Corte editáveis</h2>
+      <p class="lead">Amortização de bancos = 0 (Itaú R$ 1.226 · Nubank R$ 2.021 · Bradesco R$ 4.000 rolam para 2027). Edite freela e corte por mês — gráfico e card atualizam em tempo real.</p>
       <div style="margin-bottom:10px">
         <button class="btn" onclick="resetD()">↻ Reset (F=1.500 · corte B)</button>
         <button class="btn zero" onclick="zeroD()">Zerar tudo</button>
@@ -287,8 +293,8 @@
 
     <div class="rec-box">
       <h3>🎯 Recomendação do Especialista</h3>
-      <p><strong>Cenário B (Moderado)</strong> é o caminho recomendado: dívida ZERADA até Dez/26 com esforço realista (freela R$ 1.500 + cortes R$ 300-500/mês). Aceite o pequeno déficit de Nov (~R$ 306) como custo da limpeza da dívida. Já em Jan/27 sua vida financeira reinicia com fluxo livre para atacar a reserva de R$ 10-15k.</p>
-      <p style="margin-top:8px"><strong>Cenário D (Simulador)</strong> é plano de contingência de liquidez: máximo saldo em Dez (~R$ 10k), mas dívida inteira rola para 2027 gerando juros. Use apenas se aparecer despesa imprevista grande no Q4.</p>
+      <p><strong>Cenário B (Moderado)</strong> é o caminho recomendado: <strong>3 bancos ZERADOS até Nov/26</strong> (Itaú + Nubank + Bradesco = R$ 7.247,84) com esforço realista (freela R$ 1.500 + cortes R$ 300-500/mês). Nov fica magro (~R$ 473) e Dez fecha em R$ 3.339 sem dívida bancária — Jan/27 abre com fluxo livre para atacar a reserva de R$ 10-15k.</p>
+      <p style="margin-top:8px"><strong>Cenário D (Simulador)</strong> é plano de contingência de liquidez: máximo saldo em Dez (~R$ 10,5k), mas os 3 bancos rolam para 2027 (juros acumulados). Use apenas se aparecer despesa imprevista grande no Q4.</p>
     </div>
   </div>
 
@@ -545,9 +551,9 @@ document.addEventListener('DOMContentLoaded', function(){
     labels:['Ago/26 (âncora)','Set/26','Out/26','Nov/26','Dez/26'],
     series:[
       {name:'Base', color:'#64748b', values:[4903.85,5516.83,2762.24,1921.07,2787.24]},
-      {name:'A · Conservador', color:'#3b82f6', values:[4903.85,5516.84,2332.25,2291.07,3957.24]},
-      {name:'B · Moderado ⭐', color:'#22c55e', values:[4903.85,3953.51,867.09,-305.93,2560.24]},
-      {name:'C · Agressivo', color:'#f59e0b', values:[4903.85,5153.51,3267.09,3294.07,7360.24]},
+      {name:'A · Conservador', color:'#3b82f6', values:[4903.85,5090.11,3135.52,3094.34,4760.51]},
+      {name:'B · Moderado ⭐', color:'#22c55e', values:[4903.85,4756.78,1658.31,473.23,3339.40]},
+      {name:'C · Agressivo', color:'#f59e0b', values:[4903.85,5956.78,4058.31,4073.23,8139.40]},
       {name:'D · Simulador', color:'#a855f7', values:function(){return currentDVals}}
     ]
   });
