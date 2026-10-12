@@ -58,6 +58,25 @@ input[type="number"]{background:rgba(168,85,247,0.1);border:1px solid rgba(168,8
 .scn-card .cname{font-size:11px;text-transform:uppercase;letter-spacing:.4px;opacity:.85}
 .scn-card .camount{font-size:22px;font-weight:800;margin-top:4px;font-variant-numeric:tabular-nums}
 .scn-card .cmeta{font-size:11px;margin-top:6px;opacity:.9;line-height:1.4}
+.limits-wrap{margin:12px 0 18px;padding:14px;border-radius:10px;background:rgba(15,23,42,0.5);border:1px solid rgba(148,163,184,0.15)}
+.limits-wrap h3{margin-bottom:4px}
+.limits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:10px 0}
+@media(max-width:720px){.limits-grid{grid-template-columns:1fr}}
+.lim-card{background:rgba(15,23,42,0.7);border:1px solid rgba(148,163,184,0.2);border-radius:10px;padding:14px}
+.lim-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.lim-name{font-weight:700;font-size:14px}
+.lim-pct{font-weight:800;font-size:22px;font-variant-numeric:tabular-nums}
+.lim-bar{height:8px;background:rgba(148,163,184,0.15);border-radius:4px;overflow:hidden;margin-bottom:10px}
+.lim-bar-fill{height:100%;transition:width .3s ease,background .3s ease}
+.lim-detail{display:flex;flex-direction:column;gap:3px;font-size:12.5px;color:#cbd5e1;font-variant-numeric:tabular-nums}
+.lim-detail .lim-sub{color:#94a3b8;font-size:11.5px;margin-top:3px;padding-top:5px;border-top:1px solid rgba(148,163,184,0.1)}
+.lim-missing{color:#94a3b8;font-size:12px;font-style:italic}
+.lim-alerts{background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);border-radius:8px;padding:10px 14px;margin:10px 0;color:#fde68a;font-size:13px}
+.lim-alerts ul{list-style:none;padding-left:0;margin-top:4px;line-height:1.6}
+.lim-details{margin-top:12px}
+.lim-details summary{cursor:pointer;color:#94a3b8;font-size:12.5px;padding:6px 0}
+.lim-details summary:hover{color:#cbd5e1}
+code{background:rgba(148,163,184,0.15);padding:1px 5px;border-radius:3px;font-size:12px;font-family:ui-monospace,SFMono-Regular,monospace}
 </style>
 </head>
 <body>
@@ -420,6 +439,40 @@ input[type="number"]{background:rgba(168,85,247,0.1);border:1px solid rgba(168,8
 
 <div id="cartoes" class="section">
 <h2>💳 Cartões — Jan/26 → Abr/27</h2>
+<div class="limits-wrap">
+<h3>Utilização de limites · mês atual (Out/26)</h3>
+<p class="legend">Limites lidos de <code>cartoes_limites.json</code>. Edite esse arquivo para alterar os valores. 🟢 &lt; 60% · 🟡 60-85% · 🔴 &gt; 85%</p>
+<div class="limits-grid"><div class="lim-card" style="border-color:#ef444455">
+<div class="lim-head"><span class="lim-name" style="color:#ef4444">Itaú</span><span class="lim-pct" style="color:#f59e0b">66.8%</span></div>
+<div class="lim-bar"><div class="lim-bar-fill" style="width:66.8%;background:#f59e0b"></div></div>
+<div class="lim-detail">
+<span>Usado (Out/26): <strong>R$ 2.407,18</strong></span>
+<span>Disponível: <strong style="color:#f59e0b">R$ 1.194,72</strong></span>
+<span class="lim-sub">Limite total: R$ 3.601,90</span>
+</div>
+</div><div class="lim-card" style="border-color:#a855f755">
+<div class="lim-head"><span class="lim-name" style="color:#a855f7">Nubank FEH</span><span class="lim-pct" style="color:#22c55e">27.2%</span></div>
+<div class="lim-bar"><div class="lim-bar-fill" style="width:27.2%;background:#22c55e"></div></div>
+<div class="lim-detail">
+<span>Usado (Out/26): <strong>R$ 1.425,64</strong></span>
+<span>Disponível: <strong style="color:#22c55e">R$ 3.824,36</strong></span>
+<span class="lim-sub">Limite total: R$ 5.250,00</span>
+</div>
+</div><div class="lim-card" style="border-color:#3b82f655">
+<div class="lim-head"><span class="lim-name" style="color:#3b82f6">Bradesco</span><span class="lim-pct" style="color:#22c55e">28.6%</span></div>
+<div class="lim-bar"><div class="lim-bar-fill" style="width:28.6%;background:#22c55e"></div></div>
+<div class="lim-detail">
+<span>Usado (Out/26): <strong>R$ 1.427,95</strong></span>
+<span>Disponível: <strong style="color:#22c55e">R$ 3.572,05</strong></span>
+<span class="lim-sub">Limite total: R$ 5.000,00</span>
+</div>
+</div></div>
+
+<details class="lim-details">
+<summary>% de utilização mês a mês (2026)</summary>
+<table class="tbl-num"><thead><tr><th>Cartão</th><th>Jan</th><th>Fev</th><th>Mar</th><th>Abr</th><th>Mai</th><th>Jun</th><th>Jul</th><th>Ago</th><th>Set</th><th>Out</th><th>Nov</th><th>Dez</th></tr></thead><tbody><tr><td><strong style="color:#ef4444">Itaú</strong></td><td style="color:#22c55e">50%</td><td style="color:#f59e0b">77%</td><td style="color:#22c55e">30%</td><td style="color:#22c55e">28%</td><td style="color:#22c55e">23%</td><td style="color:#22c55e">27%</td><td style="color:#22c55e">38%</td><td style="color:#22c55e">0%</td><td style="color:#22c55e">51%</td><td style="color:#f59e0b">67%</td><td style="color:#22c55e">57%</td><td style="color:#22c55e">5%</td></tr><tr><td><strong style="color:#a855f7">Nubank FEH</strong></td><td style="color:#f59e0b">63%</td><td style="color:#22c55e">31%</td><td style="color:#22c55e">30%</td><td style="color:#22c55e">34%</td><td style="color:#22c55e">45%</td><td style="color:#22c55e">41%</td><td style="color:#22c55e">28%</td><td style="color:#22c55e">37%</td><td style="color:#22c55e">46%</td><td style="color:#22c55e">27%</td><td style="color:#22c55e">17%</td><td style="color:#22c55e">12%</td></tr><tr><td><strong style="color:#3b82f6">Bradesco</strong></td><td style="color:#22c55e">42%</td><td style="color:#22c55e">43%</td><td style="color:#22c55e">0%</td><td style="color:#22c55e">18%</td><td style="color:#22c55e">41%</td><td style="color:#22c55e">42%</td><td style="color:#22c55e">43%</td><td style="color:#22c55e">23%</td><td style="color:#22c55e">46%</td><td style="color:#22c55e">29%</td><td style="color:#22c55e">29%</td><td style="color:#22c55e">15%</td></tr></tbody></table>
+</details>
+</div>
 <p class="legend">
 Fonte planilha <strong>Cartões 2026</strong>:
 Itaú (header col 2, blocos a cada 4 colunas: Jan=2, Fev=6, …) ·
