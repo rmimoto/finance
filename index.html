@@ -77,11 +77,11 @@
 <div class="container">
   <div class="header">
     <h1>Dashboard Fluxo de Caixa 2026</h1>
-    <div class="subtitle">Jan–Out 2026 realizado · Nov em curso · Dez provisionado · atualizado em 02/11/2026</div>
+    <div class="subtitle">Jan–Out 2026 realizado · Nov em curso · Dez provisionado · atualizado em 02/11/2026 (reatualizado)</div>
   </div>
-  <div class="banner banner-red">
-    <h2>🚨 Atenção: saldo projetado NEGATIVO para Nov e Dez/26</h2>
-    <p>Outubro fechou saudável (+R$ 2.594,54), mas Novembro já carrega forte compressão (pagamentos 192% das entradas) e empurra o saldo final de Dez/26 para -R$ 3.665,04 no cenário base. É <strong>obrigatório</strong> adotar o Cenário B ou C (freela + corte) para reverter o ciclo. Veja a aba "🎯 Cenários A/B/C/D".</p>
+  <div class="banner banner-yellow">
+    <h2>⚠️ Atenção: saldo projetado ainda negativo em Nov/Dez — mas recuperável</h2>
+    <p>Novos lançamentos reduziram pagamentos de Nov/26 em R$ 1.925. Agora Nov fecha -R$ 1.644 e Dez -R$ 1.739 (base). Cenário B zera o ano em +R$ 2.060, C em +R$ 4.460. Priorize Itaú para compras no cartão (<strong>R$ 2.628 disponível</strong>), evite Nubank/Bradesco (ambos ~95% comprometidos). Veja a aba 💳 Cartões para o melhor dia de cada compra.</p>
   </div>
   <div class="tabs" role="tablist">
     <button class="tab active" onclick="showTab(event,'visao')">📊 Visão Geral</button>
@@ -110,7 +110,7 @@
       </div>
       <div class="card">
         <div class="label">Saldo Projetado Dez/26</div>
-        <div class="value neg">-R$ 3.665,04</div>
+        <div class="value neg">-R$ 1.739,41</div>
         <div class="sub">Cenário base (sem correção)</div>
       </div>
     </div>
@@ -121,8 +121,8 @@
       <div class="chart-wrap" id="wrap-overview">
         <svg viewBox="0 0 720 250" id="svg-overview" style="width:100%;height:auto;display:block;">
           <line x1="70" y1="20.0" x2="700" y2="20.0" stroke="#1e293b" stroke-width="1" opacity="0.4" /><text x="62" y="24.0" text-anchor="end" fill="#94a3b8" font-size="10">25k</text><line x1="70" y1="53.333333333333314" x2="700" y2="53.333333333333314" stroke="#1e293b" stroke-width="1" opacity="0.4" /><text x="62" y="57.333333333333314" text-anchor="end" fill="#94a3b8" font-size="10">20k</text><line x1="70" y1="86.66666666666669" x2="700" y2="86.66666666666669" stroke="#1e293b" stroke-width="1" opacity="0.4" /><text x="62" y="90.66666666666669" text-anchor="end" fill="#94a3b8" font-size="10">15k</text><line x1="70" y1="120.0" x2="700" y2="120.0" stroke="#22c55e" stroke-width="1" opacity="0.4" stroke-dasharray="4,4"/><text x="62" y="124.0" text-anchor="end" fill="#94a3b8" font-size="10">10k</text><line x1="70" y1="153.33333333333334" x2="700" y2="153.33333333333334" stroke="#1e293b" stroke-width="1" opacity="0.4" /><text x="62" y="157.33333333333334" text-anchor="end" fill="#94a3b8" font-size="10">5k</text><line x1="70" y1="186.66666666666669" x2="700" y2="186.66666666666669" stroke="#64748b" stroke-width="1" opacity="0.4" stroke-dasharray="4,4"/><text x="62" y="190.66666666666669" text-anchor="end" fill="#94a3b8" font-size="10">0k</text><line x1="70" y1="220.0" x2="700" y2="220.0" stroke="#ef4444" stroke-width="1" opacity="0.4" stroke-dasharray="4,4"/><text x="62" y="224.0" text-anchor="end" fill="#94a3b8" font-size="10">-5k</text>
-          <polyline fill="none" stroke="#3b82f6" stroke-width="2.5" points="70.0,133.9 160.0,141.4 250.0,181.4 340.0,154.0 430.0,162.8 520.0,145.5 610.0,210.5 700.0,211.1"/>
-          <circle class="dot-overview" data-i="0" cx="70.0" cy="133.9" r="4" fill="#22c55e"/><text x="70.0" y="235" text-anchor="middle" fill="#94a3b8" font-size="10">Mai/26</text><circle class="dot-overview" data-i="1" cx="160.0" cy="141.4" r="4" fill="#22c55e"/><text x="160.0" y="235" text-anchor="middle" fill="#94a3b8" font-size="10">Jun/26</text><circle class="dot-overview" data-i="2" cx="250.0" cy="181.4" r="4" fill="#22c55e"/><text x="250.0" y="235" text-anchor="middle" fill="#94a3b8" font-size="10">Jul/26</text><circle class="dot-overview" data-i="3" cx="340.0" cy="154.0" r="4" fill="#22c55e"/><text x="340.0" y="235" text-anchor="middle" fill="#94a3b8" font-size="10">Ago/26</text><circle class="dot-overview" data-i="4" cx="430.0" cy="162.8" r="4" fill="#22c55e"/><text x="430.0" y="235" text-anchor="middle" fill="#94a3b8" font-size="10">Set/26</text><circle class="dot-overview" data-i="5" cx="520.0" cy="145.5" r="4" fill="#22c55e"/><text x="520.0" y="235" text-anchor="middle" fill="#94a3b8" font-size="10">Out/26</text><circle class="dot-overview" data-i="6" cx="610.0" cy="210.5" r="4" fill="#ef4444"/><text x="610.0" y="235" text-anchor="middle" fill="#94a3b8" font-size="10">Nov/26</text><circle class="dot-overview" data-i="7" cx="700.0" cy="211.1" r="4" fill="#ef4444"/><text x="700.0" y="235" text-anchor="middle" fill="#94a3b8" font-size="10">Dez/26</text>
+          <polyline fill="none" stroke="#3b82f6" stroke-width="2.5" points="70.0,133.9 160.0,141.4 250.0,181.4 340.0,154.0 430.0,162.8 520.0,145.5 610.0,197.6 700.0,198.3"/>
+          <circle class="dot-overview" data-i="0" cx="70.0" cy="133.9" r="4" fill="#22c55e"/><text x="70.0" y="235" text-anchor="middle" fill="#94a3b8" font-size="10">Mai/26</text><circle class="dot-overview" data-i="1" cx="160.0" cy="141.4" r="4" fill="#22c55e"/><text x="160.0" y="235" text-anchor="middle" fill="#94a3b8" font-size="10">Jun/26</text><circle class="dot-overview" data-i="2" cx="250.0" cy="181.4" r="4" fill="#22c55e"/><text x="250.0" y="235" text-anchor="middle" fill="#94a3b8" font-size="10">Jul/26</text><circle class="dot-overview" data-i="3" cx="340.0" cy="154.0" r="4" fill="#22c55e"/><text x="340.0" y="235" text-anchor="middle" fill="#94a3b8" font-size="10">Ago/26</text><circle class="dot-overview" data-i="4" cx="430.0" cy="162.8" r="4" fill="#22c55e"/><text x="430.0" y="235" text-anchor="middle" fill="#94a3b8" font-size="10">Set/26</text><circle class="dot-overview" data-i="5" cx="520.0" cy="145.5" r="4" fill="#22c55e"/><text x="520.0" y="235" text-anchor="middle" fill="#94a3b8" font-size="10">Out/26</text><circle class="dot-overview" data-i="6" cx="610.0" cy="197.6" r="4" fill="#ef4444"/><text x="610.0" y="235" text-anchor="middle" fill="#94a3b8" font-size="10">Nov/26</text><circle class="dot-overview" data-i="7" cx="700.0" cy="198.3" r="4" fill="#ef4444"/><text x="700.0" y="235" text-anchor="middle" fill="#94a3b8" font-size="10">Dez/26</text>
           <line id="cross-overview" x1="0" y1="0" x2="0" y2="220" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3,3" opacity="0" pointer-events="none"/>
           <rect id="overlay-overview" x="70" y="0" width="630" height="220" fill="#000" opacity="0" pointer-events="all"/>
         </svg>
@@ -235,17 +235,17 @@
         <td>Nov/26 <span class="chip chip-active">● Em curso</span></td>
         <td>R$ 6.174,59</td>
         <td class="pos">R$ 10.603,26</td>
-        <td class="neg">R$ 20.347,99</td>
-        <td class="neg">-R$ 9.744,73</td>
-        <td class="neg">-R$ 3.570,13</td>
+        <td class="neg">R$ 18.422,35</td>
+        <td class="neg">-R$ 7.819,09</td>
+        <td class="neg">-R$ 1.644,50</td>
       </tr>
       <tr>
         <td>Dez/26 <span class="chip chip-forecast">● Provisionado</span></td>
-        <td>-R$ 3.570,13</td>
+        <td>-R$ 1.644,50</td>
         <td class="pos">R$ 10.517,26</td>
         <td class="neg">R$ 10.612,17</td>
         <td class="neg">-R$ 94,91</td>
-        <td class="neg">-R$ 3.665,04</td>
+        <td class="neg">-R$ 1.739,41</td>
       </tr>
         </tbody>
         <tfoot>
@@ -253,8 +253,8 @@
             <td>TOTAL 12 meses</td>
             <td>—</td>
             <td class="pos">R$ 207.077,56</td>
-            <td class="neg">R$ 211.804,55</td>
-            <td class="neg">-R$ 4.726,99</td>
+            <td class="neg">R$ 209.878,91</td>
+            <td class="neg">-R$ 2.801,35</td>
             <td>—</td>
           </tr>
         </tfoot>
@@ -297,9 +297,10 @@
   <div id="insights" class="tab-content">
     <div class="section">
       <h3>Alertas automáticos</h3>
-      <div class="section-sub">Snapshot do radar financeiro em 02/11/2026</div>
+      <div class="section-sub">Snapshot do radar financeiro em 02/11/2026 (reatualizado)</div>
             <ul class="alert-list">
-        <li>🚨 <strong>Saldo projetado Nov e Dez/26 NEGATIVO</strong> — base atual rola o ano para -R$ 3.665,04 em Dez. Precisa de freela mínimo de R$ 1.500/mês + corte R$ 300-500 para zerar.</li>
+        <li>📉 <strong>Lançamentos novos reduziram pagamentos Nov/26 de R$ 20.348 para R$ 18.422</strong> — Nov agora fecha em -R$ 1.644 (antes -R$ 3.570) e Dez em -R$ 1.739 (antes -R$ 3.665). Ainda negativo, mas muito mais recuperável.</li>
+        <li>🚨 <strong>Saldo projetado Nov e Dez/26 ainda NEGATIVO</strong> — base atual rola o ano para -R$ 3.665,04 em Dez. Precisa de freela mínimo de R$ 1.500/mês + corte R$ 300-500 para zerar.</li>
         <li>🚨 <strong>Pagamentos de Novembro são 192% das entradas</strong> — compressão aguda. Nov carrega concentração de fatura Bradesco (R$ 2.796) + Itaú (R$ 2.622) + revisão/manutenção adicional.</li>
         <li>⚠️ <strong>Resultado Jul/26 foi -R$ 6.005</strong> — o pior mês do ano fechado; serve de referência: se repetir, saldo cai a zero rapidamente.</li>
         <li>⚠️ <strong>Dívidas abertas R$ 50.998</strong> — sendo R$ 8.100 em bancos (Nubank + Bradesco) e R$ 42.898 com pessoa física (Iolanda + JL). Priorize bancos primeiro.</li>
@@ -334,22 +335,22 @@
     <div class="cards-grid four">
       <div class="card scn-a">
         <div class="label">A · Conservador</div>
-        <div class="value neg" style="color:#3b82f6;">-R$ 2.065,05</div>
+        <div class="value neg" style="color:#3b82f6;">-R$ 139,41</div>
         <div class="sub">freela R$ 800 · corte 0 · amort 0</div>
       </div>
       <div class="card scn-b">
         <div class="label">B · Moderado · RECOMENDADO</div>
-        <div class="value pos" style="color:#22c55e;">R$ 134,95</div>
+        <div class="value pos" style="color:#22c55e;">R$ 2.060,59</div>
         <div class="sub">freela R$ 1.500 · corte 300/500 · amort 0</div>
       </div>
       <div class="card scn-c">
         <div class="label">C · Agressivo</div>
-        <div class="value pos" style="color:#f59e0b;">R$ 2.534,95</div>
+        <div class="value pos" style="color:#f59e0b;">R$ 4.460,59</div>
         <div class="sub">freela R$ 2.500 · corte 500/700 · amort 0</div>
       </div>
       <div class="card scn-d" id="scn-d-card">
         <div class="label">D · Simulador Interativo</div>
-        <div class="value" id="scn-d-amount" style="color:#a855f7;">R$ 134,95</div>
+        <div class="value" id="scn-d-amount" style="color:#a855f7;">R$ 2.060,59</div>
         <div class="sub">Edite freela e corte abaixo</div>
       </div>
     </div>
@@ -360,16 +361,16 @@
       <div class="chart-wrap" id="wrap-scn">
         <svg viewBox="0 0 720 290" id="svg-scn" style="width:100%;height:auto;display:block;">
           <line x1="70" y1="20.0" x2="700" y2="20.0" stroke="#1e293b" stroke-width="1" opacity="0.4" /><text x="62" y="24.0" text-anchor="end" fill="#94a3b8" font-size="10">15k</text><line x1="70" y1="72.17391304347825" x2="700" y2="72.17391304347825" stroke="#22c55e" stroke-width="1" opacity="0.4" stroke-dasharray="4,4"/><text x="62" y="76.17391304347825" text-anchor="end" fill="#94a3b8" font-size="10">10k</text><line x1="70" y1="124.34782608695653" x2="700" y2="124.34782608695653" stroke="#1e293b" stroke-width="1" opacity="0.4" /><text x="62" y="128.34782608695653" text-anchor="end" fill="#94a3b8" font-size="10">5k</text><line x1="70" y1="145.2173913043478" x2="700" y2="145.2173913043478" stroke="#f59e0b" stroke-width="1" opacity="0.4" stroke-dasharray="4,4"/><text x="62" y="149.2173913043478" text-anchor="end" fill="#94a3b8" font-size="10">3k</text><line x1="70" y1="176.52173913043478" x2="700" y2="176.52173913043478" stroke="#64748b" stroke-width="1" opacity="0.4" stroke-dasharray="4,4"/><text x="62" y="180.52173913043478" text-anchor="end" fill="#94a3b8" font-size="10">0k</text><line x1="70" y1="228.69565217391303" x2="700" y2="228.69565217391303" stroke="#ef4444" stroke-width="1" opacity="0.4" stroke-dasharray="4,4"/><text x="62" y="232.69565217391303" text-anchor="end" fill="#94a3b8" font-size="10">-5k</text>
-          <polyline fill="none" stroke="#64748b" stroke-width="2.5" points="70.0,112.1 385.0,213.8 700.0,214.8" stroke-dasharray="6,3"/>
-          <polyline fill="none" stroke="#3b82f6" stroke-width="2.5" points="70.0,112.1 385.0,205.4 700.0,198.1" />
-          <polyline fill="none" stroke="#22c55e" stroke-width="2.5" points="70.0,112.1 385.0,195.0 700.0,175.1" />
-          <polyline fill="none" stroke="#f59e0b" stroke-width="2.5" points="70.0,112.1 385.0,182.5 700.0,150.1" />
-          <polyline id="poly-d" fill="none" stroke="#a855f7" stroke-width="2.5" points="70.0,112.1 385.0,195.0 700.0,175.1"/>
-          <circle class="" cx="70.0" cy="112.1" r="4" fill="#64748b"/><circle class="" cx="385.0" cy="213.8" r="4" fill="#64748b"/><circle class="" cx="700.0" cy="214.8" r="4" fill="#64748b"/>
-          <circle class="" cx="70.0" cy="112.1" r="4" fill="#3b82f6"/><circle class="" cx="385.0" cy="205.4" r="4" fill="#3b82f6"/><circle class="" cx="700.0" cy="198.1" r="4" fill="#3b82f6"/>
-          <circle class="" cx="70.0" cy="112.1" r="4" fill="#22c55e"/><circle class="" cx="385.0" cy="195.0" r="4" fill="#22c55e"/><circle class="" cx="700.0" cy="175.1" r="4" fill="#22c55e"/>
-          <circle class="" cx="70.0" cy="112.1" r="4" fill="#f59e0b"/><circle class="" cx="385.0" cy="182.5" r="4" fill="#f59e0b"/><circle class="" cx="700.0" cy="150.1" r="4" fill="#f59e0b"/>
-          <circle class="circle-d" cx="70.0" cy="112.1" r="4" fill="#a855f7"/><circle class="circle-d" cx="385.0" cy="195.0" r="4" fill="#a855f7"/><circle class="circle-d" cx="700.0" cy="175.1" r="4" fill="#a855f7"/>
+          <polyline fill="none" stroke="#64748b" stroke-width="2.5" points="70.0,112.1 385.0,193.7 700.0,194.7" stroke-dasharray="6,3"/>
+          <polyline fill="none" stroke="#3b82f6" stroke-width="2.5" points="70.0,112.1 385.0,185.3 700.0,178.0" />
+          <polyline fill="none" stroke="#22c55e" stroke-width="2.5" points="70.0,112.1 385.0,174.9 700.0,155.0" />
+          <polyline fill="none" stroke="#f59e0b" stroke-width="2.5" points="70.0,112.1 385.0,162.4 700.0,130.0" />
+          <polyline id="poly-d" fill="none" stroke="#a855f7" stroke-width="2.5" points="70.0,112.1 385.0,174.9 700.0,155.0"/>
+          <circle class="" cx="70.0" cy="112.1" r="4" fill="#64748b"/><circle class="" cx="385.0" cy="193.7" r="4" fill="#64748b"/><circle class="" cx="700.0" cy="194.7" r="4" fill="#64748b"/>
+          <circle class="" cx="70.0" cy="112.1" r="4" fill="#3b82f6"/><circle class="" cx="385.0" cy="185.3" r="4" fill="#3b82f6"/><circle class="" cx="700.0" cy="178.0" r="4" fill="#3b82f6"/>
+          <circle class="" cx="70.0" cy="112.1" r="4" fill="#22c55e"/><circle class="" cx="385.0" cy="174.9" r="4" fill="#22c55e"/><circle class="" cx="700.0" cy="155.0" r="4" fill="#22c55e"/>
+          <circle class="" cx="70.0" cy="112.1" r="4" fill="#f59e0b"/><circle class="" cx="385.0" cy="162.4" r="4" fill="#f59e0b"/><circle class="" cx="700.0" cy="130.0" r="4" fill="#f59e0b"/>
+          <circle class="circle-d" cx="70.0" cy="112.1" r="4" fill="#a855f7"/><circle class="circle-d" cx="385.0" cy="174.9" r="4" fill="#a855f7"/><circle class="circle-d" cx="700.0" cy="155.0" r="4" fill="#a855f7"/>
           <text x="70.0" y="275" text-anchor="middle" fill="#94a3b8" font-size="10">Out/26</text><text x="385.0" y="275" text-anchor="middle" fill="#94a3b8" font-size="10">Nov/26</text><text x="700.0" y="275" text-anchor="middle" fill="#94a3b8" font-size="10">Dez/26</text>
           <line id="cross-scn" x1="0" y1="0" x2="0" y2="260" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3,3" opacity="0" pointer-events="none"/>
           <rect id="overlay-scn" x="70" y="0" width="630" height="260" fill="#000" opacity="0" pointer-events="all"/>
@@ -397,17 +398,17 @@
           <td>Nov/26</td>
           <td class="pos">R$ 6.174,59</td>
           <td class="pos">R$ 11.403,26</td>
-          <td class="neg">R$ 20.347,99</td>
-          <td class="neg">-R$ 8.944,73</td>
-          <td class="neg">-R$ 2.770,14</td>
+          <td class="neg">R$ 18.422,35</td>
+          <td class="neg">-R$ 7.019,09</td>
+          <td class="neg">-R$ 844,50</td>
         </tr>
         <tr>
           <td>Dez/26</td>
-          <td class="neg">-R$ 2.770,14</td>
+          <td class="neg">-R$ 844,50</td>
           <td class="pos">R$ 11.317,26</td>
           <td class="neg">R$ 10.612,17</td>
           <td class="pos">+R$ 705,09</td>
-          <td class="neg">-R$ 2.065,05</td>
+          <td class="neg">-R$ 139,41</td>
         </tr>
         </tbody>
         <tfoot>
@@ -415,9 +416,9 @@
             <td>Total período</td>
             <td>—</td>
             <td class="pos">R$ 22.720,52</td>
-            <td class="neg">R$ 30.960,16</td>
-            <td class="neg">-R$ 8.239,64</td>
-            <td class="neg">-R$ 2.065,05</td>
+            <td class="neg">R$ 29.034,52</td>
+            <td class="neg">-R$ 6.314,00</td>
+            <td class="neg">-R$ 139,41</td>
           </tr>
         </tfoot>
       </table>
@@ -435,17 +436,17 @@
           <td>Nov/26</td>
           <td class="pos">R$ 6.174,59</td>
           <td class="pos">R$ 12.103,26</td>
-          <td class="neg">R$ 20.047,99</td>
-          <td class="neg">-R$ 7.944,73</td>
-          <td class="neg">-R$ 1.770,14</td>
+          <td class="neg">R$ 18.122,35</td>
+          <td class="neg">-R$ 6.019,09</td>
+          <td class="pos">R$ 155,50</td>
         </tr>
         <tr>
           <td>Dez/26</td>
-          <td class="neg">-R$ 1.770,14</td>
+          <td class="pos">R$ 155,50</td>
           <td class="pos">R$ 12.017,26</td>
           <td class="neg">R$ 10.112,17</td>
           <td class="pos">+R$ 1.905,09</td>
-          <td class="pos">R$ 134,95</td>
+          <td class="pos">R$ 2.060,59</td>
         </tr>
         </tbody>
         <tfoot>
@@ -453,9 +454,9 @@
             <td>Total período</td>
             <td>—</td>
             <td class="pos">R$ 24.120,52</td>
-            <td class="neg">R$ 30.160,16</td>
-            <td class="neg">-R$ 6.039,64</td>
-            <td class="pos">R$ 134,95</td>
+            <td class="neg">R$ 28.234,52</td>
+            <td class="neg">-R$ 4.114,00</td>
+            <td class="pos">R$ 2.060,59</td>
           </tr>
         </tfoot>
       </table>
@@ -473,17 +474,17 @@
           <td>Nov/26</td>
           <td class="pos">R$ 6.174,59</td>
           <td class="pos">R$ 13.103,26</td>
-          <td class="neg">R$ 19.847,99</td>
-          <td class="neg">-R$ 6.744,73</td>
-          <td class="neg">-R$ 570,14</td>
+          <td class="neg">R$ 17.922,35</td>
+          <td class="neg">-R$ 4.819,09</td>
+          <td class="pos">R$ 1.355,50</td>
         </tr>
         <tr>
           <td>Dez/26</td>
-          <td class="neg">-R$ 570,14</td>
+          <td class="pos">R$ 1.355,50</td>
           <td class="pos">R$ 13.017,26</td>
           <td class="neg">R$ 9.912,17</td>
           <td class="pos">+R$ 3.105,09</td>
-          <td class="pos">R$ 2.534,95</td>
+          <td class="pos">R$ 4.460,59</td>
         </tr>
         </tbody>
         <tfoot>
@@ -491,9 +492,9 @@
             <td>Total período</td>
             <td>—</td>
             <td class="pos">R$ 26.120,52</td>
-            <td class="neg">R$ 29.760,16</td>
-            <td class="neg">-R$ 3.639,64</td>
-            <td class="pos">R$ 2.534,95</td>
+            <td class="neg">R$ 27.834,52</td>
+            <td class="neg">-R$ 1.714,00</td>
+            <td class="pos">R$ 4.460,59</td>
           </tr>
         </tfoot>
       </table>
@@ -512,16 +513,16 @@
           <td class="d-si pos">R$ 6.174,59</td>
           <td><input type="number" class="d-freela" data-i="0" value="1500" step="100"/></td>
           <td><input type="number" class="d-corte" data-i="0" value="300" step="50"/></td>
-          <td class="d-res neg">-R$ 7.944,73</td>
-          <td class="d-sf neg">-R$ 1.770,14</td>
+          <td class="d-res neg">-R$ 6.019,09</td>
+          <td class="d-sf pos">R$ 155,50</td>
         </tr>
         <tr>
           <td>Dez/26</td>
-          <td class="d-si neg">-R$ 1.770,14</td>
+          <td class="d-si pos">R$ 155,50</td>
           <td><input type="number" class="d-freela" data-i="1" value="1500" step="100"/></td>
           <td><input type="number" class="d-corte" data-i="1" value="500" step="50"/></td>
           <td class="d-res pos">+R$ 1.905,09</td>
-          <td class="d-sf pos">R$ 134,95</td>
+          <td class="d-sf pos">R$ 2.060,59</td>
         </tr>
         </tbody>
         <tfoot>
@@ -548,16 +549,16 @@
   </div>
   <div id="cartoes" class="tab-content">
     <div class="section">
-      <h3>Limites e disponibilidade</h3>
-      <div class="section-sub">Fonte limites: cartoes_limites.json · Pendente = soma das parcelas futuras (Nov/26 → Abr/27) · Itaú teve fatura Nov/26 QUITADA (R$ 2.621,68) → não compõe o pendente</div>
+      <h3>💳 Limites e disponibilidade dos cartões</h3>
+      <div class="section-sub">Fonte limites: cartoes_limites.json · Pendente = soma das parcelas futuras (Nov/26 → Abr/27) · Itaú teve fatura Nov/26 QUITADA → só restam Dez+Jan+Fev+Mar/27 como pendentes</div>
       <div class="cards-grid">
         <div class="card" style="border-color:rgba(239,68,68,0.5);">
           <div class="label" style="color:#fecaca;">💳 ITAÚ · Limite total</div>
           <div class="value" style="color:#ef4444;">R$ 3.601,90</div>
           <div class="sub">Pendente futuro: R$ 973,42 (27.0% do limite)</div>
           <div style="margin-top:12px; padding-top:12px; border-top:1px solid rgba(239,68,68,0.25);">
-            <div class="label" style="color:#bbf7d0;">✅ Disponível para gastar</div>
-            <div class="value pos" style="font-size:22px;">R$ 2.628,48</div>
+            <div class="label" style="color:#bbf7d0;">✅ DISPONÍVEL PARA GASTAR</div>
+            <div class="value pos" style="font-size:24px;">R$ 2.628,48</div>
             <div class="sub">Fatura Nov/26 PAGA · próxima fatura Dez/26: R$ 301,68</div>
           </div>
         </div>
@@ -566,8 +567,8 @@
           <div class="value" style="color:#a855f7;">R$ 5.250,00</div>
           <div class="sub">Pendente futuro: R$ 5.009,16 (95.4% do limite)</div>
           <div style="margin-top:12px; padding-top:12px; border-top:1px solid rgba(168,85,247,0.25);">
-            <div class="label" style="color:#fde68a;">⚠️ Disponível para gastar</div>
-            <div class="value warn" style="font-size:22px;">R$ 240,84</div>
+            <div class="label" style="color:#fde68a;">⚠️ DISPONÍVEL PARA GASTAR</div>
+            <div class="value warn" style="font-size:24px;">R$ 240,84</div>
             <div class="sub">Fatura em aberto Nov/26: R$ 1.796,95 · 95% comprometido</div>
           </div>
         </div>
@@ -576,15 +577,61 @@
           <div class="value" style="color:#3b82f6;">R$ 5.000,00</div>
           <div class="sub">Pendente futuro: R$ 4.743,25 (94.9% do limite)</div>
           <div style="margin-top:12px; padding-top:12px; border-top:1px solid rgba(59,130,246,0.25);">
-            <div class="label" style="color:#fde68a;">⚠️ Disponível para gastar</div>
-            <div class="value warn" style="font-size:22px;">R$ 256,75</div>
+            <div class="label" style="color:#fde68a;">⚠️ DISPONÍVEL PARA GASTAR</div>
+            <div class="value warn" style="font-size:24px;">R$ 256,75</div>
             <div class="sub">Fatura em aberto Nov/26: R$ 2.795,62 · 95% comprometido</div>
           </div>
         </div>
       </div>
-      <div class="expert-box" style="background:rgba(34,197,94,0.08); border-color:rgba(34,197,94,0.3);">
-        <h4>🎯 Interpretação dos limites</h4>
-        <p>Com a <strong>fatura do Itaú PAGA em Nov/26 (R$ 2.621,68)</strong>, o Itaú tem R$ 2.628,48 de folga real — maior disponibilidade entre os três cartões. Nubank e Bradesco estão no limite (95% comprometido), com apenas R$ ~250 de margem cada: evite novas compras parceladas nesses dois até Jan/27, quando as parcelas de 2026 caem drasticamente (Nubank cai para R$ 728 e Bradesco para R$ 421). Se precisar passar o cartão em algo urgente, use o <strong>Itaú</strong>.</p>
+    </div>
+
+    <div class="section">
+      <h3>🗓️ Melhor dia para passar cartão · maximizar prazo de pagamento</h3>
+      <div class="section-sub">Regra: comprar logo após o fechamento = a compra entra na fatura seguinte, ganhando até ~37 dias de "crédito grátis". Comprar antes do fechamento = a compra cai na fatura que vence em dias.</div>
+      <table class="tbl-num">
+        <thead>
+          <tr>
+            <th>Cartão</th>
+            <th style="text-align:center !important;">Fecha dia</th>
+            <th style="text-align:center !important;">Vence</th>
+            <th style="text-align:center !important;">Melhor janela</th>
+            <th style="text-align:center !important;">Próxima oportunidade</th>
+            <th style="text-align:right !important;">Disponível</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong style="color:#ef4444;">Itaú</strong></td>
+            <td style="text-align:center;">26</td>
+            <td style="text-align:center;">dia 1 do mês seguinte</td>
+            <td style="text-align:center;"><span class="chip chip-closed">dia 27 a 31</span></td>
+            <td style="text-align:center;"><strong>27/Nov/2026</strong> <span class="muted">(em 25 dias)</span></td>
+            <td class="pos">R$ 2.628,48</td>
+          </tr>
+          <tr>
+            <td><strong style="color:#a855f7;">Nubank</strong></td>
+            <td style="text-align:center;">23</td>
+            <td style="text-align:center;">dia 30</td>
+            <td style="text-align:center;"><span class="chip chip-closed">dia 24 a 29</span></td>
+            <td style="text-align:center;"><strong>24/Nov/2026</strong> <span class="muted">(em 22 dias)</span></td>
+            <td class="warn">R$ 240,84</td>
+          </tr>
+          <tr>
+            <td><strong style="color:#3b82f6;">Bradesco</strong></td>
+            <td style="text-align:center;">26</td>
+            <td style="text-align:center;">dia 10 do mês seguinte</td>
+            <td style="text-align:center;"><span class="chip chip-closed">dia 27 a 31</span></td>
+            <td style="text-align:center;"><strong>27/Nov/2026</strong> <span class="muted">(em 25 dias)</span></td>
+            <td class="warn">R$ 256,75</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="expert-box" style="background:rgba(34,197,94,0.08); border-color:rgba(34,197,94,0.3); margin-top:16px;">
+        <h4>🎯 Estratégia recomendada por data</h4>
+        <p style="margin-bottom:8px;"><strong>HOJE (02/Nov) até 23/Nov:</strong> evite passar cartão. Qualquer compra agora cai na fatura que fecha em dias (vence em poucas semanas) — vira pressão imediata num mês já comprimido.</p>
+        <p style="margin-bottom:8px;"><strong>24/Nov a 26/Nov:</strong> JANELA DO NUBANK. Compras aqui caem na fatura de Dez/26, com vencimento 30/Dez — máximo prazo possível. Mas Nubank está 95% comprometido (R$ 240,84 disponível), então limite-se ao essencial.</p>
+        <p style="margin-bottom:8px;"><strong>27/Nov a 30/Nov:</strong> JANELA DE ITAÚ + BRADESCO. Itaú é o favorito aqui — tem R$ 2.628,48 de folga real, e qualquer compra cai na fatura que fecha 26/Dez, vence 01/Jan/2027. <strong>Prefira sempre o Itaú para compras acima de R$ 500.</strong></p>
+        <p><strong>Compras recorrentes (assinaturas, débito automático):</strong> migre para o Itaú no próximo ciclo — ele estabiliza em R$ 185/mês a partir de Fev/27, enquanto Bradesco e Nubank ainda carregam parcelas pesadas até Abr/27.</p>
       </div>
     </div>
 
@@ -815,11 +862,11 @@ function clsVal(v) {
 var D_BASE = {
   saldoAnchor: 6174.59,
   entBase: [10603.26, 10517.26],
-  pagBase: [20347.99, 10612.17],
+  pagBase: [18422.35, 10612.17],
   meses: ["Nov/26", "Dez/26"],
   xs: [70.0, 385.0, 700.0]
 };
-var currentDVals = [6174.59, -1770.1400000000012, 134.9499999999989];
+var currentDVals = [6174.59, 155.50000000000182, 2060.590000000002];
 
 function yscaleScn(v) { return 260 - (v - (-8000)) / 23000 * 240; }
 
@@ -960,7 +1007,7 @@ document.addEventListener('DOMContentLoaded', function() {
       {
         name: 'Saldo Final',
         color: '#3b82f6',
-        values: [7913.62, 6797.11, 791.9, 4903.85, 3580.05, 6174.59, -3570.13, -3665.04],
+        values: [7913.62, 6797.11, 791.9, 4903.85, 3580.05, 6174.59, -1644.5, -1739.41],
         yScale: function(v) { return 240 - 20 - (v - (-5000)) / 30000 * (240 - 40); }
       }
     ]
@@ -973,10 +1020,10 @@ document.addEventListener('DOMContentLoaded', function() {
     xs: [70.0, 385.0, 700.0],
     labels: ["Out/26", "Nov/26", "Dez/26"],
     series: [
-      {name:'Base',   color:'#64748b', values: [6174.59, -3570.1400000000012, -3665.050000000001], yScale: yscaleScn},
-      {name:'A · Conservador', color:'#3b82f6', values: [6174.59, -2770.1400000000012, -2065.050000000001], yScale: yscaleScn},
-      {name:'B · Moderado',    color:'#22c55e', values: [6174.59, -1770.1400000000012, 134.9499999999989], yScale: yscaleScn},
-      {name:'C · Agressivo',   color:'#f59e0b', values: [6174.59, -570.1400000000012, 2534.949999999999], yScale: yscaleScn},
+      {name:'Base',   color:'#64748b', values: [6174.59, -1644.4999999999982, -1739.409999999998], yScale: yscaleScn},
+      {name:'A · Conservador', color:'#3b82f6', values: [6174.59, -844.4999999999982, -139.40999999999804], yScale: yscaleScn},
+      {name:'B · Moderado',    color:'#22c55e', values: [6174.59, 155.50000000000182, 2060.590000000002], yScale: yscaleScn},
+      {name:'C · Agressivo',   color:'#f59e0b', values: [6174.59, 1355.5000000000018, 4460.590000000002], yScale: yscaleScn},
       {name:'D · Simulador',   color:'#a855f7', values: function(){ return currentDVals; }, yScale: yscaleScn}
     ]
   });
