@@ -303,7 +303,7 @@
         <li>🚨 <strong>Saldo projetado Nov e Dez/26 ainda NEGATIVO</strong> — base atual rola o ano para -R$ 3.665,04 em Dez. Precisa de freela mínimo de R$ 1.500/mês + corte R$ 300-500 para zerar.</li>
         <li>🚨 <strong>Pagamentos de Novembro são 192% das entradas</strong> — compressão aguda. Nov carrega concentração de fatura Bradesco (R$ 2.796) + Itaú (R$ 2.622) + revisão/manutenção adicional.</li>
         <li>⚠️ <strong>Resultado Jul/26 foi -R$ 6.005</strong> — o pior mês do ano fechado; serve de referência: se repetir, saldo cai a zero rapidamente.</li>
-        <li>⚠️ <strong>Dívidas abertas R$ 50.998</strong> — sendo R$ 8.100 em bancos (Nubank + Bradesco) e R$ 42.898 com pessoa física (Iolanda + JL). Priorize bancos primeiro.</li>
+        <li>🚨 <strong>Dívidas abertas R$ 58.833</strong> — sendo R$ 13.100 em bancos (Nubank R$ 2.100 + Bradesco R$ 11.000) e R$ 45.733 com pessoa física (Iolanda R$ 35.000 + JL R$ 10.733). Bradesco cresceu, é prioridade #1. Fonte: aba Dívidas.</li>
         <li>⚠️ <strong>Cartões Nov/26: Bradesco R$ 2.796 e Itaú R$ 2.622 ambos > R$ 2.500</strong> — risco de rolagem com juros se saldo cair.</li>
         <li>✅ <strong>Out/26 fechou saudável</strong> — resultado +R$ 2.594 confirmou capacidade de corte quando necessário.</li>
         <li>✅ <strong>Cartões 2027 em queda forte</strong> — Jan/27 Itaú R$ 301, Nubank R$ 728, Bradesco R$ 421 (total R$ 1.450). Fôlego natural chegando.</li>
@@ -311,24 +311,52 @@
 
     </div>
     <div class="section">
-      <h3>Dívidas em aberto · Plano de quitação</h3>
-      <div class="section-sub">Total aberto: R$ 50.998,37 · bancos R$ 8.100 + JL R$ 7.898 + Iolanda R$ 35.000</div>
+      <h3>Dívidas em aberto · aba "Dívidas" da planilha</h3>
+      <div class="section-sub">Fonte única: aba Dívidas do fluxo.novo.xlsx · Total atual: <strong>R$ 58.833,00</strong></div>
       <table class="tbl-num">
         <thead>
-          <tr><th>Credor</th><th>Valor</th><th>Prioridade</th><th style="text-align:left !important;">Estratégia</th></tr>
+          <tr><th>Credor</th><th>Tipo</th><th>Valor</th><th>% do total</th></tr>
         </thead>
         <tbody>
-      <tr><td>Nubank (crédito aberto)</td><td class="neg">R$ 2.100,00</td><td class="neg">Alta</td><td>Quitar antes do giro juros compostos. Alvo próximo mês.</td></tr>
-      <tr><td>Bradesco (crédito aberto)</td><td class="neg">R$ 6.000,00</td><td class="neg">Alta</td><td>Parcelar em 2-3 vezes com freela. Reduzir uso simultâneo.</td></tr>
-      <tr><td>Pós amor (JL)</td><td class="warn">R$ 500,00</td><td class="warn">Média</td><td>Quitar com corte de supérfluos em Dez.</td></tr>
-      <tr><td>DH JL - conta</td><td class="warn">R$ 1.709,00</td><td class="warn">Média</td><td>Negociar prazo até Fev/27 ou pequena parcela em Dez.</td></tr>
-      <tr><td>DH JL - conta (2)</td><td class="warn">R$ 936,38</td><td class="warn">Média</td><td>Combinar com (DH JL - conta) numa única negociação.</td></tr>
-      <tr><td>Pgto Cartão Nubank JL</td><td class="neg">R$ 1.932,71</td><td class="neg">Alta</td><td>Entra no plano de Cartões - priorizar.</td></tr>
-      <tr><td>Pgto Cartão Bradesco JL</td><td class="neg">R$ 2.300,28</td><td class="neg">Alta</td><td>Entra no plano de Cartões - priorizar.</td></tr>
-      <tr><td>Pgto Cartão Itaú JL</td><td class="warn">R$ 520,00</td><td class="warn">Média</td><td>Baixa prioridade; absorver em janeiro.</td></tr>
-      <tr><td>Iolanda (empréstimo DH)</td><td class="muted">R$ 35.000,00</td><td class="muted">Longa</td><td>Reestruturar em plano >12 meses, fora da projeção 2026.</td></tr>
+      <tr>
+        <td><strong>Nubank</strong></td>
+        <td>Banco</td>
+        <td class="warn">R$ 2.100,00</td>
+        <td>3.6%</td>
+      </tr>
+      <tr>
+        <td><strong>Bradesco</strong></td>
+        <td>Banco</td>
+        <td class="neg">R$ 11.000,00</td>
+        <td>18.7%</td>
+      </tr>
+      <tr>
+        <td><strong>José Luis</strong></td>
+        <td>DH Emprestado</td>
+        <td class="neg">R$ 10.733,00</td>
+        <td>18.2%</td>
+      </tr>
+      <tr>
+        <td><strong>Iolanda</strong></td>
+        <td>DH Emprestado</td>
+        <td class="neg">R$ 35.000,00</td>
+        <td>59.5%</td>
+      </tr>
         </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2"><strong>TOTAL DÍVIDA</strong></td>
+            <td class="neg"><strong>R$ 58.833,00</strong></td>
+            <td>100%</td>
+          </tr>
+        </tfoot>
       </table>
+      <div class="expert-box" style="background:rgba(239,68,68,0.08); border-color:rgba(239,68,68,0.3); margin-top:16px;">
+        <h4>📌 Composição da dívida</h4>
+        <p><strong>Bancos (R$ 13.100 · 22,3%):</strong> Nubank R$ 2.100 + Bradesco R$ 11.000. O Bradesco cresceu de R$ 6k para R$ 11k em relação ao último fechamento — virou a prioridade #1 de amortização.</p>
+        <p style="margin-top:8px;"><strong>DH Emprestado (R$ 45.733 · 77,7%):</strong> Iolanda R$ 35.000 + José Luis R$ 10.733. São dívidas de pessoa física, prazo mais flexível, mas devem ser renegociadas em plano estruturado para 2027.</p>
+        <p style="margin-top:8px;"><strong>Ordem sugerida de quitação:</strong> 1) Nubank (menor valor, zera rápido); 2) Bradesco (maior valor em banco, juros compostos); 3) José Luis (pessoa próxima); 4) Iolanda (prazo longo).</p>
+      </div>
     </div>
   </div>
   <div id="cenarios" class="tab-content">
