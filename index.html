@@ -1,359 +1,323 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>Dashboard Financeiro — Renan Brito</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fluxo de Caixa 2026 — Renan Brito</title>
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: -apple-system, 'Segoe UI', sans-serif; background: linear-gradient(180deg, #0b1220 0%, #0f172a 100%); color: #e2e8f0; min-height: 100vh; padding: 20px; }
-.container { max-width: 1280px; margin: 0 auto; }
-.header { text-align: center; margin-bottom: 24px; }
-.header h1 { font-size: 2.4rem; background: linear-gradient(90deg,#3b82f6,#22c55e,#a855f7); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom: 4px; }
-.header p { color: #94a3b8; font-size: 0.95rem; }
-.banner { padding: 14px 18px; border-radius: 10px; margin-bottom: 20px; font-weight: 500; }
-.banner-red { background: rgba(239,68,68,0.14); border: 1px solid rgba(239,68,68,0.4); color: #fecaca; }
-.banner-yellow { background: rgba(245,158,11,0.14); border: 1px solid rgba(245,158,11,0.4); color: #fde68a; }
-.banner-green { background: rgba(34,197,94,0.14); border: 1px solid rgba(34,197,94,0.4); color: #bbf7d0; }
-.banner strong { display: block; margin-bottom: 4px; font-size: 1.05rem; }
-
-.tabs { display: flex; gap: 6px; background: rgba(15,23,42,0.6); border: 1px solid rgba(148,163,184,0.12); border-radius: 12px; padding: 6px; margin-bottom: 20px; overflow-x: auto; }
-.tab { padding: 10px 16px; background: transparent; border: none; color: #94a3b8; cursor: pointer; border-radius: 8px; font-size: 0.9rem; white-space: nowrap; font-weight: 500; transition: all .15s; }
-.tab:hover { color: #e2e8f0; }
-.tab.active { background: linear-gradient(135deg,#3b82f6,#8b5cf6); color: #fff; }
-.tab-content { display: none; }
-.tab-content.active { display: block; }
-
-.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 20px; }
-.card { background: rgba(15,23,42,0.7); border: 1px solid rgba(148,163,184,0.15); border-radius: 10px; padding: 16px; }
-.card .lbl { color: #94a3b8; font-size: 0.8rem; margin-bottom: 6px; text-transform: uppercase; letter-spacing: .5px; }
-.card .val { font-size: 1.5rem; font-weight: 600; }
-.card .sub { color: #64748b; font-size: 0.8rem; margin-top: 4px; }
-
-.section { background: rgba(15,23,42,0.5); border: 1px solid rgba(148,163,184,0.15); border-radius: 12px; padding: 20px; margin-bottom: 20px; }
-.section h2 { font-size: 1.2rem; margin-bottom: 14px; color: #e2e8f0; }
-.section h3 { font-size: 1rem; margin: 14px 0 10px; color: #cbd5e1; }
-.section p.legend { color: #64748b; font-size: 0.82rem; margin-bottom: 10px; font-style: italic; }
-
-table { width: 100%; border-collapse: collapse; font-size: 0.87rem; }
-th, td { padding: 8px 10px; border-bottom: 1px solid rgba(148,163,184,0.1); text-align: left; }
-th { color: #94a3b8; font-weight: 500; font-size: 0.75rem; text-transform: uppercase; letter-spacing: .5px; background: rgba(15,23,42,0.4); }
-.tbl-num td:not(:first-child), .tbl-num th:not(:first-child) { text-align: right; font-variant-numeric: tabular-nums; }
-.pos { color: #22c55e; }
-.neg { color: #ef4444; }
-.warn { color: #f59e0b; }
-
-.chip { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; font-weight: 600; }
-.chip-f { background: rgba(34,197,94,0.2); color: #86efac; }
-.chip-c { background: rgba(59,130,246,0.2); color: #93c5fd; }
-.chip-p { background: rgba(168,85,247,0.2); color: #d8b4fe; }
-
-.chart-wrap { position: relative; margin: 12px 0; }
-svg { width: 100%; height: auto; display: block; }
-.hover-tip { position: absolute; background: rgba(15,23,42,0.95); border: 1px solid rgba(148,163,184,0.3); border-radius: 8px; padding: 8px 12px; font-size: 0.8rem; color: #e2e8f0; pointer-events: none; display: none; z-index: 10; box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
-.hover-tip .tip-mes { font-weight: 600; margin-bottom: 4px; color: #cbd5e1; }
-.hover-tip .tip-row { display: flex; justify-content: space-between; gap: 12px; }
-.hover-tip .tip-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
-
-.tot-row { background: rgba(59,130,246,0.1); font-weight: 600; }
-.tot-row td { border-top: 2px solid rgba(59,130,246,0.3); }
-
-.scn-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
-@media (max-width: 720px) { .scn-cards { grid-template-columns: repeat(2, 1fr); } }
-.scn-card { padding: 14px; border-radius: 10px; }
-.scn-card .scn-lbl { font-size: 0.75rem; text-transform: uppercase; margin-bottom: 4px; opacity: .8; }
-.scn-card .scn-val { font-size: 1.25rem; font-weight: 700; }
-.scn-card .scn-sub { font-size: 0.78rem; margin-top: 4px; opacity: .8; }
-.scn-a { background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.4); color: #93c5fd; }
-.scn-b { background: rgba(34,197,94,0.15); border: 1px solid rgba(34,197,94,0.4); color: #86efac; }
-.scn-c { background: rgba(245,158,11,0.15); border: 1px solid rgba(245,158,11,0.4); color: #fde68a; }
-.scn-d { background: rgba(168,85,247,0.15); border: 1px solid rgba(168,85,247,0.4); color: #d8b4fe; }
-
-input[type="number"] { background: rgba(15,23,42,0.8); border: 1px solid rgba(148,163,184,0.3); color: #e2e8f0; padding: 4px 6px; border-radius: 4px; width: 90px; font-size: 0.85rem; font-variant-numeric: tabular-nums; text-align: right; }
-input[type="number"]:focus { outline: none; border-color: #a855f7; }
-
-.btn { background: rgba(168,85,247,0.2); border: 1px solid rgba(168,85,247,0.4); color: #d8b4fe; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; margin-right: 8px; }
-.btn:hover { background: rgba(168,85,247,0.3); }
-
-.rec-box { background: rgba(34,197,94,0.1); border-left: 4px solid #22c55e; padding: 14px 18px; border-radius: 6px; margin-top: 16px; }
-.rec-box h3 { color: #86efac; margin-top: 0; }
-.rec-box ul { margin-left: 20px; margin-top: 8px; color: #cbd5e1; }
-.rec-box li { margin-bottom: 4px; }
-
-.ins-list { list-style: none; padding: 0; }
-.ins-list li { padding: 10px 14px; margin-bottom: 8px; border-radius: 8px; background: rgba(15,23,42,0.6); border-left: 3px solid #3b82f6; }
-.ins-list li.crit { border-left-color: #ef4444; }
-.ins-list li.warn { border-left-color: #f59e0b; }
-.ins-list li.ok { border-left-color: #22c55e; }
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:linear-gradient(180deg,#0b1220 0%,#0f172a 100%);color:#e2e8f0;min-height:100vh;padding:24px 16px}
+.container{max-width:1180px;margin:0 auto}
+.header{text-align:center;margin-bottom:24px}
+.header h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:800;background:linear-gradient(90deg,#3b82f6,#22c55e,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px;letter-spacing:-.5px}
+.subtitle{color:#94a3b8;font-size:.95rem}
+.banner{display:flex;gap:14px;align-items:flex-start;padding:16px 20px;border-radius:12px;margin:20px 0}
+.banner-red{background:rgba(239,68,68,0.14);border:1px solid rgba(239,68,68,0.4);color:#fecaca}
+.banner-yellow{background:rgba(245,158,11,0.14);border:1px solid rgba(245,158,11,0.4);color:#fde68a}
+.banner-green{background:rgba(34,197,94,0.14);border:1px solid rgba(34,197,94,0.4);color:#bbf7d0}
+.banner-icon{font-size:1.6rem}
+.banner-title{font-weight:700;margin-bottom:4px}
+.banner-line{font-size:.92rem;line-height:1.4}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0}
+.card{background:rgba(15,23,42,0.7);border:1px solid rgba(148,163,184,0.15);border-radius:14px;padding:16px}
+.card-lbl{color:#94a3b8;font-size:.78rem;text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px}
+.card-val{font-size:1.45rem;font-weight:700;font-variant-numeric:tabular-nums}
+.card-sub{color:#64748b;font-size:.78rem;margin-top:4px}
+.pos{color:#22c55e} .neg{color:#ef4444} .warn{color:#f59e0b}
+.tabs{display:flex;gap:4px;background:rgba(15,23,42,0.6);border:1px solid rgba(148,163,184,0.12);border-radius:12px;padding:4px;margin:18px 0;overflow-x:auto}
+.tab{flex:1;min-width:92px;padding:9px 12px;background:transparent;color:#94a3b8;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-size:.88rem;transition:all .2s}
+.tab:hover{color:#e2e8f0}
+.tab.active{background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:#fff;box-shadow:0 2px 8px rgba(59,130,246,0.4)}
+.section{background:rgba(15,23,42,0.5);border:1px solid rgba(148,163,184,0.15);border-radius:14px;padding:20px;margin-bottom:16px}
+.section h2{font-size:1.15rem;margin-bottom:12px;color:#f1f5f9}
+.section h3{font-size:1rem;margin:16px 0 8px;color:#cbd5e1}
+.tbl{width:100%;border-collapse:collapse;margin-top:10px;font-size:.87rem}
+.tbl th,.tbl td{padding:8px 10px;border-bottom:1px solid rgba(148,163,184,0.1);text-align:left}
+.tbl th{color:#94a3b8;font-weight:600;text-transform:uppercase;font-size:.72rem;letter-spacing:.5px;background:rgba(15,23,42,0.4)}
+.tbl tfoot td{border-top:2px solid rgba(148,163,184,0.25);background:rgba(15,23,42,0.4)}
+.tbl-num td:not(:first-child),.tbl-num th:not(:first-child){text-align:right;font-variant-numeric:tabular-nums}
+.chip{display:inline-block;padding:2px 8px;font-size:.68rem;border-radius:10px;font-weight:600;margin-left:6px}
+.chip-green{background:rgba(34,197,94,0.18);color:#86efac}
+.chip-yellow{background:rgba(245,158,11,0.18);color:#fde68a}
+.chip-purple{background:rgba(168,85,247,0.18);color:#e9d5ff}
+.chart-wrap{background:rgba(11,18,32,0.5);border-radius:10px;padding:10px;margin-top:10px}
+.hover-tip{position:absolute;background:rgba(11,18,32,0.98);border:1px solid rgba(148,163,184,0.4);border-radius:8px;padding:8px 10px;font-size:.78rem;pointer-events:none;display:none;z-index:50;white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,0.4)}
+.hover-tip .tip-lbl{font-weight:700;margin-bottom:4px;color:#f1f5f9}
+.hover-tip .tip-row{display:flex;justify-content:space-between;gap:10px;color:#cbd5e1}
+.hover-tip .tip-row .dot{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:4px}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+.scn-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.scn-card{padding:14px;border-radius:10px;border:1px solid}
+.scn-A{background:rgba(59,130,246,0.1);border-color:rgba(59,130,246,0.35)}
+.scn-B{background:rgba(34,197,94,0.1);border-color:rgba(34,197,94,0.35)}
+.scn-C{background:rgba(245,158,11,0.1);border-color:rgba(245,158,11,0.35)}
+.scn-D{background:rgba(168,85,247,0.1);border-color:rgba(168,85,247,0.35)}
+.scn-badge{display:inline-block;padding:2px 8px;border-radius:6px;font-size:.68rem;font-weight:700;margin-left:4px}
+.legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px;font-size:.78rem;color:#94a3b8}
+.legend-item{display:flex;align-items:center;gap:5px}
+.legend-swatch{width:12px;height:3px;border-radius:2px}
+.cart-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px}
+.cart-card{padding:14px;border-radius:10px;border:1px solid}
+.cart-itau{background:rgba(239,68,68,0.08);border-color:rgba(239,68,68,0.3)}
+.cart-nu{background:rgba(168,85,247,0.08);border-color:rgba(168,85,247,0.3)}
+.cart-br{background:rgba(59,130,246,0.08);border-color:rgba(59,130,246,0.3)}
+ul.alerts{list-style:none;padding:0}
+ul.alerts li{padding:10px 14px;margin-bottom:8px;border-radius:8px;border-left:3px solid;font-size:.9rem}
+ul.alerts li.alert-crit{background:rgba(239,68,68,0.12);border-color:#ef4444;color:#fecaca}
+ul.alerts li.alert-warn{background:rgba(245,158,11,0.1);border-color:#f59e0b;color:#fde68a}
+ul.alerts li.alert-ok{background:rgba(34,197,94,0.1);border-color:#22c55e;color:#bbf7d0}
+.rec-box{background:linear-gradient(135deg,rgba(34,197,94,0.12),rgba(59,130,246,0.08));border:1px solid rgba(34,197,94,0.3);border-radius:12px;padding:16px;margin-top:14px}
+.rec-box h3{color:#86efac;margin-top:0}
+@media(max-width:780px){
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .scn-grid{grid-template-columns:repeat(2,1fr)}
+  .cart-cards{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
 <div class="container">
-<div class="header">
-  <h1>📊 Dashboard Financeiro</h1>
-  <p>Renan Brito · Jan/26 → Out/26 fechados · Nov/26 em curso · Dez/26 provisionado · Atualizado em <strong>05/11/2026 14:08</strong></p>
+<header class="header">
+  <h1>💰 Fluxo de Caixa 2026 — Renan Brito</h1>
+  <div class="subtitle">Realizado Jan→Out · Em curso Nov · Provisionado Dez · atualizado em 05/11/2026</div>
+</header>
+
+<div class="banner banner-yellow"><div class="banner-icon">⚠️</div><div class="banner-body"><div class="banner-title">Status de saúde financeira</div><div class="banner-line">⚠️ Nov/26 em curso projeta resultado -R$ 3.320,60 — fluxo apertado</div><div class="banner-line">⚠️ ITAU em Fev/26: R$ 2.769,51 (acima de R$ 2.500)</div><div class="banner-line">⚠️ ITAU em Nov/26: R$ 2.621,68 (acima de R$ 2.500)</div></div></div>
+
+<div class="cards">
+  <div class="card"><div class="card-lbl">Entradas Out/26</div><div class="card-val pos">R$ 14.195,49</div><div class="card-sub">último mês fechado</div></div>
+  <div class="card"><div class="card-lbl">Pagamentos Out/26</div><div class="card-val neg">R$ 11.600,95</div><div class="card-sub">82% das entradas</div></div>
+  <div class="card"><div class="card-lbl">Saldo atual</div><div class="card-val"><strong>R$ 6.174,59</strong></div><div class="card-sub">resultado Out: <span class="pos">R$ 2.594,54</span></div></div>
+  <div class="card"><div class="card-lbl">Saldo projetado Dez</div><div class="card-val warn">R$ 2.093,05</div><div class="card-sub">cenário base</div></div>
 </div>
 
-<div class="banner banner-green">
-  <strong>✅ Mês fechou saudável</strong>
-  <span>Outubro/26 com resultado positivo de R$ 2.594,54 e saldo atual de R$ 6.174,59.</span>
+<div class="tabs" role="tablist">
+  <button class="tab active" onclick="showTab(event,'visao')">📊 Visão Geral</button>
+  <button class="tab" onclick="showTab(event,'mensal')">📅 Mês a Mês</button>
+  <button class="tab" onclick="showTab(event,'dre')">📋 DRE</button>
+  <button class="tab" onclick="showTab(event,'insights')">💡 Insights</button>
+  <button class="tab" onclick="showTab(event,'cenarios')">🎯 Cenários A/B/C/D</button>
+  <button class="tab" onclick="showTab(event,'cartoes')">💳 Cartões</button>
 </div>
 
-<div class="tabs">
-  <button class="tab active" onclick="showTab(event, 'visao')">📈 Visão Geral</button>
-  <button class="tab" onclick="showTab(event, 'mensal')">📅 Mês a Mês</button>
-  <button class="tab" onclick="showTab(event, 'dre')">📋 DRE</button>
-  <button class="tab" onclick="showTab(event, 'insights')">💡 Insights</button>
-  <button class="tab" onclick="showTab(event, 'cenarios')">🎯 Cenários A/B/C/D</button>
-  <button class="tab" onclick="showTab(event, 'cartoes')">💳 Cartões</button>
-</div>
-
-<!-- ========== VISÃO GERAL ========== -->
-<div id="visao" class="tab-content active">
-  <div class="cards">
-    <div class="card"><div class="lbl">Receita Out/26</div><div class="val pos">R$ 14.195,49</div><div class="sub">último fechado</div></div>
-    <div class="card"><div class="lbl">Gasto Out/26</div><div class="val neg">R$ 11.600,95</div><div class="sub">último fechado</div></div>
-    <div class="card"><div class="lbl">Saldo Atual</div><div class="val pos">R$ 6.174,59</div><div class="sub">fim Out/26</div></div>
-    <div class="card"><div class="lbl">Saldo Projetado Dez/26</div><div class="val">R$ 2.093,05</div><div class="sub">base (sem ajustes)</div></div>
-  </div>
-
+<div id="visao" class="tab-panel active">
   <div class="section">
-    <h2>Evolução — últimos 8 meses</h2>
-    <div class="chart-wrap" id="wrap-visao">
-      <svg id="svg-visao" viewBox="0 0 800 300">
-        <defs>
-          <linearGradient id="gradEnt" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#22c55e" stop-opacity=".3"/><stop offset="100%" stop-color="#22c55e" stop-opacity="0"/></linearGradient>
-        </defs>
-        <!-- grid -->
-        <line x1="40" y1="20" x2="40" y2="260" stroke="rgba(148,163,184,0.2)"/>
-        <line x1="40" y1="260" x2="760" y2="260" stroke="rgba(148,163,184,0.2)"/>
-        <line x1="36" y1="260.0" x2="40" y2="260.0" stroke="#94a3b8"/><text x="32" y="263.0" fill="#94a3b8" font-size="10" text-anchor="end">0k</text><line x1="36" y1="212.0" x2="40" y2="212.0" stroke="#94a3b8"/><text x="32" y="215.0" fill="#94a3b8" font-size="10" text-anchor="end">5k</text><line x1="36" y1="164.0" x2="40" y2="164.0" stroke="#94a3b8"/><text x="32" y="167.0" fill="#94a3b8" font-size="10" text-anchor="end">10k</text><line x1="36" y1="116.0" x2="40" y2="116.0" stroke="#94a3b8"/><text x="32" y="119.0" fill="#94a3b8" font-size="10" text-anchor="end">15k</text><line x1="36" y1="68.0" x2="40" y2="68.0" stroke="#94a3b8"/><text x="32" y="71.0" fill="#94a3b8" font-size="10" text-anchor="end">20k</text><line x1="36" y1="20.0" x2="40" y2="20.0" stroke="#94a3b8"/><text x="32" y="23.0" fill="#94a3b8" font-size="10" text-anchor="end">25k</text>
-        <text x="60" y="278" fill="#94a3b8" font-size="10" text-anchor="middle">Mai/26</text><text x="160" y="278" fill="#94a3b8" font-size="10" text-anchor="middle">Jun/26</text><text x="260" y="278" fill="#94a3b8" font-size="10" text-anchor="middle">Jul/26</text><text x="360" y="278" fill="#94a3b8" font-size="10" text-anchor="middle">Ago/26</text><text x="460" y="278" fill="#94a3b8" font-size="10" text-anchor="middle">Set/26</text><text x="560" y="278" fill="#94a3b8" font-size="10" text-anchor="middle">Out/26</text><text x="660" y="278" fill="#94a3b8" font-size="10" text-anchor="middle">Nov/26</text><text x="760" y="278" fill="#94a3b8" font-size="10" text-anchor="middle">Dez/26</text>
-        <polyline points="60,63.6,160,65.3,260,75.7,360,103.9,460,95.8,560,123.7,660,123.8,760,159.0" fill="none" stroke="#22c55e" stroke-width="2.5"/>
-        <polyline points="60,65.4,160,55.7,260,18.1,360,143.4,460,83.1,560,148.6,660,149.2,760,151.7" fill="none" stroke="#ef4444" stroke-width="2.5"/>
-        <polyline points="60,184.0,160,194.7,260,252.4,360,212.9,460,225.6,560,200.7,660,232.6,760,239.9" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-dasharray="4 3"/>
-        <circle cx="60" cy="63.6" r="3" fill="#22c55e"/><circle cx="60" cy="65.4" r="3" fill="#ef4444"/><circle cx="60" cy="184.0" r="3" fill="#3b82f6"/><circle cx="160" cy="65.3" r="3" fill="#22c55e"/><circle cx="160" cy="55.7" r="3" fill="#ef4444"/><circle cx="160" cy="194.7" r="3" fill="#3b82f6"/><circle cx="260" cy="75.7" r="3" fill="#22c55e"/><circle cx="260" cy="18.1" r="3" fill="#ef4444"/><circle cx="260" cy="252.4" r="3" fill="#3b82f6"/><circle cx="360" cy="103.9" r="3" fill="#22c55e"/><circle cx="360" cy="143.4" r="3" fill="#ef4444"/><circle cx="360" cy="212.9" r="3" fill="#3b82f6"/><circle cx="460" cy="95.8" r="3" fill="#22c55e"/><circle cx="460" cy="83.1" r="3" fill="#ef4444"/><circle cx="460" cy="225.6" r="3" fill="#3b82f6"/><circle cx="560" cy="123.7" r="3" fill="#22c55e"/><circle cx="560" cy="148.6" r="3" fill="#ef4444"/><circle cx="560" cy="200.7" r="3" fill="#3b82f6"/><circle cx="660" cy="123.8" r="3" fill="#22c55e"/><circle cx="660" cy="149.2" r="3" fill="#ef4444"/><circle cx="660" cy="232.6" r="3" fill="#3b82f6"/><circle cx="760" cy="159.0" r="3" fill="#22c55e"/><circle cx="760" cy="151.7" r="3" fill="#ef4444"/><circle cx="760" cy="239.9" r="3" fill="#3b82f6"/>
-        <line id="cross-visao" x1="0" y1="20" x2="0" y2="260" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3" style="display:none"/>
-        <circle id="dot-visao-ent" r="5" fill="#22c55e" style="display:none"/>
-        <circle id="dot-visao-pag" r="5" fill="#ef4444" style="display:none"/>
-        <circle id="dot-visao-sf" r="5" fill="#3b82f6" style="display:none"/>
-        <rect id="overlay-visao" x="40" y="20" width="720" height="240" fill="#000" opacity="0" pointer-events="all"/>
-      </svg>
-      <div class="hover-tip" id="tip-visao"></div>
-      <div style="display:flex;gap:16px;justify-content:center;margin-top:8px;font-size:0.82rem;color:#94a3b8;">
-        <span><span style="display:inline-block;width:12px;height:3px;background:#22c55e;vertical-align:middle;"></span> Entradas</span>
-        <span><span style="display:inline-block;width:12px;height:3px;background:#ef4444;vertical-align:middle;"></span> Pagamentos</span>
-        <span><span style="display:inline-block;width:12px;height:3px;background:#3b82f6;vertical-align:middle;"></span> Saldo Final</span>
-      </div>
+    <h2>Trajetória do Saldo Final — últimos 8 meses</h2>
+    
+<div class="chart-wrap" id="wrap-ovw" style="position:relative">
+<svg id="svg-ovw" viewBox="0 0 760 240" width="100%" height="240" preserveAspectRatio="none">
+  <line x1="60" x2="740" y1="220.0" y2="220.0" stroke="#334155" stroke-dasharray="3,3" opacity="0.45" /><text x="52" y="224.0" text-anchor="end" fill="#94a3b8" font-size="10">0k</text><line x1="60" x2="740" y1="180.0" y2="180.0" stroke="#334155" stroke-dasharray="3,3" opacity="0.45" /><text x="52" y="184.0" text-anchor="end" fill="#94a3b8" font-size="10">5k</text><line x1="60" x2="740" y1="140.0" y2="140.0" stroke="#334155" stroke-dasharray="3,3" opacity="0.45" /><text x="52" y="144.0" text-anchor="end" fill="#94a3b8" font-size="10">10k</text><line x1="60" x2="740" y1="100.0" y2="100.0" stroke="#334155" stroke-dasharray="3,3" opacity="0.45" /><text x="52" y="104.0" text-anchor="end" fill="#94a3b8" font-size="10">15k</text><line x1="60" x2="740" y1="60.0" y2="60.0" stroke="#334155" stroke-dasharray="3,3" opacity="0.45" /><text x="52" y="64.0" text-anchor="end" fill="#94a3b8" font-size="10">20k</text><line x1="60" x2="740" y1="20.0" y2="20.0" stroke="#334155" stroke-dasharray="3,3" opacity="0.45" /><text x="52" y="24.0" text-anchor="end" fill="#94a3b8" font-size="10">25k</text>
+  <line x1="60" x2="740" y1="140.0" y2="140.0" stroke="#22c55e" stroke-dasharray="4,4" opacity="0.7" /><text x="740" y="136.0" text-anchor="end" fill="#22c55e" font-size="10">meta 10k</text><line x1="60" x2="740" y1="196.0" y2="196.0" stroke="#f59e0b" stroke-dasharray="4,4" opacity="0.7" /><text x="740" y="192.0" text-anchor="end" fill="#f59e0b" font-size="10">colchão 3k</text>
+  <polyline points="60.0,156.7 157.1,165.6 254.3,213.7 351.4,180.8 448.6,191.4 545.7,170.6 642.9,197.2 740.0,203.3" fill="none" stroke="#22c55e" stroke-width="2.5" />
+  <circle class="pt-ok" id="ovw-pt-0" cx="60.0" cy="156.7" r="4" fill="#22c55e" stroke="#0b1220" stroke-width="2" data-label="Mai" data-val="7913.62" /><circle class="pt-ok" id="ovw-pt-1" cx="157.1" cy="165.6" r="4" fill="#22c55e" stroke="#0b1220" stroke-width="2" data-label="Jun" data-val="6797.11" /><circle class="pt-warn" id="ovw-pt-2" cx="254.3" cy="213.7" r="4" fill="#22c55e" stroke="#0b1220" stroke-width="2" data-label="Jul" data-val="791.90" /><circle class="pt-ok" id="ovw-pt-3" cx="351.4" cy="180.8" r="4" fill="#22c55e" stroke="#0b1220" stroke-width="2" data-label="Ago" data-val="4903.85" /><circle class="pt-ok" id="ovw-pt-4" cx="448.6" cy="191.4" r="4" fill="#22c55e" stroke="#0b1220" stroke-width="2" data-label="Set" data-val="3580.05" /><circle class="pt-ok" id="ovw-pt-5" cx="545.7" cy="170.6" r="4" fill="#22c55e" stroke="#0b1220" stroke-width="2" data-label="Out" data-val="6174.59" /><circle class="pt-warn" id="ovw-pt-6" cx="642.9" cy="197.2" r="4" fill="#22c55e" stroke="#0b1220" stroke-width="2" data-label="Nov" data-val="2853.99" /><circle class="pt-warn" id="ovw-pt-7" cx="740.0" cy="203.3" r="4" fill="#22c55e" stroke="#0b1220" stroke-width="2" data-label="Dez" data-val="2093.05" />
+  <text x="60.0" y="236" text-anchor="middle" fill="#cbd5e1" font-size="11">Mai</text><text x="157.1" y="236" text-anchor="middle" fill="#cbd5e1" font-size="11">Jun</text><text x="254.3" y="236" text-anchor="middle" fill="#cbd5e1" font-size="11">Jul</text><text x="351.4" y="236" text-anchor="middle" fill="#cbd5e1" font-size="11">Ago</text><text x="448.6" y="236" text-anchor="middle" fill="#cbd5e1" font-size="11">Set</text><text x="545.7" y="236" text-anchor="middle" fill="#cbd5e1" font-size="11">Out</text><text x="642.9" y="236" text-anchor="middle" fill="#cbd5e1" font-size="11">Nov</text><text x="740.0" y="236" text-anchor="middle" fill="#cbd5e1" font-size="11">Dez</text>
+  <line id="cross-ovw" x1="0" x2="0" y1="20" y2="220" stroke="#94a3b8" stroke-dasharray="3,3" opacity="0" />
+  <circle class="hc-ovw" cx="60.0" cy="156.7" r="6" fill="#22c55e" stroke="#fff" stroke-width="2" style="display:none" /><circle class="hc-ovw" cx="157.1" cy="165.6" r="6" fill="#22c55e" stroke="#fff" stroke-width="2" style="display:none" /><circle class="hc-ovw" cx="254.3" cy="213.7" r="6" fill="#22c55e" stroke="#fff" stroke-width="2" style="display:none" /><circle class="hc-ovw" cx="351.4" cy="180.8" r="6" fill="#22c55e" stroke="#fff" stroke-width="2" style="display:none" /><circle class="hc-ovw" cx="448.6" cy="191.4" r="6" fill="#22c55e" stroke="#fff" stroke-width="2" style="display:none" /><circle class="hc-ovw" cx="545.7" cy="170.6" r="6" fill="#22c55e" stroke="#fff" stroke-width="2" style="display:none" /><circle class="hc-ovw" cx="642.9" cy="197.2" r="6" fill="#22c55e" stroke="#fff" stroke-width="2" style="display:none" /><circle class="hc-ovw" cx="740.0" cy="203.3" r="6" fill="#22c55e" stroke="#fff" stroke-width="2" style="display:none" />
+  <rect id="overlay-ovw" x="60" y="20" width="680" height="200" fill="#000" opacity="0" pointer-events="all" />
+</svg>
+<div class="hover-tip" id="tip-ovw"></div>
+</div>
+
+    <div class="legend">
+      <div class="legend-item"><span class="legend-swatch" style="background:#22c55e"></span>Saldo final de caixa</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:#22c55e;border-top:2px dashed #22c55e"></span>Meta reserva R$ 10k</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:#f59e0b"></span>Colchão mínimo R$ 3k</div>
     </div>
   </div>
+  <div class="section">
+    <h2>Variação vs. mês anterior</h2>
+    <p style="font-size:.92rem;line-height:1.6">Resultado de <strong>Out/26 = <span class="pos">R$ 2.594,54</span></strong> (acima do mês anterior em <strong class="pos">R$ 3.918,34</strong>).<br>
+    Saldo final cresceu de R$ 3.580,05 para <strong>R$ 6.174,59</strong>.</p>
+  </div>
 </div>
 
-<!-- ========== MÊS A MÊS ========== -->
-<div id="mensal" class="tab-content">
+<div id="mensal" class="tab-panel">
   <div class="section">
-    <h2>Mês a Mês — Jan/26 → Dez/26</h2>
-    <table class="tbl-num">
-      <thead><tr><th>Mês</th><th>Status</th><th>Saldo Inicial</th><th>Entradas</th><th>Pagamentos</th><th>Resultado</th><th>Saldo Final</th></tr></thead>
-      <tbody>
-<tr><td>Janeiro/26</td><td><span class="chip chip-f">FECHADO</span></td><td>R$ 4.050,07</td><td class="pos">R$ 16.753,61</td><td class="neg">R$ 14.445,40</td><td class="pos">R$ 2.308,21</td><td class="pos">R$ 3.489,15</td></tr><tr><td>Fevereiro/26</td><td><span class="chip chip-f">FECHADO</span></td><td>R$ 3.489,15</td><td class="pos">R$ 20.380,86</td><td class="neg">R$ 23.304,49</td><td class="neg">-R$ 2.923,63</td><td class="pos">R$ 565,53</td></tr><tr><td>Março/26</td><td><span class="chip chip-f">FECHADO</span></td><td>R$ 565,53</td><td class="pos">R$ 22.319,87</td><td class="neg">R$ 17.457,59</td><td class="pos">R$ 4.862,28</td><td class="pos">R$ 5.427,81</td></tr><tr><td>Abril/26</td><td><span class="chip chip-f">FECHADO</span></td><td>R$ 5.427,81</td><td class="pos">R$ 19.019,98</td><td class="neg">R$ 16.715,50</td><td class="pos">R$ 2.304,48</td><td class="pos">R$ 7.732,29</td></tr><tr><td>Maio/26</td><td><span class="chip chip-f">FECHADO</span></td><td>R$ 7.732,29</td><td class="pos">R$ 20.454,33</td><td class="neg">R$ 20.273,00</td><td class="pos">R$ 181,33</td><td class="pos">R$ 7.913,62</td></tr><tr><td>Junho/26</td><td><span class="chip chip-f">FECHADO</span></td><td>R$ 7.913,62</td><td class="pos">R$ 20.280,28</td><td class="neg">R$ 21.277,79</td><td class="neg">-R$ 997,51</td><td class="pos">R$ 6.797,11</td></tr><tr><td>Julho/26</td><td><span class="chip chip-f">FECHADO</span></td><td>R$ 6.797,11</td><td class="pos">R$ 19.193,91</td><td class="neg">R$ 25.199,12</td><td class="neg">-R$ 6.005,21</td><td class="pos">R$ 791,90</td></tr><tr><td>Agosto/26</td><td><span class="chip chip-f">FECHADO</span></td><td>R$ 791,90</td><td class="pos">R$ 16.257,15</td><td class="neg">R$ 12.145,20</td><td class="pos">R$ 4.111,95</td><td class="pos">R$ 4.903,85</td></tr><tr><td>Setembro/26</td><td><span class="chip chip-f">FECHADO</span></td><td>R$ 4.903,85</td><td class="pos">R$ 17.101,56</td><td class="neg">R$ 18.425,35</td><td class="neg">-R$ 1.323,79</td><td class="pos">R$ 3.580,05</td></tr><tr><td>Outubro/26</td><td><span class="chip chip-f">FECHADO</span></td><td>R$ 3.580,05</td><td class="pos">R$ 14.195,49</td><td class="neg">R$ 11.600,95</td><td class="pos">R$ 2.594,54</td><td class="pos">R$ 6.174,59</td></tr><tr><td>Novembro/26</td><td><span class="chip chip-c">EM CURSO</span></td><td>R$ 6.174,59</td><td class="pos">R$ 14.189,02</td><td class="neg">R$ 11.545,43</td><td class="pos">R$ 2.643,59</td><td class="pos">R$ 2.853,99</td></tr><tr><td>Dezembro/26</td><td><span class="chip chip-p">PROVISIONADO</span></td><td>R$ 2.853,99</td><td class="pos">R$ 10.517,26</td><td class="neg">R$ 11.278,20</td><td class="neg">-R$ 760,94</td><td class="pos">R$ 2.093,05</td></tr>
-      </tbody>
+    <h2>Fluxo Mês a Mês (Jan→Dez 2026)</h2>
+    <table class="tbl tbl-num">
+      <thead><tr><th>Mês</th><th>Saldo Inicial</th><th>Entradas</th><th>Pagamentos</th><th>Resultado</th><th>Saldo Final</th></tr></thead>
+      <tbody><tr><td>Jan/26 <span class="chip chip-green">● FECHADO</span></td><td>R$ 4.050,07</td><td>R$ 16.753,61</td><td>R$ 14.445,40</td><td class="neg">-R$ 560,92</td><td><strong>R$ 3.489,15</strong></td></tr><tr><td>Fev/26 <span class="chip chip-green">● FECHADO</span></td><td>R$ 3.489,15</td><td>R$ 20.380,86</td><td>R$ 23.304,49</td><td class="neg">-R$ 2.923,62</td><td><strong>R$ 565,53</strong></td></tr><tr><td>Mar/26 <span class="chip chip-green">● FECHADO</span></td><td>R$ 565,53</td><td>R$ 22.319,87</td><td>R$ 17.457,59</td><td class="pos">R$ 4.862,28</td><td><strong>R$ 5.427,81</strong></td></tr><tr><td>Abr/26 <span class="chip chip-green">● FECHADO</span></td><td>R$ 5.427,81</td><td>R$ 19.019,98</td><td>R$ 16.715,50</td><td class="pos">R$ 2.304,48</td><td><strong>R$ 7.732,29</strong></td></tr><tr><td>Mai/26 <span class="chip chip-green">● FECHADO</span></td><td>R$ 7.732,29</td><td>R$ 20.454,33</td><td>R$ 20.273,00</td><td class="pos">R$ 181,33</td><td><strong>R$ 7.913,62</strong></td></tr><tr><td>Jun/26 <span class="chip chip-green">● FECHADO</span></td><td>R$ 7.913,62</td><td>R$ 20.280,28</td><td>R$ 21.277,79</td><td class="neg">-R$ 1.116,51</td><td><strong>R$ 6.797,11</strong></td></tr><tr><td>Jul/26 <span class="chip chip-green">● FECHADO</span></td><td>R$ 6.797,11</td><td>R$ 19.193,91</td><td>R$ 25.199,12</td><td class="neg">-R$ 6.005,21</td><td><strong>R$ 791,90</strong></td></tr><tr><td>Ago/26 <span class="chip chip-green">● FECHADO</span></td><td>R$ 791,90</td><td>R$ 16.257,15</td><td>R$ 12.145,20</td><td class="pos">R$ 4.111,95</td><td><strong>R$ 4.903,85</strong></td></tr><tr><td>Set/26 <span class="chip chip-green">● FECHADO</span></td><td>R$ 4.903,85</td><td>R$ 17.101,56</td><td>R$ 18.425,35</td><td class="neg">-R$ 1.323,80</td><td><strong>R$ 3.580,05</strong></td></tr><tr><td>Out/26 <span class="chip chip-green">● FECHADO</span></td><td>R$ 3.580,05</td><td>R$ 14.195,49</td><td>R$ 11.600,95</td><td class="pos">R$ 2.594,54</td><td><strong>R$ 6.174,59</strong></td></tr><tr><td>Nov/26 <span class="chip chip-yellow">● EM CURSO</span></td><td>R$ 6.174,59</td><td>R$ 14.189,02</td><td>R$ 11.545,43</td><td class="neg">-R$ 3.320,60</td><td><strong>R$ 2.853,99</strong></td></tr><tr><td>Dez/26 <span class="chip chip-purple">● PROVISIONADO</span></td><td>R$ 2.853,99</td><td>R$ 10.517,26</td><td>R$ 11.278,20</td><td class="neg">-R$ 760,94</td><td><strong>R$ 2.093,05</strong></td></tr></tbody>
     </table>
   </div>
 </div>
 
-<!-- ========== DRE ========== -->
-<div id="dre" class="tab-content">
+<div id="dre" class="tab-panel">
   <div class="section">
-    <h2>DRE Orçado — New DRE</h2>
-    <table class="tbl-num">
-      <thead><tr><th>Item</th><th>Valor Mensal</th></tr></thead>
+    <h2>DRE Orçado × Realizado (Out/26)</h2>
+    <table class="tbl tbl-num">
+      <thead><tr><th>Linha</th><th>Orçado</th><th>Realizado Out</th><th>Δ</th></tr></thead>
       <tbody>
-        <tr><td>(+) Receitas</td><td class="pos">R$ 13.055,54</td></tr>
-        <tr><td>(-) Despesas Gerais</td><td class="neg">R$ 13.014,20</td></tr>
-        <tr><td>(-) Despesas Automóvel</td><td class="neg">R$ 392,67</td></tr>
-        <tr class="tot-row"><td>(=) Saldo Mensal</td><td class="neg">-R$ 351,33</td></tr>
+      <tr><td>Receitas</td><td>R$ 13.055,54</td><td>R$ 14.195,49</td><td class="pos">R$ 1.139,95</td></tr>
+      <tr><td>Despesas (gerais + auto)</td><td>R$ 13.406,87</td><td>R$ 11.600,95</td><td class="pos">-R$ 1.805,92</td></tr>
+      <tr><td><strong>Saldo mensal</strong></td><td><strong>-R$ 351,33</strong></td><td><strong>R$ 2.594,54</strong></td><td class="pos"><strong>R$ 2.945,87</strong></td></tr>
       </tbody>
     </table>
-
-    <h3 style="margin-top:20px">Comparativo DRE vs Out/26 (real)</h3>
-    <table class="tbl-num">
-      <thead><tr><th>Métrica</th><th>DRE (orçado)</th><th>Out/26 (real)</th><th>Δ</th></tr></thead>
-      <tbody>
-        <tr><td>Receitas</td><td>R$ 13.055,54</td><td>R$ 14.195,49</td><td class="pos">R$ 1.139,95</td></tr>
-        <tr><td>Despesas</td><td>R$ 13.406,87</td><td>R$ 11.600,95</td><td class="pos">-R$ 1.805,92</td></tr>
-        <tr><td>Saldo</td><td class="neg">-R$ 351,33</td><td class="pos">R$ 2.594,54</td><td class="pos">R$ 2.945,87</td></tr>
-      </tbody>
+    <p style="font-size:.85rem;color:#94a3b8;margin-top:10px">DRE orçado prevê saldo mensal <strong class="neg">-R$ 351,33</strong> (negativo). Out/26 ficou <strong class="pos">R$ 2.945,87</strong> acima do orçado.</p>
+  </div>
+  <div class="section">
+    <h2>Detalhamento DRE (orçado)</h2>
+    <table class="tbl tbl-num">
+      <thead><tr><th>Item</th><th>Valor mensal</th></tr></thead>
+      <tbody><tr><td>🟢 Salário Renan - LÍQUIDO</td><td>R$ 10.517,54</td></tr><tr><td>🟢 Plano de saúde (reembolso)</td><td>R$ 2.238,00</td></tr><tr><td>🟢 Salário Feh</td><td>R$ 300,00</td></tr><tr><td>🔴 Escola Crianças</td><td>R$ 3.347,00</td></tr><tr><td>🔴 Aluguel + Condomínio</td><td>R$ 2.200,00</td></tr><tr><td>🔴 Plano de saúde dos meninos</td><td>R$ 1.415,20</td></tr><tr><td>🔴 Combustível</td><td>R$ 1.000,00</td></tr><tr><td>🔴 Supermercado</td><td>R$ 1.000,00</td></tr><tr><td>🔴 Finais de semana</td><td>R$ 800,00</td></tr><tr><td>🔴 Meu Plano de saúde</td><td>R$ 823,00</td></tr><tr><td>🔴 Faculdade Feh</td><td>R$ 547,00</td></tr><tr><td>🔴 Pós amor</td><td>R$ 500,00</td></tr><tr><td>🔴 Almoço (Renan)</td><td>R$ 200,00</td></tr><tr><td>🔴 Faculdade Renan</td><td>R$ 192,00</td></tr><tr><td>🔴 Celular</td><td>R$ 150,00</td></tr><tr><td>🔴 Luz</td><td>R$ 150,00</td></tr><tr><td>🔴 Água</td><td>R$ 150,00</td></tr><tr><td>🔴 Farmácia</td><td>R$ 150,00</td></tr><tr><td>🔴 Assinaturas</td><td>R$ 150,00</td></tr><tr><td>🔴 Internet</td><td>R$ 120,00</td></tr><tr><td>🔴 Pedágios</td><td>R$ 60,00</td></tr><tr><td>🔴 Estacionamento</td><td>R$ 60,00</td></tr><tr><td>🔴 Seguro Auto</td><td>R$ 251,00</td></tr><tr><td>🔴 IPVA</td><td>R$ 141,67</td></tr></tbody>
     </table>
   </div>
 </div>
 
-<!-- ========== INSIGHTS ========== -->
-<div id="insights" class="tab-content">
+<div id="insights" class="tab-panel">
   <div class="section">
-    <h2>Alertas Automáticos</h2>
-    <ul class="ins-list">
-<li class="warn">⚠️ Dezembro/26 provisionado com resultado baixo: -R$ 760,94</li><li class="warn">⚠️ Itaú acima de R$ 2.500 em Fev/26: R$ 2.769,51</li><li class="warn">⚠️ Nubank acima de R$ 2.500 em Jan/26: R$ 3.321,07</li><li class="warn">⚠️ Bradesco acima de R$ 2.500 em Nov/26: R$ 2.795,62</li>
-    </ul>
+    <h2>Alertas automáticos</h2>
+    <ul class="alerts"><li class="alert-warn">⚠️ Nov/26 em curso projeta resultado -R$ 3.320,60 — fluxo apertado</li><li class="alert-warn">⚠️ ITAU em Fev/26: R$ 2.769,51 (acima de R$ 2.500)</li><li class="alert-warn">⚠️ ITAU em Nov/26: R$ 2.621,68 (acima de R$ 2.500)</li><li class="alert-warn">⚠️ NUBANK em Jan/26: R$ 3.321,07 (acima de R$ 2.500)</li><li class="alert-warn">⚠️ BRADESCO em Nov/26: R$ 2.795,62 (acima de R$ 2.500)</li><li class="alert-crit">🚨 Nubank: utilização 95% do limite (R$ 5.009,16 em aberto de R$ 5.250,00) — disponível só R$ 240,84</li><li class="alert-ok">✅ Fatura Bradesco Nov/26 (R$ 2.795,62) PAGA em 04/11/26 — pagamento já refletido nas projeções de Nov.</li><li class="alert-ok">✅ Fatura Itaú Nov/26 (venceu 01/11) assumida paga — ajuste manualmente em cartoes_limites.json se ainda em aberto.</li></ul>
   </div>
-
   <div class="section">
-    <h2>Dívidas em Aberto · Plano de Quitação</h2>
-    <table class="tbl-num">
-      <thead><tr><th>Credor</th><th style="text-align:left !important">Estratégia</th><th>Valor</th><th>Prioridade</th></tr></thead>
-      <tbody>
-<tr><td>Nubank</td><td style="text-align:left">Quitar via amortização - juros médios</td><td class="neg">R$ 2.100,00</td><td>Alta</td></tr><tr><td>Bradesco</td><td style="text-align:left">Quitar em paralelo - distribuir em 3 meses</td><td class="neg">R$ 11.000,00</td><td>Alta</td></tr><tr><td>Iolanda</td><td style="text-align:left">Negociar parcelamento sem juros - longo prazo</td><td class="neg">R$ 35.000,00</td><td>Baixa</td></tr><tr><td>José Luis</td><td style="text-align:left">Negociar parcelamento sem juros - médio prazo</td><td class="neg">R$ 15.021,81</td><td>Média</td></tr>
-        <tr class="tot-row"><td>TOTAL</td><td style="text-align:left">—</td><td class="neg">R$ 63.121,81</td><td>—</td></tr>
-      </tbody>
+    <h2>Dívidas em aberto — plano de quitação</h2>
+    <table class="tbl tbl-num">
+      <thead><tr><th>Credor</th><th>Valor</th><th style="text-align:left">Estratégia</th></tr></thead>
+      <tbody><tr><td><strong>Iolanda</strong></td><td>R$ 35.000,00</td><td style="text-align:left">Longo prazo - renegociar ou amortização mínima</td></tr><tr><td><strong>José Luis</strong></td><td>R$ 15.021,81</td><td style="text-align:left">Longo prazo - manter parcelas</td></tr><tr><td><strong>Bradesco</strong></td><td>R$ 11.000,00</td><td style="text-align:left">Prioridade alta - juros altos, amortizar primeiro</td></tr><tr><td><strong>Nubank</strong></td><td>R$ 2.100,00</td><td style="text-align:left">Prioridade imediata - menor valor, zerar rápido</td></tr></tbody>
+      <tfoot><tr><td><strong>TOTAL</strong></td><td><strong>R$ 63.121,81</strong></td><td>—</td></tr></tfoot>
     </table>
+    <p style="font-size:.85rem;color:#94a3b8;margin-top:10px">Avalanche recomendada: Nubank (R$ 2,1k) → Bradesco (R$ 11k) → Iolanda/José Luis (longo prazo).</p>
   </div>
 </div>
 
-<!-- ========== CENÁRIOS A/B/C/D ========== -->
-<div id="cenarios" class="tab-content">
+<div id="cenarios" class="tab-panel">
   <div class="section">
-    <h2>🎯 Projeções A/B/C/D — Nov/26 → Dez/26</h2>
-    <p class="legend">Ancorado no Saldo Final de Out/26 = R$ 6.174,59. Receita/Pagamento base = planilha.</p>
-
-    <div class="scn-cards">
-      <div class="scn-card scn-a"><div class="scn-lbl">A · Conservador</div><div class="scn-val">R$ 5.597,24</div><div class="scn-sub">Dez/26 projetado</div></div>
-      <div class="scn-card scn-b"><div class="scn-lbl">B · Moderado ⭐</div><div class="scn-val">R$ 3.830,24</div><div class="scn-sub">RECOMENDADO</div></div>
-      <div class="scn-card scn-c"><div class="scn-lbl">C · Agressivo</div><div class="scn-val">R$ 6.230,24</div><div class="scn-sub">Dez/26 projetado</div></div>
-      <div class="scn-card scn-d"><div class="scn-lbl">D · Simulador</div><div class="scn-val" id="scn-d-amount">R$ 11.857,24</div><div class="scn-sub">freela/corte editáveis</div></div>
+    <h2>🎯 Projeção Nov/26 → Dez/26 — a partir do saldo R$ 6.174,59</h2>
+    <div class="scn-grid">
+      <div class="scn-card scn-A"><div class="card-lbl">Cenário A · Conservador</div><div class="card-val" style="color:#60a5fa">R$ 1.663,05</div><div class="card-sub">freela 800/mês · sem corte</div></div>
+      <div class="scn-card scn-B"><div class="card-lbl">Cenário B · Moderado <span class="scn-badge" style="background:rgba(34,197,94,0.3);color:#86efac">RECOMENDADO</span></div><div class="card-val" style="color:#4ade80">-R$ 1.933,95</div><div class="card-sub">freela 1.5k · corte + amort 8k</div></div>
+      <div class="scn-card scn-C"><div class="card-lbl">Cenário C · Agressivo</div><div class="card-val" style="color:#fbbf24">R$ 466,05</div><div class="card-sub">freela 2.5k · corte alto</div></div>
+      <div class="scn-card scn-D"><div class="card-lbl">Cenário D · Simulador (liquidez)</div><div class="card-val" style="color:#c084fc" id="scn-d-amount">R$ 6.093,05</div><div class="card-sub">amort = 0 · dívida rola p/ 2027</div></div>
     </div>
+    
+<div class="chart-wrap" id="wrap-scn" style="position:relative">
+<svg id="svg-scn" viewBox="0 0 760 300" width="100%" height="300" preserveAspectRatio="none">
+  <line x1="60" x2="740" y1="248.7" y2="248.7" stroke="#334155" stroke-dasharray="3,3" opacity="0.4" /><text x="52" y="252.7" text-anchor="end" fill="#94a3b8" font-size="10">-5k</text><line x1="60" x2="740" y1="196.5" y2="196.5" stroke="#334155" stroke-dasharray="3,3" opacity="0.4" /><text x="52" y="200.5" text-anchor="end" fill="#94a3b8" font-size="10">0k</text><line x1="60" x2="740" y1="144.3" y2="144.3" stroke="#334155" stroke-dasharray="3,3" opacity="0.4" /><text x="52" y="148.3" text-anchor="end" fill="#94a3b8" font-size="10">5k</text><line x1="60" x2="740" y1="92.2" y2="92.2" stroke="#334155" stroke-dasharray="3,3" opacity="0.4" /><text x="52" y="96.2" text-anchor="end" fill="#94a3b8" font-size="10">10k</text><line x1="60" x2="740" y1="40.0" y2="40.0" stroke="#334155" stroke-dasharray="3,3" opacity="0.4" /><text x="52" y="44.0" text-anchor="end" fill="#94a3b8" font-size="10">15k</text><line x1="60" x2="740" y1="92.2" y2="92.2" stroke="#22c55e" stroke-dasharray="4,4" opacity="0.6" /><text x="740" y="88.2" text-anchor="end" fill="#22c55e" font-size="10">meta 10k</text><line x1="60" x2="740" y1="165.2" y2="165.2" stroke="#f59e0b" stroke-dasharray="4,4" opacity="0.6" /><text x="740" y="161.2" text-anchor="end" fill="#f59e0b" font-size="10">colchão 3k</text>
+  <polyline  points="60.0,132.1 400.0,166.7 740.0,174.7" fill="none" stroke="#64748b" stroke-width="1.8" stroke-dasharray="5,4" opacity="0.8" /><circle class="scn-dot" cx="60.0" cy="132.1" r="3.5" fill="#64748b" stroke="#0b1220" stroke-width="1.5" /><circle class="scn-dot" cx="400.0" cy="166.7" r="3.5" fill="#64748b" stroke="#0b1220" stroke-width="1.5" /><circle class="scn-dot" cx="740.0" cy="174.7" r="3.5" fill="#64748b" stroke="#0b1220" stroke-width="1.5" />
+  <polyline  points="60.0,132.1 400.0,179.6 740.0,179.2" fill="none" stroke="#3b82f6" stroke-width="2.3" /><circle class="scn-dot" cx="60.0" cy="132.1" r="3.5" fill="#3b82f6" stroke="#0b1220" stroke-width="1.5" /><circle class="scn-dot" cx="400.0" cy="179.6" r="3.5" fill="#3b82f6" stroke="#0b1220" stroke-width="1.5" /><circle class="scn-dot" cx="740.0" cy="179.2" r="3.5" fill="#3b82f6" stroke="#0b1220" stroke-width="1.5" />
+  <polyline  points="60.0,132.1 400.0,193.1 740.0,216.7" fill="none" stroke="#22c55e" stroke-width="2.3" /><circle class="scn-dot" cx="60.0" cy="132.1" r="3.5" fill="#22c55e" stroke="#0b1220" stroke-width="1.5" /><circle class="scn-dot" cx="400.0" cy="193.1" r="3.5" fill="#22c55e" stroke="#0b1220" stroke-width="1.5" /><circle class="scn-dot" cx="740.0" cy="216.7" r="3.5" fill="#22c55e" stroke="#0b1220" stroke-width="1.5" />
+  <polyline  points="60.0,132.1 400.0,180.6 740.0,191.7" fill="none" stroke="#f59e0b" stroke-width="2.3" /><circle class="scn-dot" cx="60.0" cy="132.1" r="3.5" fill="#f59e0b" stroke="#0b1220" stroke-width="1.5" /><circle class="scn-dot" cx="400.0" cy="180.6" r="3.5" fill="#f59e0b" stroke="#0b1220" stroke-width="1.5" /><circle class="scn-dot" cx="740.0" cy="191.7" r="3.5" fill="#f59e0b" stroke="#0b1220" stroke-width="1.5" />
+  <polyline id="poly-d" points="60.0,132.1 400.0,145.9 740.0,132.9" fill="none" stroke="#a855f7" stroke-width="2.3" /><circle class="scn-dot circle-d" cx="60.0" cy="132.1" r="3.5" fill="#a855f7" stroke="#0b1220" stroke-width="1.5" /><circle class="scn-dot circle-d" cx="400.0" cy="145.9" r="3.5" fill="#a855f7" stroke="#0b1220" stroke-width="1.5" /><circle class="scn-dot circle-d" cx="740.0" cy="132.9" r="3.5" fill="#a855f7" stroke="#0b1220" stroke-width="1.5" />
+  <text x="60.0" y="296" text-anchor="middle" fill="#cbd5e1" font-size="11">Out</text><text x="400.0" y="296" text-anchor="middle" fill="#cbd5e1" font-size="11">Nov</text><text x="740.0" y="296" text-anchor="middle" fill="#cbd5e1" font-size="11">Dez</text>
+  <line id="cross-scn" x1="0" x2="0" y1="20" y2="280" stroke="#94a3b8" stroke-dasharray="3,3" opacity="0" />
+  <circle class="hc-scn hc-scn-64748b" cx="0" cy="0" r="6" fill="#64748b" stroke="#fff" stroke-width="2" style="display:none" /><circle class="hc-scn hc-scn-64748b" cx="0" cy="0" r="6" fill="#64748b" stroke="#fff" stroke-width="2" style="display:none" /><circle class="hc-scn hc-scn-64748b" cx="0" cy="0" r="6" fill="#64748b" stroke="#fff" stroke-width="2" style="display:none" /><circle class="hc-scn hc-scn-3b82f6" cx="0" cy="0" r="6" fill="#3b82f6" stroke="#fff" stroke-width="2" style="display:none" /><circle class="hc-scn hc-scn-3b82f6" cx="0" cy="0" r="6" fill="#3b82f6" stroke="#fff" stroke-width="2" style="display:none" /><circle class="hc-scn hc-scn-3b82f6" cx="0" cy="0" r="6" fill="#3b82f6" stroke="#fff" stroke-width="2" style="display:none" /><circle class="hc-scn hc-scn-22c55e" cx="0" cy="0" r="6" fill="#22c55e" stroke="#fff" stroke-width="2" style="display:none" /><circle class="hc-scn hc-scn-22c55e" cx="0" cy="0" r="6" fill="#22c55e" stroke="#fff" stroke-width="2" style="display:none" /><circle class="hc-scn hc-scn-22c55e" cx="0" cy="0" r="6" fill="#22c55e" stroke="#fff" stroke-width="2" style="display:none" /><circle class="hc-scn hc-scn-f59e0b" cx="0" cy="0" r="6" fill="#f59e0b" stroke="#fff" stroke-width="2" style="display:none" /><circle class="hc-scn hc-scn-f59e0b" cx="0" cy="0" r="6" fill="#f59e0b" stroke="#fff" stroke-width="2" style="display:none" /><circle class="hc-scn hc-scn-f59e0b" cx="0" cy="0" r="6" fill="#f59e0b" stroke="#fff" stroke-width="2" style="display:none" /><circle class="hc-scn hc-scn-a855f7" cx="0" cy="0" r="6" fill="#a855f7" stroke="#fff" stroke-width="2" style="display:none" /><circle class="hc-scn hc-scn-a855f7" cx="0" cy="0" r="6" fill="#a855f7" stroke="#fff" stroke-width="2" style="display:none" /><circle class="hc-scn hc-scn-a855f7" cx="0" cy="0" r="6" fill="#a855f7" stroke="#fff" stroke-width="2" style="display:none" />
+  <rect id="overlay-scn" x="60" y="20" width="680" height="260" fill="#000" opacity="0" pointer-events="all" />
+</svg>
+<div class="hover-tip" id="tip-scn"></div>
+</div>
 
-    <div class="chart-wrap" id="wrap-scn">
-      <svg id="svg-scn" viewBox="0 0 800 300">
-        <line x1="40" y1="20" x2="40" y2="260" stroke="rgba(148,163,184,0.2)"/>
-        <line x1="40" y1="260" x2="760" y2="260" stroke="rgba(148,163,184,0.2)"/>
-        <!-- Referência meta 10k -->
-        <line x1="40" y1="72.2" x2="760" y2="72.2" stroke="#22c55e" stroke-width="1" stroke-dasharray="2 4" opacity="0.5"/>
-        <text x="750" y="69.2" fill="#22c55e" font-size="10" text-anchor="end">Meta R$ 10k</text>
-        <!-- Colchão 3k -->
-        <line x1="40" y1="145.2" x2="760" y2="145.2" stroke="#f59e0b" stroke-width="1" stroke-dasharray="2 4" opacity="0.5"/>
-        <text x="750" y="142.2" fill="#f59e0b" font-size="10" text-anchor="end">Colchão R$ 3k</text>
-        <!-- Zero -->
-        <line x1="40" y1="176.5" x2="760" y2="176.5" stroke="#64748b" stroke-width="1" opacity="0.4"/>
-
-        <text x="100" y="280" fill="#94a3b8" font-size="11" text-anchor="middle">Out/26</text>
-        <text x="400" y="280" fill="#94a3b8" font-size="11" text-anchor="middle">Nov/26</text>
-        <text x="700" y="280" fill="#94a3b8" font-size="11" text-anchor="middle">Dez/26</text>
-
-        <polyline id="poly-base" points="100,112.1,400,84.5,700,92.4" fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="4 3"/>
-        <polyline id="poly-a" points="100,112.1,400,97.3,700,118.1" fill="none" stroke="#3b82f6" stroke-width="2.5"/>
-        <polyline id="poly-b" points="100,112.1,400,118.2,700,136.6" fill="none" stroke="#22c55e" stroke-width="3"/>
-        <polyline id="poly-c" points="100,112.1,400,105.7,700,111.5" fill="none" stroke="#f59e0b" stroke-width="2.5"/>
-        <polyline id="poly-d" points="100,112.1,400,65.7,700,52.8" fill="none" stroke="#a855f7" stroke-width="2.5"/>
-
-        <circle cx="100" cy="112.1" r="3.5" fill="#3b82f6"/><circle cx="400" cy="97.3" r="3.5" fill="#3b82f6"/><circle cx="700" cy="118.1" r="3.5" fill="#3b82f6"/><circle cx="100" cy="112.1" r="3.5" fill="#22c55e"/><circle cx="400" cy="118.2" r="3.5" fill="#22c55e"/><circle cx="700" cy="136.6" r="3.5" fill="#22c55e"/><circle cx="100" cy="112.1" r="3.5" fill="#f59e0b"/><circle cx="400" cy="105.7" r="3.5" fill="#f59e0b"/><circle cx="700" cy="111.5" r="3.5" fill="#f59e0b"/><circle cx="100" cy="112.1" r="3" fill="#64748b"/><circle cx="400" cy="84.5" r="3" fill="#64748b"/><circle cx="700" cy="92.4" r="3" fill="#64748b"/>
-        <circle class="circle-d" id="dot-d-0" cx="100" cy="112.1" r="4" fill="#a855f7"/>
-        <circle class="circle-d" id="dot-d-1" cx="400" cy="65.7" r="4" fill="#a855f7"/>
-        <circle class="circle-d" id="dot-d-2" cx="700" cy="52.8" r="4" fill="#a855f7"/>
-
-        <line id="cross-scn" x1="0" y1="20" x2="0" y2="260" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3" style="display:none"/>
-        <circle id="hover-scn-base" r="5" fill="#64748b" style="display:none"/>
-        <circle id="hover-scn-a" r="5" fill="#3b82f6" style="display:none"/>
-        <circle id="hover-scn-b" r="5" fill="#22c55e" style="display:none"/>
-        <circle id="hover-scn-c" r="5" fill="#f59e0b" style="display:none"/>
-        <circle id="hover-scn-d" r="5" fill="#a855f7" style="display:none"/>
-        <rect id="overlay-scn" x="40" y="20" width="720" height="240" fill="#000" opacity="0" pointer-events="all"/>
-      </svg>
-      <div class="hover-tip" id="tip-scn"></div>
-      <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:8px;font-size:0.82rem;color:#94a3b8;">
-        <span><span style="display:inline-block;width:12px;height:3px;background:#64748b;vertical-align:middle;"></span> Base</span>
-        <span><span style="display:inline-block;width:12px;height:3px;background:#3b82f6;vertical-align:middle;"></span> A</span>
-        <span><span style="display:inline-block;width:12px;height:3px;background:#22c55e;vertical-align:middle;"></span> B ⭐</span>
-        <span><span style="display:inline-block;width:12px;height:3px;background:#f59e0b;vertical-align:middle;"></span> C</span>
-        <span><span style="display:inline-block;width:12px;height:3px;background:#a855f7;vertical-align:middle;"></span> D</span>
-      </div>
+    <div class="legend">
+      <div class="legend-item"><span class="legend-swatch" style="background:#64748b"></span>Base (sem ajustes)</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:#3b82f6"></span>A Conservador</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:#22c55e"></span>B Moderado</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:#f59e0b"></span>C Agressivo</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:#a855f7"></span>D Simulador</div>
     </div>
-
-    <h3>Cenário A — Conservador (freela R$ 800/mês)</h3>
-    <table class="tbl-num"><thead><tr><th>Mês</th><th>Saldo Inicial</th><th>Entradas (+freela)</th><th>Pagamentos (-corte +amort)</th><th>Resultado</th><th>Saldo Final</th></tr></thead><tbody><tr><td>Nov/26</td><td>R$ 6.174,59</td><td>R$ 14.989,02</td><td>R$ 13.575,43</td><td class="pos">R$ 1.413,59</td><td class="pos">R$ 7.588,18</td></tr><tr><td>Dez/26</td><td>R$ 7.588,18</td><td>R$ 11.317,26</td><td>R$ 13.308,20</td><td class="neg">-R$ 1.990,94</td><td class="pos">R$ 5.597,24</td></tr></tbody></table>
-
-    <h3>Cenário B — Moderado ⭐ RECOMENDADO (freela R$ 1.500/mês)</h3>
-    <table class="tbl-num"><thead><tr><th>Mês</th><th>Saldo Inicial</th><th>Entradas (+freela)</th><th>Pagamentos (-corte +amort)</th><th>Resultado</th><th>Saldo Final</th></tr></thead><tbody><tr><td>Nov/26</td><td>R$ 6.174,59</td><td>R$ 15.689,02</td><td>R$ 16.273,93</td><td class="neg">-R$ 584,91</td><td class="pos">R$ 5.589,68</td></tr><tr><td>Dez/26</td><td>R$ 5.589,68</td><td>R$ 12.017,26</td><td>R$ 13.776,70</td><td class="neg">-R$ 1.759,44</td><td class="pos">R$ 3.830,24</td></tr></tbody></table>
-
-    <h3>Cenário C — Agressivo (freela R$ 2.500/mês)</h3>
-    <table class="tbl-num"><thead><tr><th>Mês</th><th>Saldo Inicial</th><th>Entradas (+freela)</th><th>Pagamentos (-corte +amort)</th><th>Resultado</th><th>Saldo Final</th></tr></thead><tbody><tr><td>Nov/26</td><td>R$ 6.174,59</td><td>R$ 16.689,02</td><td>R$ 16.073,93</td><td class="pos">R$ 615,09</td><td class="pos">R$ 6.789,68</td></tr><tr><td>Dez/26</td><td>R$ 6.789,68</td><td>R$ 13.017,26</td><td>R$ 13.576,70</td><td class="neg">-R$ 559,44</td><td class="pos">R$ 6.230,24</td></tr></tbody></table>
-
-    <h3>Cenário D — Simulador Interativo 🎛️ (zero amortização · freela/corte editáveis)</h3>
-    <p class="legend">Edite freela e corte por mês. A tabela, o gráfico e o card acima atualizam em tempo real. <button class="btn" onclick="resetD()">↻ Reset</button> <button class="btn" onclick="zeroD()">Zerar tudo</button></p>
-    <table class="tbl-num" id="scn-d-sim">
-      <thead><tr><th>Mês</th><th>Saldo Inicial</th><th>Freela</th><th>Corte</th><th>Pagamentos</th><th>Resultado</th><th>Saldo Final</th></tr></thead>
-      <tbody>
-        <tr data-i="0"><td>Nov/26</td><td class="d-si">—</td><td><input type="number" class="d-freela" value="1500" step="100"></td><td><input type="number" class="d-corte" value="300" step="100"></td><td>R$ 11.545,43</td><td class="d-res">—</td><td class="d-sf">—</td></tr>
-        <tr data-i="1"><td>Dez/26</td><td class="d-si">—</td><td><input type="number" class="d-freela" value="1500" step="100"></td><td><input type="number" class="d-corte" value="500" step="100"></td><td>R$ 11.278,20</td><td class="d-res">—</td><td class="d-sf">—</td></tr>
-      </tbody>
-      <tfoot>
-        <tr class="tot-row"><td>TOTAL</td><td>—</td><td class="d-freela-total">—</td><td class="d-corte-total">—</td><td>—</td><td class="d-res-total">—</td><td class="d-sf-final">—</td></tr>
-      </tfoot>
-    </table>
-
+  </div>
+  <div class="section"><h3>Cenário A — Conservador</h3><table class="tbl tbl-num"><thead><tr><th>Mês</th><th>Saldo Inicial</th><th>Entradas (+fr)</th><th>Pagto (-co +am)</th><th>Resultado</th><th>Saldo Final</th></tr></thead><tbody><tr><td>Nov/26</td><td>R$ 6.174,59</td><td>R$ 14.989,02</td><td>R$ 19.539,62</td><td class="neg">-R$ 4.550,60</td><td><strong>R$ 1.623,99</strong></td></tr><tr><td>Dez/26</td><td>R$ 1.623,99</td><td>R$ 11.317,26</td><td>R$ 11.278,20</td><td class="pos">R$ 39,06</td><td><strong>R$ 1.663,05</strong></td></tr></tbody>
+    <tfoot><tr><td><strong>TOTAIS</strong></td><td>—</td><td>freela: <strong>R$ 1.600,00</strong></td><td>corte: <strong>R$ 0,00</strong> / amort: <strong>R$ 2.030,00</strong></td><td class="neg"><strong>-R$ 4.511,54</strong></td><td><strong>R$ 1.663,05</strong></td></tr></tfoot>
+    </table><p style="font-size:.82rem;color:#94a3b8;margin-top:8px">Meta: reserva mínima R$ 3k preservada, dívida residual ~R$ 6k para 2027.</p></div>
+  <div class="section"><h3>Cenário B — Moderado (RECOMENDADO)</h3><table class="tbl tbl-num"><thead><tr><th>Mês</th><th>Saldo Inicial</th><th>Entradas (+fr)</th><th>Pagto (-co +am)</th><th>Resultado</th><th>Saldo Final</th></tr></thead><tbody><tr><td>Nov/26</td><td>R$ 6.174,59</td><td>R$ 15.689,02</td><td>R$ 21.539,62</td><td class="neg">-R$ 5.850,60</td><td><strong>R$ 323,99</strong></td></tr><tr><td>Dez/26</td><td>R$ 323,99</td><td>R$ 12.017,26</td><td>R$ 14.275,20</td><td class="neg">-R$ 2.257,94</td><td><strong>-R$ 1.933,95</strong></td></tr></tbody>
+    <tfoot><tr><td><strong>TOTAIS</strong></td><td>—</td><td>freela: <strong>R$ 3.000,00</strong></td><td>corte: <strong>R$ 1.000,00</strong> / amort: <strong>R$ 8.027,00</strong></td><td class="neg"><strong>-R$ 8.108,54</strong></td><td><strong>-R$ 1.933,95</strong></td></tr></tfoot>
+    </table><p style="font-size:.82rem;color:#94a3b8;margin-top:8px">Meta: Dívida ZERADA até Dez/26.</p></div>
+  <div class="section"><h3>Cenário C — Agressivo</h3><table class="tbl tbl-num"><thead><tr><th>Mês</th><th>Saldo Inicial</th><th>Entradas (+fr)</th><th>Pagto (-co +am)</th><th>Resultado</th><th>Saldo Final</th></tr></thead><tbody><tr><td>Nov/26</td><td>R$ 6.174,59</td><td>R$ 16.689,02</td><td>R$ 21.339,62</td><td class="neg">-R$ 4.650,60</td><td><strong>R$ 1.523,99</strong></td></tr><tr><td>Dez/26</td><td>R$ 1.523,99</td><td>R$ 13.017,26</td><td>R$ 14.075,20</td><td class="neg">-R$ 1.057,94</td><td><strong>R$ 466,05</strong></td></tr></tbody>
+    <tfoot><tr><td><strong>TOTAIS</strong></td><td>—</td><td>freela: <strong>R$ 5.000,00</strong></td><td>corte: <strong>R$ 1.400,00</strong> / amort: <strong>R$ 8.027,00</strong></td><td class="neg"><strong>-R$ 5.708,54</strong></td><td><strong>R$ 466,05</strong></td></tr></tfoot>
+    </table><p style="font-size:.82rem;color:#94a3b8;margin-top:8px">Meta: Dívida ZERADA + reserva rumo à meta R$ 10k-12k.</p></div>
+  <div class="section"><h3>Cenário D — Simulador interativo</h3><table class="tbl tbl-num" id="scn-d-sim">
+<thead><tr><th>Mês</th><th>Saldo Inicial</th><th>Entradas (+freela)</th><th>Pagamentos (-corte)</th><th>Resultado</th><th>Saldo Final</th></tr></thead>
+<tbody><tr data-idx="0">
+    <td>Nov/26</td>
+    <td class="d-si">—</td>
+    <td>R$ 14.189,02 + <input type="number" step="50" value="1500" data-field="freela" style="width:72px;background:rgba(15,23,42,0.6);color:#e2e8f0;border:1px solid rgba(148,163,184,0.3);border-radius:4px;padding:2px 4px;text-align:right" /></td>
+    <td>R$ 17.509,62 − <input type="number" step="50" value="500" data-field="corte" style="width:72px;background:rgba(15,23,42,0.6);color:#e2e8f0;border:1px solid rgba(148,163,184,0.3);border-radius:4px;padding:2px 4px;text-align:right" /></td>
+    <td class="d-res">—</td>
+    <td class="d-sf"><strong>—</strong></td>
+    </tr><tr data-idx="1">
+    <td>Dez/26</td>
+    <td class="d-si">—</td>
+    <td>R$ 10.517,26 + <input type="number" step="50" value="1500" data-field="freela" style="width:72px;background:rgba(15,23,42,0.6);color:#e2e8f0;border:1px solid rgba(148,163,184,0.3);border-radius:4px;padding:2px 4px;text-align:right" /></td>
+    <td>R$ 11.278,20 − <input type="number" step="50" value="500" data-field="corte" style="width:72px;background:rgba(15,23,42,0.6);color:#e2e8f0;border:1px solid rgba(148,163,184,0.3);border-radius:4px;padding:2px 4px;text-align:right" /></td>
+    <td class="d-res">—</td>
+    <td class="d-sf"><strong>—</strong></td>
+    </tr></tbody>
+<tfoot>
+  <tr><td colspan="2"><strong>TOTAIS</strong></td>
+      <td>freela: <strong class="d-freela-total">—</strong></td>
+      <td>corte: <strong class="d-corte-total">—</strong> · amort: R$ 0,00</td>
+      <td class="d-res-total"><strong>—</strong></td>
+      <td><strong class="d-sf-final">—</strong></td></tr>
+</tfoot>
+</table>
+<div style="margin-top:8px;display:flex;gap:8px"><button onclick="resetD()" style="background:rgba(168,85,247,0.2);color:#e9d5ff;border:1px solid rgba(168,85,247,0.4);padding:6px 14px;border-radius:6px;cursor:pointer">↻ Reset</button><button onclick="zeroD()" style="background:rgba(100,116,139,0.2);color:#cbd5e1;border:1px solid rgba(100,116,139,0.4);padding:6px 14px;border-radius:6px;cursor:pointer">Zerar tudo</button></div><p style="font-size:.82rem;color:#94a3b8;margin-top:8px">Edite os valores de freela e corte diretamente nas células. Zero amortização: máxima liquidez, dívida rola para 2027.</p></div>
+  <div class="section">
     <div class="rec-box">
-      <h3>💡 Recomendação do Especialista</h3>
-      <p><strong>Cenário B (Moderado) é o recomendado:</strong> freela de R$ 1.500/mês + corte progressivo + amortização estruturada das dívidas de cartão (Santander, Itaú, Nubank, Bradesco) sem comprometer liquidez.</p>
-      <ul>
-        <li>✅ Elimina dívida ativa de cartões até Dez/26</li>
-        <li>✅ Mantém saldo final acima de R$ 3.000 (colchão mínimo)</li>
-        <li>⭐ Melhor equilíbrio entre quitar dívida e preservar reserva</li>
-      </ul>
-      <p style="margin-top:10px"><strong>Cenário D (simulador) como plano de contingência de liquidez:</strong> zero amortização nos próximos 2 meses, dívida rola para 2027, saldo cresce rápido. Útil se houver evento inesperado (saúde, emergência).</p>
+      <h3>💡 Recomendação do especialista</h3>
+      <p style="font-size:.9rem;line-height:1.6">Com o fluxo base de Nov/26 já estressado (R$ 2.853,99 projetado) e Dez/26 (R$ 2.093,05), <strong>priorize o Cenário D (liquidez)</strong>: zero amortização, dívida de cartões rola para 2027 mas colchão fica positivo (~R$ 6.093,05). O <strong>Cenário A (conservador)</strong> é viável se vier R$ 800/mês de freela e mantém R$ ~1,6k. <strong>Cenários B e C exigem freela + corte simultâneos e cairão para saldo NEGATIVO</strong> sem cuidado — reservar só se freela estiver garantido e dívida for prioridade máxima. Bradesco Nov (R$ 2.795,62) já foi quitado em 04/11.</p>
     </div>
   </div>
 </div>
 
-<!-- ========== CARTÕES ========== -->
-<div id="cartoes" class="tab-content">
+<div id="cartoes" class="tab-panel">
   <div class="section">
-    <h2>💳 Faturas de Cartão de Crédito</h2>
-    <p class="legend">Fonte: aba <strong>Cartões 2026</strong>. ITAÚ = col 2+ · NUBANK FEH = col 62+ · BRADESCO = col 126+. Blocos mensais de 4 colunas (Data, Descrição, Valor, vazia). "Total do mês" extraído da linha de soma (Valor com Descrição vazia). "—" = mês sem dado na planilha.</p>
-
-    <div class="cards">
-      <div class="card"><div class="lbl" style="color:#ef4444">Itaú · Total</div><div class="val">R$ 18.345,12</div><div class="sub">Jan/26 → Mar/27</div></div>
-      <div class="card"><div class="lbl" style="color:#a855f7">Nubank · Total</div><div class="val">R$ 25.020,36</div><div class="sub">Jan/26 → Abr/27</div></div>
-      <div class="card"><div class="lbl" style="color:#3b82f6">Bradesco · Total</div><div class="val">R$ 21.036,47</div><div class="sub">Jan/26 → Abr/27</div></div>
-      <div class="card"><div class="lbl">GRAND TOTAL</div><div class="val warn">R$ 64.401,95</div><div class="sub">16 meses somados</div></div>
+    <h2>💳 Visão consolidada dos cartões — Jan/26 → Abr/27</h2>
+    <p style="font-size:.82rem;color:#94a3b8;margin-bottom:10px">Fonte na planilha "Cartões 2026": ITAÚ (col 2–46 blocos de 4), NUBANK FEH (col 62–122 blocos de 4), BRADESCO (col 126–174 blocos de 4). Total mensal = linha de SOMA onde "Descrição" está vazia.</p>
+    <div class="cart-cards">
+      <div class="cart-card cart-itau"><div class="card-lbl" style="color:#fca5a5">Itaú</div><div class="card-val">R$ 18.345,12</div><div class="card-sub">total período · R$ 2.407,18 em Out</div></div>
+      <div class="cart-card cart-nu"><div class="card-lbl" style="color:#d8b4fe">Nubank FEH</div><div class="card-val">R$ 25.020,36</div><div class="card-sub">total período · R$ 1.425,64 em Out</div></div>
+      <div class="cart-card cart-br"><div class="card-lbl" style="color:#93c5fd">Bradesco</div><div class="card-val">R$ 21.036,47</div><div class="card-sub">total período · R$ 1.427,95 em Out</div></div>
     </div>
-
-    <h3>Tendência de Fatura — Jan/26 → Abr/27</h3>
-    <div class="chart-wrap" id="wrap-cart">
-      <svg id="svg-cart" viewBox="0 0 900 300">
-        <line x1="20" y1="20" x2="20" y2="260" stroke="rgba(148,163,184,0.2)"/>
-        <line x1="20" y1="260" x2="880" y2="260" stroke="rgba(148,163,184,0.2)"/>
-        <line x1="16" y1="260.0" x2="20" y2="260.0" stroke="#94a3b8"/><text x="12" y="263.0" fill="#94a3b8" font-size="10" text-anchor="end">0k</text><line x1="16" y1="191.4" x2="20" y2="191.4" stroke="#94a3b8"/><text x="12" y="194.4" fill="#94a3b8" font-size="10" text-anchor="end">1k</text><line x1="16" y1="122.9" x2="20" y2="122.9" stroke="#94a3b8"/><text x="12" y="125.9" fill="#94a3b8" font-size="10" text-anchor="end">2k</text><line x1="16" y1="54.3" x2="20" y2="54.3" stroke="#94a3b8"/><text x="12" y="57.3" fill="#94a3b8" font-size="10" text-anchor="end">3k</text>
-        <text x="40" y="278" fill="#94a3b8" font-size="9" text-anchor="middle" transform="rotate(-25 40 278)">Jan/26</text><text x="95" y="278" fill="#94a3b8" font-size="9" text-anchor="middle" transform="rotate(-25 95 278)">Fev/26</text><text x="150" y="278" fill="#94a3b8" font-size="9" text-anchor="middle" transform="rotate(-25 150 278)">Mar/26</text><text x="205" y="278" fill="#94a3b8" font-size="9" text-anchor="middle" transform="rotate(-25 205 278)">Abr/26</text><text x="260" y="278" fill="#94a3b8" font-size="9" text-anchor="middle" transform="rotate(-25 260 278)">Mai/26</text><text x="315" y="278" fill="#94a3b8" font-size="9" text-anchor="middle" transform="rotate(-25 315 278)">Jun/26</text><text x="370" y="278" fill="#94a3b8" font-size="9" text-anchor="middle" transform="rotate(-25 370 278)">Jul/26</text><text x="425" y="278" fill="#94a3b8" font-size="9" text-anchor="middle" transform="rotate(-25 425 278)">Ago/26</text><text x="480" y="278" fill="#94a3b8" font-size="9" text-anchor="middle" transform="rotate(-25 480 278)">Set/26</text><text x="535" y="278" fill="#94a3b8" font-size="9" text-anchor="middle" transform="rotate(-25 535 278)">Out/26</text><text x="590" y="278" fill="#94a3b8" font-size="9" text-anchor="middle" transform="rotate(-25 590 278)">Nov/26</text><text x="645" y="278" fill="#94a3b8" font-size="9" text-anchor="middle" transform="rotate(-25 645 278)">Dez/26</text><text x="700" y="278" fill="#94a3b8" font-size="9" text-anchor="middle" transform="rotate(-25 700 278)">Jan/27</text><text x="755" y="278" fill="#94a3b8" font-size="9" text-anchor="middle" transform="rotate(-25 755 278)">Fev/27</text><text x="810" y="278" fill="#94a3b8" font-size="9" text-anchor="middle" transform="rotate(-25 810 278)">Mar/27</text><text x="865" y="278" fill="#94a3b8" font-size="9" text-anchor="middle" transform="rotate(-25 865 278)">Abr/27</text>
-        <path d="M40,137.6 L95,70.1 L150,185.7 L205,189.8 L260,204.4 L315,194.3 L370,166.3 M480,134.9 L535,94.9 L590,80.2 L645,217.6 L700,227.8 L755,235.8 L810,242.5" fill="none" stroke="#ef4444" stroke-width="2"/>
-        <path d="M40,32.3 L95,147.3 L150,151.4 L205,138.8 L260,97.8 L315,113.7 L370,161.0 L425,127.5 L480,95.8 L535,162.2 L590,136.8 L645,202.0 L700,210.1 L755,215.3 L810,222.7 L865,229.6" fill="none" stroke="#a855f7" stroke-width="2"/>
-        <path d="M40,116.8 L95,112.8 M205,198.2 L260,120.8 L315,115.6 L370,113.2 L425,181.0 L480,102.3 L535,162.1 L590,68.3 L645,182.8 L700,231.1 L755,250.9 L810,250.9 L865,250.9" fill="none" stroke="#3b82f6" stroke-width="2"/>
-        <circle cx="40" cy="137.6" r="2.5" fill="#ef4444"/><circle cx="40" cy="32.3" r="2.5" fill="#a855f7"/><circle cx="40" cy="116.8" r="2.5" fill="#3b82f6"/><circle cx="95" cy="70.1" r="2.5" fill="#ef4444"/><circle cx="95" cy="147.3" r="2.5" fill="#a855f7"/><circle cx="95" cy="112.8" r="2.5" fill="#3b82f6"/><circle cx="150" cy="185.7" r="2.5" fill="#ef4444"/><circle cx="150" cy="151.4" r="2.5" fill="#a855f7"/><circle cx="205" cy="189.8" r="2.5" fill="#ef4444"/><circle cx="205" cy="138.8" r="2.5" fill="#a855f7"/><circle cx="205" cy="198.2" r="2.5" fill="#3b82f6"/><circle cx="260" cy="204.4" r="2.5" fill="#ef4444"/><circle cx="260" cy="97.8" r="2.5" fill="#a855f7"/><circle cx="260" cy="120.8" r="2.5" fill="#3b82f6"/><circle cx="315" cy="194.3" r="2.5" fill="#ef4444"/><circle cx="315" cy="113.7" r="2.5" fill="#a855f7"/><circle cx="315" cy="115.6" r="2.5" fill="#3b82f6"/><circle cx="370" cy="166.3" r="2.5" fill="#ef4444"/><circle cx="370" cy="161.0" r="2.5" fill="#a855f7"/><circle cx="370" cy="113.2" r="2.5" fill="#3b82f6"/><circle cx="425" cy="127.5" r="2.5" fill="#a855f7"/><circle cx="425" cy="181.0" r="2.5" fill="#3b82f6"/><circle cx="480" cy="134.9" r="2.5" fill="#ef4444"/><circle cx="480" cy="95.8" r="2.5" fill="#a855f7"/><circle cx="480" cy="102.3" r="2.5" fill="#3b82f6"/><circle cx="535" cy="94.9" r="2.5" fill="#ef4444"/><circle cx="535" cy="162.2" r="2.5" fill="#a855f7"/><circle cx="535" cy="162.1" r="2.5" fill="#3b82f6"/><circle cx="590" cy="80.2" r="2.5" fill="#ef4444"/><circle cx="590" cy="136.8" r="2.5" fill="#a855f7"/><circle cx="590" cy="68.3" r="2.5" fill="#3b82f6"/><circle cx="645" cy="217.6" r="2.5" fill="#ef4444"/><circle cx="645" cy="202.0" r="2.5" fill="#a855f7"/><circle cx="645" cy="182.8" r="2.5" fill="#3b82f6"/><circle cx="700" cy="227.8" r="2.5" fill="#ef4444"/><circle cx="700" cy="210.1" r="2.5" fill="#a855f7"/><circle cx="700" cy="231.1" r="2.5" fill="#3b82f6"/><circle cx="755" cy="235.8" r="2.5" fill="#ef4444"/><circle cx="755" cy="215.3" r="2.5" fill="#a855f7"/><circle cx="755" cy="250.9" r="2.5" fill="#3b82f6"/><circle cx="810" cy="242.5" r="2.5" fill="#ef4444"/><circle cx="810" cy="222.7" r="2.5" fill="#a855f7"/><circle cx="810" cy="250.9" r="2.5" fill="#3b82f6"/><circle cx="865" cy="229.6" r="2.5" fill="#a855f7"/><circle cx="865" cy="250.9" r="2.5" fill="#3b82f6"/>
-        <line id="cross-cart" x1="0" y1="20" x2="0" y2="260" stroke="#94a3b8" stroke-width="1" stroke-dasharray="3 3" style="display:none"/>
-        <circle id="hover-cart-itau" r="5" fill="#ef4444" style="display:none"/>
-        <circle id="hover-cart-nubank" r="5" fill="#a855f7" style="display:none"/>
-        <circle id="hover-cart-bradesco" r="5" fill="#3b82f6" style="display:none"/>
-        <rect id="overlay-cart" x="20" y="20" width="860" height="240" fill="#000" opacity="0" pointer-events="all"/>
-      </svg>
-      <div class="hover-tip" id="tip-cart"></div>
-      <div style="display:flex;gap:16px;justify-content:center;margin-top:8px;font-size:0.82rem;color:#94a3b8;">
-        <span><span style="display:inline-block;width:12px;height:3px;background:#ef4444;vertical-align:middle;"></span> Itaú</span>
-        <span><span style="display:inline-block;width:12px;height:3px;background:#a855f7;vertical-align:middle;"></span> Nubank</span>
-        <span><span style="display:inline-block;width:12px;height:3px;background:#3b82f6;vertical-align:middle;"></span> Bradesco</span>
-      </div>
+    <h3 style="margin-top:20px">💳 Limites, utilização e disponibilidade (snapshot em 05/11/2026)</h3>
+    <div class="cart-cards" style="margin-top:8px">
+      <div class="cart-card cart-itau">
+      <div class="card-lbl" style="color:#fca5a5">Itaú · Vence dia 1 · Fecha dia 26</div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:6px"><div><div style="font-size:.72rem;color:#94a3b8">EM ABERTO</div><div style="font-size:1.15rem;font-weight:700">R$ 1.695,33</div></div><div style="text-align:right"><div style="font-size:.72rem;color:#94a3b8">DISPONÍVEL</div><div class="pos" style="font-size:1.15rem;font-weight:700">R$ 1.906,57</div></div></div>
+      <div style="margin-top:10px"><div style="height:10px;background:rgba(15,23,42,0.6);border-radius:5px;overflow:hidden;border:1px solid rgba(148,163,184,0.2)"><div style="height:100%;width:47.1%;background:#22c55e;transition:width .3s"></div></div><div style="display:flex;justify-content:space-between;font-size:.72rem;margin-top:4px;color:#94a3b8"><span>Utilização <strong class="pos">47%</strong></span><span>Limite: R$ 3.601,90</span></div></div>
+    </div><div class="cart-card cart-nu">
+      <div class="card-lbl" style="color:#d8b4fe">Nubank FEH · Vence dia 30 · Fecha ~dia 23</div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:6px"><div><div style="font-size:.72rem;color:#94a3b8">EM ABERTO</div><div style="font-size:1.15rem;font-weight:700">R$ 5.009,16</div></div><div style="text-align:right"><div style="font-size:.72rem;color:#94a3b8">DISPONÍVEL</div><div class="neg" style="font-size:1.15rem;font-weight:700">R$ 240,84</div></div></div>
+      <div style="margin-top:10px"><div style="height:10px;background:rgba(15,23,42,0.6);border-radius:5px;overflow:hidden;border:1px solid rgba(148,163,184,0.2)"><div style="height:100%;width:95.4%;background:#ef4444;transition:width .3s"></div></div><div style="display:flex;justify-content:space-between;font-size:.72rem;margin-top:4px;color:#94a3b8"><span>Utilização <strong class="neg">95%</strong></span><span>Limite: R$ 5.250,00</span></div></div>
+    </div><div class="cart-card cart-br">
+      <div class="card-lbl" style="color:#93c5fd">Bradesco · Vence dia 10 · Fecha dia 26</div>
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:6px"><div><div style="font-size:.72rem;color:#94a3b8">EM ABERTO</div><div style="font-size:1.15rem;font-weight:700">R$ 1.947,63</div></div><div style="text-align:right"><div style="font-size:.72rem;color:#94a3b8">DISPONÍVEL</div><div class="pos" style="font-size:1.15rem;font-weight:700">R$ 3.052,37</div></div></div>
+      <div style="margin-top:10px"><div style="height:10px;background:rgba(15,23,42,0.6);border-radius:5px;overflow:hidden;border:1px solid rgba(148,163,184,0.2)"><div style="height:100%;width:39.0%;background:#22c55e;transition:width .3s"></div></div><div style="display:flex;justify-content:space-between;font-size:.72rem;margin-top:4px;color:#94a3b8"><span>Utilização <strong class="pos">39%</strong></span><span>Limite: R$ 5.000,00</span></div></div>
     </div>
-
-    <h3>Tabela de Faturas (Jan/26 → Abr/27)</h3>
-    <table class="tbl-num">
-      <thead><tr><th>Mês</th><th>Itaú</th><th>Nubank</th><th>Bradesco</th><th>Total</th></tr></thead>
-      <tbody>
-        <tr class="tot-row"><td>TOTAL (período)</td><td>R$ 18.345,12</td><td>R$ 25.020,36</td><td>R$ 21.036,47</td><td>R$ 64.401,95</td></tr>
-<tr><td>Jan/26</td><td>R$ 1.784,48</td><td>R$ 3.321,07</td><td>R$ 2.088,58</td><td class="warn">R$ 7.194,13</td></tr><tr><td>Fev/26</td><td>R$ 2.769,51</td><td>R$ 1.643,22</td><td>R$ 2.147,32</td><td class="warn">R$ 6.560,05</td></tr><tr><td>Mar/26</td><td>R$ 1.083,29</td><td>R$ 1.583,65</td><td>—</td><td class="warn">R$ 2.666,94</td></tr><tr><td>Abr/26</td><td>R$ 1.023,67</td><td>R$ 1.767,91</td><td>R$ 900,53</td><td class="warn">R$ 3.692,11</td></tr><tr><td>Mai/26</td><td>R$ 811,52</td><td>R$ 2.365,08</td><td>R$ 2.030,34</td><td class="warn">R$ 5.206,94</td></tr><tr><td>Jun/26</td><td>R$ 958,68</td><td>R$ 2.133,32</td><td>R$ 2.105,64</td><td class="warn">R$ 5.197,64</td></tr><tr><td>Jul/26</td><td>R$ 1.365,83</td><td>R$ 1.444,28</td><td>R$ 2.141,00</td><td class="warn">R$ 4.951,11</td></tr><tr><td>Ago/26</td><td>—</td><td>R$ 1.932,71</td><td>R$ 1.151,58</td><td class="warn">R$ 3.084,29</td></tr><tr><td>Set/26</td><td>R$ 1.823,95</td><td>R$ 2.394,32</td><td>R$ 2.300,28</td><td class="warn">R$ 6.518,55</td></tr><tr><td>Out/26</td><td>R$ 2.407,18</td><td>R$ 1.425,64</td><td>R$ 1.427,95</td><td class="warn">R$ 5.260,77</td></tr><tr><td>Nov/26</td><td>R$ 2.621,68</td><td>R$ 1.796,95</td><td>R$ 2.795,62</td><td class="warn">R$ 7.214,25</td></tr><tr><td>Dez/26</td><td>R$ 617,72</td><td>R$ 846,05</td><td>R$ 1.126,31</td><td class="warn">R$ 2.590,08</td></tr><tr><td>Jan/27</td><td>R$ 469,75</td><td>R$ 727,59</td><td>R$ 421,33</td><td class="warn">R$ 1.618,67</td></tr><tr><td>Fev/27</td><td>R$ 353,10</td><td>R$ 651,39</td><td>R$ 133,33</td><td class="warn">R$ 1.137,82</td></tr><tr><td>Mar/27</td><td>R$ 254,76</td><td>R$ 543,59</td><td>R$ 133,33</td><td class="warn">R$ 931,68</td></tr><tr><td>Abr/27</td><td>—</td><td>R$ 443,59</td><td>R$ 133,33</td><td class="warn">R$ 576,92</td></tr>
-      </tbody>
+    </div>
+    <p style="font-size:.78rem;color:#94a3b8;margin-top:6px">Limite lido de <code>cartoes_limites.json</code>. Em aberto = faturas com vencimento ≥ hoje e não marcadas como pagas. Utilização = aberto/limite.</p>
+    <h3 style="margin-top:20px">📅 Próximos vencimentos (90 dias)</h3>
+    <p style="font-size:.82rem;color:#94a3b8;margin-bottom:10px">Use este calendário para provisionar entradas de cada mês. Datas-chave: <strong>Itaú vence dia 1</strong> · <strong>Nubank vence dia 30</strong> · <strong>Bradesco vence dia 10</strong>.</p>
+    <table class="tbl tbl-num">
+      <thead><tr><th>Vencimento</th><th>Cartão (fatura ref.)</th><th>Valor</th><th>Status</th></tr></thead>
+      <tbody><tr><td><strong>10/11/2026</strong> · Tue</td><td><span style="display:inline-block;width:10px;height:10px;background:#3b82f6;border-radius:2px;margin-right:6px"></span>Bradesco (Nov/26)</td><td>R$ 2.795,62</td><td><span class="chip chip-green">PAGA</span></td></tr><tr><td><strong>30/11/2026</strong> · Mon</td><td><span style="display:inline-block;width:10px;height:10px;background:#a855f7;border-radius:2px;margin-right:6px"></span>Nubank (Nov/26)</td><td>R$ 1.796,95</td><td><span class="chip chip-purple">vence em 25d</span></td></tr><tr><td><strong>01/12/2026</strong> · Tue</td><td><span style="display:inline-block;width:10px;height:10px;background:#ef4444;border-radius:2px;margin-right:6px"></span>Itaú (Dez/26)</td><td>R$ 617,72</td><td><span class="chip chip-purple">vence em 26d</span></td></tr><tr><td><strong>10/12/2026</strong> · Thu</td><td><span style="display:inline-block;width:10px;height:10px;background:#3b82f6;border-radius:2px;margin-right:6px"></span>Bradesco (Dez/26)</td><td>R$ 1.126,31</td><td><span class="chip chip-purple">vence em 35d</span></td></tr><tr><td><strong>30/12/2026</strong> · Wed</td><td><span style="display:inline-block;width:10px;height:10px;background:#a855f7;border-radius:2px;margin-right:6px"></span>Nubank (Dez/26)</td><td>R$ 846,05</td><td><span class="chip chip-purple">vence em 55d</span></td></tr><tr><td><strong>01/01/2027</strong> · Fri</td><td><span style="display:inline-block;width:10px;height:10px;background:#ef4444;border-radius:2px;margin-right:6px"></span>Itaú (Jan/27)</td><td>R$ 469,75</td><td><span class="chip chip-purple">vence em 57d</span></td></tr><tr><td><strong>10/01/2027</strong> · Sun</td><td><span style="display:inline-block;width:10px;height:10px;background:#3b82f6;border-radius:2px;margin-right:6px"></span>Bradesco (Jan/27)</td><td>R$ 421,33</td><td><span class="chip chip-purple">vence em 66d</span></td></tr><tr><td><strong>30/01/2027</strong> · Sat</td><td><span style="display:inline-block;width:10px;height:10px;background:#a855f7;border-radius:2px;margin-right:6px"></span>Nubank (Jan/27)</td><td>R$ 727,59</td><td><span class="chip chip-purple">vence em 86d</span></td></tr><tr><td><strong>01/02/2027</strong> · Mon</td><td><span style="display:inline-block;width:10px;height:10px;background:#ef4444;border-radius:2px;margin-right:6px"></span>Itaú (Fev/27)</td><td>R$ 353,10</td><td><span class="chip chip-purple">vence em 88d</span></td></tr></tbody>
     </table>
+    
+<div class="chart-wrap" id="wrap-cart" style="position:relative">
+<svg id="svg-cart" viewBox="0 0 760 240" width="100%" height="240" preserveAspectRatio="none">
+  <line x1="60" x2="740" y1="220.0" y2="220.0" stroke="#334155" stroke-dasharray="3,3" opacity="0.4" /><text x="52" y="224.0" text-anchor="end" fill="#94a3b8" font-size="10">0</text><line x1="60" x2="740" y1="191.4" y2="191.4" stroke="#334155" stroke-dasharray="3,3" opacity="0.4" /><text x="52" y="195.4" text-anchor="end" fill="#94a3b8" font-size="10">0,5k</text><line x1="60" x2="740" y1="162.9" y2="162.9" stroke="#334155" stroke-dasharray="3,3" opacity="0.4" /><text x="52" y="166.9" text-anchor="end" fill="#94a3b8" font-size="10">1k</text><line x1="60" x2="740" y1="134.3" y2="134.3" stroke="#334155" stroke-dasharray="3,3" opacity="0.4" /><text x="52" y="138.3" text-anchor="end" fill="#94a3b8" font-size="10">1,5k</text><line x1="60" x2="740" y1="105.7" y2="105.7" stroke="#334155" stroke-dasharray="3,3" opacity="0.4" /><text x="52" y="109.7" text-anchor="end" fill="#94a3b8" font-size="10">2k</text><line x1="60" x2="740" y1="77.1" y2="77.1" stroke="#334155" stroke-dasharray="3,3" opacity="0.4" /><text x="52" y="81.1" text-anchor="end" fill="#94a3b8" font-size="10">2,5k</text><line x1="60" x2="740" y1="48.6" y2="48.6" stroke="#334155" stroke-dasharray="3,3" opacity="0.4" /><text x="52" y="52.6" text-anchor="end" fill="#94a3b8" font-size="10">3k</text><line x1="60" x2="740" y1="20.0" y2="20.0" stroke="#334155" stroke-dasharray="3,3" opacity="0.4" /><text x="52" y="24.0" text-anchor="end" fill="#94a3b8" font-size="10">3,5k</text><line x1="60" x2="740" y1="77.1" y2="77.1" stroke="#ef4444" stroke-dasharray="5,4" opacity="0.7" /><text x="740" y="73.1" text-anchor="end" fill="#ef4444" font-size="10">alerta 2.5k</text>
+  <polyline points="60.0,118.0 105.3,61.7 150.7,158.1 196.0,161.5 241.3,173.6 286.7,165.2 332.0,142.0 377.3,220.0 422.7,115.8 468.0,82.4 513.3,70.2 558.7,184.7 604.0,193.2 649.3,199.8 694.7,205.4" fill="none" stroke="#ef4444" stroke-width="2.3" opacity="0.9" /><circle cx="60.0" cy="118.0" r="3.5" fill="#ef4444" stroke="#0b1220" stroke-width="1.5" /><circle cx="105.3" cy="61.7" r="3.5" fill="#ef4444" stroke="#0b1220" stroke-width="1.5" /><circle cx="150.7" cy="158.1" r="3.5" fill="#ef4444" stroke="#0b1220" stroke-width="1.5" /><circle cx="196.0" cy="161.5" r="3.5" fill="#ef4444" stroke="#0b1220" stroke-width="1.5" /><circle cx="241.3" cy="173.6" r="3.5" fill="#ef4444" stroke="#0b1220" stroke-width="1.5" /><circle cx="286.7" cy="165.2" r="3.5" fill="#ef4444" stroke="#0b1220" stroke-width="1.5" /><circle cx="332.0" cy="142.0" r="3.5" fill="#ef4444" stroke="#0b1220" stroke-width="1.5" /><circle cx="377.3" cy="220.0" r="3.5" fill="#ef4444" stroke="#0b1220" stroke-width="1.5" /><circle cx="422.7" cy="115.8" r="3.5" fill="#ef4444" stroke="#0b1220" stroke-width="1.5" /><circle cx="468.0" cy="82.4" r="3.5" fill="#ef4444" stroke="#0b1220" stroke-width="1.5" /><circle cx="513.3" cy="70.2" r="3.5" fill="#ef4444" stroke="#0b1220" stroke-width="1.5" /><circle cx="558.7" cy="184.7" r="3.5" fill="#ef4444" stroke="#0b1220" stroke-width="1.5" /><circle cx="604.0" cy="193.2" r="3.5" fill="#ef4444" stroke="#0b1220" stroke-width="1.5" /><circle cx="649.3" cy="199.8" r="3.5" fill="#ef4444" stroke="#0b1220" stroke-width="1.5" /><circle cx="694.7" cy="205.4" r="3.5" fill="#ef4444" stroke="#0b1220" stroke-width="1.5" />
+  <polyline points="60.0,30.2 105.3,126.1 150.7,129.5 196.0,119.0 241.3,84.9 286.7,98.1 332.0,137.5 377.3,109.6 422.7,83.2 468.0,138.5 513.3,117.3 558.7,171.7 604.0,178.4 649.3,182.8 694.7,188.9 740.0,194.7" fill="none" stroke="#a855f7" stroke-width="2.3" opacity="0.9" /><circle cx="60.0" cy="30.2" r="3.5" fill="#a855f7" stroke="#0b1220" stroke-width="1.5" /><circle cx="105.3" cy="126.1" r="3.5" fill="#a855f7" stroke="#0b1220" stroke-width="1.5" /><circle cx="150.7" cy="129.5" r="3.5" fill="#a855f7" stroke="#0b1220" stroke-width="1.5" /><circle cx="196.0" cy="119.0" r="3.5" fill="#a855f7" stroke="#0b1220" stroke-width="1.5" /><circle cx="241.3" cy="84.9" r="3.5" fill="#a855f7" stroke="#0b1220" stroke-width="1.5" /><circle cx="286.7" cy="98.1" r="3.5" fill="#a855f7" stroke="#0b1220" stroke-width="1.5" /><circle cx="332.0" cy="137.5" r="3.5" fill="#a855f7" stroke="#0b1220" stroke-width="1.5" /><circle cx="377.3" cy="109.6" r="3.5" fill="#a855f7" stroke="#0b1220" stroke-width="1.5" /><circle cx="422.7" cy="83.2" r="3.5" fill="#a855f7" stroke="#0b1220" stroke-width="1.5" /><circle cx="468.0" cy="138.5" r="3.5" fill="#a855f7" stroke="#0b1220" stroke-width="1.5" /><circle cx="513.3" cy="117.3" r="3.5" fill="#a855f7" stroke="#0b1220" stroke-width="1.5" /><circle cx="558.7" cy="171.7" r="3.5" fill="#a855f7" stroke="#0b1220" stroke-width="1.5" /><circle cx="604.0" cy="178.4" r="3.5" fill="#a855f7" stroke="#0b1220" stroke-width="1.5" /><circle cx="649.3" cy="182.8" r="3.5" fill="#a855f7" stroke="#0b1220" stroke-width="1.5" /><circle cx="694.7" cy="188.9" r="3.5" fill="#a855f7" stroke="#0b1220" stroke-width="1.5" /><circle cx="740.0" cy="194.7" r="3.5" fill="#a855f7" stroke="#0b1220" stroke-width="1.5" />
+  <polyline points="60.0,100.7 105.3,97.3 150.7,220.0 196.0,168.5 241.3,104.0 286.7,99.7 332.0,97.7 377.3,154.2 422.7,88.6 468.0,138.4 513.3,60.3 558.7,155.6 604.0,195.9 649.3,212.4 694.7,212.4 740.0,212.4" fill="none" stroke="#3b82f6" stroke-width="2.3" opacity="0.9" /><circle cx="60.0" cy="100.7" r="3.5" fill="#3b82f6" stroke="#0b1220" stroke-width="1.5" /><circle cx="105.3" cy="97.3" r="3.5" fill="#3b82f6" stroke="#0b1220" stroke-width="1.5" /><circle cx="150.7" cy="220.0" r="3.5" fill="#3b82f6" stroke="#0b1220" stroke-width="1.5" /><circle cx="196.0" cy="168.5" r="3.5" fill="#3b82f6" stroke="#0b1220" stroke-width="1.5" /><circle cx="241.3" cy="104.0" r="3.5" fill="#3b82f6" stroke="#0b1220" stroke-width="1.5" /><circle cx="286.7" cy="99.7" r="3.5" fill="#3b82f6" stroke="#0b1220" stroke-width="1.5" /><circle cx="332.0" cy="97.7" r="3.5" fill="#3b82f6" stroke="#0b1220" stroke-width="1.5" /><circle cx="377.3" cy="154.2" r="3.5" fill="#3b82f6" stroke="#0b1220" stroke-width="1.5" /><circle cx="422.7" cy="88.6" r="3.5" fill="#3b82f6" stroke="#0b1220" stroke-width="1.5" /><circle cx="468.0" cy="138.4" r="3.5" fill="#3b82f6" stroke="#0b1220" stroke-width="1.5" /><circle cx="513.3" cy="60.3" r="3.5" fill="#3b82f6" stroke="#0b1220" stroke-width="1.5" /><circle cx="558.7" cy="155.6" r="3.5" fill="#3b82f6" stroke="#0b1220" stroke-width="1.5" /><circle cx="604.0" cy="195.9" r="3.5" fill="#3b82f6" stroke="#0b1220" stroke-width="1.5" /><circle cx="649.3" cy="212.4" r="3.5" fill="#3b82f6" stroke="#0b1220" stroke-width="1.5" /><circle cx="694.7" cy="212.4" r="3.5" fill="#3b82f6" stroke="#0b1220" stroke-width="1.5" /><circle cx="740.0" cy="212.4" r="3.5" fill="#3b82f6" stroke="#0b1220" stroke-width="1.5" />
+  <text x="60.0" y="236" text-anchor="middle" fill="#cbd5e1" font-size="10">Jan</text><text x="150.7" y="236" text-anchor="middle" fill="#cbd5e1" font-size="10">Mar</text><text x="241.3" y="236" text-anchor="middle" fill="#cbd5e1" font-size="10">Mai</text><text x="332.0" y="236" text-anchor="middle" fill="#cbd5e1" font-size="10">Jul</text><text x="422.7" y="236" text-anchor="middle" fill="#cbd5e1" font-size="10">Set</text><text x="513.3" y="236" text-anchor="middle" fill="#cbd5e1" font-size="10">Nov</text><text x="604.0" y="236" text-anchor="middle" fill="#cbd5e1" font-size="10">Jan</text><text x="694.7" y="236" text-anchor="middle" fill="#cbd5e1" font-size="10">Mar</text>
+  <line id="cross-cart" x1="0" x2="0" y1="20" y2="220" stroke="#94a3b8" stroke-dasharray="3,3" opacity="0" />
+  <circle class="hc-cart hc-cart-itau" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-itau" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-itau" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-itau" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-itau" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-itau" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-itau" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-itau" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-itau" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-itau" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-itau" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-itau" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-itau" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-itau" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-itau" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-itau" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-nu" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-nu" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-nu" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-nu" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-nu" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-nu" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-nu" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-nu" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-nu" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-nu" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-nu" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-nu" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-nu" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-nu" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-nu" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-nu" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-br" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-br" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-br" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-br" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-br" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-br" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-br" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-br" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-br" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-br" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-br" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-br" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-br" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-br" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-br" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" /><circle class="hc-cart hc-cart-br" cx="0" cy="0" r="6" fill="#fff" stroke="#000" stroke-width="2" style="display:none" />
+  <rect id="overlay-cart" x="60" y="20" width="680" height="200" fill="#000" opacity="0" pointer-events="all" />
+</svg>
+<div class="hover-tip" id="tip-cart"></div>
+</div>
 
-    <h3>Alertas de Cartão</h3>
-    <ul class="ins-list">
-<li class="warn">⚠️ Pico <strong>Itaú</strong>: R$ 2.769,51 em Fev/26</li><li class="warn">⚠️ Pico <strong>Nubank</strong>: R$ 3.321,07 em Jan/26</li><li class="warn">⚠️ Pico <strong>Bradesco</strong>: R$ 2.795,62 em Nov/26</li><li class="ok">📉 <strong>Itaú</strong>: fatura cai em Dez/26 vs Nov/26 (R$ 2.621,68 → R$ 617,72)</li><li class="ok">📉 <strong>Nubank</strong>: fatura cai em Dez/26 vs Nov/26 (R$ 1.796,95 → R$ 846,05)</li><li class="ok">📉 <strong>Bradesco</strong>: fatura cai em Dez/26 vs Nov/26 (R$ 2.795,62 → R$ 1.126,31)</li>
-    </ul>
+    <div class="legend">
+      <div class="legend-item"><span class="legend-swatch" style="background:#ef4444"></span>Itaú</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:#a855f7"></span>Nubank FEH</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:#3b82f6"></span>Bradesco</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:#ef4444;border-top:2px dashed"></span>Alerta R$ 2.5k</div>
+    </div>
+  </div>
+  <div class="section">
+    <h3>Faturas mensais detalhadas</h3>
+    <table class="tbl tbl-num">
+      <thead><tr><th>Mês</th><th>Itaú</th><th>Nubank</th><th>Bradesco</th></tr></thead>
+      <tbody><tr style="background:rgba(59,130,246,0.1);font-weight:700"><td>TOTAL (período)</td><td>R$ 18.345,12</td><td>R$ 25.020,36</td><td>R$ 21.036,47</td></tr><tr><td>Jan/26</td><td class="">R$ 1.784,48</td><td class="neg">R$ 3.321,07</td><td class="warn">R$ 2.088,58</td></tr><tr><td>Fev/26</td><td class="neg">R$ 2.769,51</td><td class="">R$ 1.643,22</td><td class="warn">R$ 2.147,32</td></tr><tr><td>Mar/26</td><td class="">R$ 1.083,29</td><td class="">R$ 1.583,65</td><td class="">R$ 0,00</td></tr><tr><td>Abr/26</td><td class="">R$ 1.023,67</td><td class="">R$ 1.767,91</td><td class="">R$ 900,53</td></tr><tr><td>Mai/26</td><td class="">R$ 811,52</td><td class="warn">R$ 2.365,08</td><td class="warn">R$ 2.030,34</td></tr><tr><td>Jun/26</td><td class="">R$ 958,68</td><td class="warn">R$ 2.133,32</td><td class="warn">R$ 2.105,64</td></tr><tr><td>Jul/26</td><td class="">R$ 1.365,83</td><td class="">R$ 1.444,28</td><td class="warn">R$ 2.141,00</td></tr><tr><td>Ago/26</td><td class="">R$ 0,00</td><td class="">R$ 1.932,71</td><td class="">R$ 1.151,58</td></tr><tr><td>Set/26</td><td class="">R$ 1.823,95</td><td class="warn">R$ 2.394,32</td><td class="warn">R$ 2.300,28</td></tr><tr><td>Out/26</td><td class="warn">R$ 2.407,18</td><td class="">R$ 1.425,64</td><td class="">R$ 1.427,95</td></tr><tr><td>Nov/26</td><td class="neg">R$ 2.621,68</td><td class="">R$ 1.796,95</td><td class="neg">R$ 2.795,62</td></tr><tr><td>Dez/26</td><td class="">R$ 617,72</td><td class="">R$ 846,05</td><td class="">R$ 1.126,31</td></tr><tr><td>Jan/27</td><td class="">R$ 469,75</td><td class="">R$ 727,59</td><td class="">R$ 421,33</td></tr><tr><td>Fev/27</td><td class="">R$ 353,10</td><td class="">R$ 651,39</td><td class="">R$ 133,33</td></tr><tr><td>Mar/27</td><td class="">R$ 254,76</td><td class="">R$ 543,59</td><td class="">R$ 133,33</td></tr><tr><td>Abr/27</td><td style="color:#64748b">—</td><td class="">R$ 443,59</td><td class="">R$ 133,33</td></tr></tbody>
+    </table>
+    <p style="font-size:.82rem;color:#94a3b8;margin-top:10px">"—" indica mês sem fatura registrada para aquele cartão. Linha TOTAL soma apenas meses com dado.</p>
   </div>
 </div>
 
@@ -361,212 +325,191 @@ input[type="number"]:focus { outline: none; border-color: #a855f7; }
 
 <script>
 var TAB_IDS = ['visao','mensal','dre','insights','cenarios','cartoes'];
-
 function showTab(event, id) {
-  TAB_IDS.forEach(function(t){
-    document.getElementById(t).classList.remove('active');
-  });
+  TAB_IDS.forEach(function(t){ document.getElementById(t).classList.remove('active'); });
   document.querySelectorAll('.tab').forEach(function(b){ b.classList.remove('active'); });
   document.getElementById(id).classList.add('active');
   event.currentTarget.classList.add('active');
 }
 
+// ===== BRL formatter =====
 function brl(v) {
-  if (v == null || isNaN(v)) return '—';
-  var neg = v < 0;
-  var s = Math.abs(v).toFixed(2);
-  var parts = s.split('.');
-  parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-  return (neg ? '-R$ ' : 'R$ ') + parts.join(',');
+  if (v === null || v === undefined || isNaN(v)) return '—';
+  var sign = v < 0 ? '-' : '';
+  var abs = Math.abs(v);
+  return sign + 'R$ ' + abs.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
 }
 
-function yscaleScn(v) {
-  return 260 - (v - (-8000)) / 23000 * 240;
-}
-
-// ==== Cenário D (simulador) ====
+// ===== Cenário D interativo =====
 var D_BASE = {
   saldoAnchor: 6174.59,
   entBase: [14189.02, 10517.26],
-  pagBase: [11545.43, 11278.20],
-  meses: ['Nov/26','Dez/26'],
-  xs: [100, 400, 700]
+  pagBase: [17509.620000000003, 11278.2],
+  meses: ["Nov", "Dez"],
+  xs: [60.0, 400.0, 740.0],
+  defaultsFreela: [1500, 1500],
+  defaultsCorte: [500, 500]
 };
+var currentDVals = [D_BASE.saldoAnchor];
 
-var currentDVals = [D_BASE.saldoAnchor, 0, 0];
+function yscaleScn(v) { return 280 - (v - (-8000)) / 23000 * 240; }
 
 function updateD() {
   var rows = document.querySelectorAll('#scn-d-sim tbody tr');
-  var saldo = D_BASE.saldoAnchor;
-  var totFreela = 0, totCorte = 0, totRes = 0;
+  var si = D_BASE.saldoAnchor;
+  var totFr = 0, totCo = 0, totRes = 0;
   currentDVals = [D_BASE.saldoAnchor];
-  for (var i = 0; i < rows.length; i++) {
-    var freela = parseFloat(rows[i].querySelector('.d-freela').value) || 0;
-    var corte = parseFloat(rows[i].querySelector('.d-corte').value) || 0;
-    var entAj = D_BASE.entBase[i] + freela;
-    var pagAj = D_BASE.pagBase[i] - corte + 0; // amort=0
-    var res = entAj - pagAj;
-    var sf = saldo + res;
-    rows[i].querySelector('.d-si').textContent = brl(saldo);
-    rows[i].querySelector('.d-res').textContent = brl(res);
-    rows[i].querySelector('.d-res').className = 'd-res ' + (res >= 0 ? 'pos' : 'neg');
-    rows[i].querySelector('.d-sf').textContent = brl(sf);
-    rows[i].querySelector('.d-sf').className = 'd-sf ' + (sf >= 0 ? 'pos' : 'neg');
-    saldo = sf;
-    totFreela += freela;
-    totCorte += corte;
-    totRes += res;
+  rows.forEach(function(row, i) {
+    var fr = parseFloat(row.querySelector('input[data-field="freela"]').value) || 0;
+    var co = parseFloat(row.querySelector('input[data-field="corte"]').value) || 0;
+    var ent = D_BASE.entBase[i] + fr;
+    var pag = D_BASE.pagBase[i] - co;
+    var res = ent - pag;
+    var sf = si + res;
+    row.querySelector('.d-si').textContent = brl(si);
+    row.querySelector('.d-res').textContent = brl(res);
+    row.querySelector('.d-res').className = 'd-res ' + (res >= 0 ? 'pos' : 'neg');
+    row.querySelector('.d-sf').innerHTML = '<strong>' + brl(sf) + '</strong>';
+    totFr += fr; totCo += co; totRes += res;
     currentDVals.push(sf);
+    si = sf;
+  });
+  document.querySelector('.d-freela-total').textContent = brl(totFr);
+  document.querySelector('.d-corte-total').textContent = brl(totCo);
+  var tr = document.querySelector('.d-res-total');
+  tr.innerHTML = '<strong>' + brl(totRes) + '</strong>';
+  tr.className = 'd-res-total ' + (totRes >= 0 ? 'pos' : 'neg');
+  document.querySelector('.d-sf-final').textContent = brl(si);
+  document.getElementById('scn-d-amount').textContent = brl(si);
+  // Atualiza polyline D
+  var poly = document.getElementById('poly-d');
+  if (poly) {
+    var pts = D_BASE.xs.map(function(x, i) { return x + ',' + yscaleScn(currentDVals[i]); }).join(' ');
+    poly.setAttribute('points', pts);
   }
-  document.querySelector('.d-freela-total').textContent = brl(totFreela);
-  document.querySelector('.d-corte-total').textContent = brl(totCorte);
-  document.querySelector('.d-res-total').textContent = brl(totRes);
-  document.querySelector('.d-res-total').className = 'd-res-total ' + (totRes >= 0 ? 'pos' : 'neg');
-  document.querySelector('.d-sf-final').textContent = brl(saldo);
-  document.querySelector('.d-sf-final').className = 'd-sf-final ' + (saldo >= 0 ? 'pos' : 'neg');
-  document.getElementById('scn-d-amount').textContent = brl(saldo);
-
-  // Atualizar polyline e círculos
-  var pts = currentDVals.map(function(v, i){ return D_BASE.xs[i] + ',' + yscaleScn(v).toFixed(1); }).join(' ');
-  document.getElementById('poly-d').setAttribute('points', pts);
-  document.getElementById('dot-d-0').setAttribute('cy', yscaleScn(currentDVals[0]).toFixed(1));
-  document.getElementById('dot-d-1').setAttribute('cy', yscaleScn(currentDVals[1]).toFixed(1));
-  document.getElementById('dot-d-2').setAttribute('cy', yscaleScn(currentDVals[2]).toFixed(1));
+  // Atualiza círculos D
+  var dots = document.querySelectorAll('.circle-d');
+  dots.forEach(function(c, i) {
+    if (i < currentDVals.length) {
+      c.setAttribute('cx', D_BASE.xs[i]);
+      c.setAttribute('cy', yscaleScn(currentDVals[i]));
+    }
+  });
 }
-
 function resetD() {
   var rows = document.querySelectorAll('#scn-d-sim tbody tr');
-  var defFreela = [1500, 1500];
-  var defCorte = [300, 500];
-  for (var i = 0; i < rows.length; i++) {
-    rows[i].querySelector('.d-freela').value = defFreela[i];
-    rows[i].querySelector('.d-corte').value = defCorte[i];
-  }
+  rows.forEach(function(row, i) {
+    row.querySelector('input[data-field="freela"]').value = D_BASE.defaultsFreela[i];
+    row.querySelector('input[data-field="corte"]').value = D_BASE.defaultsCorte[i];
+  });
   updateD();
 }
-
 function zeroD() {
-  document.querySelectorAll('#scn-d-sim input').forEach(function(el){ el.value = 0; });
+  document.querySelectorAll('#scn-d-sim input').forEach(function(i){ i.value = 0; });
   updateD();
 }
 
-// ==== attachHover generic ====
+// ===== attachHover genérico =====
 function attachHover(opts) {
   var svg = document.getElementById(opts.svgId);
   var overlay = document.getElementById(opts.overlayId);
   var cross = document.getElementById(opts.crossId);
   var tip = document.getElementById(opts.tipId);
   var wrap = document.getElementById(opts.wrapId);
-  var xs = opts.xs;
-  var labels = opts.labels;
-  var series = opts.series;
-
-  overlay.addEventListener('mousemove', function(e){
+  if (!svg || !overlay || !cross || !tip || !wrap) return;
+  overlay.addEventListener('mousemove', function(e) {
     var rect = svg.getBoundingClientRect();
-    var vbX = (e.clientX - rect.left) / rect.width * svg.viewBox.baseVal.width;
-    // find nearest
-    var bestI = 0, bestD = Infinity;
-    for (var i = 0; i < xs.length; i++) {
-      var d = Math.abs(xs[i] - vbX);
-      if (d < bestD) { bestD = d; bestI = i; }
+    var vbParts = svg.getAttribute('viewBox').split(' ').map(parseFloat);
+    var vbW = vbParts[2];
+    var scale = rect.width / vbW;
+    var mx = (e.clientX - rect.left) / scale;
+    // Find nearest
+    var nearest = 0, bestD = Infinity;
+    for (var i = 0; i < opts.xs.length; i++) {
+      var d = Math.abs(opts.xs[i] - mx);
+      if (d < bestD) { bestD = d; nearest = i; }
     }
-    cross.style.display = '';
-    cross.setAttribute('x1', xs[bestI]);
-    cross.setAttribute('x2', xs[bestI]);
-
-    var tipHTML = '<div class="tip-mes">' + labels[bestI] + '</div>';
-    series.forEach(function(s){
-      var vals = typeof s.values === 'function' ? s.values() : s.values;
-      var v = vals[bestI];
-      if (v == null || isNaN(v)) {
-        if (s.dotEl) s.dotEl.style.display = 'none';
-        tipHTML += '<div class="tip-row"><span><span class="tip-dot" style="background:' + s.color + '"></span>' + s.name + '</span><span>—</span></div>';
-      } else {
-        var y = s.yScale(v);
-        if (s.dotEl) {
-          s.dotEl.style.display = '';
-          s.dotEl.setAttribute('cx', xs[bestI]);
-          s.dotEl.setAttribute('cy', y);
+    var cx = opts.xs[nearest];
+    cross.setAttribute('x1', cx); cross.setAttribute('x2', cx);
+    cross.setAttribute('opacity', '0.5');
+    // Tooltip
+    var html = '<div class="tip-lbl">' + opts.labels[nearest] + '</div>';
+    opts.series.forEach(function(s, si) {
+      var v;
+      if (typeof s.values === 'function') v = s.values()[nearest];
+      else v = s.values[nearest];
+      html += '<div class="tip-row"><span><span class="dot" style="background:' + s.color + '"></span>' + s.name + '</span><span>' + brl(v) + '</span></div>';
+      // Update dot
+      if (s.dotSel) {
+        var dots = wrap.querySelectorAll(s.dotSel);
+        dots.forEach(function(d){ d.style.display='none'; });
+        if (v !== null && v !== undefined && !isNaN(v) && dots[nearest]) {
+          dots[nearest].setAttribute('cx', cx);
+          dots[nearest].setAttribute('cy', s.yScale(v));
+          dots[nearest].style.display = '';
         }
-        tipHTML += '<div class="tip-row"><span><span class="tip-dot" style="background:' + s.color + '"></span>' + s.name + '</span><span>' + brl(v) + '</span></div>';
       }
     });
-    tip.innerHTML = tipHTML;
+    tip.innerHTML = html;
     tip.style.display = 'block';
-
-    var wrapRect = wrap.getBoundingClientRect();
-    var tipW = tip.offsetWidth;
-    var left = e.clientX - wrapRect.left + 12;
-    if (left + tipW > wrapRect.width) left = e.clientX - wrapRect.left - tipW - 12;
+    var tipRect = tip.getBoundingClientRect();
+    var left = e.clientX - rect.left + 14;
+    if (left + tipRect.width > rect.width - 10) left = e.clientX - rect.left - tipRect.width - 14;
     tip.style.left = left + 'px';
-    tip.style.top = (e.clientY - wrapRect.top + 12) + 'px';
+    tip.style.top = (e.clientY - rect.top - 10) + 'px';
   });
-
-  overlay.addEventListener('mouseleave', function(){
-    cross.style.display = 'none';
+  overlay.addEventListener('mouseleave', function() {
+    cross.setAttribute('opacity', '0');
     tip.style.display = 'none';
-    series.forEach(function(s){ if (s.dotEl) s.dotEl.style.display = 'none'; });
+    opts.series.forEach(function(s) {
+      if (s.dotSel) wrap.querySelectorAll(s.dotSel).forEach(function(d){ d.style.display='none'; });
+    });
   });
 }
 
-document.addEventListener('DOMContentLoaded', function(){
-  // Cenário D render inicial
-  var inputs = document.querySelectorAll('#scn-d-sim input');
-  inputs.forEach(function(el){ el.addEventListener('input', updateD); });
+document.addEventListener('DOMContentLoaded', function() {
   updateD();
-
-  // Hover Visão Geral
-  var visaoMeses = ["Mai/26", "Jun/26", "Jul/26", "Ago/26", "Set/26", "Out/26", "Nov/26", "Dez/26"];
-  var visaoEnt = [20454.33, 20280.28, 19193.91, 16257.15, 17101.56, 14195.49, 14189.02, 10517.26];
-  var visaoPag = [20273.0, 21277.79, 25199.12, 12145.2, 18425.35, 11600.95, 11545.43, 11278.2];
-  var visaoSf = [7913.62, 6797.11, 791.9, 4903.85, 3580.05, 6174.59, 2853.99, 2093.05];
-  var visaoXs = [60, 160, 260, 360, 460, 560, 660, 760];
-  var yscaleVisao = function(v) { return 260 - (v / 25000) * 240; };
+  // Listeners nos inputs D
+  document.querySelectorAll('#scn-d-sim input').forEach(function(i) {
+    i.addEventListener('input', updateD);
+  });
+  // ovw hover
   attachHover({
-    svgId: 'svg-visao', overlayId: 'overlay-visao', crossId: 'cross-visao', tipId: 'tip-visao', wrapId: 'wrap-visao',
-    xs: visaoXs, labels: visaoMeses,
+    svgId:'svg-ovw', overlayId:'overlay-ovw', crossId:'cross-ovw',
+    tipId:'tip-ovw', wrapId:'wrap-ovw',
+    xs: [60.0, 157.14285714285714, 254.28571428571428, 351.42857142857144, 448.57142857142856, 545.7142857142857, 642.8571428571429, 740.0], labels: ["Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
+    series: [{ name:'Saldo', color:'#22c55e', values:[7913.62, 6797.11, 791.9, 4903.85, 3580.05, 6174.59, 2853.99, 2093.05], yScale: function(v){ return 220 - (Math.max(0,v) / 25000) * 200; }, dotSel:'.hc-ovw' }]
+  });
+  // scn hover
+  attachHover({
+    svgId:'svg-scn', overlayId:'overlay-scn', crossId:'cross-scn',
+    tipId:'tip-scn', wrapId:'wrap-scn',
+    xs: [60.0, 400.0, 740.0], labels: ["Out", "Nov", "Dez"],
     series: [
-      {name:'Entradas', color:'#22c55e', values: visaoEnt, yScale: yscaleVisao, dotEl: document.getElementById('dot-visao-ent')},
-      {name:'Pagamentos', color:'#ef4444', values: visaoPag, yScale: yscaleVisao, dotEl: document.getElementById('dot-visao-pag')},
-      {name:'Saldo Final', color:'#3b82f6', values: visaoSf, yScale: yscaleVisao, dotEl: document.getElementById('dot-visao-sf')},
+      { name:'Base', color:'#64748b', values: [6174.59].concat([2853.989999999998, 2093.0499999999975]), yScale: yscaleScn, dotSel:'.hc-scn-64748b' },
+      { name:'A Conservador', color:'#3b82f6', values: [6174.59].concat([1623.989999999998, 1663.0499999999975]), yScale: yscaleScn, dotSel:'.hc-scn-3b82f6' },
+      { name:'B Moderado', color:'#22c55e', values: [6174.59].concat([323.98999999999796, -1933.9500000000025]), yScale: yscaleScn, dotSel:'.hc-scn-22c55e' },
+      { name:'C Agressivo', color:'#f59e0b', values: [6174.59].concat([1523.989999999998, 466.04999999999745]), yScale: yscaleScn, dotSel:'.hc-scn-f59e0b' },
+      { name:'D Simulador', color:'#a855f7', values: function() { return currentDVals; }, yScale: yscaleScn, dotSel:'.hc-scn-a855f7' }
     ]
   });
-
-  // Hover Cenários
-  var scnLabels = ['Out/26','Nov/26','Dez/26'];
-  var scnXs = [100, 400, 700];
-  var baseVals = [6174.59, 8818.18, 8057.24];
-  var aVals = [6174.59, 7588.18, 5597.24];
-  var bVals = [6174.59, 5589.68, 3830.24];
-  var cVals = [6174.59, 6789.68, 6230.24];
+  // cart hover
+  var cartVals = {
+    itau: [1784.48, 2769.51, 1083.29, 1023.67, 811.52, 958.68, 1365.83, 0.0, 1823.95, 2407.18, 2621.68, 617.72, 469.75, 353.1, 254.76, null],
+    nu:   [3321.07, 1643.22, 1583.65, 1767.91, 2365.08, 2133.32, 1444.28, 1932.71, 2394.32, 1425.64, 1796.95, 846.05, 727.59, 651.39, 543.59, 443.59],
+    br:   [2088.58, 2147.32, 0.0, 900.53, 2030.34, 2105.64, 2141.0, 1151.58, 2300.28, 1427.95, 2795.62, 1126.31, 421.33, 133.33, 133.33, 133.33]
+  };
   attachHover({
-    svgId: 'svg-scn', overlayId: 'overlay-scn', crossId: 'cross-scn', tipId: 'tip-scn', wrapId: 'wrap-scn',
-    xs: scnXs, labels: scnLabels,
+    svgId:'svg-cart', overlayId:'overlay-cart', crossId:'cross-cart',
+    tipId:'tip-cart', wrapId:'wrap-cart',
+    xs: [60.0, 105.33333333333334, 150.66666666666669, 196.0, 241.33333333333334, 286.6666666666667, 332.0, 377.33333333333337, 422.6666666666667, 468.0, 513.3333333333334, 558.6666666666667, 604.0, 649.3333333333334, 694.6666666666667, 740.0], labels: ["Jan/26", "Fev/26", "Mar/26", "Abr/26", "Mai/26", "Jun/26", "Jul/26", "Ago/26", "Set/26", "Out/26", "Nov/26", "Dez/26", "Jan/27", "Fev/27", "Mar/27", "Abr/27"],
     series: [
-      {name:'Base', color:'#64748b', values: baseVals, yScale: yscaleScn, dotEl: document.getElementById('hover-scn-base')},
-      {name:'A · Conservador', color:'#3b82f6', values: aVals, yScale: yscaleScn, dotEl: document.getElementById('hover-scn-a')},
-      {name:'B · Moderado ⭐', color:'#22c55e', values: bVals, yScale: yscaleScn, dotEl: document.getElementById('hover-scn-b')},
-      {name:'C · Agressivo', color:'#f59e0b', values: cVals, yScale: yscaleScn, dotEl: document.getElementById('hover-scn-c')},
-      {name:'D · Simulador', color:'#a855f7', values: function(){ return currentDVals; }, yScale: yscaleScn, dotEl: document.getElementById('hover-scn-d')},
-    ]
-  });
-
-  // Hover Cartões
-  var cartLabels = ["Jan/26", "Fev/26", "Mar/26", "Abr/26", "Mai/26", "Jun/26", "Jul/26", "Ago/26", "Set/26", "Out/26", "Nov/26", "Dez/26", "Jan/27", "Fev/27", "Mar/27", "Abr/27"];
-  var cartXs = [40, 95, 150, 205, 260, 315, 370, 425, 480, 535, 590, 645, 700, 755, 810, 865];
-  var cartItau = [1784.48, 2769.51, 1083.29, 1023.67, 811.52, 958.68, 1365.83, null, 1823.95, 2407.18, 2621.68, 617.72, 469.75, 353.1, 254.76, null];
-  var cartNubank = [3321.07, 1643.22, 1583.65, 1767.91, 2365.08, 2133.32, 1444.28, 1932.71, 2394.32, 1425.64, 1796.95, 846.05, 727.59, 651.39, 543.59, 443.59];
-  var cartBradesco = [2088.58, 2147.32, null, 900.53, 2030.34, 2105.64, 2141.0, 1151.58, 2300.28, 1427.95, 2795.62, 1126.31, 421.33, 133.33, 133.33, 133.33];
-  var yscaleCart = function(v) { return 260 - (v / 3500) * 240; };
-  attachHover({
-    svgId: 'svg-cart', overlayId: 'overlay-cart', crossId: 'cross-cart', tipId: 'tip-cart', wrapId: 'wrap-cart',
-    xs: cartXs, labels: cartLabels,
-    series: [
-      {name:'Itaú', color:'#ef4444', values: cartItau, yScale: yscaleCart, dotEl: document.getElementById('hover-cart-itau')},
-      {name:'Nubank', color:'#a855f7', values: cartNubank, yScale: yscaleCart, dotEl: document.getElementById('hover-cart-nubank')},
-      {name:'Bradesco', color:'#3b82f6', values: cartBradesco, yScale: yscaleCart, dotEl: document.getElementById('hover-cart-bradesco')},
+      { name:'Itaú', color:'#ef4444', values: cartVals.itau, yScale: function(v){ return 220 - (Math.max(0,v)/3500)*200; }, dotSel:'.hc-cart-itau' },
+      { name:'Nubank', color:'#a855f7', values: cartVals.nu, yScale: function(v){ return 220 - (Math.max(0,v)/3500)*200; }, dotSel:'.hc-cart-nu' },
+      { name:'Bradesco', color:'#3b82f6', values: cartVals.br, yScale: function(v){ return 220 - (Math.max(0,v)/3500)*200; }, dotSel:'.hc-cart-br' }
     ]
   });
 });
 </script>
-</body></html>
+</body>
+</html>
