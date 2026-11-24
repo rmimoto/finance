@@ -69,7 +69,7 @@ input[type=number]:focus{outline:none;border-color:#a855f7;box-shadow:0 0 0 2px 
 <div class="container">
 <div class="header">
   <h1>💰 Dashboard Financeiro</h1>
-  <div class="subtitle">Realizado Jan→Out/26 · Em curso Nov/26 · Provisionado Dez/26 → Jul/27 · Atualizado em 24/11/2026 · Diagnóstico real Nov→Fev</div>
+  <div class="subtitle">Realizado Jan→Out/26 · Em curso Nov/26 · Provisionado Dez/26 → Jul/27 · Atualizado em 24/11/2026 · Cenários 9 meses + Simulador de Investimentos</div>
 </div>
 
 <div class="banner banner-yellow">
@@ -84,6 +84,7 @@ input[type=number]:focus{outline:none;border-color:#a855f7;box-shadow:0 0 0 2px 
   <button class="tab" onclick="showTab(event,'insights')">💡 Insights</button>
   <button class="tab" onclick="showTab(event,'cenarios')">🎯 Cenários A/B/C/D</button>
   <button class="tab" onclick="showTab(event,'cartoes')">💳 Cartões</button>
+  <button class="tab" onclick="showTab(event,'invest')">📈 Investimentos</button>
 </div>
 
 <!-- ======= VISÃO GERAL ======= -->
@@ -426,50 +427,78 @@ input[type=number]:focus{outline:none;border-color:#a855f7;box-shadow:0 0 0 2px 
 <!-- ======= CENÁRIOS A/B/C/D ======= -->
 <div id="cenarios" class="tab-content">
   <div class="section">
-    <h2>🎯 Projeção Nov→Dez/26 em 4 cenários</h2>
-    <div class="legend-note">Ancorado no saldo final de Out/26 (R$ 6.174,59). Janela de projeção: Nov/26 e Dez/26 (2 meses). Base = planilha. Freela e corte somam à receita/reduzem despesa; amortização entra em pagamentos.</div>
+    <h2>🎯 Projeção Nov/26 → Jul/27 (9 meses) em 4 cenários</h2>
+    <div class="legend-note">Ancorado no saldo final de Out/26 (R$ 6.174,59). Janela: Nov/26 a Jul/27. Base = planilha. Freela soma à receita, corte reduz despesa, amortização entra em pagamentos para zerar bancos (Nubank R$ 2.100 + Bradesco R$ 11.000 = R$ 13.100).</div>
 
     <div class="cards" style="grid-template-columns:repeat(4,1fr)">
-      <div class="card" style="border-top:3px solid #3b82f6"><div class="label">A · Conservador</div><div class="value" id="scn-a-amount" style="color:#60a5fa">R$ 2.714,80</div><div class="sub">Saldo Dez/26 · freela 800, amort Nubank parcial</div></div>
-      <div class="card" style="border-top:3px solid #22c55e"><div class="label">B · Moderado ⭐</div><div class="value" id="scn-b-amount" style="color:#22c55e">R$ 2.914,80</div><div class="sub">Saldo Dez/26 · zera Nubank, Bradesco -36%</div></div>
-      <div class="card" style="border-top:3px solid #f59e0b"><div class="label">C · Agressivo</div><div class="value" id="scn-c-amount" style="color:#f59e0b">R$ 4.314,80</div><div class="sub">Saldo Dez/26 · zera Nubank, Bradesco -45%</div></div>
-      <div class="card" style="border-top:3px solid #a855f7"><div class="label">D · Só Reserva (editável)</div><div class="value" id="scn-d-amount" style="color:#a855f7">R$ 7.014,80</div><div class="sub">Saldo Dez/26 · amort 0, dívida rola p/ 2027</div></div>
+      <div class="card" style="border-top:3px solid #3b82f6"><div class="label">A · Conservador</div><div class="value" id="scn-a-amount" style="color:#60a5fa">R$ 31.226,63</div><div class="sub">Saldo Jul/27 · freela 800, amort Nubank diluída</div></div>
+      <div class="card" style="border-top:3px solid #22c55e"><div class="label">B · Moderado ⭐</div><div class="value" id="scn-b-amount" style="color:#22c55e">R$ 29.426,63</div><div class="sub">Saldo Jul/27 · bancos ZERADOS até Jul/27</div></div>
+      <div class="card" style="border-top:3px solid #f59e0b"><div class="label">C · Agressivo</div><div class="value" id="scn-c-amount" style="color:#f59e0b">R$ 39.826,63</div><div class="sub">Saldo Jul/27 · bancos ZERADOS em Mar/27</div></div>
+      <div class="card" style="border-top:3px solid #a855f7"><div class="label">D · Só Reserva (editável)</div><div class="value" id="scn-d-amount" style="color:#a855f7">R$ 42.526,63</div><div class="sub">Saldo Jul/27 · amort 0, dívida rola p/ 2027+</div></div>
     </div>
 
-    <h3>Cenário A — Conservador (freela R$ 800/mês · amort Nubank R$ 1.050/mês)</h3>
+    <h3>Cenário A — Conservador (freela R$ 800/mês · amort R$ 233/mês para Nubank)</h3>
     <table class="tbl-num">
       <thead><tr><th>Mês</th><th>Saldo Inicial</th><th>Entradas (+freela)</th><th>Pagamentos (+amort)</th><th>Resultado</th><th>Saldo Final</th></tr></thead>
       <tbody>
-        <tr><td>Nov/26</td><td>R$ 6.174,59</td><td>R$ 17.115,41</td><td>R$ 18.083,86</td><td class="neg">-R$ 968,45</td><td>R$ 5.206,14</td></tr>
-        <tr><td>Dez/26</td><td>R$ 5.206,14</td><td>R$ 14.641,26</td><td>R$ 17.132,60</td><td class="neg">-R$ 2.491,34</td><td>R$ 2.714,80</td></tr>
+        <tr><td>Nov/26</td><td>R$ 6.174,59</td><td>R$ 17.115,41</td><td>R$ 17.267,19</td><td class="neg">-R$ 151,78</td><td>R$ 6.022,81</td></tr>
+        <tr><td>Dez/26</td><td>R$ 6.022,81</td><td>R$ 14.641,26</td><td>R$ 16.315,93</td><td class="neg">-R$ 1.674,67</td><td>R$ 4.348,14</td></tr>
+        <tr><td>Jan/27</td><td>R$ 4.348,14</td><td>R$ 14.052,26</td><td>R$ 12.585,42</td><td class="pos">+R$ 1.466,84</td><td>R$ 5.814,98</td></tr>
+        <tr><td>Fev/27</td><td>R$ 5.814,98</td><td>R$ 14.052,26</td><td>R$ 10.695,50</td><td class="pos">+R$ 3.356,76</td><td>R$ 9.171,74</td></tr>
+        <tr><td>Mar/27</td><td>R$ 9.171,74</td><td>R$ 14.052,26</td><td>R$ 10.261,48</td><td class="pos">+R$ 3.790,78</td><td>R$ 12.962,52</td></tr>
+        <tr><td>Abr/27</td><td>R$ 12.962,52</td><td>R$ 14.138,26</td><td>R$ 9.906,72</td><td class="pos">+R$ 4.231,54</td><td>R$ 17.194,06</td></tr>
+        <tr><td>Mai/27</td><td>R$ 17.194,06</td><td>R$ 14.138,26</td><td>R$ 9.309,90</td><td class="pos">+R$ 4.828,36</td><td>R$ 22.022,42</td></tr>
+        <tr><td>Jun/27</td><td>R$ 22.022,42</td><td>R$ 14.138,26</td><td>R$ 9.286,14</td><td class="pos">+R$ 4.852,12</td><td>R$ 26.874,54</td></tr>
+        <tr><td>Jul/27</td><td>R$ 26.874,54</td><td>R$ 14.138,26</td><td>R$ 9.786,17</td><td class="pos">+R$ 4.352,09</td><td>R$ 31.226,63</td></tr>
       </tbody>
     </table>
 
-    <h3>Cenário B — Moderado ⭐ (freela R$ 1.500/mês · cortes 300+500 · amort Nubank 2.100 + Bradesco 2.000)</h3>
+    <h3>Cenário B — Moderado ⭐ (freela R$ 1.500/mês · cortes progressivos · amort R$ 2.100 Nov + R$ 1.375/mês Dez→Jul = ZERA bancos)</h3>
     <table class="tbl-num">
       <thead><tr><th>Mês</th><th>Saldo Inicial</th><th>Entradas (+freela)</th><th>Pagamentos (-corte +amort)</th><th>Resultado</th><th>Saldo Final</th></tr></thead>
       <tbody>
         <tr><td>Nov/26</td><td>R$ 6.174,59</td><td>R$ 17.815,41</td><td>R$ 18.833,86</td><td class="neg">-R$ 1.018,45</td><td>R$ 5.156,14</td></tr>
-        <tr><td>Dez/26</td><td>R$ 5.156,14</td><td>R$ 15.341,26</td><td>R$ 17.582,60</td><td class="neg">-R$ 2.241,34</td><td>R$ 2.914,80</td></tr>
+        <tr><td>Dez/26</td><td>R$ 5.156,14</td><td>R$ 15.341,26</td><td>R$ 16.957,60</td><td class="neg">-R$ 1.616,34</td><td>R$ 3.539,80</td></tr>
+        <tr><td>Jan/27</td><td>R$ 3.539,80</td><td>R$ 14.752,26</td><td>R$ 13.227,09</td><td class="pos">+R$ 1.525,17</td><td>R$ 5.064,97</td></tr>
+        <tr><td>Fev/27</td><td>R$ 5.064,97</td><td>R$ 14.752,26</td><td>R$ 11.337,17</td><td class="pos">+R$ 3.415,09</td><td>R$ 8.480,06</td></tr>
+        <tr><td>Mar/27</td><td>R$ 8.480,06</td><td>R$ 14.752,26</td><td>R$ 11.103,15</td><td class="pos">+R$ 3.649,11</td><td>R$ 12.129,17</td></tr>
+        <tr><td>Abr/27</td><td>R$ 12.129,17</td><td>R$ 14.838,26</td><td>R$ 10.848,39</td><td class="pos">+R$ 3.989,87</td><td>R$ 16.119,04</td></tr>
+        <tr><td>Mai/27</td><td>R$ 16.119,04</td><td>R$ 14.838,26</td><td>R$ 10.251,57</td><td class="pos">+R$ 4.586,69</td><td>R$ 20.705,73</td></tr>
+        <tr><td>Jun/27</td><td>R$ 20.705,73</td><td>R$ 14.838,26</td><td>R$ 10.227,81</td><td class="pos">+R$ 4.610,45</td><td>R$ 25.316,18</td></tr>
+        <tr><td>Jul/27</td><td>R$ 25.316,18</td><td>R$ 14.838,26</td><td>R$ 10.727,81</td><td class="pos">+R$ 4.110,45</td><td>R$ 29.426,63</td></tr>
       </tbody>
     </table>
 
-    <h3>Cenário C — Agressivo (freela R$ 2.500/mês · cortes 500+700 · amort Nubank 2.100 + Bradesco 3.000)</h3>
+    <h3>Cenário C — Agressivo (freela R$ 2.500/mês · cortes fortes · amort R$ 3.100 Nov + R$ 2.500/mês Dez→Mar = bancos ZERADOS em Mar/27)</h3>
     <table class="tbl-num">
       <thead><tr><th>Mês</th><th>Saldo Inicial</th><th>Entradas (+freela)</th><th>Pagamentos (-corte +amort)</th><th>Resultado</th><th>Saldo Final</th></tr></thead>
       <tbody>
-        <tr><td>Nov/26</td><td>R$ 6.174,59</td><td>R$ 18.815,41</td><td>R$ 18.633,86</td><td class="pos">+R$ 181,55</td><td>R$ 6.356,14</td></tr>
-        <tr><td>Dez/26</td><td>R$ 6.356,14</td><td>R$ 16.341,26</td><td>R$ 18.382,60</td><td class="neg">-R$ 2.041,34</td><td>R$ 4.314,80</td></tr>
+        <tr><td>Nov/26</td><td>R$ 6.174,59</td><td>R$ 18.815,41</td><td>R$ 19.633,86</td><td class="neg">-R$ 818,45</td><td>R$ 5.356,14</td></tr>
+        <tr><td>Dez/26</td><td>R$ 5.356,14</td><td>R$ 16.341,26</td><td>R$ 17.882,60</td><td class="neg">-R$ 1.541,34</td><td>R$ 3.814,80</td></tr>
+        <tr><td>Jan/27</td><td>R$ 3.814,80</td><td>R$ 15.752,26</td><td>R$ 14.152,09</td><td class="pos">+R$ 1.600,17</td><td>R$ 5.414,97</td></tr>
+        <tr><td>Fev/27</td><td>R$ 5.414,97</td><td>R$ 15.752,26</td><td>R$ 12.262,17</td><td class="pos">+R$ 3.490,09</td><td>R$ 8.905,06</td></tr>
+        <tr><td>Mar/27</td><td>R$ 8.905,06</td><td>R$ 15.752,26</td><td>R$ 12.028,15</td><td class="pos">+R$ 3.724,11</td><td>R$ 12.629,17</td></tr>
+        <tr><td>Abr/27</td><td>R$ 12.629,17</td><td>R$ 15.838,26</td><td>R$ 9.373,39</td><td class="pos">+R$ 6.464,87</td><td>R$ 19.094,04</td></tr>
+        <tr><td>Mai/27</td><td>R$ 19.094,04</td><td>R$ 15.838,26</td><td>R$ 8.776,57</td><td class="pos">+R$ 7.061,69</td><td>R$ 26.155,73</td></tr>
+        <tr><td>Jun/27</td><td>R$ 26.155,73</td><td>R$ 15.838,26</td><td>R$ 8.752,81</td><td class="pos">+R$ 7.085,45</td><td>R$ 33.241,18</td></tr>
+        <tr><td>Jul/27</td><td>R$ 33.241,18</td><td>R$ 15.838,26</td><td>R$ 9.252,81</td><td class="pos">+R$ 6.585,45</td><td>R$ 39.826,63</td></tr>
       </tbody>
     </table>
 
     <h3>Cenário D — Só Reserva (SIMULADOR interativo · amortização = 0)</h3>
-    <div class="legend-note">Edite Freela/mês e Corte/mês para simular. <button class="btn" onclick="resetD()">↻ Reset (freela 1.500 · corte B)</button><button class="btn btn-ghost" onclick="zeroD()">Zerar tudo</button></div>
+    <div class="legend-note">Edite Freela/mês e Corte/mês para simular. <button class="btn" onclick="resetD()">↻ Reset (freela 1.500 · corte progressivo)</button><button class="btn btn-ghost" onclick="zeroD()">Zerar tudo</button></div>
     <table class="tbl-num" id="scn-d-sim">
       <thead><tr><th>Mês</th><th>Freela</th><th>Corte</th><th>Saldo Inicial</th><th>Entradas base</th><th>Pagamentos base</th><th>Resultado</th><th>Saldo Final</th></tr></thead>
       <tbody>
         <tr><td>Nov/26</td><td><input type="number" value="1500" step="50" data-row="0" data-kind="freela"></td><td><input type="number" value="300" step="50" data-row="0" data-kind="corte"></td><td class="d-si" data-row="0">—</td><td>R$ 16.315,41</td><td>R$ 17.033,86</td><td class="d-res" data-row="0">—</td><td class="d-sf" data-row="0">—</td></tr>
         <tr><td>Dez/26</td><td><input type="number" value="1500" step="50" data-row="1" data-kind="freela"></td><td><input type="number" value="500" step="50" data-row="1" data-kind="corte"></td><td class="d-si" data-row="1">—</td><td>R$ 13.841,26</td><td>R$ 16.082,60</td><td class="d-res" data-row="1">—</td><td class="d-sf" data-row="1">—</td></tr>
+        <tr><td>Jan/27</td><td><input type="number" value="1500" step="50" data-row="2" data-kind="freela"></td><td><input type="number" value="500" step="50" data-row="2" data-kind="corte"></td><td class="d-si" data-row="2">—</td><td>R$ 13.252,26</td><td>R$ 12.352,09</td><td class="d-res" data-row="2">—</td><td class="d-sf" data-row="2">—</td></tr>
+        <tr><td>Fev/27</td><td><input type="number" value="1500" step="50" data-row="3" data-kind="freela"></td><td><input type="number" value="500" step="50" data-row="3" data-kind="corte"></td><td class="d-si" data-row="3">—</td><td>R$ 13.252,26</td><td>R$ 10.462,17</td><td class="d-res" data-row="3">—</td><td class="d-sf" data-row="3">—</td></tr>
+        <tr><td>Mar/27</td><td><input type="number" value="1500" step="50" data-row="4" data-kind="freela"></td><td><input type="number" value="300" step="50" data-row="4" data-kind="corte"></td><td class="d-si" data-row="4">—</td><td>R$ 13.252,26</td><td>R$ 10.028,15</td><td class="d-res" data-row="4">—</td><td class="d-sf" data-row="4">—</td></tr>
+        <tr><td>Abr/27</td><td><input type="number" value="1500" step="50" data-row="5" data-kind="freela"></td><td><input type="number" value="200" step="50" data-row="5" data-kind="corte"></td><td class="d-si" data-row="5">—</td><td>R$ 13.338,26</td><td>R$ 9.673,39</td><td class="d-res" data-row="5">—</td><td class="d-sf" data-row="5">—</td></tr>
+        <tr><td>Mai/27</td><td><input type="number" value="1500" step="50" data-row="6" data-kind="freela"></td><td><input type="number" value="200" step="50" data-row="6" data-kind="corte"></td><td class="d-si" data-row="6">—</td><td>R$ 13.338,26</td><td>R$ 9.076,57</td><td class="d-res" data-row="6">—</td><td class="d-sf" data-row="6">—</td></tr>
+        <tr><td>Jun/27</td><td><input type="number" value="1500" step="50" data-row="7" data-kind="freela"></td><td><input type="number" value="200" step="50" data-row="7" data-kind="corte"></td><td class="d-si" data-row="7">—</td><td>R$ 13.338,26</td><td>R$ 9.052,81</td><td class="d-res" data-row="7">—</td><td class="d-sf" data-row="7">—</td></tr>
+        <tr><td>Jul/27</td><td><input type="number" value="1500" step="50" data-row="8" data-kind="freela"></td><td><input type="number" value="200" step="50" data-row="8" data-kind="corte"></td><td class="d-si" data-row="8">—</td><td>R$ 13.338,26</td><td>R$ 9.552,81</td><td class="d-res" data-row="8">—</td><td class="d-sf" data-row="8">—</td></tr>
       </tbody>
       <tfoot>
         <tr style="background:rgba(168,85,247,0.08);font-weight:600">
@@ -480,53 +509,60 @@ input[type=number]:focus{outline:none;border-color:#a855f7;box-shadow:0 0 0 2px 
   </div>
 
   <div class="section">
-    <h2>📈 Comparativo dos 4 cenários · Saldo Final</h2>
+    <h2>📈 Comparativo dos 4 cenários · Saldo Final (Out/26 → Jul/27)</h2>
     <div class="chart-wrap" id="wrap-scn">
       <svg id="svg-scn" viewBox="0 0 880 300" preserveAspectRatio="none">
         <line x1="60" y1="20" x2="60" y2="260" stroke="rgba(148,163,184,0.2)"/>
         <line x1="60" y1="260" x2="860" y2="260" stroke="rgba(148,163,184,0.2)"/>
         <line x1="60" y1="20" x2="860" y2="20" stroke="rgba(148,163,184,0.08)" stroke-dasharray="3,3"/>
-        <line x1="60" y1="98.26" x2="860" y2="98.26" stroke="rgba(34,197,94,0.3)" stroke-dasharray="4,3"/>
-        <text x="860" y="95" text-anchor="end" fill="#22c55e" font-size="10">Meta R$ 10k</text>
-        <line x1="60" y1="171.3" x2="860" y2="171.3" stroke="rgba(245,158,11,0.3)" stroke-dasharray="4,3"/>
-        <text x="860" y="168" text-anchor="end" fill="#f59e0b" font-size="10">Colchão R$ 3k</text>
-        <!-- y labels (-8k..15k, scale 240px) -->
-        <text x="50" y="24" text-anchor="end" fill="#94a3b8" font-size="10">15k</text>
-        <text x="50" y="102" text-anchor="end" fill="#94a3b8" font-size="10">10k</text>
-        <text x="50" y="175" text-anchor="end" fill="#94a3b8" font-size="10">3k</text>
-        <text x="50" y="264" text-anchor="end" fill="#94a3b8" font-size="10">-8k</text>
-        <!-- x labels: Out (anchor), Nov, Dez -->
-        <text x="200" y="280" text-anchor="middle" fill="#94a3b8" font-size="10">Out (anchor)</text>
-        <text x="500" y="280" text-anchor="middle" fill="#94a3b8" font-size="10">Nov/26</text>
-        <text x="800" y="280" text-anchor="middle" fill="#94a3b8" font-size="10">Dez/26</text>
+        <line x1="60" y1="188" x2="860" y2="188" stroke="rgba(34,197,94,0.3)" stroke-dasharray="4,3"/>
+        <text x="860" y="185" text-anchor="end" fill="#22c55e" font-size="10">Meta R$ 10k</text>
+        <line x1="60" y1="221.6" x2="860" y2="221.6" stroke="rgba(245,158,11,0.3)" stroke-dasharray="4,3"/>
+        <text x="860" y="218" text-anchor="end" fill="#f59e0b" font-size="10">Colchão R$ 3k</text>
+        <!-- y labels (-5k..45k, scale 240px, step 10k) -->
+        <text x="50" y="24" text-anchor="end" fill="#94a3b8" font-size="10">45k</text>
+        <text x="50" y="72" text-anchor="end" fill="#94a3b8" font-size="10">35k</text>
+        <text x="50" y="120" text-anchor="end" fill="#94a3b8" font-size="10">25k</text>
+        <text x="50" y="168" text-anchor="end" fill="#94a3b8" font-size="10">15k</text>
+        <text x="50" y="216" text-anchor="end" fill="#94a3b8" font-size="10">5k</text>
+        <text x="50" y="264" text-anchor="end" fill="#94a3b8" font-size="10">-5k</text>
+        <!-- x labels: Out anchor + 9 months -->
+        <text x="100" y="280" text-anchor="middle" fill="#94a3b8" font-size="10">Out*</text>
+        <text x="180" y="280" text-anchor="middle" fill="#94a3b8" font-size="10">Nov</text>
+        <text x="260" y="280" text-anchor="middle" fill="#94a3b8" font-size="10">Dez/26</text>
+        <text x="340" y="280" text-anchor="middle" fill="#94a3b8" font-size="10">Jan</text>
+        <text x="420" y="280" text-anchor="middle" fill="#94a3b8" font-size="10">Fev</text>
+        <text x="500" y="280" text-anchor="middle" fill="#94a3b8" font-size="10">Mar</text>
+        <text x="580" y="280" text-anchor="middle" fill="#94a3b8" font-size="10">Abr</text>
+        <text x="660" y="280" text-anchor="middle" fill="#94a3b8" font-size="10">Mai</text>
+        <text x="740" y="280" text-anchor="middle" fill="#94a3b8" font-size="10">Jun</text>
+        <text x="820" y="280" text-anchor="middle" fill="#94a3b8" font-size="10">Jul/27</text>
 
-        <!-- Base (saldo da planilha): Out=6174.59, Nov=5456.14, Dez=3214.80 -->
+        <!-- Base (planilha) -->
         <polyline fill="none" stroke="#64748b" stroke-width="1.5" stroke-dasharray="5,4"
-          points="200,112.03 500,119.52 800,142.74"/>
-        <!-- A: Out=6174.59, Nov=5206.14, Dez=2714.80 -->
+          points="100,206.36 180,209.81 260,220.57 340,216.25 420,202.86 500,187.38 580,169.79 660,149.33 740,128.76 820,110.59"/>
+        <!-- A -->
         <polyline fill="none" stroke="#3b82f6" stroke-width="2"
-          points="200,112.03 500,122.13 800,147.95"/>
-        <circle cx="200" cy="112.03" r="3.5" fill="#3b82f6"/>
-        <circle cx="500" cy="122.13" r="3.5" fill="#3b82f6"/>
-        <circle cx="800" cy="147.95" r="3.5" fill="#3b82f6"/>
-        <!-- B: Out=6174.59, Nov=5156.14, Dez=2914.80 -->
+          points="100,206.36 180,208.87 260,215.93 340,209.09 420,192.49 500,174.30 580,154.00 660,130.84 740,107.56 820,86.71"/>
+        <!-- B ⭐ -->
         <polyline fill="none" stroke="#22c55e" stroke-width="2.5"
-          points="200,112.03 500,122.65 800,145.87"/>
-        <circle cx="200" cy="112.03" r="3.5" fill="#22c55e"/>
-        <circle cx="500" cy="122.65" r="3.5" fill="#22c55e"/>
-        <circle cx="800" cy="145.87" r="3.5" fill="#22c55e"/>
-        <!-- C: Out=6174.59, Nov=6356.14, Dez=4314.80 -->
+          points="100,206.36 180,211.25 260,218.99 340,211.70 420,195.30 500,177.78 580,158.57 660,136.55 740,114.47 820,94.73"/>
+        <!-- C -->
         <polyline fill="none" stroke="#f59e0b" stroke-width="2"
-          points="200,112.03 500,109.11 800,130.28"/>
-        <circle cx="200" cy="112.03" r="3.5" fill="#f59e0b"/>
-        <circle cx="500" cy="109.11" r="3.5" fill="#f59e0b"/>
-        <circle cx="800" cy="130.28" r="3.5" fill="#f59e0b"/>
+          points="100,206.36 180,210.29 260,217.68 340,210.49 420,193.26 500,175.35 580,144.26 660,110.37 740,76.36 820,44.74"/>
         <!-- D (dynamic) -->
         <polyline id="poly-d" fill="none" stroke="#a855f7" stroke-width="2"
-          points="200,112.03 500,104.94 800,83.08"/>
-        <circle class="circle-d" cx="200" cy="112.03" r="3.5" fill="#a855f7"/>
-        <circle class="circle-d" cx="500" cy="104.94" r="3.5" fill="#a855f7"/>
-        <circle class="circle-d" cx="800" cy="83.08" r="3.5" fill="#a855f7"/>
+          points="100,206.36 180,201.17 260,202.33 340,188.41 420,165.42 500,141.42 580,115.68 660,87.09 740,58.36 820,32.03"/>
+        <circle class="circle-d" cx="100" cy="206.36" r="3" fill="#a855f7"/>
+        <circle class="circle-d" cx="180" cy="201.17" r="3" fill="#a855f7"/>
+        <circle class="circle-d" cx="260" cy="202.33" r="3" fill="#a855f7"/>
+        <circle class="circle-d" cx="340" cy="188.41" r="3" fill="#a855f7"/>
+        <circle class="circle-d" cx="420" cy="165.42" r="3" fill="#a855f7"/>
+        <circle class="circle-d" cx="500" cy="141.42" r="3" fill="#a855f7"/>
+        <circle class="circle-d" cx="580" cy="115.68" r="3" fill="#a855f7"/>
+        <circle class="circle-d" cx="660" cy="87.09" r="3" fill="#a855f7"/>
+        <circle class="circle-d" cx="740" cy="58.36" r="3" fill="#a855f7"/>
+        <circle class="circle-d" cx="820" cy="32.03" r="3" fill="#a855f7"/>
         <!-- legend -->
         <g font-size="10" fill="#94a3b8">
           <rect x="60" y="2" width="10" height="3" fill="#64748b"/><text x="75" y="7">Base</text>
@@ -548,10 +584,12 @@ input[type=number]:focus{outline:none;border-color:#a855f7;box-shadow:0 0 0 2px 
   </div>
 
   <div class="rec-box">
-    <h3>💡 Recomendação do Especialista</h3>
-    <p><strong>Cenário B (Moderado)</strong> é o recomendado: zera a dívida Nubank e começa a reduzir Bradesco com esforço realista (freela R$ 1.500 + cortes modestos). Mantém colchão de R$ 2.914,80 em Dez/26.</p>
-    <p><strong>Cenário D</strong> é o plano de contingência de liquidez: se Nov/Dez forem mais apertados que o previsto, pause amortização e preserve caixa — a dívida rola para 2027, quando o fluxo projeta recuperação (R$ 10k em Mar/27).</p>
-    <p><strong>Ação imediata:</strong> ir atrás de freela em Nov (~R$ 1.500) e cortar R$ 300 em supérfluos. Isso já basta para manter a trajetória do Cenário B.</p>
+    <h3>💡 Recomendação do Especialista · horizonte Jul/27</h3>
+    <p><strong>Cenário B (Moderado)</strong> continua recomendado para quem quer tranquilidade estrutural: zera os dois bancos (Nubank + Bradesco = R$ 13,1k) até Jul/27 e ainda deixa R$ 29,4k em caixa. Esforço realista: freela R$ 1.500/mês + corte médio R$ 322/mês.</p>
+    <p><strong>Cenário C (Agressivo)</strong> termina com R$ 39,8k em Jul/27 — R$ 10,4k a mais que B, porque quita os bancos em Mar/27 (6 meses antes) e todo o excedente vira reserva. Exige freela R$ 2.500/mês + corte R$ 478/mês. Compensa se o freela for sustentável.</p>
+    <p><strong>Cenário D (Só Reserva)</strong> dá o maior saldo nominal (R$ 42,5k em Jul/27), mas a dívida rola inteira para 2027+ (R$ 13,1k ainda abertos, correndo juros). Só faz sentido como contingência de liquidez; no longo prazo o custo dos juros come a diferença.</p>
+    <p><strong>Cenário A</strong> fecha com R$ 31,2k — curiosamente MAIOR que B — porque a amortização da Nubank é lenta (R$ 233/mês) e o Bradesco continua rolando. Olhar só o saldo final engana: A deixa R$ 11k de Bradesco em aberto em Jul/27.</p>
+    <p><strong>Leitura global:</strong> o fluxo da planilha é estruturalmente positivo a partir de Jan/27. Qualquer cenário com freela + disciplina chega acima de R$ 29k em Jul/27. A pergunta não é "vou sair do vermelho?", é "quanto dessa reserva posso começar a investir?" → próxima aba.</p>
   </div>
 </div>
 
@@ -649,9 +687,107 @@ input[type=number]:focus{outline:none;border-color:#a855f7;box-shadow:0 0 0 2px 
   </div>
 </div>
 
+<!-- ======= INVESTIMENTOS ======= -->
+<div id="invest" class="tab-content">
+  <div class="section">
+    <h2>📈 Simulador de Investimentos · Juros compostos com aportes mensais</h2>
+    <div class="legend-note">Fórmula: FV = PV · (1+i)<sup>n</sup> + PMT · [(1+i)<sup>n</sup> − 1] / i. Edite os campos e o gráfico recalcula em tempo real. A taxa <strong>i</strong> é mensal. Taxas de referência em 24/11/2026: CDI ~0,89% a.m. (~11,25% a.a.) · Poupança ~0,69% a.m. · Tesouro IPCA+ ~0,75% a.m. real.</div>
+
+    <div class="cards" style="grid-template-columns:repeat(4,1fr);margin-bottom:16px">
+      <div class="card" style="border-top:3px solid #3b82f6">
+        <div class="label">PV · Valor presente (R$)</div>
+        <div style="margin-top:6px"><input type="number" id="inv-pv" value="6174.59" step="100" style="width:100%"></div>
+        <div class="sub">Saldo inicial · default = saldo Out/26</div>
+      </div>
+      <div class="card" style="border-top:3px solid #22c55e">
+        <div class="label">PMT · Aporte mensal (R$)</div>
+        <div style="margin-top:6px"><input type="number" id="inv-pmt" value="1000" step="50" style="width:100%"></div>
+        <div class="sub">Quanto você investe todo mês</div>
+      </div>
+      <div class="card" style="border-top:3px solid #f59e0b">
+        <div class="label">i · Taxa mensal (%)</div>
+        <div style="margin-top:6px"><input type="number" id="inv-i" value="0.89" step="0.01" style="width:100%"></div>
+        <div class="sub">Ex.: CDI 0,89% · Poup. 0,69%</div>
+      </div>
+      <div class="card" style="border-top:3px solid #a855f7">
+        <div class="label">n · Prazo (meses)</div>
+        <div style="margin-top:6px"><input type="number" id="inv-n" value="60" step="1" style="width:100%"></div>
+        <div class="sub">60 = 5 anos · 120 = 10 anos</div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:16px">
+      <button class="btn" onclick="setInvPreset('cdi')">💵 CDI (0,89% a.m.)</button>
+      <button class="btn" onclick="setInvPreset('poup')">🏦 Poupança (0,69% a.m.)</button>
+      <button class="btn" onclick="setInvPreset('ipca')">📊 Tesouro IPCA+ (0,75% a.m.)</button>
+      <button class="btn" onclick="setInvPreset('acao')">📈 Ações long-term (1,00% a.m.)</button>
+      <button class="btn btn-ghost" onclick="setInvHorizon(60)">5 anos</button>
+      <button class="btn btn-ghost" onclick="setInvHorizon(120)">10 anos</button>
+      <button class="btn btn-ghost" onclick="setInvHorizon(240)">20 anos</button>
+      <button class="btn btn-ghost" onclick="setInvHorizon(360)">30 anos</button>
+    </div>
+
+    <div class="cards" style="grid-template-columns:repeat(4,1fr)">
+      <div class="card"><div class="label">FV · Valor Futuro</div><div class="value pos" id="inv-fv">—</div><div class="sub">Patrimônio ao fim do prazo</div></div>
+      <div class="card"><div class="label">Total aportado</div><div class="value" id="inv-aportado">—</div><div class="sub">PV + (PMT × n)</div></div>
+      <div class="card"><div class="label">Juros acumulados</div><div class="value warn" id="inv-juros">—</div><div class="sub">FV − total aportado</div></div>
+      <div class="card"><div class="label">Taxa anual equivalente</div><div class="value" id="inv-i-anual">—</div><div class="sub">(1+i)<sup>12</sup> − 1</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📊 Evolução do patrimônio</h2>
+    <div class="chart-wrap" id="wrap-inv">
+      <svg id="svg-inv" viewBox="0 0 880 300" preserveAspectRatio="none">
+        <line x1="60" y1="20" x2="60" y2="260" stroke="rgba(148,163,184,0.2)"/>
+        <line x1="60" y1="260" x2="860" y2="260" stroke="rgba(148,163,184,0.2)"/>
+        <text x="60" y="14" fill="#94a3b8" font-size="11" id="inv-chart-title">Patrimônio total vs. Total aportado</text>
+        <g id="inv-y-labels"></g>
+        <g id="inv-x-labels"></g>
+        <polyline id="inv-poly-aport" fill="none" stroke="#64748b" stroke-width="1.5" stroke-dasharray="5,4" points=""/>
+        <polyline id="inv-poly-fv" fill="none" stroke="#22c55e" stroke-width="2.5" points=""/>
+        <polygon id="inv-poly-area" fill="url(#gradInv)" points=""/>
+        <defs>
+          <linearGradient id="gradInv" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="#22c55e" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="#22c55e" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <g font-size="10" fill="#94a3b8">
+          <rect x="60" y="2" width="10" height="3" fill="#64748b"/><text x="75" y="7">Total aportado</text>
+          <rect x="170" y="2" width="10" height="3" fill="#22c55e"/><text x="185" y="7">Patrimônio (com juros)</text>
+        </g>
+        <line id="cross-inv" x1="0" y1="20" x2="0" y2="260" stroke="#22c55e" stroke-width="1" stroke-dasharray="3,3" style="display:none"/>
+        <circle id="hov-inv-fv" cx="0" cy="0" r="5" fill="#22c55e" stroke="#fff" stroke-width="1.5" style="display:none"/>
+        <circle id="hov-inv-ap" cx="0" cy="0" r="5" fill="#64748b" stroke="#fff" stroke-width="1.5" style="display:none"/>
+        <rect id="overlay-inv" x="60" y="20" width="800" height="240" fill="#000" opacity="0" pointer-events="all" style="cursor:crosshair"/>
+      </svg>
+      <div class="hover-tip" id="tip-inv"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>📋 Cronograma anual · marcos de patrimônio</h2>
+    <div class="legend-note">Snapshot ao fim de cada ano (mês 12, 24, 36, …). Use para planejar objetivos: carro, entrada de imóvel, aposentadoria.</div>
+    <table class="tbl-num" id="inv-schedule">
+      <thead><tr><th>Ano</th><th>Mês (n)</th><th>Total aportado</th><th>Juros acumulados</th><th>Patrimônio</th><th>% juros no total</th></tr></thead>
+      <tbody id="inv-schedule-body"></tbody>
+    </table>
+  </div>
+
+  <div class="rec-box">
+    <h3>💡 Como usar este simulador</h3>
+    <p><strong>Passo 1</strong> — Preencha <strong>PV</strong> com o quanto você tem hoje para começar (pode ser 0, ou seu saldo em caixa / reserva).</p>
+    <p><strong>Passo 2</strong> — Em <strong>PMT</strong>, coloque o quanto consegue investir todo mês (sem comprometer o fluxo — recomendável usar o "sobra" dos Cenários B/C).</p>
+    <p><strong>Passo 3</strong> — Em <strong>i</strong>, escolha uma taxa mensal realista. Os botões já trazem presets: CDI, Poupança, Tesouro IPCA+, Ações. Se for investir em um CDB que paga 110% do CDI, multiplique: 0,89% × 1,10 = 0,98% a.m.</p>
+    <p><strong>Passo 4</strong> — Em <strong>n</strong>, defina o horizonte. 60 meses (5 anos) para carro, 120 (10 anos) para imóvel, 240+ (20+ anos) para aposentadoria.</p>
+    <p><strong>Observações:</strong> este simulador trata a taxa como líquida (sem IR) e constante. Para render real, desconte inflação (~0,4% a.m.) e, em renda fixa, IR regressivo (22,5% até 15% conforme o prazo). Para fundos e ações, há variações — use como estimativa de longo prazo, não garantia.</p>
+  </div>
+</div>
+
 </div>
 <script>
-var TAB_IDS = ['visao','mensal','dre','insights','cenarios','cartoes'];
+var TAB_IDS = ['visao','mensal','dre','insights','cenarios','cartoes','invest'];
 function showTab(ev, id){
   TAB_IDS.forEach(function(t){
     var el = document.getElementById(t);
@@ -672,19 +808,20 @@ function brl(v){
 // ============ Cenário D simulator ============
 var D_BASE = {
   saldoAnchor: 6174.59,
-  entBase: [16315.41, 13841.26],
-  pagBase: [17033.86, 16082.60],
-  meses: ['Nov/26','Dez/26'],
-  xs: [200, 500, 800]
+  entBase: [16315.41, 13841.26, 13252.26, 13252.26, 13252.26, 13338.26, 13338.26, 13338.26, 13338.26],
+  pagBase: [17033.86, 16082.60, 12352.09, 10462.17, 10028.15, 9673.39, 9076.57, 9052.81, 9552.81],
+  meses: ['Nov/26','Dez/26','Jan/27','Fev/27','Mar/27','Abr/27','Mai/27','Jun/27','Jul/27'],
+  xs: [100, 180, 260, 340, 420, 500, 580, 660, 740, 820]
 };
 
-function yscaleScn(v){ return 260 - (v - (-8000)) / 23000 * 240; }
+function yscaleScn(v){ return 260 - (v - (-5000)) / 50000 * 240; }
 
-var currentDVals = [6174.59, 5456.14+1800, 5456.14+1800-241.34];
+var currentDVals = [6174.59, 7256.14, 7014.80, 9914.97, 14705.06, 19729.17, 25094.04, 31055.73, 37041.18, 42526.63];
 
 function updateD(){
   var inputs = document.querySelectorAll('#scn-d-sim input');
-  var freelas=[0,0], cortes=[0,0];
+  var N = D_BASE.entBase.length;
+  var freelas=new Array(N).fill(0), cortes=new Array(N).fill(0);
   inputs.forEach(function(inp){
     var r = +inp.dataset.row, k = inp.dataset.kind;
     var v = parseFloat(inp.value)||0;
@@ -693,7 +830,7 @@ function updateD(){
   });
   var si = D_BASE.saldoAnchor, resTotal=0, freTotal=0, corTotal=0;
   currentDVals = [D_BASE.saldoAnchor];
-  for(var r=0;r<2;r++){
+  for(var r=0;r<N;r++){
     var ent = D_BASE.entBase[r] + freelas[r];
     var pag = D_BASE.pagBase[r] - cortes[r];
     var res = ent - pag;
@@ -734,7 +871,10 @@ function resetD(){
   inputs.forEach(function(inp){
     var r = +inp.dataset.row, k = inp.dataset.kind;
     if(k==='freela') inp.value = 1500;
-    else inp.value = (r===0 ? 300 : 500);
+    else {
+      var defCorte = [300,500,500,500,300,200,200,200,200];
+      inp.value = defCorte[r] !== undefined ? defCorte[r] : 200;
+    }
   });
   updateD();
 }
@@ -822,13 +962,13 @@ document.addEventListener('DOMContentLoaded', function(){
   attachHover({
     svgId:'svg-scn', overlayId:'overlay-scn', crossId:'cross-scn',
     tipId:'tip-scn', wrapId:'wrap-scn',
-    xs:[200,500,800],
-    labels:['Out/26 (anchor)','Nov/26','Dez/26'],
+    xs:[100,180,260,340,420,500,580,660,740,820],
+    labels:['Out/26 (anchor)','Nov/26','Dez/26','Jan/27','Fev/27','Mar/27','Abr/27','Mai/27','Jun/27','Jul/27'],
     series:[
-      {name:'Base (planilha)', color:'#64748b', values:[6174.59,5456.14,3214.80], yScale:yscaleScn, dotEl:'hov-scn-base'},
-      {name:'A · Conservador', color:'#3b82f6', values:[6174.59,5206.14,2714.80], yScale:yscaleScn, dotEl:'hov-scn-a'},
-      {name:'B · Moderado ⭐', color:'#22c55e', values:[6174.59,5156.14,2914.80], yScale:yscaleScn, dotEl:'hov-scn-b'},
-      {name:'C · Agressivo', color:'#f59e0b', values:[6174.59,6356.14,4314.80], yScale:yscaleScn, dotEl:'hov-scn-c'},
+      {name:'Base (planilha)', color:'#64748b', values:[6174.59,5456.14,3214.80,4114.97,6905.06,10129.17,13794.04,18055.73,22341.18,26126.63], yScale:yscaleScn, dotEl:'hov-scn-base'},
+      {name:'A · Conservador', color:'#3b82f6', values:[6174.59,6022.81,4348.14,5814.98,9171.74,12962.52,17194.06,22022.42,26874.54,31226.63], yScale:yscaleScn, dotEl:'hov-scn-a'},
+      {name:'B · Moderado ⭐', color:'#22c55e', values:[6174.59,5156.14,3539.80,5064.97,8480.06,12129.17,16119.04,20705.73,25316.18,29426.63], yScale:yscaleScn, dotEl:'hov-scn-b'},
+      {name:'C · Agressivo', color:'#f59e0b', values:[6174.59,5356.14,3814.80,5414.97,8905.06,12629.17,19094.04,26155.73,33241.18,39826.63], yScale:yscaleScn, dotEl:'hov-scn-c'},
       {name:'D · Só Reserva', color:'#a855f7', values:function(){ return currentDVals; }, yScale:yscaleScn, dotEl:'hov-scn-d'}
     ]
   });
@@ -859,6 +999,139 @@ document.addEventListener('DOMContentLoaded', function(){
       {name:'Bradesco', color:'#3b82f6', values:[2088.58,2147.32,null,900.53,2030.34,2105.64,2141.00,1151.58,2300.28,1427.95,2795.62,3051.70,563.36,275.36,153.23,153.23], yScale:yCard, dotEl:'hov-card-b'}
     ]
   });
+
+  // =========== INVESTIMENTOS simulator ===========
+  function updateInv(){
+    var pv  = parseFloat(document.getElementById('inv-pv').value)  || 0;
+    var pmt = parseFloat(document.getElementById('inv-pmt').value) || 0;
+    var iPct = parseFloat(document.getElementById('inv-i').value) || 0;
+    var n   = Math.max(1, Math.min(600, parseInt(document.getElementById('inv-n').value)||0));
+    var i = iPct/100;
+
+    // Build series: for k from 0..n
+    var saldo = pv, aport = pv;
+    var saldoArr = [pv], aportArr = [pv];
+    for(var k=1;k<=n;k++){
+      saldo = saldo*(1+i) + pmt;
+      aport = aport + pmt;
+      saldoArr.push(saldo);
+      aportArr.push(aport);
+    }
+    var fv = saldoArr[n], totalAportado = aportArr[n], juros = fv - totalAportado;
+    document.getElementById('inv-fv').textContent = brl(fv);
+    document.getElementById('inv-aportado').textContent = brl(totalAportado);
+    document.getElementById('inv-juros').textContent = brl(juros);
+    var iAnual = (Math.pow(1+i, 12) - 1) * 100;
+    document.getElementById('inv-i-anual').textContent = iAnual.toFixed(2).replace('.',',')+'%';
+
+    // Chart: xs 60..860, ys 20..260 (same bounds)
+    var xMin = 80, xMax = 860, yMin = 20, yMax = 260;
+    var maxVal = Math.max(fv, totalAportado, 1);
+    function yScale(v){ return yMax - v/maxVal * (yMax-yMin); }
+    function xScale(k){ return xMin + (k/n) * (xMax-xMin); }
+    var ptsFV = saldoArr.map(function(v,k){ return xScale(k)+','+yScale(v).toFixed(2); }).join(' ');
+    var ptsAp = aportArr.map(function(v,k){ return xScale(k)+','+yScale(v).toFixed(2); }).join(' ');
+    document.getElementById('inv-poly-fv').setAttribute('points', ptsFV);
+    document.getElementById('inv-poly-aport').setAttribute('points', ptsAp);
+    var areaPts = ptsFV + ' ' + xScale(n)+','+yMax + ' ' + xMin+','+yMax;
+    document.getElementById('inv-poly-area').setAttribute('points', areaPts);
+
+    // y labels (5 steps)
+    var yLabG = document.getElementById('inv-y-labels');
+    yLabG.innerHTML = '';
+    for(var s=0;s<=5;s++){
+      var val = maxVal * (1 - s/5);
+      var y = yMin + (yMax-yMin) * s/5;
+      yLabG.innerHTML += '<text x="50" y="'+(y+3)+'" text-anchor="end" fill="#94a3b8" font-size="10">'+(val>=1000? (val/1000).toFixed(0)+'k' : val.toFixed(0))+'</text>';
+      yLabG.innerHTML += '<line x1="60" y1="'+y+'" x2="860" y2="'+y+'" stroke="rgba(148,163,184,0.06)" stroke-dasharray="2,3"/>';
+    }
+    // x labels: every 12 months (year marks)
+    var xLabG = document.getElementById('inv-x-labels');
+    xLabG.innerHTML = '';
+    var steps = Math.min(10, Math.ceil(n/12));
+    var periodStep = Math.ceil(n/steps);
+    for(var k=0;k<=n;k+=periodStep){
+      var lbl = (k/12).toFixed(k%12===0?0:1)+'a';
+      xLabG.innerHTML += '<text x="'+xScale(k)+'" y="280" text-anchor="middle" fill="#94a3b8" font-size="10">'+lbl+'</text>';
+    }
+    if(n % periodStep !== 0){
+      xLabG.innerHTML += '<text x="'+xScale(n)+'" y="280" text-anchor="middle" fill="#94a3b8" font-size="10">'+(n/12).toFixed(1)+'a</text>';
+    }
+
+    // Schedule table (annual snapshots)
+    var tbody = document.getElementById('inv-schedule-body');
+    tbody.innerHTML = '';
+    for(var yr=1;yr<=Math.ceil(n/12);yr++){
+      var k = Math.min(yr*12, n);
+      var ap = aportArr[k], sa = saldoArr[k], jr = sa - ap;
+      var pct = ap>0 ? (jr/ap*100).toFixed(1).replace('.',',')+'%' : '—';
+      var row = '<tr><td>Ano '+yr+'</td><td>'+k+'</td><td>'+brl(ap)+'</td><td class="warn">'+brl(jr)+'</td><td class="pos"><strong>'+brl(sa)+'</strong></td><td>'+pct+'</td></tr>';
+      tbody.innerHTML += row;
+    }
+
+    // store for hover
+    window._invData = {saldoArr:saldoArr, aportArr:aportArr, n:n, xScale:xScale, yScale:yScale, maxVal:maxVal};
+  }
+
+  function setInvPreset(kind){
+    var map = {cdi:0.89, poup:0.69, ipca:0.75, acao:1.00};
+    document.getElementById('inv-i').value = map[kind] || 0.89;
+    updateInv();
+  }
+  function setInvHorizon(m){
+    document.getElementById('inv-n').value = m;
+    updateInv();
+  }
+  window.setInvPreset = setInvPreset;
+  window.setInvHorizon = setInvHorizon;
+
+  ['inv-pv','inv-pmt','inv-i','inv-n'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.addEventListener('input', updateInv);
+  });
+  updateInv();
+
+  // Invest chart hover
+  var invOverlay = document.getElementById('overlay-inv');
+  var invCross = document.getElementById('cross-inv');
+  var invTip = document.getElementById('tip-inv');
+  var invWrap = document.getElementById('wrap-inv');
+  var invSvg = document.getElementById('svg-inv');
+  if(invOverlay){
+    invOverlay.addEventListener('mousemove', function(e){
+      if(!window._invData) return;
+      var d = window._invData;
+      var rct = invSvg.getBoundingClientRect();
+      var vb = invSvg.viewBox.baseVal;
+      var scaleX = vb.width / rct.width;
+      var mx = (e.clientX - rct.left) * scaleX;
+      // map mx to k
+      var k = Math.round((mx - 80)/(860-80) * d.n);
+      k = Math.max(0, Math.min(d.n, k));
+      var x = d.xScale(k);
+      invCross.setAttribute('x1', x); invCross.setAttribute('x2', x); invCross.style.display='';
+      var fv = d.saldoArr[k], ap = d.aportArr[k];
+      var html = '<div class="tip-title">Mês '+k+' · Ano '+(k/12).toFixed(1).replace('.',',')+'</div>';
+      html += '<div class="tip-row"><span><span class="tip-swatch" style="background:#22c55e"></span>Patrimônio</span><span>'+brl(fv)+'</span></div>';
+      html += '<div class="tip-row"><span><span class="tip-swatch" style="background:#64748b"></span>Aportado</span><span>'+brl(ap)+'</span></div>';
+      html += '<div class="tip-row"><span>Juros</span><span style="color:#f59e0b">'+brl(fv-ap)+'</span></div>';
+      invTip.innerHTML = html; invTip.style.display='block';
+      var hovFV = document.getElementById('hov-inv-fv');
+      var hovAp = document.getElementById('hov-inv-ap');
+      hovFV.style.display=''; hovFV.setAttribute('cx', x); hovFV.setAttribute('cy', d.yScale(fv));
+      hovAp.style.display=''; hovAp.setAttribute('cx', x); hovAp.setAttribute('cy', d.yScale(ap));
+      var rctW = invWrap.getBoundingClientRect();
+      var left = e.clientX - rctW.left + 14;
+      var top = e.clientY - rctW.top + 14;
+      if(left + 200 > rctW.width) left = e.clientX - rctW.left - 200;
+      invTip.style.left = left+'px'; invTip.style.top = top+'px';
+    });
+    invOverlay.addEventListener('mouseleave', function(){
+      invCross.style.display='none'; invTip.style.display='none';
+      document.getElementById('hov-inv-fv').style.display='none';
+      document.getElementById('hov-inv-ap').style.display='none';
+    });
+  }
 });
 </script>
 </body>
